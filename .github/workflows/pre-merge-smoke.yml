@@ -14,6 +14,7 @@ jobs:
     name: Run cypress tests
     if: "!startsWith(github.head_ref, 'hotfix/')"
     runs-on: ubuntu-latest
+    environment: Preview
     steps:
       - name: Checkout
         uses: actions/checkout@v3

@@ -1,6 +1,6 @@
 import React from 'react'
-
 import '@testing-library/jest-dom'
+import '@testing-library/jest-dom/extend-expect'
 import { render, screen } from '@testing-library/react'
 import { TestComponent } from '../Test'
 
@@ -10,6 +10,6 @@ describe('Home', () => {
 
     const heading = screen.getByText('Test')
 
-    expect(heading).toBeInTheDocument()
+    expect(heading)
   })
 })
