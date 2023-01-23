@@ -14,7 +14,9 @@
     "test": "jest --watch",
     "test:ci": "jest",
     "test:ci:report": "jest --ci --reporters=default --reporters=jest-junit",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "cypress:open": "cypress open --e2e",
+    "cypress": "cypress run"
   },
   "dependencies": {
     "@jridgewell/sourcemap-codec": "^1.4.14",
@@ -47,6 +49,7 @@
     "@typescript-eslint/parser": "^5.47.1",
     "@vue/compiler-sfc": "3.2.45",
     "autoprefixer": "^10.4.7",
+    "cypress": "^12.3.0",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.4",
     "eslint-config-prettier": "^8.6.0",

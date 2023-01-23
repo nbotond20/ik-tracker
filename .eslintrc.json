@@ -11,6 +11,22 @@
       "parserOptions": {
         "project": "tsconfig.json"
       }
+    },
+    {
+      "files": ["cypress/**/*.(unittest|spec|test).ts"],
+      "env": {
+        "cypress/globals": true
+      },
+      "extends": ["plugin:cypress/recommended"],
+      "plugins": ["cypress"],
+      "rules": {
+        "cypress/no-assigning-return-values": "error",
+        "cypress/no-unnecessary-waiting": "error",
+        "cypress/assertion-before-screenshot": "warn",
+        "cypress/no-force": "warn",
+        "cypress/no-async-tests": "error",
+        "cypress/no-pause": "error"
+      }
     }
   ],
   "parser": "@typescript-eslint/parser",
@@ -43,13 +59,18 @@
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/triple-slash-reference": 0,
     "import/no-named-as-default": 0,
-    "import/no-unresolved": 2,
     "no-console": 1,
     "no-only-tests/no-only-tests": "error",
     "no-restricted-imports": "error",
     "react/display-name": 0,
     "react/prop-types": 0,
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "import/no-unresolved": [
+      2,
+      {
+        "ignore": ["@cypress"]
+      }
+    ]
   },
   "ignorePatterns": [
     "dist",
