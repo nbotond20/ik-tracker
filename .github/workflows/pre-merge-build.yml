@@ -30,11 +30,6 @@ jobs:
           version: 7
           run_install: false
 
-      - name: Create env file
-        run: |
-          touch .env
-          echo 'DATABASE_URL="${{ secrets.DATABASE_URL }}"' >> .env
-
       - name: Install dependencies
         run: pnpm install
 
