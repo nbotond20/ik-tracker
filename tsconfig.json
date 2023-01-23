@@ -19,7 +19,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "types": ["cypress", "node", "jest", "@testing-library/jest-dom"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs", "**/*.js", "**/*.jsx"],
   "exclude": ["node_modules"]
