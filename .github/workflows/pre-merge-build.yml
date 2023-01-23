@@ -52,7 +52,7 @@ jobs:
         run: 'pnpm test:ci:report'
 
       - name: Publish Junit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
+        uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
           files: 'reports/jest-junit.xml'
