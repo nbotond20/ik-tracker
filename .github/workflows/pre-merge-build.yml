@@ -1,0 +1,55 @@
+name: Pre-Merge Validation
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: write
+
+jobs:
+  pr-validation:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    environment: Preview
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Create env file
+        run: |
+          touch .env
+          echo 'DATABASE_URL="${{ secrets.DATABASE_URL }}"' >> .env
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: 'PNPM: build'
+        run: 'pnpm build'
+
+      - name: 'EsLint: checking lint rules'
+        run: 'pnpm lint'
+
+      - name: 'NPM: test'
+        run: 'pnpm test:ci:report'
+
+      - name: Publish Junit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: 'reports/jest-junit.xml'
+          check_name: 'Unit test results'

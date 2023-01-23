@@ -40,3 +40,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# jest test coverage
+/reports
+jest-unit.xml
