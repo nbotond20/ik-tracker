@@ -4,7 +4,7 @@ import Link from 'next/link'
 const menuItemStyle =
   'flex w-full items-center border-b-[1px] border-gray-500 h-11 text-lg dark:text-white transition-all ease-in-out '
 const menuItemContainerStyle =
-  'absolute lg:hidden left-0 top-16 flex h-screen w-screen flex-col bg-white transition-all duration-1000 ease-in-out dark:bg-gray-800'
+  'absolute lg:hidden left-0 top-16 flex h-screen w-screen flex-col bg-white transition-height duration-1000 ease-in-out dark:bg-gray-800'
 
 interface MobileMenuProps {
   links: Page[]
