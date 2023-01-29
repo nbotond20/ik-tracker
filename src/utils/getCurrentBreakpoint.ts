@@ -23,7 +23,7 @@ export const getBreakpointValue = (breakpoint: keyof typeof breakpoints) => {
 }
 
 export const useIsSmallerThanBreakpoint = (breakpoint: keyof typeof breakpoints) => {
-  const [isSmallerThanBreakpoint, setIsSmallerThanBreakpoint] = useState(false)
+  const [isSmallerThanBreakpoint, setIsSmallerThanBreakpoint] = useState<boolean | undefined>(undefined)
 
   useEffect(() => {
     const handleResize = () => {
