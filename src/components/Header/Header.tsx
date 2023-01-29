@@ -1,7 +1,7 @@
 import { LinkButton } from '@components'
 import Link from 'next/link'
 import { useState } from 'react'
-import { pages } from 'src/constants/pages'
+import { pages } from '@constants/pages'
 import { HambugerMenuButton } from './HamburgerMenuButton'
 import { MobileMenu } from './MobileMenu'
 import { NavLinks } from './NavLinks'
