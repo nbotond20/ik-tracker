@@ -5,10 +5,10 @@ interface MaintenanceProps {
 }
 
 export const Maintenance = ({ children }: MaintenanceProps) => {
-  const isProduction = process.env.NODE_ENV === 'production'
+  const isProduction = process.env.VERCEL_ENV === 'production'
 
   // eslint-disable-next-line no-console
-  console.log('isProduction', isProduction, process.env.NODE_ENV)
+  console.log('isProduction', isProduction, process.env.VERCEL_ENV)
 
   return !isProduction ? (
     <>{children}</>
