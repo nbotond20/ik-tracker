@@ -14,6 +14,13 @@ const Home: NextPage = () => {
         <title>ELTE IK Progress Tracker</title>
         <meta name="description" content="ELTE IK Progress Tracker" />
         <link rel="icon" href="/favicon.ico" />
+        <style>
+          {`
+          * {
+            transition: background-color 0.75s linear, color 0.25s linear; 
+          }
+        `}
+        </style>
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
