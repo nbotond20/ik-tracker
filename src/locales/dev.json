@@ -1,0 +1,14 @@
+{
+  "components": {
+    "header": {
+      "getStarter": "Get started",
+      "login": "Log in"
+    },
+    "navLinks": {
+      "about": "About",
+      "blog": "Blog",
+      "contact": "Contact",
+      "home": "Home"
+    }
+  }
+}

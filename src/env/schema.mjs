@@ -49,6 +49,10 @@ export const serverEnv = {
  */
 export const clientSchema = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  NEXT_PUBLIC_VERCEL_ENV: z.preprocess(
+    () => process.env.NEXT_PUBLIC_VERCEL_ENV ?? 'development',
+    process.env.NEXT_PUBLIC_VERCEL_ENV ? z.enum(['development', 'preview', 'production']) : z.string()
+  ),
 })
 
 /**
@@ -59,4 +63,5 @@ export const clientSchema = z.object({
  */
 export const clientEnv = {
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+  NEXT_PUBLIC_VERCEL_ENV: process.env.NEXT_PUBLIC_VERCEL_ENV,
 }
