@@ -1,14 +1,12 @@
 import Head from 'next/head'
+import { env } from '@env/client.mjs'
 
 interface MaintenanceProps {
   children: React.ReactNode
 }
 
 export const Maintenance = ({ children }: MaintenanceProps) => {
-  const isProduction = process.env.NEXT_PUBLIC_VERCEL_ENV! === 'production'
-
-  // eslint-disable-next-line no-console
-  console.log('isProduction', isProduction, process.env.NEXT_PUBLIC_VERCEL_ENV)
+  const isProduction = env.NEXT_PUBLIC_VERCEL_ENV === 'production'
 
   return !isProduction ? (
     <>{children}</>
