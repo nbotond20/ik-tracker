@@ -31,7 +31,9 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
           <HambugerMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
           <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
             <Logo />
-            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">IK-Tracker</span>
+            <span className="self-center whitespace-nowrap text-xl font-semibold text-black dark:text-white">
+              IK-Tracker
+            </span>
           </Link>
           <div className="flex items-center lg:order-2">
             <LinkButton
