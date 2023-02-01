@@ -85,7 +85,7 @@
     "*.prisma",
     "*.sql",
     "*.toml",
-    "global.css"
+    "globals.css"
   ],
   "settings": {
     "react": {

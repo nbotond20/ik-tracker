@@ -7,7 +7,8 @@ import { api } from '@utils/api'
 import '@styles/globals.css'
 
 import { useThemeMode } from '@hooks/useThemeMode'
-import { Header, HeaderLogo, Maintenance } from '@components'
+import { Header, HeaderLogo, Layout, Maintenance } from '@components'
+import Head from 'next/head'
 
 const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { session, ...pageProps } }) => {
   useThemeMode()
@@ -15,8 +16,14 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
   return (
     <SessionProvider session={session}>
       <Maintenance>
-        <Header Logo={() => <HeaderLogo />} />
-        <Component {...pageProps} />
+        <Head>
+          <title>ELTE IK Progress Tracker</title>
+          <meta name="description" content="ELTE IK Progress Tracker" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Layout Header={() => <Header Logo={() => <HeaderLogo />} />}>
+          <Component {...pageProps} />
+        </Layout>
       </Maintenance>
       <Analytics />
     </SessionProvider>

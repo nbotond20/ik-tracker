@@ -44,3 +44,6 @@ yarn-error.log*
 # jest test coverage
 /reports
 jest-unit.xml
+
+# temporary files
+/temp

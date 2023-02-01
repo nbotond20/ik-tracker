@@ -25,8 +25,8 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
   }
 
   return (
-    <header className="z-100 fixed w-full">
-      <nav className="flex h-16 w-full items-center border-gray-200 bg-white px-4 py-2.5 dark:bg-gray-800 lg:px-6">
+    <header className="fixed z-10 w-full">
+      <nav className={`flex h-16 w-full items-center border-gray-200 bg-white px-4 py-2.5 dark:bg-gray-900 lg:px-6`}>
         <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between">
           <HambugerMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
           <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
