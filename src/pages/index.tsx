@@ -5,7 +5,7 @@ import { MacBookSVG } from '@components'
 
 const Home: NextPage = () => {
   return (
-    <div className="hideScrollbar relative max-h-[calc(100vh-64px)] w-screen snap-y snap-mandatory overflow-auto scroll-smooth">
+    <div className="hideScrollbar relative max-h-[calc(100vh-64px)] w-screen snap-none overflow-auto scroll-smooth md:snap-y md:snap-mandatory">
       <div
         id="top"
         className="flex min-h-[calc(100vh-64px)] w-full snap-center snap-always flex-col items-center justify-center"
@@ -26,7 +26,7 @@ const Home: NextPage = () => {
                 your future.
               </p>
               <Link
-                href="/movies"
+                href="/login"
                 className="mr-3 mb-3 inline-flex items-center justify-center rounded-lg bg-primary-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
               >
                 Get started

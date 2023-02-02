@@ -6,6 +6,7 @@ import { HambugerMenuButton } from './HamburgerMenuButton'
 import { MobileMenu } from './MobileMenu'
 import { NavLinks } from './NavLinks'
 import { DarkModeToggle } from './DarkModeToggle'
+import { signOut, useSession } from 'next-auth/react'
 
 interface HeaderProps {
   CustomHeader?: () => JSX.Element
@@ -15,6 +16,7 @@ interface HeaderProps {
 
 export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false)
+  const { data: session } = useSession()
 
   const toggleMenu = (open?: boolean) => {
     setIsOpen(prev => open ?? !prev)
@@ -36,17 +38,62 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
             </span>
           </Link>
           <div className="flex items-center lg:order-2">
-            <LinkButton
-              variant="outlined"
-              href="#"
-              className="mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
-              onClick={() => setIsOpen(false)}
-            >
-              Log in
-            </LinkButton>
-            <LinkButton href="#" variant="filled" className="mr-2 lg:px-5 lg:py-2.5" onClick={() => setIsOpen(false)}>
-              Get started
-            </LinkButton>
+            {!session?.user ? (
+              <>
+                <LinkButton
+                  variant="outlined"
+                  href="/login"
+                  className="mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Log in
+                </LinkButton>
+                <LinkButton
+                  variant="filled"
+                  className="mr-2 lg:px-5 lg:py-2.5"
+                  onClick={() => setIsOpen(false)}
+                  href="/login"
+                >
+                  Get started
+                </LinkButton>
+              </>
+            ) : (
+              <>
+                <LinkButton
+                  variant="outlined"
+                  href="/login"
+                  className="mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
+                  onClick={() =>
+                    void signOut({
+                      callbackUrl: '/',
+                    })
+                  }
+                >
+                  Log out
+                </LinkButton>
+                <div
+                  onClick={() =>
+                    void signOut({
+                      callbackUrl: '/',
+                    })
+                  }
+                  className="relative mr-2 h-10 w-10 cursor-pointer overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600"
+                >
+                  <svg
+                    className="absolute -left-1 h-12 w-12 text-gray-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </>
+            )}
             <DarkModeToggle className="hidden sm:inline-flex" />
           </div>
           <NavLinks links={pages} />

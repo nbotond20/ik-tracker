@@ -9,19 +9,19 @@ export const pages: Page[] = [
     href: '/',
   },
   {
-    label: 'About',
+    label: 'Search 🚧',
+    href: '/search',
+  },
+  {
+    label: 'Dashboard 🚧',
+    href: '/dashboard',
+  },
+  {
+    label: 'Calculator 🚧',
+    href: '/calculator',
+  },
+  {
+    label: 'Current Semester 🚧',
     href: '/about',
-  },
-  {
-    label: 'Blog',
-    href: '/blog',
-  },
-  {
-    label: 'Contact',
-    href: '/contact',
-  },
-  {
-    label: 'Login',
-    href: '/login',
   },
 ]
