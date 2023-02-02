@@ -48,7 +48,7 @@
     "@types/testing-library__jest-dom": "^5.14.5",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
-    "@vue/compiler-sfc": "3.2.45",
+    "@vue/compiler-sfc": "3.2.47",
     "autoprefixer": "^10.4.13",
     "cypress": "^12.3.0",
     "eslint": "8.33.0",
