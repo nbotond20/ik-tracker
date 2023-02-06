@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { MacBookSVG } from '@components'
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
   return (
     <div className="hideScrollbar relative max-h-[calc(100vh-64px)] w-screen snap-none overflow-auto scroll-smooth md:snap-y md:snap-mandatory">
       <div
@@ -211,4 +211,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default HomePage

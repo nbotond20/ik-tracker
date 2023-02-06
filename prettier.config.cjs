@@ -13,4 +13,5 @@ module.exports = {
   singleQuote: true,
   tabWidth: 2,
   trailingComma: 'es5',
+  tailwindConfig: './tailwind.shared.config.cjs',
 }
