@@ -3,30 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  /* :root {
+  :root {
     --primary: rgb(17 24 39);
     --secondary: rgb(55 65 81);
   }
 
-  * {
+  /* * {
     transition: background-color 0.35s ease-in-out, color 0.25s linear, fill 0.05s linear, border 0.35s ease-in-out;
-    scrollbar-width: thin;
-    scrollbar-color: var(--secondary) var(--primary);
-  }
-
-  *::-webkit-scrollbar {
-    width: 15px;
-  }
-
-  *::-webkit-scrollbar-track {
-    background: var(--primary);
-    border-radius: 5px;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background-color: var(--secondary);
-    border-radius: 14px;
-    border: 3px solid var(--primary);
   } */
 }
 
@@ -38,5 +21,21 @@
   .hideScrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollBar {
+    scrollbar-width: thin;
+  }
+  .scrollBar::-webkit-scrollbar {
+    width: 15px;
+  }
+  .scrollBar::-webkit-scrollbar-track {
+    border-radius: 5px;
+    @apply bg-white dark:bg-gray-900;
+  }
+  .scrollBar::-webkit-scrollbar-thumb {
+    border-radius: 14px;
+    border: 3px solid;
+    @apply border-white bg-gray-300 dark:border-gray-900 dark:bg-gray-600;
   }
 }
