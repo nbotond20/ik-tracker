@@ -73,7 +73,7 @@ const SearchPage: NextPage = () => {
   )
 
   return (
-    <div className="scrollBar flex max-h-[calc(100vh-64px)] w-full justify-center overflow-auto bg-white dark:bg-gray-900">
+    <div className="sm:scrollBar flex max-h-[calc(100vh-64px)] w-full justify-center overflow-auto bg-white dark:bg-gray-900">
       {/* Mobile filter dialog */}
       <FilterDrawer
         mobileFiltersOpen={mobileFiltersOpen}
@@ -104,9 +104,9 @@ const SearchPage: NextPage = () => {
         </div>
 
         <section className="pt-6 pb-24">
-          <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-12">
             {/* Filters */}
-            <div className="min-w-max lg:block">
+            <div className="col-span-4 min-w-max lg:block xl:col-span-3">
               <div className="hidden lg:sticky lg:top-6 lg:block">
                 <h3 className="sr-only">Categories</h3>
                 <SearchInput value={searchTerm} onChange={handleSearchChange} />
@@ -156,9 +156,9 @@ const SearchPage: NextPage = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-4">
+            <div className="col-span-8 xl:col-span-9">
               {sortedSubjects && !isLoading && (
-                <div className="relative overflow-hidden rounded-lg bg-gray-800 shadow-md">
+                <div className="bg-gray-white relative overflow-hidden rounded-lg shadow-md dark:bg-gray-800">
                   <SubjectTable
                     subjects={sortedSubjects}
                     sortType={sortType}

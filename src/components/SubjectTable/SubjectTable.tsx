@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 export interface TableColumnHeader {
   display: string
   sortType: CompareType
+  classes?: string
 }
 
 interface TableProps {
@@ -27,7 +28,9 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
             {tableColumnHeaders.map(tableColumnHeader => (
               <th
                 scope="col"
-                className="cursor-pointer p-3 hover:bg-gray-100 dark:hover:bg-gray-600"
+                className={`cursor-pointer p-3 hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                  tableColumnHeader.classes ? tableColumnHeader.classes : ''
+                }`}
                 onClick={() => handleSort(tableColumnHeader.sortType)}
                 key={tableColumnHeader.sortType}
               >
@@ -48,21 +51,39 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
         <tbody>
           {subjects &&
             subjects.map(subject => (
-              <motion.tr
-                layoutId={subject.id}
+              <tr
                 key={subject.id}
                 onClick={() => setSelectedId(subject.id)}
                 className="border-b bg-white hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600"
               >
-                <th scope="row" className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
+                <th
+                  scope="row"
+                  className={`whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white ${
+                    tableColumnHeaders[0]!.classes ? tableColumnHeaders[0]!.classes : ''
+                  }`}
+                >
                   {subject.code}
                 </th>
-                <td className="whitespace-nowrap px-4 py-2">{subject.courseName}</td>
-                <td className="px-4 py-2">{subject.credit}</td>
-                <td className="px-4 py-2">{subject.semester.join(', ')}</td>
-                <td className="px-4 py-2">{subject.subjectGroupType}</td>
-                <td className="px-4 py-2">{subject.subjectType}</td>
-              </motion.tr>
+                <td
+                  className={`whitespace-nowrap px-4 py-2 ${
+                    tableColumnHeaders[1]!.classes ? tableColumnHeaders[1]!.classes : ''
+                  }`}
+                >
+                  {subject.courseName}
+                </td>
+                <td className={`px-4 py-2 ${tableColumnHeaders[2]!.classes ? tableColumnHeaders[2]!.classes : ''}`}>
+                  {subject.credit}
+                </td>
+                <td className={`px-4 py-2 ${tableColumnHeaders[3]!.classes ? tableColumnHeaders[3]!.classes : ''}`}>
+                  {subject.semester.join(', ')}
+                </td>
+                <td className={`px-4 py-2 ${tableColumnHeaders[4]!.classes ? tableColumnHeaders[4]!.classes : ''}`}>
+                  {subject.subjectGroupType}
+                </td>
+                <td className={`px-4 py-2 ${tableColumnHeaders[5]!.classes ? tableColumnHeaders[5]!.classes : ''}`}>
+                  {subject.subjectType}
+                </td>
+              </tr>
             ))}
         </tbody>
       </table>
@@ -70,9 +91,11 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
       <AnimatePresence>
         {selectedId && (
           <motion.div
-            layoutId={selectedId}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
             id="defaultModal"
-            aria-hidden="true"
             className="h-modal fixed top-0 left-0 right-0 z-50 flex w-full items-center justify-center overflow-y-auto overflow-x-hidden p-4 backdrop-blur md:inset-0 md:h-full"
           >
             <div className="relative h-full w-full max-w-2xl md:h-auto">
@@ -85,13 +108,7 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
                     className="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
                     data-modal-hide="defaultModal"
                   >
-                    <svg
-                      aria-hidden="true"
-                      className="h-5 w-5"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path
                         fillRule="evenodd"
                         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -102,60 +119,6 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
                   </button>
                 </div>
                 <div className="space-y-6 p-6">
-                  <div className="flex flex-col space-y-2">
-                    <label className="text-sm font-medium text-gray-700 dark:text-gray-200">Subject Code</label>
-                    <input
-                      type="text"
-                      className="rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-500 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-200 dark:focus:ring-blue-800"
-                      value={'selectedSubject.code'}
-                      disabled
-                    />
-                  </div>
-                  <div className="flex flex-col space-y-2">
-                    <label className="text-sm font-medium text-gray-700 dark:text-gray-200">Subject Code</label>
-                    <input
-                      type="text"
-                      className="rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-500 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-200 dark:focus:ring-blue-800"
-                      value={'selectedSubject.code'}
-                      disabled
-                    />
-                  </div>
-                  <div className="flex flex-col space-y-2">
-                    <label className="text-sm font-medium text-gray-700 dark:text-gray-200">Subject Code</label>
-                    <input
-                      type="text"
-                      className="rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-500 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-200 dark:focus:ring-blue-800"
-                      value={'selectedSubject.code'}
-                      disabled
-                    />
-                  </div>
-                  <div className="flex flex-col space-y-2">
-                    <label className="text-sm font-medium text-gray-700 dark:text-gray-200">Subject Code</label>
-                    <input
-                      type="text"
-                      className="rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-500 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-200 dark:focus:ring-blue-800"
-                      value={'selectedSubject.code'}
-                      disabled
-                    />
-                  </div>
-                  <div className="flex flex-col space-y-2">
-                    <label className="text-sm font-medium text-gray-700 dark:text-gray-200">Subject Code</label>
-                    <input
-                      type="text"
-                      className="rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-500 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-200 dark:focus:ring-blue-800"
-                      value={'selectedSubject.code'}
-                      disabled
-                    />
-                  </div>
-                  <div className="flex flex-col space-y-2">
-                    <label className="text-sm font-medium text-gray-700 dark:text-gray-200">Subject Code</label>
-                    <input
-                      type="text"
-                      className="rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-500 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-200 dark:focus:ring-blue-800"
-                      value={'selectedSubject.code'}
-                      disabled
-                    />
-                  </div>
                   <div className="flex flex-col space-y-2">
                     <label className="text-sm font-medium text-gray-700 dark:text-gray-200">Subject Code</label>
                     <input
