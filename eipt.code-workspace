@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "name": "ELTE IK Progress Tracker",
+      "path": "."
+    }
+  ],
+
+  "settings": {
+    "jest.autoRun": "off"
+  },
+
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "orta.vscode-jest",
+      "Prisma.prisma",
+      "bradlc.vscode-tailwindcss",
+      "eamodio.gitlens"
+    ]
+  }
+}
