@@ -108,6 +108,13 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
                 </td>
               </tr>
             ))}
+          {subjects.length === 0 && (
+            <tr>
+              <td className="px-2 py-2 text-center" colSpan={tableColumnHeaders.length + 1}>
+                No subjects found
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
 

@@ -47,18 +47,40 @@ const SearchPage: NextPage = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
   const { data: subjects, isLoading } = api.subject.getAll.useQuery()
+
+  const [searchTerm, setSearchTerm] = useState('')
+  const [filteredSubjects, setFilteredSubjects] = useState<Subject[]>(subjects || [])
+
   const [sortType, setSortType] = useState<CompareType | undefined>(undefined)
   const [sortedSubjects, setSortedSubjects] = useState<Subject[]>(
-    sortType ? subjects?.sort((a: Subject, b: Subject) => subjectComparator(a, b, sortType)) || [] : subjects || []
+    sortType
+      ? filteredSubjects?.sort((a: Subject, b: Subject) => subjectComparator(a, b, sortType)) || []
+      : filteredSubjects || []
   )
-  const [searchTerm, setSearchTerm] = useState('')
+
   const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value)
   }, [])
 
   useEffect(() => {
-    setSortedSubjects(subjects || [])
-  }, [sortType, subjects])
+    if (searchTerm) {
+      setFilteredSubjects(
+        subjects?.filter(subject => {
+          const subjectName = subject.courseName.toLowerCase()
+          const subjectCode = subject.code.toLowerCase()
+          const search = searchTerm.toLowerCase()
+
+          return subjectName.includes(search) || subjectCode.includes(search)
+        }) || []
+      )
+    } else {
+      setFilteredSubjects(subjects || [])
+    }
+  }, [searchTerm, subjects])
+
+  useEffect(() => {
+    setSortedSubjects(filteredSubjects || [])
+  }, [sortType, filteredSubjects])
 
   const handleSetSortedSubjects = useCallback(
     (type: CompareType) => {
