@@ -107,7 +107,7 @@ const SearchPage: NextPage = () => {
           <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-12">
             {/* Filters */}
             <div className="col-span-4 min-w-max lg:block xl:col-span-3">
-              <div className="hidden lg:sticky lg:top-6 lg:block">
+              <div className="scrollBar hidden lg:sticky lg:top-6 lg:block">
                 <h3 className="sr-only">Categories</h3>
                 <SearchInput value={searchTerm} onChange={handleSearchChange} />
 

@@ -1,4 +1,4 @@
-import type { ExamType, SpecialisationType, SubjectGroupType, SubjectType } from '@prisma/client'
+import type { ExamType, PracticeGradeType, SpecialisationType, SubjectGroupType, SubjectType } from '@prisma/client'
 import { z } from 'zod'
 
 export const subjectsRaw = [
@@ -3085,6 +3085,7 @@ const PrismaSubjectTypeType: z.ZodType<SubjectType> = z.enum(['KV', 'KOT', 'TOR'
 const PrismaSubjectGroupTypeType: z.ZodType<SubjectGroupType> = z.enum(['INF', 'SZAM', 'EGYEB', 'MAT', 'SZAKDOLGOZAT'])
 const PrismaSpecialisationType: z.ZodType<SpecialisationType> = z.enum(['A', 'B', 'C', 'ABC'])
 const PrismaExamTypeType: z.ZodType<ExamType> = z.enum(['X', 'K'])
+const PrismaPracticeGradeTypeType: z.ZodType<PracticeGradeType> = z.enum(['G', 'FG'])
 
 const subjectSchema = z.object({
   code: z.string(),
@@ -3095,7 +3096,7 @@ const subjectSchema = z.object({
   labor: z.string().transform(s => parseInt(s, 10)),
   lecture: z.string().transform(s => parseInt(s, 10)),
   practice: z.string().transform(s => parseInt(s, 10)),
-  practiceGradeType: z.enum(['FG', 'G']).nullable(),
+  practiceGradeType: PrismaPracticeGradeTypeType.nullable(),
   preRequirements1: z.string().nullable(),
   preRequirements2: z.string().nullable(),
   semester: z.string().transform(s => s.split(',').map(s => parseInt(s, 10))),
