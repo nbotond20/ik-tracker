@@ -141,7 +141,7 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
                     <span className="sr-only">Close modal</span>
                   </button>
                 </div>
-                <div className="max-h-[86vh] space-y-6 overflow-auto p-6">
+                <div className="scrollBar cardScrollBar max-h-[86vh] space-y-6 overflow-auto p-6">
                   <div className="flex flex-col space-y-2">
                     <label className="text-sm font-medium text-gray-700 dark:text-gray-200">Subject Code</label>
                     <input

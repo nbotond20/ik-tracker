@@ -3,11 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --primary: rgb(17 24 39);
-    --secondary: rgb(55 65 81);
-  }
-
   /* * {
     transition: background-color 0.35s ease-in-out, color 0.25s linear, fill 0.05s linear, border 0.35s ease-in-out;
   } */
@@ -37,5 +32,11 @@
     border-radius: 14px;
     border: 3px solid;
     @apply border-white bg-gray-300 dark:border-gray-900 dark:bg-gray-600;
+  }
+  .scrollBar .cardScrollBar::-webkit-scrollbar-track {
+    @apply bg-white dark:bg-gray-700;
+  }
+  .scrollBar .cardScrollBar::-webkit-scrollbar-thumb {
+    @apply border-white bg-gray-300 dark:border-gray-700 dark:bg-gray-800;
   }
 }
