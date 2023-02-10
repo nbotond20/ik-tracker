@@ -33,10 +33,20 @@
     border: 3px solid;
     @apply border-white bg-gray-300 dark:border-gray-900 dark:bg-gray-600;
   }
-  .scrollBar .cardScrollBar::-webkit-scrollbar-track {
+
+  .cardScrollBar {
+    scrollbar-width: thin;
+  }
+  .cardScrollBar::-webkit-scrollbar {
+    width: 15px;
+  }
+  .cardScrollBar::-webkit-scrollbar-track {
+    border-radius: 5px;
     @apply bg-white dark:bg-gray-700;
   }
-  .scrollBar .cardScrollBar::-webkit-scrollbar-thumb {
+  .cardScrollBar::-webkit-scrollbar-thumb {
+    border-radius: 14px;
+    border: 3px solid;
     @apply border-white bg-gray-300 dark:border-gray-700 dark:bg-gray-800;
   }
 }

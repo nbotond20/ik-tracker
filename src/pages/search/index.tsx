@@ -126,7 +126,7 @@ const SearchPage: NextPage = () => {
         </div>
 
         <section className="pt-6 pb-24">
-          <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-12">
+          <div className="grid grid-cols-1 gap-x-8 lg:grid-cols-12">
             {/* Filters */}
             <div className="col-span-4 min-w-max lg:block xl:col-span-3">
               <div className="scrollBar hidden lg:sticky lg:top-6 lg:block">
