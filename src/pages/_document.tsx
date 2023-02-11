@@ -10,6 +10,8 @@ export default function Document() {
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111827" />
+        <meta name="background-color" media="(prefers-color-scheme: light)" content="#fff" />
+        <meta name="background-color" media="(prefers-color-scheme: dark)" content="#111827" />
       </Head>
       <body>
         <Main />
