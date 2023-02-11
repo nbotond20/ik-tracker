@@ -18,8 +18,6 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
       <Maintenance>
         <Head>
           <title>ELTE IK Progress Tracker</title>
-          <meta name="description" content="ELTE IK Progress Tracker" />
-          <link rel="icon" href="/favicon.ico" />
         </Head>
         <Layout Header={() => <Header Logo={() => <HeaderLogo />} />}>
           <Component {...pageProps} />

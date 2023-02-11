@@ -15,4 +15,12 @@ const config = {
     defaultLocale: 'en',
   },
 }
-export default config
+
+import withPWA from 'next-pwa'
+
+export default withPWA({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+  register: true,
+  skipWaiting: true,
+})(config)
