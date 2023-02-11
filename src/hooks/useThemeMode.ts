@@ -5,9 +5,6 @@ const applyThemeMode = (themeMode: 'light' | 'dark') => {
     themeMode === 'dark'
       ? document.documentElement.classList.add('dark')
       : document.documentElement.classList.remove('dark')
-
-    const faviconEl = document.querySelector('link[rel="icon"]')
-    if (faviconEl) faviconEl.setAttribute('href', themeMode === 'dark' ? 'favicon-darkmode.ico' : 'favicon.ico')
   }
 }
 
