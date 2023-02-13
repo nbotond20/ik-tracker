@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { debounce } from './debounce'
 
 const breakpoints = {

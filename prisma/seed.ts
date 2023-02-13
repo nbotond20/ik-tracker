@@ -1,4 +1,5 @@
 import { mockSubjects } from 'src/mock/mockSubjects'
+
 import { prisma } from '../src/server/db'
 
 async function main() {

@@ -1,10 +1,11 @@
 import { Fragment } from 'react'
-import { Dialog, Disclosure, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
-import { SearchInput } from '@components'
-import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 
-interface Filter {
+import { SearchInput } from '@components'
+import { Dialog, Disclosure, Transition } from '@headlessui/react'
+import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
+import { XMarkIcon } from '@heroicons/react/24/outline'
+
+export interface Filter {
   id: string
   name: string
   options: {

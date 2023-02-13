@@ -1,5 +1,5 @@
-import dynamic from 'next/dynamic'
 import { useThemeMode } from '@hooks/useThemeMode'
+import dynamic from 'next/dynamic'
 
 const DynamicSunSVG = dynamic(() => import('@components').then(mod => mod.SunSVG))
 const DynamicMoonSVG = dynamic(() => import('@components').then(mod => mod.MoonSVG), { ssr: false })

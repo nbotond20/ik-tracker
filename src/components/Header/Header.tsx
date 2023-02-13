@@ -1,12 +1,14 @@
-import { LinkButton } from '@components'
-import Link from 'next/link'
 import { useState } from 'react'
+
+import { LinkButton } from '@components'
 import { pages } from '@constants/pages'
+import { signOut, useSession } from 'next-auth/react'
+import Link from 'next/link'
+
+import { DarkModeToggle } from './DarkModeToggle'
 import { HambugerMenuButton } from './HamburgerMenuButton'
 import { MobileMenu } from './MobileMenu'
 import { NavLinks } from './NavLinks'
-import { DarkModeToggle } from './DarkModeToggle'
-import { signOut, useSession } from 'next-auth/react'
 
 interface HeaderProps {
   CustomHeader?: () => JSX.Element

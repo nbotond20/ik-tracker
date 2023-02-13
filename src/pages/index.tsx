@@ -1,6 +1,3 @@
-import { type NextPage } from 'next'
-import Link from 'next/link'
-
 import { MacBookSVG } from '@components'
 import {
   CalculatorIcon,
@@ -8,6 +5,8 @@ import {
   AcademicCapIcon,
   MagnifyingGlassIcon,
 } from '@heroicons/react/24/solid'
+import { type NextPage } from 'next'
+import Link from 'next/link'
 
 const HomePage: NextPage = () => {
   return (
@@ -58,7 +57,7 @@ const HomePage: NextPage = () => {
             </div>
           </div>
           <div className="absolute bottom-6 left-1/2 animate-bounce" style={{ translate: '-50%' }}>
-            <Link href="#features">
+            <Link href="#features" aria-label="Jump to the features section">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -156,7 +155,7 @@ const HomePage: NextPage = () => {
           </div>
         </div>
         <div className="absolute bottom-6 left-1/2 animate-bounce" style={{ translate: '-50%' }}>
-          <Link href="#top">
+          <Link href="#top" aria-label="Jump to the top">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

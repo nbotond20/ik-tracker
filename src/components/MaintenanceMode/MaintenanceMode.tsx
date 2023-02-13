@@ -1,5 +1,5 @@
-import Head from 'next/head'
 import { env } from '@env/client.mjs'
+import Head from 'next/head'
 
 interface MaintenanceProps {
   children: React.ReactNode

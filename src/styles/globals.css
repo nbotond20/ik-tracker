@@ -42,11 +42,11 @@
   }
   .cardScrollBar::-webkit-scrollbar-track {
     border-radius: 5px;
-    @apply bg-white dark:bg-gray-700;
+    @apply bg-white dark:bg-gray-800;
   }
   .cardScrollBar::-webkit-scrollbar-thumb {
     border-radius: 14px;
     border: 3px solid;
-    @apply border-white bg-gray-300 dark:border-gray-700 dark:bg-gray-800;
+    @apply border-white bg-gray-300 dark:border-gray-800 dark:bg-gray-700;
   }
 }
