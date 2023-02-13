@@ -13,8 +13,8 @@ interface FilterProps {
 export const Filters = ({ filters, searchTerm, handleSearchChange }: FilterProps) => {
   return (
     <div className="col-span-4 hidden w-64 min-w-fit max-w-xs grow lg:block xl:col-span-3">
-      <div className="scrollBar lg:sticky lg:top-6 ">
-        <h3 className="sr-only">Categories</h3>
+      <div className="">
+        <h3 className="sr-only">Filters</h3>
         <SearchInput value={searchTerm} onChange={handleSearchChange} />
 
         {filters.map(section => (
