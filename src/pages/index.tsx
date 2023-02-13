@@ -1,4 +1,3 @@
-import { MacBookSVG } from '@components'
 import { ArrowDownIcon, ArrowUpIcon, ArrowSmallRightIcon } from '@heroicons/react/24/outline'
 import {
   CalculatorIcon,
@@ -9,7 +8,10 @@ import {
   ArrowDownCircleIcon,
 } from '@heroicons/react/24/solid'
 import { type NextPage } from 'next'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
+
+const DynamicMacBookSVG = dynamic(() => import('@components/SVG/MacBookSVG').then(mod => mod.MacBookSVG))
 
 const HomePage: NextPage = () => {
   return (
@@ -21,7 +23,7 @@ const HomePage: NextPage = () => {
         <section className="bg-white dark:bg-gray-900">
           <div className="mx-auto flex max-w-screen-xl px-4 lg:grid-cols-12 lg:gap-8 xl:gap-0">
             <div className="relative hidden h-1/2 w-1/2 lg:col-span-5 lg:mt-0 lg:flex">
-              <MacBookSVG />
+              <DynamicMacBookSVG />
             </div>
             <div className="mr-auto place-self-center lg:col-span-7">
               <div className="block">

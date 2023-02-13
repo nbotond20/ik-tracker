@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LinkButton } from '@components'
+import { LinkButton } from '@components/Button/Button'
 import { pages } from '@constants/pages'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'

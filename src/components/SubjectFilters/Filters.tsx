@@ -1,4 +1,4 @@
-import { SearchInput } from '@components'
+import { SearchInput } from '@components/SearchInput/SearchInput'
 import { Disclosure } from '@headlessui/react'
 import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 

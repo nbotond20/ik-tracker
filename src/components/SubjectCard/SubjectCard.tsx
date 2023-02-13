@@ -1,4 +1,4 @@
-import { SubjectInfo } from '@components'
+import { SubjectInfo } from '@components/SubjectInfo/SubjectInfo'
 import type { Subject } from '@prisma/client'
 import { motion } from 'framer-motion'
 

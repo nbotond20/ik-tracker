@@ -1,12 +1,14 @@
 import { useState } from 'react'
 
-import { SubjectCard } from '@components'
 import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTableLoadingState'
-import { SortSVG } from '@components/SVG/SortSVG'
+import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { tableColumnHeaders } from '@constants/pages'
 import type { Subject } from '@prisma/client'
 import type { CompareType } from '@utils/subjectComparator'
 import { motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
+
+const DynamicSortSVG = dynamic(() => import('@components/SVG/SortSVG').then(mod => mod.SortSVG))
 
 interface SubjectGridProps {
   subjects: Subject[]
@@ -36,7 +38,7 @@ export const SubjectGrid = ({ subjects, isLoading, sortType, handleSetSortedSubj
                 }`}
               >
                 {tableColumnHeader.display}
-                <SortSVG />
+                <DynamicSortSVG />
               </div>
             </div>
           </div>

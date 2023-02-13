@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import { SearchInput } from '@components'
+import { SearchInput } from '@components/SearchInput/SearchInput'
 import { Dialog, Disclosure, Transition } from '@headlessui/react'
 import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import { XMarkIcon } from '@heroicons/react/24/outline'

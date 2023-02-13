@@ -1,11 +1,13 @@
 import { useState } from 'react'
 
-import { SubjectCard } from '@components'
-import { SortSVG } from '@components/SVG/SortSVG'
+import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import type { Subject } from '@prisma/client'
 import type { CompareType } from '@utils/subjectComparator'
 import { AnimatePresence, motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
+
+const DynamicSortSVG = dynamic(() => import('@components/SVG/SortSVG').then(mod => mod.SortSVG))
 
 export interface TableColumnHeader {
   display: string
@@ -44,7 +46,7 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
                     }`}
                   >
                     {tableColumnHeader.display}
-                    <SortSVG />
+                    <DynamicSortSVG />
                   </div>
                 </div>
               </th>

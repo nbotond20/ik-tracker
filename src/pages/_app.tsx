@@ -1,4 +1,7 @@
-import { Header, HeaderLogo, Layout, Maintenance } from '@components'
+import { Header } from '@components/Header/Header'
+import { HeaderLogo } from '@components/Header/HeaderLogo'
+import { Layout } from '@components/Layout/Layout'
+import { Maintenance } from '@components/MaintenanceMode/MaintenanceMode'
 import { useThemeMode } from '@hooks/useThemeMode'
 import '@styles/globals.css'
 import { api } from '@utils/api'

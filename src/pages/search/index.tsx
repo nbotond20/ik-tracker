@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { FilterDrawer, Filters, SubjectGrid, SubjectList } from '@components'
 import { SortMenu } from '@components/SortMenu/SortMenu'
+import { FilterDrawer } from '@components/SubjectFilters/FilterDrawer'
+import { Filters } from '@components/SubjectFilters/Filters'
+import { SubjectGrid } from '@components/SubjectGrid/SubjectGrid'
+import { SubjectList } from '@components/SubjectList/SubjectList'
 import { filters } from '@constants/filters'
 import { tableColumnHeaders } from '@constants/pages'
 import { FunnelIcon, Squares2X2Icon, Bars3Icon } from '@heroicons/react/20/solid'

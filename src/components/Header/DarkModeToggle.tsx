@@ -1,8 +1,8 @@
 import { useThemeMode } from '@hooks/useThemeMode'
 import dynamic from 'next/dynamic'
 
-const DynamicSunSVG = dynamic(() => import('@components').then(mod => mod.SunSVG))
-const DynamicMoonSVG = dynamic(() => import('@components').then(mod => mod.MoonSVG), { ssr: false })
+const DynamicSunSVG = dynamic(() => import('@components/SVG/SunSVG').then(mod => mod.SunSVG))
+const DynamicMoonSVG = dynamic(() => import('@components/SVG/MoonSVG').then(mod => mod.MoonSVG), { ssr: false })
 
 interface DarkModeToggleProps {
   className?: string
