@@ -8,7 +8,6 @@
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
     }
   ],
-  "prConcurrentLimit": 25
-  "schedule": [
-    "before 3am on Monday"
-  ]
+  "prConcurrentLimit": 25,
+  "schedule": ["before 3am on Monday"]
+}
