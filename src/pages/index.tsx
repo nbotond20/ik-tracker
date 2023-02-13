@@ -1,9 +1,12 @@
 import { MacBookSVG } from '@components'
+import { ArrowDownIcon, ArrowUpIcon, ArrowSmallRightIcon } from '@heroicons/react/24/outline'
 import {
   CalculatorIcon,
   PresentationChartLineIcon,
   AcademicCapIcon,
   MagnifyingGlassIcon,
+  UserCircleIcon,
+  ArrowDownCircleIcon,
 } from '@heroicons/react/24/solid'
 import { type NextPage } from 'next'
 import Link from 'next/link'
@@ -35,18 +38,7 @@ const HomePage: NextPage = () => {
                 className="mr-3 mb-3 inline-flex items-center justify-center rounded-lg bg-primary-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
               >
                 Get started
-                <svg
-                  className="ml-2 -mr-1 h-5 w-5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
+                <ArrowSmallRightIcon className="ml-2 -mr-1 h-5 w-5 fill-white stroke-white stroke-2" />
               </Link>
               <Link
                 href="/login"
@@ -58,15 +50,7 @@ const HomePage: NextPage = () => {
           </div>
           <div className="absolute bottom-6 left-1/2 animate-bounce" style={{ translate: '-50%' }}>
             <Link href="#features" aria-label="Jump to the features section">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-6 w-6 fill-black stroke-black dark:fill-white dark:stroke-white"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
-              </svg>
+              <ArrowDownIcon className="h-6 w-6 fill-black stroke-black dark:fill-white dark:stroke-white" />
             </Link>
           </div>
         </section>
@@ -117,55 +101,29 @@ const HomePage: NextPage = () => {
           </div>
           <div>
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
-              <svg
-                className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path>
-              </svg>
+              <UserCircleIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">Enterprise Design</h3>
+            <h3 className="mb-2 text-xl font-bold dark:text-white">Save your data</h3>
             <p className="text-gray-500 dark:text-gray-400">
-              Craft beautiful, delightful experiences for both marketing and product with real cross-company
-              collaboration.
+              Login safely with <span className="font-bold">Google</span>, <span className="font-bold">Discord</span> or{' '}
+              <span className="font-bold">Github</span> to save your data. We will keep your data safe and secure. You
+              can access your progress from anywhere.
             </p>
           </div>
           <div>
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
-              <svg
-                className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
+              <ArrowDownCircleIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">Operations</h3>
+            <h3 className="mb-2 text-xl font-bold dark:text-white">Download our app</h3>
             <p className="text-gray-500 dark:text-gray-400">
-              Keep your company’s lights on with customizable, iterative, and structured workflows built for all
-              efficient teams and individual.
+              Download our app to access your data from your phone. You can also use our app to track your progress on
+              the go.
             </p>
           </div>
         </div>
         <div className="absolute bottom-6 left-1/2 animate-bounce" style={{ translate: '-50%' }}>
           <Link href="#top" aria-label="Jump to the top">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-6 w-6 fill-black stroke-black dark:fill-white dark:stroke-white"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
-            </svg>
+            <ArrowUpIcon className="h-6 w-6 fill-black stroke-black dark:fill-white dark:stroke-white" />
           </Link>
         </div>
       </div>
