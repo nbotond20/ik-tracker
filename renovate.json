@@ -9,4 +9,6 @@
     }
   ],
   "prConcurrentLimit": 25
-}
+  "schedule": [
+    "before 3am on Monday"
+  ]
