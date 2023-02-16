@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTableLoadingState'
+import { Pagination } from '@components/Pagination/Pagination'
 import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { tableColumnHeaders } from '@constants/pages'
 import type { Subject } from '@prisma/client'
@@ -15,9 +16,24 @@ interface SubjectGridProps {
   isLoading: boolean
   sortType?: CompareType
   handleSetSortedSubjects: (type: CompareType) => void
+  page: number
+  handlePrevPage: () => void
+  handleNextPage: () => void
+  elementsPerPage: number
+  totalElements: number
 }
 
-export const SubjectGrid = ({ subjects, isLoading, sortType, handleSetSortedSubjects }: SubjectGridProps) => {
+export const SubjectGrid = ({
+  subjects,
+  isLoading,
+  sortType,
+  handleSetSortedSubjects,
+  page,
+  handlePrevPage,
+  handleNextPage,
+  elementsPerPage,
+  totalElements,
+}: SubjectGridProps) => {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
 
   return (
@@ -60,6 +76,13 @@ export const SubjectGrid = ({ subjects, isLoading, sortType, handleSetSortedSubj
           </div>
         </motion.div>
       )}
+      <Pagination
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
+        elementsPerPage={elementsPerPage}
+        pageNum={page}
+        totalResults={totalElements}
+      />
     </div>
   )
 }

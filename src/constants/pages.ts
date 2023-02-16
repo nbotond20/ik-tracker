@@ -11,7 +11,7 @@ export const pages: Page[] = [
     href: '/',
   },
   {
-    label: 'Search 🚧',
+    label: 'Search',
     href: '/search',
   },
   {

@@ -1,15 +1,18 @@
-import { Fragment } from 'react'
+import { Fragment, useCallback } from 'react'
 
+import { FilterDisclosure } from '@components/FilterDisclosure/FilterDisclosure'
 import { SearchInput } from '@components/SearchInput/SearchInput'
-import { Dialog, Disclosure, Transition } from '@headlessui/react'
-import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
+import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
+import type { CheckboxFilterTypes, Range } from '@pages/search'
+import type { SpecialisationType, SubjectGroupType, SubjectType } from '@prisma/client'
+import { isChecked, parseCheckboxName } from '@utils/filterHelpers'
 
-export interface Filter {
+export interface CheckboxFilter {
   id: string
   name: string
   options: {
-    value: string
+    value: SubjectGroupType | SubjectType | SpecialisationType
     label: string
     checked: boolean
   }[]
@@ -17,19 +20,61 @@ export interface Filter {
 
 interface FilterDrawerProps {
   mobileFiltersOpen: boolean
-  filters: Filter[]
+  filters: CheckboxFilter[]
   searchTerm?: string
-  handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  setSearchTerm: (value: string) => void
   setMobileFiltersOpen: (value: boolean) => void
+  preReqSearchTerm: string
+  setPreReqSearchTerm: (value: string) => void
+  checkboxFilters: CheckboxFilterTypes
+  setCheckboxFilters: (value: CheckboxFilterTypes | ((prevVar: CheckboxFilterTypes) => CheckboxFilterTypes)) => void
+  creditRange: Range
+  setCreditRange: (value: Range | ((prevVar: Range) => Range)) => void
+  semesterRange: Range
+  setSemesterRange: (value: Range | ((prevVar: Range) => Range)) => void
 }
 
 export const FilterDrawer = ({
   mobileFiltersOpen,
   filters,
   searchTerm,
-  handleSearchChange,
+  setSearchTerm,
   setMobileFiltersOpen,
+  preReqSearchTerm,
+  setPreReqSearchTerm,
+  setCheckboxFilters: setFilterObj,
+  checkboxFilters: filterObj,
+  creditRange,
+  setCreditRange,
+  semesterRange,
+  setSemesterRange,
 }: FilterDrawerProps) => {
+  const handleFilterChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value, checked } = e.target
+      const parsedName = parseCheckboxName(name)
+
+      if (checked) {
+        setFilterObj(prev => ({
+          ...prev,
+          [parsedName]: {
+            ...prev[parsedName],
+            [value]: checked,
+          },
+        }))
+      } else {
+        setFilterObj(prev => ({
+          ...prev,
+          [parsedName]: {
+            ...prev[parsedName],
+            [value]: undefined,
+          },
+        }))
+      }
+    },
+    [setFilterObj]
+  )
+
   return (
     <Transition.Root show={mobileFiltersOpen} as={Fragment}>
       <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen}>
@@ -71,50 +116,92 @@ export const FilterDrawer = ({
               {/* Filters */}
               <div className="mt-4 border-t border-gray-200 ">
                 <h3 className="sr-only">Categories</h3>
-                <SearchInput className="mx-2 my-4" value={searchTerm} onChange={handleSearchChange} />
+                <SearchInput className="mx-2 my-4" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
 
+                {/* Checkboxes (SubjectType, SubjectGroupType, Specialisation) */}
                 {filters.map(filter => (
-                  <Disclosure as="div" key={filter.id} className="border-t border-gray-200 px-4 py-6 ">
-                    {({ open }) => (
-                      <>
-                        <h3 className="-mx-2 -my-3 flow-root">
-                          <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500 dark:bg-gray-900">
-                            <span className="font-medium text-gray-900 dark:text-white">{filter.name}</span>
-                            <span className="ml-6 flex items-center">
-                              {open ? (
-                                <MinusIcon className="h-5 w-5" aria-hidden="true" />
-                              ) : (
-                                <PlusIcon className="h-5 w-5" aria-hidden="true" />
-                              )}
-                            </span>
-                          </Disclosure.Button>
-                        </h3>
-                        <Disclosure.Panel className="pt-6">
-                          <div className="space-y-6">
-                            {filter.options.map((option, optionIdx) => (
-                              <div key={option.value} className="flex items-center">
-                                <input
-                                  id={`filter-mobile-${filter.id}-${optionIdx}`}
-                                  name={`${filter.id}[]`}
-                                  defaultValue={option.value}
-                                  type="checkbox"
-                                  defaultChecked={option.checked}
-                                  className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
-                                />
-                                <label
-                                  htmlFor={`filter-mobile-${filter.id}-${optionIdx}`}
-                                  className="ml-3 min-w-0 flex-1 text-gray-600 dark:text-gray-400"
-                                >
-                                  {option.label}
-                                </label>
-                              </div>
-                            ))}
-                          </div>
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
+                  <FilterDisclosure key={filter.id} variant="mobile" title={filter.name}>
+                    <div className="space-y-6">
+                      {filter.options.map((option, optionIdx) => (
+                        <div key={option.value} className="flex items-center">
+                          <input
+                            id={`filter-${filter.id}-${optionIdx}`}
+                            name={filter.id}
+                            defaultValue={option.value}
+                            type="checkbox"
+                            defaultChecked={isChecked(filterObj, filter.id, option.value)}
+                            className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+                            onChange={handleFilterChange}
+                          />
+                          <label
+                            htmlFor={`filter-${filter.id}-${optionIdx}`}
+                            className="ml-3 text-sm text-gray-600 dark:text-gray-400"
+                          >
+                            {option.label}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </FilterDisclosure>
                 ))}
+                {/* Credit */}
+                <FilterDisclosure variant="mobile" title="Credit">
+                  <div className="flex items-center gap-4 grow justify-between">
+                    <input
+                      type="number"
+                      className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder={'Min'}
+                      value={creditRange.min ? creditRange.min : ''}
+                      onChange={e => setCreditRange(prev => ({ ...prev, min: Number(e.target.value) }))}
+                      min={1}
+                      max={20}
+                    />
+                    <span className="text-gray-400 dark:text-gray-500">{'-'}</span>
+                    <input
+                      type="number"
+                      className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder={'Max'}
+                      value={creditRange.max ? creditRange.max : ''}
+                      onChange={e => setCreditRange(prev => ({ ...prev, max: Number(e.target.value) }))}
+                      min={1}
+                      max={20}
+                    />
+                  </div>
+                </FilterDisclosure>
+                {/* Semester */}
+                <FilterDisclosure variant="mobile" title="Semester">
+                  <div className="flex items-center gap-4 grow justify-between">
+                    <input
+                      type="number"
+                      className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder={'Min'}
+                      value={semesterRange.min ? semesterRange.min : ''}
+                      onChange={e => setSemesterRange(prev => ({ ...prev, min: Number(e.target.value) }))}
+                      min={1}
+                      max={6}
+                    />
+                    <span className="text-gray-400 dark:text-gray-500">{'-'}</span>
+                    <input
+                      type="number"
+                      className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder={'Max'}
+                      value={semesterRange.max ? semesterRange.max : ''}
+                      onChange={e => setSemesterRange(prev => ({ ...prev, max: Number(e.target.value) }))}
+                      min={1}
+                      max={6}
+                    />
+                  </div>
+                </FilterDisclosure>
+                {/* Pre requirments */}
+                <FilterDisclosure variant="mobile" title="Pre Requirements">
+                  <div className="space-y-4">
+                    <SearchInput
+                      value={preReqSearchTerm}
+                      onChange={e => setPreReqSearchTerm(e.target.value)}
+                      placeholder="Sreach by pre requirement (code)"
+                    />
+                  </div>
+                </FilterDisclosure>
               </div>
             </Dialog.Panel>
           </Transition.Child>

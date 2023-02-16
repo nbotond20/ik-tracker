@@ -1,4 +1,5 @@
 import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTableLoadingState'
+import { Pagination } from '@components/Pagination/Pagination'
 import { SubjectTable } from '@components/SubjectTable/SubjectTable'
 import { tableColumnHeaders } from '@constants/pages'
 import type { Subject } from '@prisma/client'
@@ -9,9 +10,24 @@ interface SubjectListProps {
   isLoading: boolean
   sortType?: CompareType
   handleSetSortedSubjects: (type: CompareType) => void
+  page: number
+  handlePrevPage: () => void
+  handleNextPage: () => void
+  elementsPerPage: number
+  totalElements: number
 }
 
-export const SubjectList = ({ subjects, sortType, isLoading, handleSetSortedSubjects }: SubjectListProps) => {
+export const SubjectList = ({
+  subjects,
+  sortType,
+  isLoading,
+  handleSetSortedSubjects,
+  page,
+  handlePrevPage,
+  handleNextPage,
+  elementsPerPage,
+  totalElements,
+}: SubjectListProps) => {
   return (
     <div className="col-span-8 grow xl:col-span-9">
       {!isLoading ? (
@@ -26,6 +42,13 @@ export const SubjectList = ({ subjects, sortType, isLoading, handleSetSortedSubj
       ) : (
         <SubjectTableLoadingState />
       )}
+      <Pagination
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
+        elementsPerPage={elementsPerPage}
+        pageNum={page}
+        totalResults={totalElements}
+      />
     </div>
   )
 }
