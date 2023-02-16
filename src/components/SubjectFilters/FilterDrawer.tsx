@@ -3,10 +3,12 @@ import { Fragment, useCallback } from 'react'
 import { FilterDisclosure } from '@components/FilterDisclosure/FilterDisclosure'
 import { SearchInput } from '@components/SearchInput/SearchInput'
 import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
 import type { CheckboxFilterTypes, Range } from '@pages/search'
 import type { SpecialisationType, SubjectGroupType, SubjectType } from '@prisma/client'
 import { isChecked, parseCheckboxName } from '@utils/filterHelpers'
+import dynamic from 'next/dynamic'
+
+const XMarkIcon = dynamic(() => import('@heroicons/react/24/outline/XMarkIcon'))
 
 export interface CheckboxFilter {
   id: string

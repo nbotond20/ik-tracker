@@ -1,7 +1,9 @@
 import React from 'react'
 
-import ChevronLeftIcon from '@heroicons/react/24/outline/ChevronLeftIcon'
-import ChevronRightIcon from '@heroicons/react/24/outline/ChevronRightIcon'
+import dynamic from 'next/dynamic'
+
+const ChevronRightIcon = dynamic(() => import('@heroicons/react/24/outline/ChevronRightIcon'))
+const ChevronLeftIcon = dynamic(() => import('@heroicons/react/24/outline/ChevronLeftIcon'))
 
 interface PaginationProps {
   handlePrevPage: () => void

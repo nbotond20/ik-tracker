@@ -1,17 +1,18 @@
-import { ArrowDownIcon, ArrowUpIcon, ArrowSmallRightIcon } from '@heroicons/react/24/outline'
-import {
-  CalculatorIcon,
-  PresentationChartLineIcon,
-  AcademicCapIcon,
-  MagnifyingGlassIcon,
-  UserCircleIcon,
-  ArrowDownCircleIcon,
-} from '@heroicons/react/24/solid'
 import { type NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
 const DynamicMacBookSVG = dynamic(() => import('@components/SVG/MacBookSVG').then(mod => mod.MacBookSVG))
+const CalculatorIcon = dynamic(() => import('@heroicons/react/24/solid/CalculatorIcon'))
+const PresentationChartLineIcon = dynamic(() => import('@heroicons/react/24/solid/PresentationChartLineIcon'))
+const AcademicCapIcon = dynamic(() => import('@heroicons/react/24/solid/AcademicCapIcon'))
+const MagnifyingGlassIcon = dynamic(() => import('@heroicons/react/24/solid/MagnifyingGlassIcon'))
+const UserCircleIcon = dynamic(() => import('@heroicons/react/24/solid/UserCircleIcon'))
+const ArrowDownCircleIcon = dynamic(() => import('@heroicons/react/24/solid/ArrowDownCircleIcon'))
+
+const ArrowDownIcon = dynamic(() => import('@heroicons/react/24/outline/ArrowDownIcon'))
+const ArrowUpIcon = dynamic(() => import('@heroicons/react/24/outline/ArrowUpIcon'))
+const ArrowSmallRightIcon = dynamic(() => import('@heroicons/react/24/outline/ArrowSmallRightIcon'))
 
 const HomePage: NextPage = () => {
   return (
@@ -67,7 +68,7 @@ const HomePage: NextPage = () => {
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <PresentationChartLineIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">Tracking</h3>
+            <h2 className="mb-2 text-xl font-bold dark:text-white">Tracking</h2>
             <p className="text-gray-500 dark:text-gray-400">
               Track your progress with us. We will help you keep track of your grades, assignments, and more. Be on top
               of your game.
@@ -77,7 +78,7 @@ const HomePage: NextPage = () => {
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <AcademicCapIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">Planning</h3>
+            <h2 className="mb-2 text-xl font-bold dark:text-white">Planning</h2>
             <p className="text-gray-500 dark:text-gray-400">
               Plan your next semester with ease. Use our requirements checker to make sure you are on track to graduate
             </p>
@@ -86,7 +87,7 @@ const HomePage: NextPage = () => {
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <CalculatorIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">Calculator</h3>
+            <h2 className="mb-2 text-xl font-bold dark:text-white">Calculator</h2>
             <p className="text-gray-500 dark:text-gray-400">
               Use our calculator to calculate your GPA and more. We will help you achieve your goals.
             </p>
@@ -95,7 +96,7 @@ const HomePage: NextPage = () => {
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <MagnifyingGlassIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">Search</h3>
+            <h2 className="mb-2 text-xl font-bold dark:text-white">Search</h2>
             <p className="text-gray-500 dark:text-gray-400">
               Not sure what to take? Use our search feature to find the perfect course for you. Filter based on your
               needs and requirements.
@@ -105,7 +106,7 @@ const HomePage: NextPage = () => {
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <UserCircleIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">Save your data</h3>
+            <h2 className="mb-2 text-xl font-bold dark:text-white">Save your data</h2>
             <p className="text-gray-500 dark:text-gray-400">
               Login safely with <span className="font-bold">Google</span>, <span className="font-bold">Discord</span> or{' '}
               <span className="font-bold">Github</span> to save your data. We will keep your data safe and secure. You
@@ -116,7 +117,7 @@ const HomePage: NextPage = () => {
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <ArrowDownCircleIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">Download our app</h3>
+            <h2 className="mb-2 text-xl font-bold dark:text-white">Download our app</h2>
             <p className="text-gray-500 dark:text-gray-400">
               Download our app to access your data from your phone. You can also use our app to track your progress on
               the go.

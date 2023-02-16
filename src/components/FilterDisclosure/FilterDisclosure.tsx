@@ -1,7 +1,10 @@
 import { Fragment } from 'react'
 
 import { Disclosure } from '@headlessui/react'
-import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
+import dynamic from 'next/dynamic'
+
+const MinusIcon = dynamic(() => import('@heroicons/react/20/solid/MinusIcon'))
+const PlusIcon = dynamic(() => import('@heroicons/react/20/solid/PlusIcon'))
 
 interface FilterDisclosureProps {
   variant?: 'mobile' | 'desktop'

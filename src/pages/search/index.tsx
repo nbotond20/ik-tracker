@@ -1,18 +1,22 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { SortMenu } from '@components/SortMenu/SortMenu'
-import { FilterDrawer } from '@components/SubjectFilters/FilterDrawer'
 import { Filters } from '@components/SubjectFilters/Filters'
-import { SubjectGrid } from '@components/SubjectGrid/SubjectGrid'
-import { SubjectList } from '@components/SubjectList/SubjectList'
 import { filters } from '@constants/filters'
 import { tableColumnHeaders } from '@constants/pages'
-import { FunnelIcon, Squares2X2Icon, Bars3Icon } from '@heroicons/react/20/solid'
 import type { SpecialisationType, Subject, SubjectGroupType, SubjectType } from '@prisma/client'
 import { api } from '@utils/api'
 import { subjectComparator } from '@utils/subjectComparator'
 import type { CompareType } from '@utils/subjectComparator'
 import type { NextPage } from 'next'
+import dynamic from 'next/dynamic'
+
+const FunnelIcon = dynamic(() => import('@heroicons/react/20/solid/FunnelIcon'))
+const Squares2X2Icon = dynamic(() => import('@heroicons/react/20/solid/Squares2X2Icon'))
+const Bars3Icon = dynamic(() => import('@heroicons/react/20/solid/Bars3Icon'))
+const FilterDrawer = dynamic(() => import('@components/SubjectFilters/FilterDrawer').then(mod => mod.FilterDrawer))
+const SubjectGrid = dynamic(() => import('@components/SubjectGrid/SubjectGrid').then(mod => mod.SubjectGrid))
+const SubjectList = dynamic(() => import('@components/SubjectList/SubjectList').then(mod => mod.SubjectList))
 
 export type CheckboxFilterTypes = {
   subjectType: {
