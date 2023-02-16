@@ -66,3 +66,53 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model Subject {
+    id                String             @id @default(auto()) @map("_id") @db.ObjectId
+    code              String
+    consultation      Int
+    courseName        String
+    credit            Int
+    examType          ExamType?
+    labor             Int
+    lecture           Int
+    practice          Int
+    practiceGradeType PracticeGradeType?
+    preRequirements1  String?
+    preRequirements2  String?
+    semester          Int[]
+    specialisation    SpecialisationType
+    subjectGroupType  SubjectGroupType
+    subjectType       SubjectType
+}
+
+enum ExamType {
+    K
+    X
+}
+
+enum PracticeGradeType {
+    FG
+    G
+}
+
+enum SpecialisationType {
+    A
+    B
+    C
+    ABC
+}
+
+enum SubjectGroupType {
+    INF
+    SZAM
+    EGYEB
+    MAT
+    SZAKDOLGOZAT
+}
+
+enum SubjectType {
+    KV
+    KOT
+    TOR
+}

@@ -1,5 +1,6 @@
-import { useIsSmallerThanBreakpoint } from '@utils/getCurrentBreakpoint'
 import { useEffect } from 'react'
+
+import { useIsSmallerThanBreakpoint } from '@utils/getCurrentBreakpoint'
 
 const genericHamburgerLine = `h-[2px] w-4 my-[2px] rounded-full bg-gray-400 transition ease transform duration-500`
 
@@ -21,6 +22,7 @@ export const HambugerMenuButton = ({ isOpen, toggleMenu }: HambugerMenuButtonPro
     <button
       className="group flex h-10 w-10 flex-col items-center justify-center lg:hidden"
       onClick={() => toggleMenu()}
+      aria-label="Open menu"
     >
       <div className={`${genericHamburgerLine} ${isOpen ? 'translate-y-[6px] rotate-45' : ''} `} />
       <div className={`${genericHamburgerLine} ${isOpen ? 'opacity-0' : ''}`} />

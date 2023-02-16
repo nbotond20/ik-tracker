@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { debounce } from './useDebounce'
+
+import { debounce } from './debounce'
 
 const breakpoints = {
   xs: 0,

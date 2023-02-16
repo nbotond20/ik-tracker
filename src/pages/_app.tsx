@@ -1,13 +1,15 @@
-import { type AppType } from 'next/app'
-import { type Session } from 'next-auth'
-import { SessionProvider } from 'next-auth/react'
-import { Analytics } from '@vercel/analytics/react'
-import { api } from '@utils/api'
-
-import '@styles/globals.css'
-
+import { Header } from '@components/Header/Header'
+import { HeaderLogo } from '@components/Header/HeaderLogo'
+import { Layout } from '@components/Layout/Layout'
+import { Maintenance } from '@components/MaintenanceMode/MaintenanceMode'
 import { useThemeMode } from '@hooks/useThemeMode'
-import { Header, HeaderLogo, Maintenance } from '@components'
+import '@styles/globals.css'
+import { api } from '@utils/api'
+import { Analytics } from '@vercel/analytics/react'
+import type { Session } from 'next-auth'
+import { SessionProvider } from 'next-auth/react'
+import type { AppType } from 'next/app'
+import Head from 'next/head'
 
 const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { session, ...pageProps } }) => {
   useThemeMode()
@@ -15,8 +17,12 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
   return (
     <SessionProvider session={session}>
       <Maintenance>
-        <Header Logo={() => <HeaderLogo />} />
-        <Component {...pageProps} />
+        <Head>
+          <title>ELTE IK Progress Tracker</title>
+        </Head>
+        <Layout Header={() => <Header Logo={() => <HeaderLogo />} />}>
+          <Component {...pageProps} />
+        </Layout>
       </Maintenance>
       <Analytics />
     </SessionProvider>

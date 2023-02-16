@@ -1,3 +1,6 @@
+import withBundleAnalyzer from '@next/bundle-analyzer'
+import withPWA from 'next-pwa'
+
 // @ts-check
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
@@ -15,4 +18,16 @@ const config = {
     defaultLocale: 'en',
   },
 }
-export default config
+
+const withPWAConfig = withPWA({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+  register: true,
+  skipWaiting: true,
+})(config)
+
+const withBundleAnalyzerConfig = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+export default withBundleAnalyzerConfig(withPWAConfig)

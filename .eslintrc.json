@@ -84,7 +84,8 @@
     "Dockerfile",
     "*.prisma",
     "*.sql",
-    "*.toml"
+    "*.toml",
+    "globals.css"
   ],
   "settings": {
     "react": {

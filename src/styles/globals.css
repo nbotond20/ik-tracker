@@ -1,3 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* * {
+    transition: background-color 0.35s ease-in-out, color 0.25s linear, fill 0.05s linear, border 0.35s ease-in-out;
+  } */
+}
+
+@layer components {
+  .hideScrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hideScrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollBar {
+    scrollbar-width: thin;
+  }
+  .scrollBar::-webkit-scrollbar {
+    width: 15px;
+  }
+  .scrollBar::-webkit-scrollbar-track {
+    border-radius: 5px;
+    @apply bg-white dark:bg-gray-900;
+  }
+  .scrollBar::-webkit-scrollbar-thumb {
+    border-radius: 14px;
+    border: 3px solid;
+    @apply border-white bg-gray-300 dark:border-gray-900 dark:bg-gray-600;
+  }
+
+  .cardScrollBar {
+    scrollbar-width: thin;
+  }
+  .cardScrollBar::-webkit-scrollbar {
+    width: 15px;
+  }
+  .cardScrollBar::-webkit-scrollbar-track {
+    border-radius: 5px;
+    @apply bg-white dark:bg-gray-800;
+  }
+  .cardScrollBar::-webkit-scrollbar-thumb {
+    border-radius: 14px;
+    border: 3px solid;
+    @apply border-white bg-gray-300 dark:border-gray-800 dark:bg-gray-700;
+  }
+}

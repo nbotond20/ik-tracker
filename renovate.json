@@ -12,9 +12,5 @@
     }
   ],
   "prConcurrentLimit": 25,
-  "schedule": [
-    "before 10pm every weekday",
-    "after 5am every weekday",
-    "every weekend"
-  ]
+  "schedule": ["before 10pm every weekday", "after 5am every weekday", "every weekend"]
 }
