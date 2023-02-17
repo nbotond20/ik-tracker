@@ -89,7 +89,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                 </div>
               </>
             )}
-            <DarkModeToggle className="hidden sm:inline-flex" />
+            <DarkModeToggle className="hidden lg:inline-flex" />
           </div>
           <NavLinks links={pages} />
           <MobileMenu links={pages} toggleMenu={toggleMenu} isOpen={isOpen} />
