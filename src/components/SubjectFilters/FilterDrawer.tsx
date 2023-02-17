@@ -44,8 +44,8 @@ export const FilterDrawer = ({
   setMobileFiltersOpen,
   preReqSearchTerm,
   setPreReqSearchTerm,
-  setCheckboxFilters: setFilterObj,
-  checkboxFilters: filterObj,
+  setCheckboxFilters,
+  checkboxFilters,
   creditRange,
   setCreditRange,
   semesterRange,
@@ -57,7 +57,7 @@ export const FilterDrawer = ({
       const parsedName = parseCheckboxName(name)
 
       if (checked) {
-        setFilterObj(prev => ({
+        setCheckboxFilters(prev => ({
           ...prev,
           [parsedName]: {
             ...prev[parsedName],
@@ -65,7 +65,7 @@ export const FilterDrawer = ({
           },
         }))
       } else {
-        setFilterObj(prev => ({
+        setCheckboxFilters(prev => ({
           ...prev,
           [parsedName]: {
             ...prev[parsedName],
@@ -74,7 +74,7 @@ export const FilterDrawer = ({
         }))
       }
     },
-    [setFilterObj]
+    [setCheckboxFilters]
   )
 
   return (
@@ -121,33 +121,38 @@ export const FilterDrawer = ({
                 <SearchInput className="mx-2 my-4" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
 
                 {/* Checkboxes (SubjectType, SubjectGroupType, Specialisation) */}
-                {filters.map(filter => (
-                  <FilterDisclosure key={filter.id} variant="mobile" title={filter.name}>
-                    <div className="space-y-6">
-                      {filter.options.map((option, optionIdx) => (
-                        <div key={option.value} className="flex items-center">
-                          <input
-                            id={`filter-${filter.id}-${optionIdx}`}
-                            name={filter.id}
-                            defaultValue={option.value}
-                            type="checkbox"
-                            defaultChecked={isChecked(filterObj, filter.id, option.value)}
-                            className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
-                            onChange={handleFilterChange}
-                          />
-                          <label
-                            htmlFor={`filter-${filter.id}-${optionIdx}`}
-                            className="ml-3 text-sm text-gray-600 dark:text-gray-400"
-                          >
-                            {option.label}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                  </FilterDisclosure>
-                ))}
+                {filters.map(filter => {
+                  const isOneSelected = filter.options.some(option =>
+                    isChecked(checkboxFilters, filter.id, option.value)
+                  )
+                  return (
+                    <FilterDisclosure key={filter.id} variant="mobile" title={filter.name} active={isOneSelected}>
+                      <div className="space-y-6">
+                        {filter.options.map((option, optionIdx) => (
+                          <div key={option.value} className="flex items-center">
+                            <input
+                              id={`filter-${filter.id}-${optionIdx}`}
+                              name={filter.id}
+                              defaultValue={option.value}
+                              type="checkbox"
+                              defaultChecked={isChecked(checkboxFilters, filter.id, option.value)}
+                              className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+                              onChange={handleFilterChange}
+                            />
+                            <label
+                              htmlFor={`filter-${filter.id}-${optionIdx}`}
+                              className="ml-3 text-sm text-gray-600 dark:text-gray-400"
+                            >
+                              {option.label}
+                            </label>
+                          </div>
+                        ))}
+                      </div>
+                    </FilterDisclosure>
+                  )
+                })}
                 {/* Credit */}
-                <FilterDisclosure variant="mobile" title="Credit">
+                <FilterDisclosure variant="mobile" title="Credit" active={!!creditRange.min || !!creditRange.max}>
                   <div className="flex items-center gap-4 grow justify-between">
                     <input
                       type="number"
@@ -171,7 +176,7 @@ export const FilterDrawer = ({
                   </div>
                 </FilterDisclosure>
                 {/* Semester */}
-                <FilterDisclosure variant="mobile" title="Semester">
+                <FilterDisclosure variant="mobile" title="Semester" active={!!semesterRange.min || !!semesterRange.max}>
                   <div className="flex items-center gap-4 grow justify-between">
                     <input
                       type="number"
@@ -195,7 +200,7 @@ export const FilterDrawer = ({
                   </div>
                 </FilterDisclosure>
                 {/* Pre requirments */}
-                <FilterDisclosure variant="mobile" title="Pre Requirements">
+                <FilterDisclosure variant="mobile" title="Pre Requirements" active={!!preReqSearchTerm}>
                   <div className="space-y-4">
                     <SearchInput
                       value={preReqSearchTerm}
