@@ -134,7 +134,7 @@ export const useSearchPage = () => {
   )
 
   const [page, setPage] = useState(1)
-  const elementsPerPage = useMemo(() => (gridView ? 10 : 100), [gridView])
+  const elementsPerPage = useMemo(() => (gridView ? 10 : 25), [gridView])
   const totalResults = useMemo(() => sortedSubjects.length, [sortedSubjects.length])
 
   const handleNextPage = useCallback(() => {
