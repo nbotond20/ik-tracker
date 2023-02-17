@@ -13,7 +13,7 @@ const SignInPage: NextPage = () => {
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <div className="relative w-full max-w-sm overflow-auto bg-white p-4 dark:border-gray-700 dark:bg-gray-900 sm:rounded-lg sm:border sm:border-gray-200 sm:p-6 sm:shadow-md dark:sm:bg-gray-800 md:min-w-[400px] md:p-8">
+      <div className="relative w-full max-w-sm overflow-auto p-4 bg-white dark:border-gray-700 dark:bg-gray-900 sm:rounded-lg sm:border sm:border-gray-200 sm:shadow-md dark:sm:bg-gray-800 md:min-w-[400px] sm:p-8">
         <div className="space-y-6">
           <h4 className="mb-10 text-3xl font-medium text-gray-900 dark:text-white">Login to our platform</h4>
           <div>
