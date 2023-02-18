@@ -8,6 +8,7 @@ specifiers:
   '@prisma/client': ^4.9.0
   '@tailwindcss/forms': ^0.5.3
   '@tanstack/react-query': ^4.22.4
+  '@testing-library/cypress': ^9.0.0
   '@testing-library/jest-dom': ^5.16.5
   '@testing-library/react': ^13.4.0
   '@trivago/prettier-plugin-sort-imports': ^4.0.0
@@ -83,6 +84,7 @@ dependencies:
 devDependencies:
   '@next/bundle-analyzer': 13.1.6
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
+  '@testing-library/cypress': 9.0.0_cypress@12.3.0
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@trivago/prettier-plugin-sort-imports': 4.0.0_m4v26zq7vuhpofnm2r24kocxbu
@@ -2081,6 +2083,17 @@ packages:
       react-dom: 18.2.0_react@18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
+
+  /@testing-library/cypress/9.0.0_cypress@12.3.0:
+    resolution: {integrity: sha512-c1XiCGeHGGTWn0LAU12sFUfoX3qfId5gcSE2yHode+vsyHDWraxDPALjVnHd4/Fa3j4KBcc5k++Ccy6A9qnkMA==}
+    engines: {node: '>=12', npm: '>=6'}
+    peerDependencies:
+      cypress: ^12.0.0
+    dependencies:
+      '@babel/runtime': 7.20.13
+      '@testing-library/dom': 8.20.0
+      cypress: 12.3.0
+    dev: true
 
   /@testing-library/dom/8.20.0:
     resolution: {integrity: sha512-d9ULIT+a4EXLX3UU8FBjauG9NnsZHkHztXoIcTsOKoOw030fyjheN9svkTULjJxtYag9DZz5Jz5qkWZDPxTFwA==}

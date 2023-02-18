@@ -28,17 +28,24 @@ const HomePage: NextPage = () => {
             </div>
             <div className="mr-auto place-self-center lg:col-span-7">
               <div className="block">
-                <h1 className="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight dark:text-white md:text-5xl xl:text-6xl">
+                <h1
+                  className="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight dark:text-white md:text-5xl xl:text-6xl"
+                  data-testid="home-title"
+                >
                   Track your progress with us
                 </h1>
               </div>
-              <p className="mb-6 max-w-2xl font-light text-gray-500 dark:text-gray-400 md:text-lg lg:mb-8 lg:text-xl">
+              <p
+                className="mb-6 max-w-2xl font-light text-gray-500 dark:text-gray-400 md:text-lg lg:mb-8 lg:text-xl"
+                data-testid="home-subtitle"
+              >
                 Use our app to track your progress and get the most out of your college experience. Be in control of
                 your future.
               </p>
               <Link
                 href="/login"
                 className="mr-3 mb-3 inline-flex items-center justify-center rounded-lg bg-primary-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+                data-testid="home-get-started-link"
               >
                 Get started
                 <ArrowSmallRightIcon className="ml-2 -mr-1 h-5 w-5 fill-white stroke-white stroke-2" />
@@ -46,13 +53,14 @@ const HomePage: NextPage = () => {
               <Link
                 href="/login"
                 className="inline-flex items-center justify-center rounded-lg border border-gray-300 px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                data-testid="home-login-link"
               >
                 Go to login
               </Link>
             </div>
           </div>
           <div className="absolute bottom-6 left-1/2 animate-bounce" style={{ translate: '-50%' }}>
-            <Link href="#features" aria-label="Jump to the features section">
+            <Link href="#features" aria-label="Jump to the features section" data-testid="home-features-link">
               <ArrowDownIcon className="h-6 w-6 fill-black stroke-black dark:fill-white dark:stroke-white" />
             </Link>
           </div>
@@ -63,7 +71,10 @@ const HomePage: NextPage = () => {
         className="relative grid min-h-[calc(100vh-64px)] w-full snap-start snap-always flex-col items-center justify-center overflow-auto"
       >
         {/* Features */}
-        <div className="max-w-screen-xl space-y-16 px-4 py-8 pb-20 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3 lg:py-16">
+        <div
+          className="max-w-screen-xl space-y-16 px-4 py-8 pb-20 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3 lg:py-16"
+          data-testid="home-feature-section"
+        >
           <div>
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <PresentationChartLineIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
@@ -125,7 +136,7 @@ const HomePage: NextPage = () => {
           </div>
         </div>
         <div className="absolute bottom-6 left-1/2 animate-bounce" style={{ translate: '-50%' }}>
-          <Link href="#top" aria-label="Jump to the top">
+          <Link href="#top" aria-label="Jump to the top" data-testid="home-top-link">
             <ArrowUpIcon className="h-6 w-6 fill-black stroke-black dark:fill-white dark:stroke-white" />
           </Link>
         </div>
