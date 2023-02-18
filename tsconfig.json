@@ -37,6 +37,15 @@
     }
   },
   "typeRoots": ["./node_modules/@types", "node_modules/jest/build"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs", "**/*.js", "**/*.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.cjs",
+    "**/*.mjs",
+    "prisma/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx"
+  ],
   "exclude": ["node_modules"]
 }
