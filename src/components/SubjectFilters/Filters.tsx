@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import React, { useCallback } from 'react'
 
 import { FilterDisclosure } from '@components/FilterDisclosure/FilterDisclosure'
 import { SearchInput } from '@components/SearchInput/SearchInput'
@@ -70,8 +70,8 @@ export const Filters = ({
       {filters.map(filter => {
         const isOneSelected = filter.options.some(option => isChecked(checkboxFilters, filter.id, option.value))
         return (
-          <>
-            <FilterDisclosure key={filter.id} title={filter.name} active={isOneSelected}>
+          <React.Fragment key={filter.id}>
+            <FilterDisclosure title={filter.name} active={isOneSelected}>
               <div className="space-y-4">
                 {filter.options.map((option, optionIdx) => (
                   <div key={option.value} className="flex items-center">
@@ -94,7 +94,7 @@ export const Filters = ({
                 ))}
               </div>
             </FilterDisclosure>
-          </>
+          </React.Fragment>
         )
       })}
       {/* Credit */}
