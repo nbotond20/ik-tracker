@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "analyze": "ANALYZE=true next build",
     "build": "next build",
     "dev": "next dev",
     "postinstall": "prisma generate",
@@ -46,6 +47,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^13.1.6",
     "@tailwindcss/forms": "^0.5.3",
+    "@testing-library/cypress": "^9.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",

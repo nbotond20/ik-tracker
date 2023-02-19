@@ -10,9 +10,15 @@ import GoogleProvider from 'next-auth/providers/google'
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
   callbacks: {
-    session({ session, user }) {
+    jwt({ token, user }) {
+      if (user) {
+        token.id = user?.id
+      }
+      return token
+    },
+    session({ session, token, user }) {
       if (session.user) {
-        session.user.id = user.id
+        session.user.id = token?.id || user.id
       }
       return session
     },
@@ -44,6 +50,10 @@ export const authOptions: NextAuthOptions = {
   ],
   pages: {
     signIn: '/login',
+  },
+  session: {
+    // strategy: 'jwt',
+    maxAge: 24 * 60 * 60, // 1 day
   },
 }
 

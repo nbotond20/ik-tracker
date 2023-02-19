@@ -1,8 +1,12 @@
 import { useThemeMode } from '@hooks/useThemeMode'
 import dynamic from 'next/dynamic'
 
-const DynamicSunSVG = dynamic(() => import('@components/SVG/SunSVG').then(mod => mod.SunSVG))
-const DynamicMoonSVG = dynamic(() => import('@components/SVG/MoonSVG').then(mod => mod.MoonSVG), { ssr: false })
+const DynamicSunSVG = dynamic(() => import('@heroicons/react/24/outline/SunIcon'), {
+  ssr: false,
+})
+const DynamicMoonSVG = dynamic(() => import('@heroicons/react/24/outline/MoonIcon'), {
+  ssr: false,
+})
 
 interface DarkModeToggleProps {
   className?: string
@@ -21,7 +25,7 @@ export const DarkModeToggle = ({ className }: DarkModeToggleProps) => {
     >
       <span className="sr-only">Open main menu</span>
 
-      {mode === 'dark' ? <DynamicSunSVG /> : <DynamicMoonSVG />}
+      {mode === 'dark' ? <DynamicSunSVG className="h-6 w-6" /> : <DynamicMoonSVG className="h-6 w-6" />}
     </button>
   )
 }

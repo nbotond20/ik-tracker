@@ -9,7 +9,7 @@ import type { CompareType } from '@utils/subjectComparator'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 
-const DynamicSortSVG = dynamic(() => import('@components/SVG/SortSVG').then(mod => mod.SortSVG))
+const ChevronUpDownIcon = dynamic(() => import('@heroicons/react/24/solid/ChevronUpDownIcon'))
 
 interface SubjectGridProps {
   subjects: Subject[]
@@ -54,7 +54,7 @@ export const SubjectGrid = ({
                 }`}
               >
                 {tableColumnHeader.display}
-                <DynamicSortSVG />
+                <ChevronUpDownIcon className="w-5 h-5" />
               </div>
             </div>
           </div>

@@ -1,7 +1,9 @@
 import React from 'react'
 
-import ChevronLeftIcon from '@heroicons/react/24/outline/ChevronLeftIcon'
-import ChevronRightIcon from '@heroicons/react/24/outline/ChevronRightIcon'
+import dynamic from 'next/dynamic'
+
+const ChevronRightIcon = dynamic(() => import('@heroicons/react/24/outline/ChevronRightIcon'))
+const ChevronLeftIcon = dynamic(() => import('@heroicons/react/24/outline/ChevronLeftIcon'))
 
 interface PaginationProps {
   handlePrevPage: () => void
@@ -37,14 +39,14 @@ export const Pagination = ({
         <div className="inline-flex mt-2 xs:mt-0">
           <button
             onClick={() => handlePrevPage()}
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-l hover:bg-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <ChevronLeftIcon className="w-5 h-5 mr-2 text-gray-500" />
             Prev
           </button>
           <button
             onClick={() => handleNextPage()}
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 border-0 border-l border-gray-700 rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 border-0 border-l border-gray-300 rounded-r hover:bg-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             Next
             <ChevronRightIcon className="w-5 h-5 ml-2 text-gray-500" />

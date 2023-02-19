@@ -1,4 +1,6 @@
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import dynamic from 'next/dynamic'
+
+const MagnifyingGlassIcon = dynamic(() => import('@heroicons/react/24/outline/MagnifyingGlassIcon'))
 
 interface SearchInputProps {
   placeholder?: string

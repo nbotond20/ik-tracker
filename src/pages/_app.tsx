@@ -1,5 +1,4 @@
 import { Header } from '@components/Header/Header'
-import { HeaderLogo } from '@components/Header/HeaderLogo'
 import { Layout } from '@components/Layout/Layout'
 import { Maintenance } from '@components/MaintenanceMode/MaintenanceMode'
 import { useThemeMode } from '@hooks/useThemeMode'
@@ -9,7 +8,10 @@ import { Analytics } from '@vercel/analytics/react'
 import type { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 import type { AppType } from 'next/app'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
+
+const HeaderLogo = dynamic(() => import('@components/Header/HeaderLogo').then(mod => mod.HeaderLogo))
 
 const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { session, ...pageProps } }) => {
   useThemeMode()

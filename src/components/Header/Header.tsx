@@ -73,14 +73,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                 >
                   Log out
                 </LinkButton>
-                <div
-                  onClick={() =>
-                    void signOut({
-                      callbackUrl: '/',
-                    })
-                  }
-                  className="relative mr-2 h-10 w-10 cursor-pointer overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600"
-                >
+                <div className="relative mr-2 h-10 w-10 cursor-pointer overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
                   <svg
                     className="absolute -left-1 h-12 w-12 text-gray-400"
                     fill="currentColor"
@@ -96,7 +89,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                 </div>
               </>
             )}
-            <DarkModeToggle className="hidden sm:inline-flex" />
+            <DarkModeToggle className="hidden lg:inline-flex" />
           </div>
           <NavLinks links={pages} />
           <MobileMenu links={pages} toggleMenu={toggleMenu} isOpen={isOpen} />

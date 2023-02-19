@@ -1,4 +1,4 @@
-import type { CheckboxFilterTypes } from '@pages/search'
+import type { CheckboxFilterTypes } from '@hooks/useSearchPage'
 import type { SpecialisationType, SubjectGroupType, SubjectType } from '@prisma/client'
 import { z } from 'zod'
 
