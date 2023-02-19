@@ -1,10 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base", ":dependencyDashboard"],
+  "labels": ["dependencies"],
   "major": {
     "dependencyDashboardApproval": true
   },
-  "labels": ["dependencies"],
   "packageRules": [
     {
       "automerge": true,
@@ -12,5 +12,5 @@
     }
   ],
   "prConcurrentLimit": 25,
-  "schedule": ["before 10pm every weekday", "after 5am every weekday", "every weekend"]
+  "schedule": ["after 5am every weekday", "before 10pm every weekday", "every weekend"]
 }
