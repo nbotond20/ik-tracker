@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
+    "allowJs": false,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -33,19 +33,11 @@
       "@utils/*": ["src/utils/*"],
       "@server/*": ["src/server/*"],
       "@env/*": ["src/env/*"],
-      "@constants/*": ["src/constants/*"]
+      "@constants/*": ["src/constants/*"],
+      "@cypress/*": ["cypress/*"]
     }
   },
   "typeRoots": ["./node_modules/@types", "node_modules/jest/build"],
-  "include": [
-    "next-env.d.ts",
-    "**/*.cjs",
-    "**/*.mjs",
-    "prisma/**/*.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.js",
-    "src/**/*.jsx"
-  ],
+  "include": ["next-env.d.ts", "**/*.cjs", "**/*.mjs", "**/*.ts", "src/**/*.tsx", "src/**/*.jsx", "cypress.config.ts"],
   "exclude": ["node_modules"]
 }
