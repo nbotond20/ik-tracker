@@ -12,19 +12,21 @@ const applyThemeMode = (themeMode: 'light' | 'dark') => {
 const getThemeModeFromLocalStorage = () => {
   if (typeof window !== 'undefined') {
     const mode = localStorage.getItem('theme')
-    return mode === 'dark' ? 'dark' : 'light'
+    return mode ? (mode === 'dark' ? 'dark' : 'light') : undefined
   }
 }
 
 export const useThemeMode = () => {
-  const [mode, setMode] = useState<'light' | 'dark'>(getThemeModeFromLocalStorage() || 'light')
+  const [mode, setMode] = useState<'light' | 'dark' | undefined>(undefined)
 
   useEffect(() => {
-    applyThemeMode(mode)
+    if (mode) applyThemeMode(mode)
   }, [mode])
 
   useEffect(() => {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    const mode = getThemeModeFromLocalStorage()
+    setMode(mode || 'light')
+    if (!mode && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setMode('dark')
       applyThemeMode('dark')
     }
