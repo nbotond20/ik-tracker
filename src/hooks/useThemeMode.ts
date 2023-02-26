@@ -42,8 +42,8 @@ export const useThemeMode = () => {
   }, [])
 
   const toggleThemeMode = useCallback(() => {
-    const mode = localStorage.getItem('theme')
-    localStorage.setItem('theme', mode === 'dark' ? 'light' : 'dark')
+    const mode = getThemeModeFromLocalStorage()
+    applyThemeMode(mode === 'dark' ? 'light' : 'dark')
     mode !== 'dark' ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark')
     setMode(mode === 'dark' ? 'light' : 'dark')
   }, [])
