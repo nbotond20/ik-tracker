@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  /* * {
+  * {
     transition: background-color 0.35s ease-in-out, color 0.25s linear, fill 0.05s linear, border 0.35s ease-in-out;
-  } */
+  }
 }
 
 @layer components {
