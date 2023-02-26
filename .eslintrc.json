@@ -13,7 +13,7 @@
       }
     },
     {
-      "files": ["cypress/**/*.(unittest|spec|test).ts"],
+      "files": ["cypress/**/*.cy.ts", "cypress/**/*.spec.ts", "cypress/**/*.test.ts"],
       "env": {
         "cypress/globals": true
       },
@@ -22,10 +22,10 @@
       "rules": {
         "cypress/no-assigning-return-values": "error",
         "cypress/no-unnecessary-waiting": "error",
-        "cypress/assertion-before-screenshot": "warn",
-        "cypress/no-force": "warn",
-        "cypress/no-async-tests": "error",
-        "cypress/no-pause": "error"
+        "cypress/no-force": "warn"
+      },
+      "parserOptions": {
+        "project": "cypress/tsconfig.json"
       }
     }
   ],
@@ -40,8 +40,6 @@
   "plugins": ["@typescript-eslint", "no-only-tests", "eslint-plugin-cypress"],
   "extends": [
     "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
-    "next/core-web-vitals",
     "eslint:recommended",
     "plugin:react/recommended", // Uses the recommended rules from @eslint-plugin-react
     "plugin:react-hooks/recommended",
@@ -53,6 +51,7 @@
     "plugin:cypress/recommended"
   ],
   "rules": {
+    "react/forbid-component-props": [2, { "forbid": ["data-testId", "datatestid", "datatestId"] }],
     "@typescript-eslint/consistent-type-imports": "warn",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-namespace": 0,
@@ -76,16 +75,10 @@
   "ignorePatterns": [
     "dist",
     "public",
-    "stats.json",
     "pnpm-lock.yaml",
-    "!.storybook",
     "*.svg",
     "*.md",
-    "*.conf",
-    "Dockerfile",
     "*.prisma",
-    "*.sql",
-    "*.toml",
     "globals.css",
     "*.code-workspace"
   ],

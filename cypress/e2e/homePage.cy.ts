@@ -18,6 +18,7 @@ context('Home Page', () => {
   it('Should jump to features', () => {
     cy.findByTestId(testIds.home_feature_section).should('exist').should('not.be.visible')
     cy.findByTestId(testIds.home_features_link).should('exist').should('be.visible')
+    // eslint-disable-next-line cypress/no-force
     cy.findByTestId(testIds.home_features_link).click({ force: true })
     cy.url().should('include', '#features')
     cy.findByTestId(testIds.home_feature_section).should('be.visible')
@@ -26,11 +27,13 @@ context('Home Page', () => {
   it('Should jump back to top', () => {
     cy.findByTestId(testIds.home_feature_section).should('exist').should('not.be.visible')
     cy.findByTestId(testIds.home_features_link).should('exist').should('be.visible')
+    // eslint-disable-next-line cypress/no-force
     cy.findByTestId(testIds.home_features_link).click({ force: true })
     cy.url().should('include', '#features')
     cy.findByTestId(testIds.home_feature_section).should('be.visible')
     cy.findByTestId(testIds.home_features_link).should('not.be.visible')
     cy.findByTestId(testIds.home_top_link).scrollIntoView().should('be.visible')
+    // eslint-disable-next-line cypress/no-force
     cy.findByTestId(testIds.home_top_link).click({ force: true })
     cy.url().should('include', '#top')
     cy.findByTestId(testIds.home_feature_section).should('not.be.visible')
@@ -38,12 +41,14 @@ context('Home Page', () => {
 
   it('Should jump to login', () => {
     cy.findByTestId(testIds.home_login_link).should('exist').should('be.visible')
+    // eslint-disable-next-line cypress/no-force
     cy.findByTestId(testIds.home_login_link).click({ force: true })
     cy.url().should('include', '/login')
   })
 
   it('Should jump to get started', () => {
     cy.findByTestId(testIds.home_get_started_link).should('exist').should('be.visible')
+    // eslint-disable-next-line cypress/no-force
     cy.findByTestId(testIds.home_get_started_link).click({ force: true })
     cy.url().should('include', '/login')
   })
