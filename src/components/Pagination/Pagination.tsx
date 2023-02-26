@@ -1,5 +1,3 @@
-import React from 'react'
-
 import dynamic from 'next/dynamic'
 
 const ChevronRightIcon = dynamic(() => import('@heroicons/react/24/outline/ChevronRightIcon'))
@@ -27,7 +25,7 @@ export const Pagination = ({
       <span className="text-sm text-gray-700 dark:text-gray-400">
         Showing{' '}
         <span className="font-semibold text-gray-900 dark:text-white">
-          {pageNum * elementsPerPage - elementsPerPage + 1}
+          {totalResults !== 0 ? pageNum * elementsPerPage - elementsPerPage + 1 : 0}
         </span>{' '}
         to{' '}
         <span className="font-semibold text-gray-900 dark:text-white">
