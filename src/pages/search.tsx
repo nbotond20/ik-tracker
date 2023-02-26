@@ -1,3 +1,4 @@
+import { ScrollLayout } from '@components/Layout/ScrollLayout'
 import { SortMenu } from '@components/SortMenu/SortMenu'
 import { Filters } from '@components/SubjectFilters/Filters'
 import { filters } from '@constants/filters'
@@ -41,7 +42,7 @@ const SearchPage: NextPage = () => {
   } = useSearchPage()
 
   return (
-    <div className="sm:scrollBar flex max-h-[calc(100vh-64px)] w-full justify-center overflow-auto bg-white dark:bg-gray-900">
+    <ScrollLayout>
       {/* Mobile filter drawer */}
       <FilterDrawer
         mobileFiltersOpen={mobileFiltersOpen}
@@ -138,7 +139,7 @@ const SearchPage: NextPage = () => {
           </div>
         </section>
       </div>
-    </div>
+    </ScrollLayout>
   )
 }
 
