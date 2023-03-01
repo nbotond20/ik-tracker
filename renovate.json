@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "baseBranches": ["development"],
-  "extends": ["config:base", ":dependencyDashboard"],
+  "extends": [":dependencyDashboard"],
   "labels": ["dependencies"],
   "major": {
     "dependencyDashboardApproval": true
