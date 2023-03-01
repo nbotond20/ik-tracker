@@ -25,7 +25,7 @@ specifiers:
   '@types/testing-library__jest-dom': 5.14.5
   '@typescript-eslint/eslint-plugin': 5.52.0
   '@typescript-eslint/parser': 5.52.0
-  '@vercel/analytics': 0.1.10
+  '@vercel/analytics': 0.1.11
   autoprefixer: 10.4.13
   cypress: 12.6.0
   eslint: 8.35.0
@@ -70,7 +70,7 @@ dependencies:
   '@trpc/next': 10.12.0_wf2h6t6mg2rmzpp3t75cahjzhm
   '@trpc/react-query': 10.12.0_tij422wpfxfl3iixjhzsgwgs2e
   '@trpc/server': 10.12.0
-  '@vercel/analytics': 0.1.10_react@18.2.0
+  '@vercel/analytics': 0.1.11_react@18.2.0
   flowbite: 1.6.3
   framer-motion: 10.0.0_biqbaboplfbrettd7655fr4n2y
   next: 13.2.3_pjwopsidmaokadturxaafygjp4
@@ -2608,8 +2608,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vercel/analytics/0.1.10_react@18.2.0:
-    resolution: {integrity: sha512-jjJ8GzcPnQp0cMxpfYoUycMRBtDiaIeyVjZPiEPe99Dj1PdjMzAFYEASiV/hpNsXHkpcNYCveDFh6jnmh0YSDQ==}
+  /@vercel/analytics/0.1.11_react@18.2.0:
+    resolution: {integrity: sha512-mj5CPR02y0BRs1tN3oZcBNAX9a8NxsIUl9vElDPcqxnMfP0RbRc9fI9Ud7+QDg/1Izvt5uMumsr+6YsmVHcyuw==}
     peerDependencies:
       react: ^16.8||^17||^18
     dependencies:
