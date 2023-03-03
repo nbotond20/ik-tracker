@@ -50,7 +50,7 @@ specifiers:
   next-pwa: 5.6.0
   postcss: 8.4.21
   prettier: 2.8.4
-  prettier-plugin-tailwindcss: 0.2.3
+  prettier-plugin-tailwindcss: 0.2.4
   prisma: 4.11.0
   react: 18.2.0
   react-dom: 18.2.0
@@ -116,7 +116,7 @@ devDependencies:
   lint-staged: 13.1.2
   postcss: 8.4.21
   prettier: 2.8.4
-  prettier-plugin-tailwindcss: 0.2.3_zmkqdpv3ldc45e6wei6qtrbrca
+  prettier-plugin-tailwindcss: 0.2.4_zmkqdpv3ldc45e6wei6qtrbrca
   prisma: 4.11.0
   tailwindcss: 3.2.7_postcss@8.4.21
   tsx: 3.12.3
@@ -6918,8 +6918,8 @@ packages:
       fast-diff: 1.2.0
     dev: true
 
-  /prettier-plugin-tailwindcss/0.2.3_zmkqdpv3ldc45e6wei6qtrbrca:
-    resolution: {integrity: sha512-s2N5Dh7Ao5KTV1mao5ZBnn8EKtUcDPJEkGViZIjI0Ij9TTI5zgTz4IHOxW33jOdjHKa8CSjM88scelUiC5TNRQ==}
+  /prettier-plugin-tailwindcss/0.2.4_zmkqdpv3ldc45e6wei6qtrbrca:
+    resolution: {integrity: sha512-wMyugRI2yD8gqmMpZSS8kTA0gGeKozX/R+w8iWE+yiCZL09zY0SvfiHfHabNhjGhzxlQ2S2VuTxPE3T72vppCQ==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
