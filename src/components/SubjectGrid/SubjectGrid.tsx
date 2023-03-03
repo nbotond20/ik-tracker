@@ -41,7 +41,7 @@ export const SubjectGrid = ({
       <div className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400 rounded-lg mb-6 flex justify-between">
         {tableColumnHeaders.map((tableColumnHeader, idx) => (
           <div
-            className={`grow cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-600 sm:p-3 ${
+            className={`grow cursor-pointer p-2 hover:bg-gray-50 dark:hover:bg-gray-600 sm:p-3 font-semibold ${
               tableColumnHeader.classes ? tableColumnHeader.classes : ''
             } ${idx === 0 ? 'rounded-l-lg' : ''} ${idx === tableColumnHeaders.length - 1 ? 'rounded-r-lg' : ''}`}
             onClick={() => handleSetSortedSubjects(tableColumnHeader.sortType)}
@@ -70,7 +70,7 @@ export const SubjectGrid = ({
         <SubjectTableLoadingState />
       )}
       {selectedSubject && (
-        <motion.div className="fixed top-0 left-0 right-0 z-50 flex h-screen max-h-screen w-full items-center justify-center overflow-hidden p-4 backdrop-blur md:inset-0 md:h-full">
+        <motion.div className="fixed top-0 left-0 right-0 z-50 flex h-screen max-h-screen w-full items-center justify-center overflow-hidden p-2 backdrop-blur md:inset-0 md:h-full">
           <div className="sm:cardScrollBar relative h-full max-h-screen w-full max-w-5xl md:h-auto">
             <SubjectCard subject={selectedSubject} setSelectedSubject={setSelectedSubject} />
           </div>

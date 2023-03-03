@@ -60,9 +60,9 @@ const SearchPage: NextPage = () => {
         setSemesterRange={setSemesterRange}
       />
 
-      <div className="w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8 flex flex-col">
+      <div className="w-full max-w-screen-2xl px-2 sm:px-4 lg:px-8 flex flex-col">
         {/* Header */}
-        <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
+        <div className="flex items-baseline justify-between border-b border-gray-200 pt-12 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Search</h1>
           <div className="flex items-center">
             <SortMenu
@@ -93,7 +93,7 @@ const SearchPage: NextPage = () => {
           </div>
         </div>
 
-        <section className="pt-6 pb-24">
+        <section className="pt-6">
           <div className="flex w-full gap-8">
             {/* Filters */}
             <Filters

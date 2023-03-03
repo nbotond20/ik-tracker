@@ -42,7 +42,7 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
                 <div className="flex items-center">
                   <div
                     className={`flex items-center whitespace-nowrap ${
-                      sortType === tableColumnHeader.sortType ? 'font-extrabold text-black dark:text-white' : ''
+                      sortType === tableColumnHeader.sortType ? 'font-medium text-black dark:text-white' : ''
                     }`}
                   >
                     {tableColumnHeader.display}
@@ -126,7 +126,7 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
       </table>
 
       {selectedSubject && (
-        <motion.div className="fixed top-0 left-0 right-0 z-50 flex h-screen max-h-screen w-full items-center justify-center overflow-hidden p-4 backdrop-blur md:inset-0 md:h-full">
+        <motion.div className="fixed top-0 left-0 right-0 z-50 flex h-screen max-h-screen w-full items-center justify-center overflow-hidden p-2 backdrop-blur md:inset-0 md:h-full">
           <div className="sm:cardScrollBar relative h-full max-h-screen w-full max-w-5xl md:h-auto">
             <SubjectCard subject={selectedSubject} setSelectedSubject={setSelectedSubject} />
           </div>
