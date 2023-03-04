@@ -32,7 +32,7 @@
     "@tanstack/react-query": "4.24.10",
     "@trpc/client": "10.14.0",
     "@trpc/next": "10.14.0",
-    "@trpc/react-query": "10.13.2",
+    "@trpc/react-query": "10.14.0",
     "@trpc/server": "10.13.2",
     "@vercel/analytics": "0.1.11",
     "flowbite": "1.6.3",
