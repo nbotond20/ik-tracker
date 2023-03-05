@@ -39,7 +39,7 @@ specifiers:
   eslint-plugin-react: 7.32.2
   eslint-plugin-react-hooks: 4.6.0
   flowbite: 1.6.3
-  framer-motion: 10.0.1
+  framer-motion: 10.0.2
   husky: 8.0.3
   jest: 29.4.3
   jest-environment-jsdom: 29.4.3
@@ -72,7 +72,7 @@ dependencies:
   '@trpc/server': 10.14.0
   '@vercel/analytics': 0.1.11_react@18.2.0
   flowbite: 1.6.3
-  framer-motion: 10.0.1_biqbaboplfbrettd7655fr4n2y
+  framer-motion: 10.0.2_biqbaboplfbrettd7655fr4n2y
   next: 13.2.3_pjwopsidmaokadturxaafygjp4
   next-auth: 4.20.1_nvzgbose6yf6w7ijjprgspqefi
   next-pwa: 5.6.0_c6uc6qmtkjh4pbhqheqecls3pq
@@ -4774,8 +4774,8 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
 
-  /framer-motion/10.0.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-/N7gBA9gH8PkStyNQ67P/lx8UhL/7Y8z9Ku7FfgOF77sSG8wu8781kX7I5ZUgflRRtQXo8qH4Rev23004G1zcQ==}
+  /framer-motion/10.0.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-1k8y1e6DMRQ/r6or4TBxRhE1cXlDE5bm+SFeWLeh7ng0sfSbpROC2Qd1OEHq6lLXNARar/KKoj/EQ6eIvn60Uw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
