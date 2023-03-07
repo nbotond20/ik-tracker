@@ -13,9 +13,12 @@ const defaultFilledButtonStyles =
 const defaultOutlinedButtonStyles =
   'px-4 py-2 rounded-lg text-sm font-medium text-gray-800 hover:bg-gray-50 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800 '
 
-export const Button = ({ children, variant, ...props }: ButtonProps) => {
+export const Button = ({ children, variant, className, ...props }: ButtonProps) => {
   return (
-    <button {...props} className={variant === 'filled' ? defaultFilledButtonStyles : defaultOutlinedButtonStyles}>
+    <button
+      {...props}
+      className={`${variant === 'filled' ? defaultFilledButtonStyles : defaultOutlinedButtonStyles} ${className || ''}`}
+    >
       {children}
     </button>
   )

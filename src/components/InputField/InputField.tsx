@@ -29,9 +29,9 @@ export const InputField = ({
       )}
       <input
         type="text"
-        className={`${
+        className={`placeholder:text-gray-400 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-200 dark:focus:ring-blue-800 ${
           inputClassName || ''
-        } placeholder:text-gray-400 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-200 dark:focus:ring-blue-800`}
+        }`}
         placeholder={placeholder}
         {...rest}
       />

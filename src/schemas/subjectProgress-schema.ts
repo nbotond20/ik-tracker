@@ -1,8 +1,6 @@
 import { z } from 'zod'
 
-export const getCurrentSemesterSubjectProgressesInputSchema = z.object({ userId: z.string(), semester: z.number() })
-
-const ResultTypeSchema = z.enum(['PERCENT', 'GRADE', 'POINT', 'PASSFAIL'])
+export const ResultTypeSchema = z.enum(['PERCENT', 'GRADE', 'POINT', 'PASSFAIL'])
 
 export const examSchema = z
   .object({
@@ -14,8 +12,21 @@ export const examSchema = z
   })
   .strict()
 
+export const createExamSchema = z
+  .object({
+    subjectProgressId: z.string(),
+    exam: examSchema,
+  })
+  .strict()
+
+export const updateExamSchema = z
+  .object({
+    id: z.string(),
+    partialExam: examSchema.partial(),
+  })
+  .strict()
+
 const baseCreateSubjectProgressInputSchema = z.object({
-  userId: z.string(),
   semester: z.number(),
   exams: z.array(examSchema).optional(),
   marks: z.array(z.number()).min(5).max(5),
@@ -50,41 +61,27 @@ export const createSubjectProgressInputSchema = z
       path: ['exams'],
     }
   )
-  .refine(
-    data => {
-      if (!data.exams || data.exams.length === 0) return true
-      const isGradeExam = data.exams.some(exam => exam.resultType === 'GRADE')
 
-      if (!isGradeExam) return true
+export const updateSubjectProgressInputSchema = z.object({
+  id: z.string(),
+  partialSubjectProgress: z
+    .object({
+      exams: z.array(examSchema).optional(),
+      marks: z.array(z.number()).min(5).max(5).optional(),
+      marksType: ResultTypeSchema.optional(),
+      subjectId: z.string().optional(),
+      subjectName: z.string().optional(),
+    })
+    .refine(
+      data => {
+        if (!data.exams || data.exams.length === 0) return true
+        const firstExamResultType = data.exams[0]!.resultType
 
-      return data.exams.filter(exam => exam.resultType === 'GRADE').length === 1
-    },
-    {
-      message: `Only one exam can be a GRADE exam`,
-      path: ['exams'],
-    }
-  )
-
-/* export const createSubjectProgressInputSchema = z
-  .object({
-    userId: z.string(),
-    subjectName: z.string().optional(),
-    credit: z.number().optional(),
-    semester: z.number(),
-    subjectId: z.string().optional(),
-    exams: z.array(examSchema).optional(),
-    marks: z.array(z.number()).min(5).max(5),
-    marksType: ResultTypeSchema,
-  })
-  .strict()
-  .refine(data => data.subjectId || data.subjectName, {
-    message: 'Either subjectId or subjectName must be provided',
-    path: ['subjectId', 'subjectName'],
-  }) */
-
-export const addExamToSubjectProgressInputSchema = z
-  .object({
-    subjectProgressId: z.string(),
-    exam: examSchema,
-  })
-  .strict()
+        return data.exams.every(exam => exam.resultType === firstExamResultType || exam.resultType === 'PASSFAIL')
+      },
+      {
+        message: `All exams must have the same resultType or resultType must be PASSFAIL`,
+        path: ['exams'],
+      }
+    ),
+})

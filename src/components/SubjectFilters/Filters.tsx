@@ -102,6 +102,7 @@ export const Filters = ({
         <div className="flex items-center gap-4 grow justify-between">
           <input
             inputMode="numeric"
+            type="number"
             pattern="[0-9]*"
             className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={'Min'}
@@ -113,6 +114,7 @@ export const Filters = ({
           <span className="text-gray-400 dark:text-gray-500">{'-'}</span>
           <input
             inputMode="numeric"
+            type="number"
             pattern="[0-9]*"
             className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={'Max'}
@@ -128,6 +130,7 @@ export const Filters = ({
         <div className="flex items-center gap-4 grow justify-between">
           <input
             inputMode="numeric"
+            type="number"
             pattern="[0-9]*"
             className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={'Min'}
@@ -139,6 +142,7 @@ export const Filters = ({
           <span className="text-gray-400 dark:text-gray-500">{'-'}</span>
           <input
             inputMode="numeric"
+            type="number"
             pattern="[0-9]*"
             className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={'Max'}

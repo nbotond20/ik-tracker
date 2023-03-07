@@ -49,14 +49,15 @@ model Session {
 }
 
 model User {
-    id              String            @id @default(auto()) @map("_id") @db.ObjectId
-    name            String?
-    email           String?           @unique
-    emailVerified   DateTime?
-    image           String?
-    accounts        Account[]
-    sessions        Session[]
-    SubjectProgress SubjectProgress[]
+    id                String            @id @default(auto()) @map("_id") @db.ObjectId
+    name              String?
+    email             String?           @unique
+    emailVerified     DateTime?
+    image             String?
+    accounts          Account[]
+    sessions          Session[]
+    SubjectProgresses SubjectProgress[]
+    currentSemester   Int?
 }
 
 model VerificationToken {
@@ -87,7 +88,7 @@ model Subject {
     specialisation    SpecialisationType
     subjectGroupType  SubjectGroupType
     subjectType       SubjectType
-    SubjectProgress   SubjectProgress[]
+    SubjectProgresses SubjectProgress[]
 }
 
 enum ExamType {

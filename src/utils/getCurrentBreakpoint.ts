@@ -23,6 +23,7 @@ export const getBreakpointValue = (breakpoint: keyof typeof breakpoints) => {
   return breakpoints[breakpoint]
 }
 
+// TODO: Move to hooks
 export const useIsSmallerThanBreakpoint = (breakpoint: keyof typeof breakpoints) => {
   const [isSmallerThanBreakpoint, setIsSmallerThanBreakpoint] = useState<boolean | undefined>(undefined)
 

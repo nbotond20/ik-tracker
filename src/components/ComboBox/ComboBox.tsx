@@ -1,25 +1,26 @@
-import { type Dispatch, Fragment, type SetStateAction, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 import { Combobox as HeadlessCombobox } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/outline'
 
 interface ComboboxProps {
   items: Item[]
-  onItemSelected?: Dispatch<SetStateAction<boolean>>
+  onItemSelected?: (item: Item | undefined) => unknown
   initialSelectedItem?: Item
   className?: string
   label?: string
 }
 
-interface Item {
+export interface Item {
   id: string
   name: string
   value: string
+  data?: unknown
 }
 
-export const Combobox = ({ items, onItemSelected: setShowInput, className, label }: ComboboxProps) => {
+export const Combobox = ({ items, onItemSelected, className, label, initialSelectedItem }: ComboboxProps) => {
   const [filteredItems, setItemsState] = useState<Item[]>(items)
-  const [selectedItem, setSelectedItem] = useState<Item | undefined>()
+  const [selectedItem, setSelectedItem] = useState<Item | undefined>(initialSelectedItem)
 
   const [query, setQuery] = useState('')
 
@@ -35,12 +36,10 @@ export const Combobox = ({ items, onItemSelected: setShowInput, className, label
 
   useEffect(() => {
     setQuery('')
-    if (selectedItem?.id === '-') {
-      setShowInput?.(true)
-    } else {
-      setShowInput?.(false)
+    if (onItemSelected) {
+      onItemSelected(selectedItem)
     }
-  }, [selectedItem, setShowInput])
+  }, [selectedItem, onItemSelected])
 
   return (
     <div className={className || ''}>

@@ -7,7 +7,7 @@ interface ExamsTableProps {
 }
 
 export const ExamsTable = ({ exams }: ExamsTableProps) => {
-  return (
+  return exams.length > 0 ? (
     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead className="text-xs text-gray-700 uppercase dark:text-gray-400">
         <tr>
@@ -51,5 +51,9 @@ export const ExamsTable = ({ exams }: ExamsTableProps) => {
         ))}
       </tbody>
     </table>
+  ) : (
+    <div>
+      <p className="text-gray-500 dark:text-gray-400 text-base w-full text-center">No exams added yet</p>
+    </div>
   )
 }

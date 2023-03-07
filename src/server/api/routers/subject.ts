@@ -7,7 +7,7 @@ export const subjectRoute = createTRPCRouter({
     return ctx.prisma.subject.findMany()
   }),
 
-  getById: publicProcedure.input(z.object({ id: z.string() })).query(({ ctx, input }) => {
+  get: publicProcedure.input(z.object({ id: z.string() })).query(({ ctx, input }) => {
     return ctx.prisma.subject.findUnique({
       where: {
         id: input.id,
