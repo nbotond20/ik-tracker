@@ -53,7 +53,6 @@ export const subjectProgressRouter = createTRPCRouter({
         subjectName: input.subjectName,
         credit: input.credit,
         marks: input.marks,
-        marksType: input.marksType,
         exams: {
           create: input.exams,
         },

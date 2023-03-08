@@ -2,26 +2,23 @@ import type { Dispatch, SetStateAction } from 'react'
 import React from 'react'
 
 import { InputField } from '@components/InputField/InputField'
-import { ResultType } from '@prisma/client'
-import { getResultTypeDisplay } from '@utils/getResultTypeDisplay'
 
 export type Marks = [number, number, number, number, number]
 
 interface MarkTableProps {
   maxResult: number
-  resultType: ResultType
   marks: Marks
   editing?: boolean
   setMarks?: Dispatch<SetStateAction<Marks>>
 }
 
-export const MarkTable = ({ marks, maxResult, resultType, editing, setMarks }: MarkTableProps) => {
+export const MarkTable = ({ marks, maxResult, editing, setMarks }: MarkTableProps) => {
   return (
     <table className="w-full text-sm text-gray-500 dark:text-gray-400 ">
       <thead>
         <tr>
           <th scope="col" className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">
-            Mark
+            Points
           </th>
           <th scope="col" className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">
             Grade
@@ -34,15 +31,11 @@ export const MarkTable = ({ marks, maxResult, resultType, editing, setMarks }: M
           marks.map((mark, index) => (
             <tr key={index}>
               <td className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">
-                {mark !== -1 ? `${mark}${getResultTypeDisplay(resultType)}` : '-'}
+                {mark !== -1 ? `${mark}p` : '-'}
               </td>
               <td className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">{index + 1}</td>
               <td className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">
-                {mark !== -1
-                  ? resultType === ResultType.POINT && index !== 0
-                    ? `${Math.round((mark / maxResult) * 100)}%`
-                    : '-'
-                  : '-'}
+                {mark !== -1 ? (index !== 0 ? `${Math.round((mark / maxResult) * 100)}%` : '-') : '-'}
               </td>
             </tr>
           ))}

@@ -155,12 +155,11 @@ export const ProgressCard = ({
             </tbody>
           </table>
         </div>
-        <Accordion title="Marks" titleClassName="text-sm font-normal italic dark:text-gray-300">
+        <Accordion title="Grades" titleClassName="text-sm font-normal italic dark:text-gray-300">
           <div className="relative overflow-x-auto">
             <MarkTable
               marks={subjectProgress.marks as [number, number, number, number, number]}
               maxResult={maxResultPerSubject}
-              resultType={subjectProgress.marksType}
             />
           </div>
         </Accordion>

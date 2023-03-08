@@ -157,12 +157,6 @@ export const SubjectResultModal = ({
   const [subjectNameInput, setSubjectNameInput] = useState<string | undefined>()
   const [subjectCreditInput, setSubjectCreditInput] = useState<number | null>()
 
-  const [marksType, setMarksType] = useState<ResultType>(ResultType.POINT)
-  const handleOnMarkComboBoxChange = useCallback((item?: Item) => {
-    if (!item) return
-    setMarksType(item.value as ResultType)
-  }, [])
-
   const [marks, setMarks] = useState<Marks>((subjectProgress?.marks as Marks) || [-1, -1, -1, -1, -1])
 
   const handleSaveSubjectProgress = () => {
@@ -175,7 +169,6 @@ export const SubjectResultModal = ({
         partialSubjectProgress: {
           subjectId: selectedSubjectId,
           subjectName: subjectNameInput,
-          marksType,
           marks,
           exams: [
             ...exams.map(exam => ({
@@ -196,7 +189,6 @@ export const SubjectResultModal = ({
           subjectName: subjectNameInput,
           credit: subjectCreditInput,
           semester: 1,
-          marksType,
           marks,
           exams: [
             ...exams.map(exam => ({
@@ -213,7 +205,6 @@ export const SubjectResultModal = ({
       createSubjectProgress({
         subjectId: selectedSubjectId,
         semester: 1,
-        marksType,
         marks,
         exams: [
           ...exams.map(exam => ({
@@ -393,23 +384,8 @@ export const SubjectResultModal = ({
                   Add Exam
                 </Button>
 
-                <Accordion title="Set Marks" titleClassName="text-base font-normal italic dark:text-gray-300">
-                  <div className="flex w-full flex-col gap-2">
-                    <Combobox
-                      items={[
-                        { id: 'POINT', name: 'POINT', value: 'POINT' },
-                        { id: 'PERCENT', name: 'PERCENT', value: 'PERCENT' },
-                      ]}
-                      label="Mark Type"
-                      onItemSelected={handleOnMarkComboBoxChange}
-                      initialSelectedItem={{
-                        id: marksType,
-                        name: marksType,
-                        value: marksType,
-                      }}
-                    />
-                    <MarkTable maxResult={100} resultType={marksType} marks={marks} setMarks={setMarks} editing />
-                  </div>
+                <Accordion title="Set Grades" titleClassName="text-base font-normal italic dark:text-gray-300">
+                  <MarkTable maxResult={100} marks={marks} setMarks={setMarks} editing />
                 </Accordion>
 
                 <div className="flex gap-2 justify-evenly">
@@ -427,21 +403,3 @@ export const SubjectResultModal = ({
     </AnimatePresence>
   )
 }
-
-/* ...(selectedSubjectId && subjectCreditInput
-                          ? { subjectId: selectedSubjectId, credit: subjectCreditInput }
-                          : {
-                              subjectName: subjectNameInput,
-                            }),
-                        semester: 1,
-                        marksType,
-                        marks: [0, 20, 30, 40, 50],
-                        exams: [
-                          ...exams.map(exam => ({
-                            name: exam.name!,
-                            resultType: exam.resultType!,
-                            minResult: exam.minResult ?? undefined,
-                            maxResult: exam.maxResult ?? undefined,
-                            result: undefined,
-                          })),
-                        ], */

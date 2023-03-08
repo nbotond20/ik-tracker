@@ -30,7 +30,6 @@ const baseCreateSubjectProgressInputSchema = z.object({
   semester: z.number(),
   exams: z.array(examSchema).optional(),
   marks: z.array(z.number()).min(5).max(5),
-  marksType: ResultTypeSchema,
 })
 
 const subjectIdNotSubjectName = z.object({
@@ -68,7 +67,6 @@ export const updateSubjectProgressInputSchema = z.object({
     .object({
       exams: z.array(examSchema).optional(),
       marks: z.array(z.number()).min(5).max(5).optional(),
-      marksType: ResultTypeSchema.optional(),
       subjectId: z.string().optional(),
       subjectName: z.string().optional(),
     })
