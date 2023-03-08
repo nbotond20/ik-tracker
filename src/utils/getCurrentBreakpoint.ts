@@ -1,8 +1,4 @@
-import { useEffect, useState } from 'react'
-
-import { debounce } from './debounce'
-
-const breakpoints = {
+export const breakpoints = {
   xs: 0,
   sm: 640,
   md: 768,
@@ -10,6 +6,7 @@ const breakpoints = {
   xl: 1280,
   '2xl': 1536,
 }
+
 export const getCurrentBreakpoint = () => {
   if (typeof window === 'undefined') return 'xs'
   const breakpointNames = Object.keys(breakpoints) as Array<keyof typeof breakpoints>
@@ -21,25 +18,4 @@ export const getCurrentBreakpoint = () => {
 export const getBreakpointValue = (breakpoint: keyof typeof breakpoints) => {
   if (typeof window === 'undefined') return false
   return breakpoints[breakpoint]
-}
-
-// TODO: Move to hooks
-export const useIsSmallerThanBreakpoint = (breakpoint: keyof typeof breakpoints) => {
-  const [isSmallerThanBreakpoint, setIsSmallerThanBreakpoint] = useState<boolean | undefined>(undefined)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallerThanBreakpoint(window.innerWidth < breakpoints[breakpoint])
-    }
-
-    const debouncedHandleResize = debounce(handleResize, 500)
-
-    window.addEventListener('resize', debouncedHandleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [breakpoint])
-
-  return isSmallerThanBreakpoint
 }

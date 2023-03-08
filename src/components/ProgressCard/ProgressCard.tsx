@@ -7,6 +7,7 @@ import type { Marks } from '@components/MarkTable/MarkTable'
 import { MarkTable } from '@components/MarkTable/MarkTable'
 import type { Exam, Subject, SubjectProgress } from '@prisma/client'
 import { api } from '@utils/api'
+import { getGradeColor } from '@utils/getGradeColor'
 import { motion } from 'framer-motion'
 
 interface ProgressCardProps {
@@ -14,21 +15,6 @@ interface ProgressCardProps {
   setSelectedSubjectProgressId: Dispatch<SetStateAction<string | undefined>>
   subjectProgress: SubjectProgress & { exams: Exam[]; subject: Subject | null }
   handleRefetch: () => void
-}
-
-const getGradeColor = (grade: number | null) => {
-  switch (grade) {
-    case 1:
-      return 'bg-red-400 dark:bg-red-700'
-    case 2:
-    case 3:
-      return 'bg-yellow-400 dark:bg-yellow-700'
-    case 4:
-    case 5:
-      return 'bg-green-400 dark:bg-green-700'
-    default:
-      return ''
-  }
 }
 
 const everyExamPassed = (exams: Exam[]) =>
@@ -44,8 +30,17 @@ const calculateGrade = (marks: Marks, exams: Exam[]) => {
   const passed = everyExamPassed(exams)
   if (!passed) return 1
 
-  const hasGradeExamTypeWithResult = exams.find(exam => exam.resultType === 'GRADE' && exam.result)
-  if (hasGradeExamTypeWithResult) return hasGradeExamTypeWithResult.result
+  const gradeTypeExams = exams.filter(exam => exam.resultType === 'GRADE')
+  const everyExamHasResult = gradeTypeExams.every(exam => exam.result)
+  if (gradeTypeExams && !everyExamHasResult) return 1
+  if (gradeTypeExams.length) {
+    return (
+      Math.round(
+        (gradeTypeExams.reduce((acc, exam) => acc + (exam?.result || 0), 0) / gradeTypeExams.length + Number.EPSILON) *
+          100
+      ) / 100
+    )
+  }
 
   const scoreSum = exams.reduce((acc, exam) => acc + (exam?.result || 0), 0)
 
@@ -60,6 +55,27 @@ const calculateGrade = (marks: Marks, exams: Exam[]) => {
   } else {
     return 5
   }
+}
+
+const calculatePercentage = (exams: Exam[]) => {
+  if (exams.length === 0) return null
+  const filteredExams = exams.filter(exam => exam.resultType !== 'PASSFAIL')
+  if (filteredExams.length === 0) return null
+
+  const hasGradeExamTypeWithResult = filteredExams.some(exam => exam.resultType === 'GRADE')
+  if (hasGradeExamTypeWithResult) return null
+
+  const hasPercentExamTypeWithResult = filteredExams.some(exam => exam.resultType === 'PERCENT')
+  if (hasPercentExamTypeWithResult) {
+    const percentTypeExams = filteredExams.filter(exam => exam.resultType === 'PERCENT')
+    return percentTypeExams.reduce((acc, exam) => acc + (exam?.result || 0), 0) / percentTypeExams.length
+  }
+
+  const everyExamHasMaxResult = filteredExams.every(exam => exam.maxResult)
+  if (!everyExamHasMaxResult) return null
+  const maxResultSum = filteredExams.reduce((acc, exam) => acc + (exam?.maxResult || 0), 0)
+  const scoreSum = filteredExams.reduce((acc, exam) => acc + (exam?.result || 0), 0)
+  return Math.round((scoreSum / maxResultSum) * 100)
 }
 
 export const ProgressCard = ({
@@ -79,6 +95,7 @@ export const ProgressCard = ({
 
   const [isAccordionOpen, setIsAccordionOpen] = useState(false)
   const grade = calculateGrade(subjectProgress.marks as Marks, subjectProgress.exams)
+  const percentage = calculatePercentage(subjectProgress.exams)
 
   return (
     <motion.div
@@ -121,7 +138,7 @@ export const ProgressCard = ({
                   Predicted percentage
                 </th>
                 <td className="px-3 py-2 border border-gray-300 dark:border-gray-600 text-center bg-gray-200 dark:bg-gray-700 dark:text-gray-50 text-gray-800 font-medium">
-                  76% {/* TODO: Calculate percetnage */}
+                  {percentage ? `${percentage}%` : '-'}
                 </td>
               </tr>
               <tr>

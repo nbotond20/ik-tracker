@@ -40,7 +40,7 @@ export const MarkTable = ({ marks, maxResult, resultType, editing, setMarks }: M
               <td className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">
                 {mark !== -1
                   ? resultType === ResultType.POINT && index !== 0
-                    ? `${Math.round((mark / maxResult) * 100)}`
+                    ? `${Math.round((mark / maxResult) * 100)}%`
                     : '-'
                   : '-'}
               </td>
