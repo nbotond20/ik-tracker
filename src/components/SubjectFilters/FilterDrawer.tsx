@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from 'react'
 import { Fragment, useCallback } from 'react'
 
 import { FilterDisclosure } from '@components/FilterDisclosure/FilterDisclosure'
@@ -29,11 +30,11 @@ interface FilterDrawerProps {
   preReqSearchTerm: string
   setPreReqSearchTerm: (value: string) => void
   checkboxFilters: CheckboxFilterTypes
-  setCheckboxFilters: (value: CheckboxFilterTypes | ((prevVar: CheckboxFilterTypes) => CheckboxFilterTypes)) => void
+  setCheckboxFilters: Dispatch<SetStateAction<CheckboxFilterTypes>>
   creditRange: Range
-  setCreditRange: (value: Range | ((prevVar: Range) => Range)) => void
+  setCreditRange: Dispatch<SetStateAction<Range>>
   semesterRange: Range
-  setSemesterRange: (value: Range | ((prevVar: Range) => Range)) => void
+  setSemesterRange: Dispatch<SetStateAction<Range>>
 }
 
 export const FilterDrawer = ({

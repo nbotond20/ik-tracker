@@ -13,12 +13,14 @@ export const authOptions: NextAuthOptions = {
     jwt({ token, user }) {
       if (user) {
         token.id = user?.id
+        token.currentSemester = user?.currentSemester
       }
       return token
     },
     session({ session, token, user }) {
       if (session.user) {
         session.user.id = token?.id || user.id
+        session.user.currentSemester = token?.currentSemester || user.currentSemester
       }
       return session
     },
