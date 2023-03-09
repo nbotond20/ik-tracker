@@ -64,10 +64,11 @@ const DashBoardPage: NextPage = () => {
             <select
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={e => setSemester(Number(e.target.value))}
+              value={semester}
             >
-              <option defaultValue={0}>Select a semester...</option>
+              <option value={0}>Select a semester...</option>
               {Array.from({ length: session?.user?.currentSemester || 1 }, (_, i) => i + 1).map(idx => (
-                <option key={idx} defaultValue={idx}>
+                <option key={idx} value={idx}>
                   Semester {idx}
                 </option>
               ))}
