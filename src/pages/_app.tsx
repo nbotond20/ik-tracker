@@ -25,7 +25,14 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
           <title>ELTE IK Progress Tracker</title>
         </Head>
         <Layout Header={() => <Header Logo={() => <HeaderLogo />} />}>
-          <Toaster />
+          <Toaster
+            toastOptions={{
+              className: 'bg-white text-black dark:bg-gray-700 dark:text-white',
+            }}
+            containerStyle={{
+              top: 65,
+            }}
+          />
           <Component {...pageProps} />
         </Layout>
       </Maintenance>

@@ -1,5 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo, useEffect, useState } from 'react'
+import { toast } from 'react-hot-toast'
 
 import { Accordion } from '@components/Accordion/Accordion'
 import { Button } from '@components/Button/Button'
@@ -54,6 +55,10 @@ export const SubjectResultModal = ({
       setSelectedSubjectProgressId(undefined)
       closeModal?.()
       handleRefetch()
+      toast.success('Created subject progress successfully.')
+    },
+    onError: () => {
+      toast.error('Failed to create subject progress.')
     },
   })
   const { mutate: updateSubjectProgress } = api.subjectProgress.update.useMutation({
@@ -62,10 +67,15 @@ export const SubjectResultModal = ({
       closeModal?.()
       handleRefetch()
       void refetchSubjectProgress()
+      toast.success('Saved subject progress successfully.')
     },
   })
 
-  const { mutate: deleteExam } = api.exam.delete.useMutation()
+  const { mutate: deleteExam } = api.exam.delete.useMutation({
+    onError: () => {
+      toast.error('Failed to delete exam.')
+    },
+  })
 
   const { data: subjects } = api.subject.getAll.useQuery(undefined, {
     enabled: open,

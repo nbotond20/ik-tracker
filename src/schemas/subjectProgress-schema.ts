@@ -5,23 +5,16 @@ export const ResultTypeSchema = z.enum(['PERCENT', 'GRADE', 'POINT', 'PASSFAIL']
 export const examSchema = z
   .object({
     resultType: ResultTypeSchema,
-    name: z.string(),
-    minResult: z.number().nullable().optional(),
-    maxResult: z.number().nullable().optional(),
-    result: z.number().nullable().optional(),
+    name: z.string({ required_error: 'Missing exam name!' }),
+    minResult: z.number({ invalid_type_error: 'Minimum must be a number!' }).nullable().optional(),
+    maxResult: z.number({ invalid_type_error: 'Maximum must be a number!' }).nullable().optional(),
+    result: z.number({ invalid_type_error: 'Result must be a number!' }).nullable().optional(),
   })
   .strict()
 
-/* export const createExamSchema = z
-  .object({
-    subjectProgressId: z.string(),
-    exam: examSchema,
-  })
-  .strict() */
-
 export const updateExamSchema = z
   .object({
-    id: z.string(),
+    id: z.string({ required_error: 'Missing exam id!' }),
     partialExam: examSchema.partial(),
   })
   .strict()
@@ -29,18 +22,24 @@ export const updateExamSchema = z
 const baseCreateSubjectProgressInputSchema = z.object({
   semester: z.number(),
   exams: z.array(examSchema).optional(),
-  marks: z.array(z.number()).min(5).max(5),
+  marks: z
+    .array(z.number(), {
+      required_error: 'Marks array must contain 5 elements!',
+      invalid_type_error: 'Marks must be a number array!',
+    })
+    .min(5, { message: 'Marks array must contain 5 elements!' })
+    .max(5, { message: 'Marks array must contain 5 elements!' }),
 })
 
 const subjectIdNotSubjectName = z.object({
-  subjectId: z.string(),
+  subjectId: z.string({ required_error: 'Missing subject id!' }),
   subjectName: z.string().optional(),
   credit: z.number().optional(),
 })
 const subjectNameNotSubjectId = z.object({
   subjectId: z.string().optional(),
-  subjectName: z.string(),
-  credit: z.number(),
+  subjectName: z.string({ required_error: 'Missing subject name!' }),
+  credit: z.number({ required_error: 'Missing credit!' }),
 })
 
 export const createSubjectProgressInputSchema = z
@@ -56,7 +55,7 @@ export const createSubjectProgressInputSchema = z
       return data.exams.every(exam => exam.resultType === firstExamResultType || exam.resultType === 'PASSFAIL')
     },
     {
-      message: `All exams must have the same resultType or resultType must be PASSFAIL`,
+      message: `All exams must have the same resultType or a resultType of PASSFAIL`,
       path: ['exams'],
     }
   )
@@ -66,7 +65,14 @@ export const updateSubjectProgressInputSchema = z.object({
   partialSubjectProgress: z
     .object({
       exams: z.array(examSchema).optional(),
-      marks: z.array(z.number()).min(5).max(5).optional(),
+      marks: z
+        .array(z.number(), {
+          required_error: 'Marks array must contain 5 elements!',
+          invalid_type_error: 'Marks must be a number array!',
+        })
+        .min(5, { message: 'Marks array must contain 5 elements!' })
+        .max(5, { message: 'Marks array must contain 5 elements!' })
+        .optional(),
       subjectId: z.string().optional(),
       subjectName: z.string().optional(),
     })
