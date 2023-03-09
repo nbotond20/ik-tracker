@@ -1,3 +1,5 @@
+import { Toaster } from 'react-hot-toast'
+
 import { Header } from '@components/Header/Header'
 import { Layout } from '@components/Layout/Layout'
 import { Maintenance } from '@components/MaintenanceMode/MaintenanceMode'
@@ -23,6 +25,7 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
           <title>ELTE IK Progress Tracker</title>
         </Head>
         <Layout Header={() => <Header Logo={() => <HeaderLogo />} />}>
+          <Toaster />
           <Component {...pageProps} />
         </Layout>
       </Maintenance>

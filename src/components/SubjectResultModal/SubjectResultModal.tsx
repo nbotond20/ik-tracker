@@ -13,6 +13,7 @@ import type { Exam } from '@prisma/client'
 import { ResultType } from '@prisma/client'
 import { api } from '@utils/api'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useSession } from 'next-auth/react'
 import { v4 as uuidv4 } from 'uuid'
 
 interface SubjectResultModalProps {
@@ -41,7 +42,8 @@ export const SubjectResultModal = ({
   closeModal,
   handleRefetch,
 }: SubjectResultModalProps) => {
-  const { data: subjectProgress } = api.subjectProgress.get.useQuery(
+  const { data: session } = useSession()
+  const { data: subjectProgress, refetch: refetchSubjectProgress } = api.subjectProgress.get.useQuery(
     {
       id: subjectProgressId!,
     },
@@ -59,6 +61,7 @@ export const SubjectResultModal = ({
       setSelectedSubjectProgressId(undefined)
       closeModal?.()
       handleRefetch()
+      void refetchSubjectProgress()
     },
   })
 
@@ -160,8 +163,27 @@ export const SubjectResultModal = ({
   const [marks, setMarks] = useState<Marks>((subjectProgress?.marks as Marks) || [-1, -1, -1, -1, -1])
 
   const handleSaveSubjectProgress = () => {
-    // TODO:
+    if (!session?.user?.currentSemester) return
+
     // Either subjectId or (subjectName and subjectCredit) must be defined
+    if (!selectedSubjectId && (!subjectNameInput || !subjectCreditInput)) return
+
+    const data = {
+      ...(selectedSubjectId
+        ? { subjectId: selectedSubjectId }
+        : { subjectName: subjectNameInput!, credit: subjectCreditInput! }),
+      semester: session?.user?.currentSemester,
+      marks,
+      exams: [
+        ...exams.map(exam => ({
+          name: exam.name!,
+          resultType: exam.resultType!,
+          minResult: exam.minResult ?? undefined,
+          maxResult: exam.maxResult ?? undefined,
+          result: undefined,
+        })),
+      ],
+    }
 
     if (subjectProgress?.id) {
       updateSubjectProgress({
@@ -181,41 +203,8 @@ export const SubjectResultModal = ({
           ],
         },
       })
-    }
-
-    if (!selectedSubjectId) {
-      if (subjectCreditInput && subjectNameInput) {
-        createSubjectProgress({
-          subjectName: subjectNameInput,
-          credit: subjectCreditInput,
-          semester: 1,
-          marks,
-          exams: [
-            ...exams.map(exam => ({
-              name: exam.name!,
-              resultType: exam.resultType!,
-              minResult: exam.minResult ?? undefined,
-              maxResult: exam.maxResult ?? undefined,
-              result: undefined,
-            })),
-          ],
-        })
-      }
     } else {
-      createSubjectProgress({
-        subjectId: selectedSubjectId,
-        semester: 1,
-        marks,
-        exams: [
-          ...exams.map(exam => ({
-            name: exam.name!,
-            resultType: exam.resultType!,
-            minResult: exam.minResult ?? undefined,
-            maxResult: exam.maxResult ?? undefined,
-            result: undefined,
-          })),
-        ],
-      })
+      createSubjectProgress(data)
     }
   }
 
@@ -269,8 +258,7 @@ export const SubjectResultModal = ({
                       onChange={e => setSubjectNameInput(e.target.value)}
                     />
                     <InputField
-                      pattern="[0-9]*"
-                      inputMode="numeric"
+                      type="number"
                       label="Credit"
                       placeholder="Credit"
                       value={subjectCreditInput || ''}
@@ -331,39 +319,38 @@ export const SubjectResultModal = ({
                           }
                           onItemSelected={handleOnResultTypeComboBoxChange}
                         />
-                        <div className="flex gap-2">
-                          <InputField
-                            type="number"
-                            pattern="[0-9]*"
-                            inputMode="numeric"
-                            label="Min Score"
-                            placeholder="Min Score"
-                            className="w-[calc(50%-4px)]"
-                            value={exam.minResult || ''}
-                            onChange={e =>
-                              setExams(prev =>
-                                prev.map((item, i) =>
-                                  i === index ? { ...item, minResult: Number(e.target.value) } : item
+                        {exam.resultType !== 'PASSFAIL' && exam.resultType !== 'GRADE' && (
+                          <div className="flex gap-2">
+                            <InputField
+                              type="number"
+                              label="Min Score"
+                              placeholder="Min Score"
+                              className="w-[calc(50%-4px)]"
+                              value={exam.minResult || ''}
+                              onChange={e =>
+                                setExams(prev =>
+                                  prev.map((item, i) =>
+                                    i === index ? { ...item, minResult: Number(e.target.value) } : item
+                                  )
                                 )
-                              )
-                            }
-                          />
-                          <InputField
-                            pattern="[0-9]*"
-                            inputMode="numeric"
-                            label="Max Score"
-                            placeholder="Max Score"
-                            className="w-[calc(50%-4px)]"
-                            value={exam.maxResult || ''}
-                            onChange={e =>
-                              setExams(prev =>
-                                prev.map((item, i) =>
-                                  i === index ? { ...item, maxResult: Number(e.target.value) } : item
+                              }
+                            />
+                            <InputField
+                              type="number"
+                              label="Max Score"
+                              placeholder="Max Score"
+                              className="w-[calc(50%-4px)]"
+                              value={exam.maxResult || ''}
+                              onChange={e =>
+                                setExams(prev =>
+                                  prev.map((item, i) =>
+                                    i === index ? { ...item, maxResult: Number(e.target.value) } : item
+                                  )
                                 )
-                              )
-                            }
-                          />
-                        </div>
+                              }
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))

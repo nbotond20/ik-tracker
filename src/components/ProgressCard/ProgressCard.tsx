@@ -90,12 +90,37 @@ export const ProgressCard = ({
   )
 
   const { mutate: deleteSubjectProgress } = api.subjectProgress.delete.useMutation({
-    onSuccess: handleRefetch,
+    onSuccess: () => handleRefetch(),
   })
 
   const [isAccordionOpen, setIsAccordionOpen] = useState(false)
-  const grade = calculateGrade(subjectProgress.marks as Marks, subjectProgress.exams)
-  const percentage = calculatePercentage(subjectProgress.exams)
+  const grade = useMemo(
+    () => calculateGrade(subjectProgress.marks as Marks, subjectProgress.exams),
+    [subjectProgress.exams, subjectProgress.marks]
+  )
+  const percentage = useMemo(() => calculatePercentage(subjectProgress.exams), [subjectProgress.exams])
+
+  const { mutate: updateExam } = api.exam.update.useMutation({ onSuccess: () => handleRefetch() })
+
+  const [examResults, setExamResults] = useState<Exam[]>(subjectProgress.exams)
+  const examResultsChanged = useMemo(
+    () => examResults.some((exam, index) => exam.result !== subjectProgress.exams[index]!.result),
+    [examResults, subjectProgress]
+  )
+
+  const handleUpdateExams = () => {
+    if (!examResultsChanged) return
+    examResults.forEach((exam, idx) => {
+      if (exam.result !== subjectProgress.exams[idx]!.result) {
+        updateExam({
+          id: exam.id,
+          partialExam: {
+            result: exam.result,
+          },
+        })
+      }
+    })
+  }
 
   return (
     <motion.div
@@ -110,7 +135,7 @@ export const ProgressCard = ({
         setExpanded={setIsAccordionOpen}
       >
         <div className="relative overflow-x-auto mb-6">
-          <ExamsTable exams={subjectProgress.exams} />
+          <ExamsTable examResults={examResults} setExamResults={setExamResults} />
         </div>
         <div className="flex w-full mb-6">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -181,9 +206,10 @@ export const ProgressCard = ({
           </button>
           {/* //TODO: Add confirmation modal to DELETE */}
           <button
-            disabled
+            disabled={!examResultsChanged}
             type="button"
             className="disabled:bg-blue-400 dark:disabled:bg-blue-900 disabled:text-gray-200 dark:disabled:text-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            onClick={handleUpdateExams}
           >
             Save Changes
           </button>

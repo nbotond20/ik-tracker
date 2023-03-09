@@ -35,7 +35,11 @@ export const MarkTable = ({ marks, maxResult, editing, setMarks }: MarkTableProp
               </td>
               <td className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">{index + 1}</td>
               <td className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">
-                {mark !== -1 ? (index !== 0 ? `${Math.round((mark / maxResult) * 100)}%` : '-') : '-'}
+                {mark !== -1 && maxResult !== 0
+                  ? index !== 0
+                    ? `${Math.round((mark / maxResult) * 100)}%`
+                    : '-'
+                  : '-'}
               </td>
             </tr>
           ))}
@@ -43,9 +47,8 @@ export const MarkTable = ({ marks, maxResult, editing, setMarks }: MarkTableProp
           Array.from(Array(5).keys()).map((_, index) => (
             <tr key={index}>
               <td className="py-1 border border-gray-300 dark:border-gray-600 text-center">
+                {/* TODO: Fix number input (can't remove 0) */}
                 <InputField
-                  pattern="[0-9]*"
-                  inputMode="numeric"
                   type="number"
                   value={index !== 0 ? (marks[index] !== -1 ? marks[index] : '') : 0}
                   disabled={index === 0}
@@ -56,7 +59,7 @@ export const MarkTable = ({ marks, maxResult, editing, setMarks }: MarkTableProp
                     setMarks?.(
                       prev =>
                         prev.map((mark, i) =>
-                          i === index ? (e.target.validity.valid ? Number(e.target.value) : -1) : mark
+                          i === index ? (e.target.value === '' ? -1 : Number(e.target.value)) : mark
                         ) as Marks
                     )
                   }}

@@ -3,6 +3,7 @@ import type { TableColumnHeader } from '@components/SubjectTable/SubjectTable'
 export interface Page {
   label: string
   href: string
+  protected?: boolean
 }
 
 export const pages: Page[] = [
@@ -17,7 +18,8 @@ export const pages: Page[] = [
   {
     label: 'Dashboard 🚧',
     href: '/dashboard',
-  },
+    protected: true,
+  } /* ,
   {
     label: 'Calculator 🚧',
     href: '/calculator',
@@ -25,7 +27,7 @@ export const pages: Page[] = [
   {
     label: 'Current Semester 🚧',
     href: '/about',
-  },
+  }, */,
 ]
 
 export const tableColumnHeaders = [

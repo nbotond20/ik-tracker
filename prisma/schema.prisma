@@ -131,7 +131,7 @@ model SubjectProgress {
     userId      String   @db.ObjectId
     user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
     exams       Exam[]
-    semester    Int
+    semester    Int      @default(1)
     marks       Float[]
 
     @@unique([subjectId, userId, semester, subjectName])

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { LinkButton } from '@components/Button/Button'
-import { pages } from '@constants/pages'
+import { pages as PAGES_CONSTANT } from '@constants/pages'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 
@@ -18,11 +18,13 @@ interface HeaderProps {
 
 export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false)
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
 
   const toggleMenu = (open?: boolean) => {
     setIsOpen(prev => open ?? !prev)
   }
+
+  const pages = status !== 'loading' && !session?.user && PAGES_CONSTANT.filter(page => !page.protected)
 
   if (CustomHeader) {
     return <CustomHeader />
@@ -93,8 +95,8 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
             )}
             <DarkModeToggle className="hidden lg:inline-flex" />
           </div>
-          <NavLinks links={pages} />
-          <MobileMenu links={pages} toggleMenu={toggleMenu} isOpen={isOpen} />
+          <NavLinks links={pages || PAGES_CONSTANT} />
+          <MobileMenu links={pages || PAGES_CONSTANT} toggleMenu={toggleMenu} isOpen={isOpen} />
         </div>
       </nav>
     </header>

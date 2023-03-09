@@ -5,6 +5,7 @@ interface ButtonProps {
   onClick?: () => void
   className?: string
   variant?: 'filled' | 'outlined'
+  disabled?: boolean
 }
 
 const defaultFilledButtonStyles =
@@ -13,11 +14,17 @@ const defaultFilledButtonStyles =
 const defaultOutlinedButtonStyles =
   'px-4 py-2 rounded-lg text-sm font-medium text-gray-800 hover:bg-gray-50 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800 '
 
-export const Button = ({ children, variant, className, ...props }: ButtonProps) => {
+const disabledButtonStyles =
+  'cursor-not-allowed disabled:bg-blue-400 dark:disabled:bg-blue-900 disabled:text-gray-200 dark:disabled:text-gray-400'
+
+export const Button = ({ children, variant, className, disabled, ...props }: ButtonProps) => {
   return (
     <button
       {...props}
-      className={`${variant === 'filled' ? defaultFilledButtonStyles : defaultOutlinedButtonStyles} ${className || ''}`}
+      disabled={disabled}
+      className={`${variant === 'filled' ? defaultFilledButtonStyles : defaultOutlinedButtonStyles} ${
+        className || ''
+      } ${disabled ? disabledButtonStyles : ''}`}
     >
       {children}
     </button>

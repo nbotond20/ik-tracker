@@ -6,18 +6,18 @@ export const examSchema = z
   .object({
     resultType: ResultTypeSchema,
     name: z.string(),
-    minResult: z.number().optional(),
-    maxResult: z.number().optional(),
-    result: z.number().optional(),
+    minResult: z.number().nullable().optional(),
+    maxResult: z.number().nullable().optional(),
+    result: z.number().nullable().optional(),
   })
   .strict()
 
-export const createExamSchema = z
+/* export const createExamSchema = z
   .object({
     subjectProgressId: z.string(),
     exam: examSchema,
   })
-  .strict()
+  .strict() */
 
 export const updateExamSchema = z
   .object({
