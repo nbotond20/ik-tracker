@@ -248,6 +248,7 @@ export const SubjectResultModal = ({
                   onItemSelected={handleOnSubjectComboBoxChange}
                   initialSelectedItem={initialSubjectComboBoxValue}
                   label="Subject"
+                  placeholder="Select a subject..."
                 />
                 {showSubjectInputs && (
                   <>
@@ -318,6 +319,7 @@ export const SubjectResultModal = ({
                               : undefined
                           }
                           onItemSelected={handleOnResultTypeComboBoxChange}
+                          placeholder="Select a result type..."
                         />
                         {exam.resultType !== 'PASSFAIL' && exam.resultType !== 'GRADE' && (
                           <div className="flex gap-2">

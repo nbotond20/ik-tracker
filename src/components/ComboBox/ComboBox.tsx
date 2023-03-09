@@ -9,6 +9,7 @@ interface ComboboxProps {
   initialSelectedItem?: Item
   className?: string
   label?: string
+  placeholder?: string
 }
 
 export interface Item {
@@ -18,7 +19,14 @@ export interface Item {
   data?: unknown
 }
 
-export const Combobox = ({ items, onItemSelected, className, label, initialSelectedItem }: ComboboxProps) => {
+export const Combobox = ({
+  items,
+  onItemSelected,
+  className,
+  label,
+  initialSelectedItem,
+  placeholder,
+}: ComboboxProps) => {
   const [filteredItems, setItemsState] = useState<Item[]>(items)
   const [selectedItem, setSelectedItem] = useState<Item | undefined>(initialSelectedItem)
 
@@ -29,7 +37,11 @@ export const Combobox = ({ items, onItemSelected, className, label, initialSelec
       setItemsState(items)
     } else {
       setItemsState(prev =>
-        prev.filter(item => item.name.toLowerCase().includes(query) || item.value.toLowerCase().includes(query))
+        prev.filter(
+          item =>
+            item.name.toLowerCase().includes(query.toLowerCase()) ||
+            item.value.toLowerCase().includes(query.toLowerCase())
+        )
       )
     }
   }, [query, items])
@@ -52,7 +64,7 @@ export const Combobox = ({ items, onItemSelected, className, label, initialSelec
                 onChange={event => setQuery(event.target.value)}
                 className="placeholder:text-gray-400 w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-200 dark:focus:ring-blue-800 pr-9"
                 displayValue={(item: Item) => item.name}
-                placeholder="Select a subject..."
+                placeholder={placeholder}
               />
               <HeadlessCombobox.Button className="h-6 w-6 absolute right-2 top-2.5">
                 <ChevronUpDownIcon className="h-6 w-6 text-gray-400" />
