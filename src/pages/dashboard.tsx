@@ -6,8 +6,24 @@ import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTable
 import { ProgressCard } from '@components/ProgressCard/ProgressCard'
 import { SubjectResultModal } from '@components/SubjectResultModal/SubjectResultModal'
 import { api } from '@utils/api'
-import type { NextPage } from 'next'
+import type { GetServerSidePropsContext, NextPage } from 'next'
+import { getServerSession } from 'next-auth'
 import { useSession } from 'next-auth/react'
+
+import { authOptions } from './api/auth/[...nextauth]'
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const session = await getServerSession(context.req, context.res, authOptions)
+
+  if (!session?.user) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    }
+  }
+}
 
 const DashBoardPage: NextPage = () => {
   const [selectedSubjectProgressId, setSelectedSubjectProgressId] = useState<string | undefined>()
