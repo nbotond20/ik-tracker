@@ -37,7 +37,7 @@
     "@vercel/analytics": "0.1.11",
     "flowbite": "1.6.3",
     "framer-motion": "10.2.3",
-    "next": "13.2.3",
+    "next": "13.2.4",
     "next-auth": "4.20.1",
     "next-pwa": "5.6.0",
     "react": "18.2.0",
