@@ -33,7 +33,7 @@
     "@trpc/client": "10.15.0",
     "@trpc/next": "10.15.0",
     "@trpc/react-query": "10.15.0",
-    "@trpc/server": "10.14.1",
+    "@trpc/server": "10.15.0",
     "@vercel/analytics": "0.1.11",
     "flowbite": "1.6.4",
     "framer-motion": "10.2.4",
