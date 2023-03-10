@@ -4,7 +4,7 @@ specifiers:
   '@headlessui/react': 1.7.13
   '@heroicons/react': 2.0.16
   '@next-auth/prisma-adapter': 1.0.5
-  '@next/bundle-analyzer': 13.2.3
+  '@next/bundle-analyzer': 13.2.4
   '@prisma/client': 4.11.0
   '@tailwindcss/forms': 0.5.3
   '@tanstack/react-query': 4.26.1
@@ -87,7 +87,7 @@ dependencies:
   zod: 3.20.6
 
 devDependencies:
-  '@next/bundle-analyzer': 13.2.3
+  '@next/bundle-analyzer': 13.2.4
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
   '@testing-library/cypress': 9.0.0_cypress@12.7.0
   '@testing-library/jest-dom': 5.16.5
@@ -1710,8 +1710,8 @@ packages:
       next-auth: 4.20.1_nvzgbose6yf6w7ijjprgspqefi
     dev: false
 
-  /@next/bundle-analyzer/13.2.3:
-    resolution: {integrity: sha512-hPAT0ja6zHmEIrLYAWmdtpS07FCuUL8TxKP5ekzel+NoP4cNOykBS2Y265ciJwurpisd8Ux29g3QgeyBBSBnLA==}
+  /@next/bundle-analyzer/13.2.4:
+    resolution: {integrity: sha512-bY4Clt7f1roJextpeQOQQWfNiXI0O5UvfOEyfuM5YUGPQMOCAZD2zjLjolakdn9Dm2yyMQUQ6JDE+iJK0dIeLA==}
     dependencies:
       webpack-bundle-analyzer: 4.7.0
     transitivePeerDependencies:
