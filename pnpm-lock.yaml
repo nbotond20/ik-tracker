@@ -14,7 +14,7 @@ specifiers:
   '@trivago/prettier-plugin-sort-imports': 4.1.1
   '@trpc/client': 10.15.0
   '@trpc/next': 10.15.0
-  '@trpc/react-query': 10.14.1
+  '@trpc/react-query': 10.15.0
   '@trpc/server': 10.14.1
   '@types/jest': 29.4.0
   '@types/next-pwa': 5.6.2
@@ -70,8 +70,8 @@ dependencies:
   '@prisma/client': 4.11.0_prisma@4.11.0
   '@tanstack/react-query': 4.26.1_biqbaboplfbrettd7655fr4n2y
   '@trpc/client': 10.15.0_@trpc+server@10.14.1
-  '@trpc/next': 10.15.0_fdrcicqfnr6na4crtw4rvh4qmq
-  '@trpc/react-query': 10.14.1_pkbihdsr53ezzqsndrblvvqbs4
+  '@trpc/next': 10.15.0_ivopxc7sntwjwmmaet3v6jtddu
+  '@trpc/react-query': 10.15.0_pkbihdsr53ezzqsndrblvvqbs4
   '@trpc/server': 10.14.1
   '@vercel/analytics': 0.1.11_react@18.2.0
   flowbite: 1.6.4
@@ -2111,7 +2111,7 @@ packages:
       '@trpc/server': 10.14.1
     dev: false
 
-  /@trpc/next/10.15.0_fdrcicqfnr6na4crtw4rvh4qmq:
+  /@trpc/next/10.15.0_ivopxc7sntwjwmmaet3v6jtddu:
     resolution: {integrity: sha512-jekFhfvqvw5+KP+ya3zK0nXlNtOTBjlhAynlIJqTOoTM08rx1s24x3S35seaxKmxVSdREClmpNgoZmaHWH6rlw==}
     peerDependencies:
       '@tanstack/react-query': ^4.3.8
@@ -2124,7 +2124,7 @@ packages:
     dependencies:
       '@tanstack/react-query': 4.26.1_biqbaboplfbrettd7655fr4n2y
       '@trpc/client': 10.15.0_@trpc+server@10.14.1
-      '@trpc/react-query': 10.14.1_pkbihdsr53ezzqsndrblvvqbs4
+      '@trpc/react-query': 10.15.0_pkbihdsr53ezzqsndrblvvqbs4
       '@trpc/server': 10.14.1
       next: 13.2.4_pjwopsidmaokadturxaafygjp4
       react: 18.2.0
@@ -2132,12 +2132,12 @@ packages:
       react-ssr-prepass: 1.5.0_react@18.2.0
     dev: false
 
-  /@trpc/react-query/10.14.1_pkbihdsr53ezzqsndrblvvqbs4:
-    resolution: {integrity: sha512-lwMGndGSdC1HxQpAPOWAtv3bOPtlG2GE6vO69i9U7yuaDwZ08MGkDANE9tqI7t2MZdb8U2yWPbPcs6L5cctVbw==}
+  /@trpc/react-query/10.15.0_pkbihdsr53ezzqsndrblvvqbs4:
+    resolution: {integrity: sha512-MD8JBoviAioI3ssOzN+Uxd8uGvhgfqvtbmkdhYQkQJOBlQw+4A55BfeXykeRmIHOs6X83iiqZVVerximEzTADQ==}
     peerDependencies:
       '@tanstack/react-query': ^4.3.8
-      '@trpc/client': 10.14.1
-      '@trpc/server': 10.14.1
+      '@trpc/client': 10.15.0
+      '@trpc/server': 10.15.0
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
