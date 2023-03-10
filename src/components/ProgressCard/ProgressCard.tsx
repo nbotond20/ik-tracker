@@ -30,12 +30,10 @@ export const ProgressCard = ({
     [subjectProgress.exams]
   )
 
-  const { mutate: deleteSubjectProgress } = api.subjectProgress.delete.useMutation({
+  const { mutateAsync: deleteSubjectProgress } = api.subjectProgress.delete.useMutation({
     onSuccess: () => {
       handleRefetch()
-      toast.success(`Subject progress deleted successfully.`)
     },
-    onError: () => toast.error(`Failed to delete subject progress.`),
   })
 
   const [isAccordionOpen, setIsAccordionOpen] = useState(false)
@@ -45,12 +43,10 @@ export const ProgressCard = ({
   )
   const percentage = useMemo(() => calculatePercentage(subjectProgress.exams), [subjectProgress.exams])
 
-  const { mutate: updateExam } = api.exam.update.useMutation({
+  const { mutateAsync: updateExam } = api.exam.update.useMutation({
     onSuccess: () => {
       handleRefetch()
-      toast.success(`Score saved successfully.`)
     },
-    onError: () => toast.error(`Failed to update exam.`),
   })
 
   const [examResults, setExamResults] = useState<Exam[]>(subjectProgress.exams)
@@ -63,12 +59,19 @@ export const ProgressCard = ({
     if (!examResultsChanged) return
     examResults.forEach((exam, idx) => {
       if (exam.result !== subjectProgress.exams[idx]!.result) {
-        updateExam({
-          id: exam.id,
-          partialExam: {
-            result: exam.result,
-          },
-        })
+        void toast.promise(
+          updateExam({
+            id: exam.id,
+            partialExam: {
+              result: exam.result,
+            },
+          }),
+          {
+            loading: 'Saving progress...',
+            success: <b>Successfully saved progress!</b>,
+            error: <b>Failed to save progress</b>,
+          }
+        )
       }
     })
   }
@@ -149,7 +152,13 @@ export const ProgressCard = ({
             Edit
           </button>
           <button
-            onClick={() => deleteSubjectProgress({ id: subjectProgress.id })}
+            onClick={() =>
+              void toast.promise(deleteSubjectProgress({ id: subjectProgress.id }), {
+                loading: 'Deleting subject progress...',
+                success: <b>Successfully deleted subject progress!</b>,
+                error: <b>Failed to delete subject progress.</b>,
+              })
+            }
             type="button"
             className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
           >

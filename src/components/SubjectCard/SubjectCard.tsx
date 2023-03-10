@@ -14,7 +14,7 @@ export const SubjectCard = ({ subject, setSelectedSubject, isSelectable }: Subje
       layoutId={subject.id}
       className={`${
         isSelectable ? 'cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700' : ''
-      } overflow-y-auto col-span-12 block rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-6 max-h-[calc(100dvh-16px)]`}
+      } overflow-y-auto col-span-12 block rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-6 max-h-[calc(100vh-16px)]`}
       onClick={() => isSelectable && setSelectedSubject(subject)}
     >
       <div className="mb-4 flex items-start justify-between">

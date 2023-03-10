@@ -4,8 +4,12 @@ import { z } from 'zod'
 import { createTRPCRouter, protectedProcedure } from '../trpc'
 
 export const examRouter = createTRPCRouter({
+  getAll: protectedProcedure.query(({ ctx }) => {
+    return ctx.prisma.exam.findMany()
+  }),
+
   delete: protectedProcedure
-    .input(z.object({ id: z.string({ required_error: 'Missing exam id!' }) }))
+    .input(z.object({ id: z.string({ required_error: 'Missing exam id!' }) }).strict())
     .mutation(({ ctx, input }) => {
       return ctx.prisma.exam.delete({
         where: {

@@ -44,39 +44,36 @@ export const SubjectResultModal = ({
   handleRefetch,
 }: SubjectResultModalProps) => {
   const { data: session } = useSession()
+
   const { data: subjectProgress, refetch: refetchSubjectProgress } = api.subjectProgress.get.useQuery(
     {
       id: subjectProgressId!,
     },
     { enabled: open && !!subjectProgressId }
   )
-  const { mutate: createSubjectProgress } = api.subjectProgress.create.useMutation({
+  const { mutateAsync: createSubjectProgress } = api.subjectProgress.create.useMutation({
     onSuccess: () => {
       setSelectedSubjectProgressId(undefined)
       closeModal?.()
       handleRefetch()
-      toast.success('Created subject progress successfully.')
-    },
-    onError: () => {
-      toast.error('Failed to create subject progress.')
     },
   })
-  const { mutate: updateSubjectProgress } = api.subjectProgress.update.useMutation({
+  const { mutateAsync: updateSubjectProgress } = api.subjectProgress.update.useMutation({
     onSuccess: () => {
       setSelectedSubjectProgressId(undefined)
       closeModal?.()
       handleRefetch()
       void refetchSubjectProgress()
-      toast.success('Saved subject progress successfully.')
     },
   })
-
   const { mutate: deleteExam } = api.exam.delete.useMutation({
     onError: () => {
       toast.error('Failed to delete exam.')
     },
+    onSuccess: deletedExam => {
+      setExams(prev => prev.filter(exam => exam.id !== deletedExam.id))
+    },
   })
-
   const { data: subjects } = api.subject.getAll.useQuery(undefined, {
     enabled: open,
   })
@@ -84,10 +81,6 @@ export const SubjectResultModal = ({
   const [exams, setExams] = useState<(Partial<Exam> & { id: string; saved: boolean })[]>(
     subjectProgress?.exams.map(exam => ({ ...exam, saved: true })) || []
   )
-
-  useEffect(() => {
-    setExams(subjectProgress?.exams.map(exam => ({ ...exam, saved: true })) || [])
-  }, [subjectProgress])
 
   const subjtectsToComboBoxItems = useMemo(
     () => [
@@ -112,7 +105,9 @@ export const SubjectResultModal = ({
         }
       : undefined
   )
+
   useEffect(() => {
+    setExams(subjectProgress?.exams.map(exam => ({ ...exam, saved: true })) || [])
     setInitialSubjectComboBoxValue(
       subjectProgress // TODO: Not the best way to do this
         ? {
@@ -196,25 +191,36 @@ export const SubjectResultModal = ({
     }
 
     if (subjectProgress?.id) {
-      updateSubjectProgress({
-        id: subjectProgress.id,
-        partialSubjectProgress: {
-          subjectId: selectedSubjectId,
-          subjectName: subjectNameInput,
-          marks,
-          exams: [
-            ...exams.map(exam => ({
-              name: exam.name!,
-              resultType: exam.resultType!,
-              minResult: exam.minResult ?? undefined,
-              maxResult: exam.maxResult ?? undefined,
-              result: undefined,
-            })),
-          ],
-        },
-      })
+      void toast.promise(
+        updateSubjectProgress({
+          id: subjectProgress.id,
+          partialSubjectProgress: {
+            subjectId: selectedSubjectId,
+            subjectName: subjectNameInput,
+            marks,
+            exams: [
+              ...exams.map(exam => ({
+                name: exam.name!,
+                resultType: exam.resultType!,
+                minResult: exam.minResult ?? undefined,
+                maxResult: exam.maxResult ?? undefined,
+                result: undefined,
+              })),
+            ],
+          },
+        }),
+        {
+          loading: 'Updating subject progress...',
+          success: <b>Successfully updated subject progress!</b>,
+          error: <b>Failed to update subject progress.</b>,
+        }
+      )
     } else {
-      createSubjectProgress(data)
+      void toast.promise(createSubjectProgress(data), {
+        loading: 'Creating subject progress...',
+        success: <b>Successfully created subject progress!</b>,
+        error: <b>Failed to create subject progress.</b>,
+      })
     }
   }
 
@@ -229,7 +235,7 @@ export const SubjectResultModal = ({
           className="fixed top-0 left-0 right-0 z-50 flex h-screen max-h-screen w-full items-center justify-center overflow-hidden p-2 backdrop-blur md:inset-0 md:h-full"
         >
           <div className="sm:cardScrollBar relative max-h-screen w-full h-auto max-w-screen-md">
-            <motion.div className="overflow-y-auto col-span-12 block rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-6 max-h-[calc(100dvh-16px)]">
+            <motion.div className="overflow-y-auto col-span-12 block rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-6 max-h-[calc(100vh-16px)]">
               <div className="mb-4 flex items-start justify-between">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {subjectProgress ? 'Edit progress' : 'Add progress'}
@@ -290,7 +296,7 @@ export const SubjectResultModal = ({
                     >
                       <div className="flex w-full flex-col gap-2">
                         <InputField
-                          label={`${index + 1}. Exam Name`}
+                          label={`${index + 1}. Exam Name ${!exam.saved ? '(Not saved)' : ''}`}
                           placeholder="Exam Name"
                           className="w-full"
                           value={exam.name || ''}
@@ -299,8 +305,8 @@ export const SubjectResultModal = ({
                               <TrashIcon
                                 className="h-5 w-5 text-red-500 cursor-pointer"
                                 onClick={() => {
-                                  if (exam.saved) deleteExam({ id: exam.id })
-                                  setExams(prev => prev.filter((_, i) => i !== index)) // TODO: Change optimistic update
+                                  if (exam.saved) deleteExam({ id: exam.id.replaceAll('a', 'b') })
+                                  else setExams(prev => prev.filter((_, i) => i !== index))
                                 }}
                               />
                             </div>
