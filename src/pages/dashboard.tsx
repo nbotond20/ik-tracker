@@ -79,7 +79,7 @@ const DashBoardPage: NextPage = () => {
           closeModal={handleCloseModal}
         />
       )}
-      <div className="w-full max-w-screen-2xl px-2 sm:px-4 md:px-6 lg:px-8">
+      <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Dashboard</h1>
           <div className="flex items-center">
@@ -97,7 +97,7 @@ const DashBoardPage: NextPage = () => {
             </select>
           </div>
         </div>
-        <div className="w-full my-12 h-fit grid gap-4 md:gap-6 lg:gap-8 xl:gap-10 grid-cols-12">
+        <div className="w-full my-12 h-fit grid gap-6 grid-cols-12">
           {isLoading && (
             <div className="col-span-12">
               <SubjectTableLoadingState />

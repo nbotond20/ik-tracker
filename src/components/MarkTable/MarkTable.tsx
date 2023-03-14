@@ -17,10 +17,10 @@ export const MarkTable = ({ marks, maxResult, editing, setMarks }: MarkTableProp
     <table className="w-full text-sm text-gray-500 dark:text-gray-400 ">
       <thead>
         <tr>
-          <th scope="col" className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">
+          <th scope="col" className="px-1 py-1 border border-gray-300 dark:border-gray-600 text-center">
             Points
           </th>
-          <th scope="col" className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">
+          <th scope="col" className="px-1 py-1 border border-gray-300 dark:border-gray-600 text-center">
             Grade
           </th>
         </tr>
@@ -30,11 +30,11 @@ export const MarkTable = ({ marks, maxResult, editing, setMarks }: MarkTableProp
           marks &&
           marks.map((mark, index) => (
             <tr key={index}>
-              <td className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">
+              <td className="px-1 py-1 border border-gray-300 dark:border-gray-600 text-center">
                 {mark !== -1 ? `${mark}p` : '-'}
               </td>
-              <td className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">{index + 1}</td>
-              <td className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">
+              <td className="px-1 py-1 border border-gray-300 dark:border-gray-600 text-center">{index + 1}</td>
+              <td className="px-1 py-1 border border-gray-300 dark:border-gray-600 text-center">
                 {mark !== -1 && maxResult !== 0
                   ? index !== 0
                     ? `${Math.round((mark / maxResult) * 100)}%`

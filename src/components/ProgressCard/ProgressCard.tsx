@@ -78,9 +78,9 @@ export const ProgressCard = ({
 
   return (
     <motion.div
-      className={`flex rounded-lg border border-gray-300 px-4 py-4 shadow dark:border-gray-800 dark:bg-gray-800 bg-gray-50 col-span-12 h-fit md:col-span-6 xl:col-span-4 ${
+      className={`flex rounded-lg border border-gray-300 px-4 py-4 shadow dark:border-gray-800 dark:bg-gray-800 bg-gray-50 col-span-12 h-fit lg:col-span-6 2xl:col-span-4 ${
         className || ''
-      } ${isAccordionOpen ? 'h-auto' : 'h-max'}`}
+      } ${isAccordionOpen ? 'h-auto min-h-[600px]' : 'h-max'}`}
     >
       <Accordion
         title={subjectProgress.subject?.courseName ?? subjectProgress.subjectName ?? '-'}
@@ -88,61 +88,60 @@ export const ProgressCard = ({
         titleClassName="text-black dark:text-white sm:text-lg"
         setExpanded={setIsAccordionOpen}
       >
-        <div className="relative overflow-x-auto mb-6">
-          <ExamsTable examResults={examResults} setExamResults={setExamResults} />
-        </div>
-        <div className="flex w-full mb-6">
-          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <tbody>
-              <tr>
-                <th
-                  scope="row"
-                  className="px-3 py-2 font-medium text-gray-900  whitespace-nowrap dark:text-white border border-gray-300 dark:border-gray-600"
-                >
-                  Predicted grade
-                </th>
-                <td
-                  className={`${getGradeColor(
-                    grade
-                  )} px-3 py-2 border border-gray-300 dark:border-gray-600 text-center dark:text-gray-50 text-gray-800 font-medium`}
-                >
-                  {grade || '-'}
-                </td>
-              </tr>
-              <tr>
-                <th
-                  scope="row"
-                  className="px-3 py-2 font-medium text-gray-900  whitespace-nowrap dark:text-white border border-gray-300 dark:border-gray-600"
-                >
-                  Predicted percentage
-                </th>
-                <td className="px-3 py-2 border border-gray-300 dark:border-gray-600 text-center bg-gray-200 dark:bg-gray-700 dark:text-gray-50 text-gray-800 font-medium">
-                  {percentage ? `${percentage}%` : '-'}
-                </td>
-              </tr>
-              <tr>
-                <th
-                  scope="row"
-                  className="px-3 py-2 font-medium text-gray-900  whitespace-nowrap dark:text-white border border-gray-300 dark:border-gray-600"
-                >
-                  Subject Credit
-                </th>
-                <td className="px-3 py-2 border border-gray-300 dark:border-gray-600 text-center bg-gray-200 dark:bg-gray-700 dark:text-gray-50 text-gray-800 font-medium">
-                  {subjectProgress.subject?.credit ?? subjectProgress.credit ?? '-'}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <Accordion title="Grades" titleClassName="text-sm font-normal italic dark:text-gray-300">
-          <div className="relative overflow-x-auto">
-            <MarkTable
-              marks={subjectProgress.marks as [number, number, number, number, number]}
-              maxResult={maxResultPerSubject}
-            />
+        <div className="flex flex-col justify-between h-full">
+          <div className="relative overflow-x-auto mb-6">
+            <ExamsTable examResults={examResults} setExamResults={setExamResults} />
           </div>
-        </Accordion>
-        <div className="flex-grow w-full" />
+          <div className="flex w-full gap-4 sm:gap-2 flex-col sm:flex-row">
+            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 min-w-[calc(50%-8px)]">
+              <tbody>
+                <tr>
+                  <th
+                    scope="row"
+                    className="px-3 py-2 font-medium text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600"
+                  >
+                    Predicted grade
+                  </th>
+                  <td
+                    className={`${getGradeColor(
+                      grade
+                    )} px-3 py-2 border border-gray-300 dark:border-gray-600 text-center dark:text-gray-50 text-gray-800 font-medium`}
+                  >
+                    {grade || '-'}
+                  </td>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    className="px-3 py-2 font-medium text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600"
+                  >
+                    Predicted percentage
+                  </th>
+                  <td className="px-3 py-2 border border-gray-300 dark:border-gray-600 text-center bg-gray-200 dark:bg-gray-700 dark:text-gray-50 text-gray-800 font-medium">
+                    {percentage ? `${percentage}%` : '-'}
+                  </td>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    className="px-3 py-2 font-medium text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600"
+                  >
+                    Subject Credit
+                  </th>
+                  <td className="px-3 py-2 border border-gray-300 dark:border-gray-600 text-center bg-gray-200 dark:bg-gray-700 dark:text-gray-50 text-gray-800 font-medium">
+                    {subjectProgress.subject?.credit ?? subjectProgress.credit ?? '-'}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div className="relative overflow-x-auto min-w-[calc(50%-4px)]">
+              <MarkTable
+                marks={subjectProgress.marks as [number, number, number, number, number]}
+                maxResult={maxResultPerSubject}
+              />
+            </div>
+          </div>
+        </div>
         <div className="w-full flex justify-between mt-6">
           <button
             onClick={() => setSelectedSubjectProgressId(subjectProgress.id)}
