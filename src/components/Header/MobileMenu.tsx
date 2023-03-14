@@ -11,7 +11,7 @@ const ArrowLeftOnRectangleIcon = dynamic(() => import('@heroicons/react/24/outli
 const menuItemStyle =
   'flex w-full items-center border-gray-500 h-11 text-lg dark:text-white text-gray-600 transition-all ease-in-out '
 const menuItemContainerStyle =
-  'absolute lg:hidden left-0 top-16 flex w-full flex-col [transition:_background-color_0.35s_ease-in-out,height_0.65s_ease-in-out,color_0.25s_linear,border_0.35s_ease-in-out] dark:bg-gray-900 bg-white'
+  'absolute lg:hidden left-0 top-16 flex w-full flex-col [transition:_background-color_0.35s_ease-in-out,height_0.4s_ease-in-out,color_0.25s_linear,border_0.35s_ease-in-out] dark:bg-gray-900 bg-white'
 
 interface MobileMenuProps {
   links: Page[]
@@ -31,18 +31,18 @@ export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
         } border-b-[1px] border-gray-300 dark:border-gray-700`
       }
     >
-      <ul className={`p-10`}>
+      <ul className="p-10">
         {links.map((link, idx) => {
-          const forwardAnimationDelay = 100 + idx * 50
-          const backwardAnimationDelay = 300 - idx * 50
+          const forwardAnimationDelay = 50 + idx * 50
+          const backwardAnimationDelay = 100 - idx * 50
 
           return (
             <li
               key={link.href}
-              className={menuItemStyle + `${isOpen ? 'opacity-100 duration-500 ' : 'opacity-0 duration-300 '}`}
+              className={menuItemStyle + `${isOpen ? 'opacity-100 duration-500 ' : 'opacity-0 duration-300 '} mb-6`}
               style={{ transitionDelay: isOpen ? `${forwardAnimationDelay}ms` : `${backwardAnimationDelay}ms` }}
             >
-              <Link href={link.href} className="w-full" onClick={() => toggleMenu(false)}>
+              <Link href={link.href} className="w-full text-3xl" onClick={() => toggleMenu(false)}>
                 {link.label}
               </Link>
             </li>
@@ -53,7 +53,7 @@ export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
       <div className={`p-10`}>
         <div
           className={menuItemStyle + `${isOpen ? 'opacity-100 duration-500 ' : 'opacity-0 duration-300 '}`}
-          style={{ transitionDelay: isOpen ? `${350}ms` : `${50}ms` }}
+          style={{ transitionDelay: isOpen ? `${250}ms` : `${50}ms` }}
         >
           {session?.user ? (
             <span
