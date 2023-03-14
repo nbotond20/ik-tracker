@@ -1,4 +1,3 @@
-import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo, useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 
@@ -10,6 +9,7 @@ import { InputField } from '@components/InputField/InputField'
 import type { Marks } from '@components/MarkTable/MarkTable'
 import { MarkTable } from '@components/MarkTable/MarkTable'
 import { TrashIcon } from '@heroicons/react/24/outline'
+import type { SubjectProgressWithExamsAndSubject } from '@models/SubjectProgressWithExamsAndSubject'
 import type { Exam } from '@prisma/client'
 import { ResultType } from '@prisma/client'
 import { api } from '@utils/api'
@@ -18,9 +18,8 @@ import { useSession } from 'next-auth/react'
 import { v4 as uuidv4 } from 'uuid'
 
 interface SubjectResultModalProps {
-  subjectProgressId: string | undefined
-  setSelectedSubjectProgressId: Dispatch<SetStateAction<string | undefined>>
-  handleRefetch: () => void
+  subjectProgress: SubjectProgressWithExamsAndSubject | undefined
+  handleRefetch: () => Promise<void>
   open?: boolean
   closeModal?: () => void
 }
@@ -37,48 +36,14 @@ const resultTypesToComboBoxItems = (resultTypes: ResultType[], examId: string) =
 const allResultTypes = Object.keys(ResultType).map(key => ResultType[key as keyof typeof ResultType])
 
 export const SubjectResultModal = ({
-  subjectProgressId,
-  setSelectedSubjectProgressId,
+  subjectProgress,
   open = false,
   closeModal,
   handleRefetch,
 }: SubjectResultModalProps) => {
-  const { data: session } = useSession()
-
-  const { data: subjectProgress, refetch: refetchSubjectProgress } = api.subjectProgress.get.useQuery(
-    {
-      id: subjectProgressId!,
-    },
-    { enabled: open && !!subjectProgressId }
-  )
-  const { mutateAsync: createSubjectProgress } = api.subjectProgress.create.useMutation({
-    onSuccess: () => {
-      setSelectedSubjectProgressId(undefined)
-      closeModal?.()
-      handleRefetch()
-    },
-  })
-  const { mutateAsync: updateSubjectProgress } = api.subjectProgress.update.useMutation({
-    onSuccess: () => {
-      setSelectedSubjectProgressId(undefined)
-      closeModal?.()
-      handleRefetch()
-      void refetchSubjectProgress()
-    },
-  })
-  const { mutateAsync: deleteExam } = api.exam.delete.useMutation({
-    onSuccess: deletedExam => {
-      setExams(prev => prev.filter(exam => exam.id !== deletedExam.id))
-    },
-  })
   const { data: subjects } = api.subject.getAll.useQuery(undefined, {
     enabled: open,
   })
-
-  const [exams, setExams] = useState<(Partial<Exam> & { id: string; saved: boolean })[]>(
-    subjectProgress?.exams.map(exam => ({ ...exam, saved: true })) || []
-  )
-
   const subjtectsToComboBoxItems = useMemo(
     () => [
       { id: '-', name: 'Other', value: '' },
@@ -93,28 +58,30 @@ export const SubjectResultModal = ({
     ],
     [subjects]
   )
-  const [initialSubjectComboBoxValue, setInitialSubjectComboBoxValue] = useState(
-    subjectProgress // TODO: Not the best way to do this
-      ? {
-          id: subjectProgress.subjectId || '',
-          name: subjectProgress.subjectName || subjectProgress.subject?.courseName || '',
-          value: subjectProgress.subject?.code || '',
-        }
-      : undefined
-  )
 
-  useEffect(() => {
-    setExams(subjectProgress?.exams.map(exam => ({ ...exam, saved: true })) || [])
-    setInitialSubjectComboBoxValue(
-      subjectProgress // TODO: Not the best way to do this
-        ? {
-            id: subjectProgress.subjectId || '',
-            name: subjectProgress.subjectName || subjectProgress.subject?.courseName || '',
-            value: subjectProgress.subject?.code || '',
-          }
-        : undefined
-    )
-  }, [subjectProgress])
+  const { data: session } = useSession()
+
+  const { mutateAsync: createSubjectProgress } = api.subjectProgress.create.useMutation({
+    onSuccess: () => {
+      closeModal?.()
+      void handleRefetch()
+    },
+  })
+  const { mutateAsync: updateSubjectProgress } = api.subjectProgress.update.useMutation({
+    onSuccess: () => {
+      closeModal?.()
+      void handleRefetch()
+    },
+  })
+  const { mutateAsync: deleteExam } = api.exam.delete.useMutation({
+    onSuccess: deletedExam => {
+      setExams(prev => prev.filter(exam => exam.id !== deletedExam.id))
+    },
+  })
+
+  const [exams, setExams] = useState<(Partial<Exam> & { id: string; saved: boolean })[]>(
+    subjectProgress?.exams.map(exam => ({ ...exam, saved: true })) || []
+  )
 
   const [resultTypesToShow, setResultTypesToShow] = useState(allResultTypes)
   useEffect(() => {
@@ -222,7 +189,7 @@ export const SubjectResultModal = ({
   }
 
   return (
-    <AnimatePresence initial={false} onExitComplete={() => setSelectedSubjectProgressId(undefined)}>
+    <AnimatePresence initial={false}>
       {open && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -259,7 +226,15 @@ export const SubjectResultModal = ({
                 <Combobox
                   items={subjtectsToComboBoxItems}
                   onItemSelected={handleOnSubjectComboBoxChange}
-                  initialSelectedItem={initialSubjectComboBoxValue}
+                  initialSelectedItem={
+                    subjectProgress
+                      ? {
+                          id: (subjectProgress.subjectId || subjectProgress.subjectName)!,
+                          name: (subjectProgress.subjectName || subjectProgress.subject?.courseName)!,
+                          value: (subjectProgress.subjectId || subjectProgress.subjectName)!,
+                        }
+                      : undefined
+                  }
                   label="Subject"
                   placeholder="Select a subject..."
                 />

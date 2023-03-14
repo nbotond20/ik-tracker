@@ -1,12 +1,13 @@
 import type { Dispatch, SetStateAction } from 'react'
-import { useState, useMemo } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { toast } from 'react-hot-toast'
 
 import { Accordion } from '@components/Accordion/Accordion'
 import { ExamsTable } from '@components/ExamTable/ExamTable'
 import type { Marks } from '@components/MarkTable/MarkTable'
 import { MarkTable } from '@components/MarkTable/MarkTable'
-import type { Exam, Subject, SubjectProgress } from '@prisma/client'
+import type { SubjectProgressWithExamsAndSubject } from '@models/SubjectProgressWithExamsAndSubject'
+import type { Exam } from '@prisma/client'
 import { api } from '@utils/api'
 import { calculateGrade, calculatePercentage } from '@utils/calculateResultStats'
 import { getGradeColor } from '@utils/getGradeColor'
@@ -14,14 +15,14 @@ import { motion } from 'framer-motion'
 
 interface ProgressCardProps {
   className?: string
-  setSelectedSubjectProgressId: Dispatch<SetStateAction<string | undefined>>
-  subjectProgress: SubjectProgress & { exams: Exam[]; subject: Subject | null }
-  handleRefetch: () => void
+  setSelectedSubjectProgress: Dispatch<SetStateAction<SubjectProgressWithExamsAndSubject | undefined>>
+  subjectProgress: SubjectProgressWithExamsAndSubject
+  handleRefetch: () => Promise<void>
 }
 
 export const ProgressCard = ({
   className,
-  setSelectedSubjectProgressId,
+  setSelectedSubjectProgress,
   subjectProgress,
   handleRefetch,
 }: ProgressCardProps) => {
@@ -32,7 +33,7 @@ export const ProgressCard = ({
 
   const { mutateAsync: deleteSubjectProgress } = api.subjectProgress.delete.useMutation({
     onSuccess: () => {
-      handleRefetch()
+      void handleRefetch()
     },
   })
 
@@ -45,13 +46,16 @@ export const ProgressCard = ({
 
   const { mutateAsync: updateExam } = api.exam.update.useMutation({
     onSuccess: () => {
-      handleRefetch()
+      void handleRefetch()
     },
   })
 
   const [examResults, setExamResults] = useState<Exam[]>(subjectProgress.exams)
   const examResultsChanged = useMemo(
-    () => examResults.some((exam, index) => exam.result !== subjectProgress.exams[index]!.result),
+    () =>
+      examResults.some(
+        (exam, index) => index < subjectProgress.exams.length && exam.result !== subjectProgress.exams[index]!.result
+      ),
     [examResults, subjectProgress]
   )
 
@@ -75,6 +79,10 @@ export const ProgressCard = ({
       }
     })
   }
+
+  useEffect(() => {
+    setExamResults(subjectProgress.exams)
+  }, [subjectProgress])
 
   return (
     <motion.div
@@ -144,7 +152,7 @@ export const ProgressCard = ({
         </div>
         <div className="w-full flex justify-between mt-6">
           <button
-            onClick={() => setSelectedSubjectProgressId(subjectProgress.id)}
+            onClick={() => setSelectedSubjectProgress(subjectProgress)}
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >

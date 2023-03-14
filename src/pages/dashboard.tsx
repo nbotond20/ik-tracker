@@ -5,6 +5,7 @@ import { ScrollLayout } from '@components/Layout/ScrollLayout'
 import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTableLoadingState'
 import { ProgressCard } from '@components/ProgressCard/ProgressCard'
 import { SubjectResultModal } from '@components/SubjectResultModal/SubjectResultModal'
+import type { SubjectProgressWithExamsAndSubject } from '@models/SubjectProgressWithExamsAndSubject'
 import { api } from '@utils/api'
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import { getServerSession } from 'next-auth'
@@ -32,7 +33,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 const DashBoardPage: NextPage = () => {
-  const [selectedSubjectProgressId, setSelectedSubjectProgressId] = useState<string | undefined>()
+  const [selectedSubjectProgress, setSelectedSubjectProgress] = useState<
+    SubjectProgressWithExamsAndSubject | undefined
+  >()
 
   const { data: session } = useSession()
   const [semester, setSemester] = useState(session?.user?.currentSemester ?? 0)
@@ -53,27 +56,26 @@ const DashBoardPage: NextPage = () => {
     { enabled: !!session?.user }
   )
 
-  const handleRefetch = () => {
-    void refetchSubjectProgresses()
+  const handleRefetch = async () => {
+    await refetchSubjectProgresses()
   }
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const handleCloseModal = () => {
     setIsModalOpen(false)
-    setSelectedSubjectProgressId(undefined)
+    setSelectedSubjectProgress(undefined)
   }
 
   useEffect(() => {
-    if (!selectedSubjectProgressId) return
+    if (!selectedSubjectProgress) return
     setIsModalOpen(true)
-  }, [selectedSubjectProgressId])
+  }, [selectedSubjectProgress])
 
   return (
     <ScrollLayout>
       {isModalOpen && (
         <SubjectResultModal
-          subjectProgressId={selectedSubjectProgressId}
-          setSelectedSubjectProgressId={setSelectedSubjectProgressId}
+          subjectProgress={selectedSubjectProgress}
           handleRefetch={handleRefetch}
           open={isModalOpen}
           closeModal={handleCloseModal}
@@ -106,7 +108,7 @@ const DashBoardPage: NextPage = () => {
           {!isLoading &&
             subjectProgresses?.map(subjectProgress => (
               <ProgressCard
-                setSelectedSubjectProgressId={setSelectedSubjectProgressId}
+                setSelectedSubjectProgress={setSelectedSubjectProgress}
                 subjectProgress={subjectProgress}
                 key={subjectProgress.id}
                 handleRefetch={handleRefetch}
@@ -126,7 +128,7 @@ const DashBoardPage: NextPage = () => {
             variant="filled"
             className="text-white col-span-12 m-auto w-full mb-12 mt-4 max-w-[200px]"
             onClick={() => {
-              setSelectedSubjectProgressId(undefined)
+              setSelectedSubjectProgress(undefined)
               setIsModalOpen(true)
             }}
             disabled={isLoading}
