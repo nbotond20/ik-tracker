@@ -66,10 +66,7 @@ export const SubjectResultModal = ({
       void refetchSubjectProgress()
     },
   })
-  const { mutate: deleteExam } = api.exam.delete.useMutation({
-    onError: () => {
-      toast.error('Failed to delete exam.')
-    },
+  const { mutateAsync: deleteExam } = api.exam.delete.useMutation({
     onSuccess: deletedExam => {
       setExams(prev => prev.filter(exam => exam.id !== deletedExam.id))
     },
@@ -305,8 +302,15 @@ export const SubjectResultModal = ({
                               <TrashIcon
                                 className="h-5 w-5 text-red-500 cursor-pointer"
                                 onClick={() => {
-                                  if (exam.saved) deleteExam({ id: exam.id.replaceAll('a', 'b') })
-                                  else setExams(prev => prev.filter((_, i) => i !== index))
+                                  if (exam.saved) {
+                                    void toast.promise(deleteExam({ id: exam.id }), {
+                                      loading: 'Deleting exam...',
+                                      success: <b>Successfully deleted exam!</b>,
+                                      error: <b>Failed to delete exam.</b>,
+                                    })
+                                  } else {
+                                    setExams(prev => prev.filter((_, i) => i !== index))
+                                  }
                                 }}
                               />
                             </div>
