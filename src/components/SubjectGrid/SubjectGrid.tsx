@@ -6,7 +6,7 @@ import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { tableColumnHeaders } from '@constants/pages'
 import type { Subject } from '@prisma/client'
 import type { CompareType } from '@utils/subjectComparator'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 
 const ChevronUpDownIcon = dynamic(() => import('@heroicons/react/24/solid/ChevronUpDownIcon'))
@@ -62,9 +62,11 @@ export const SubjectGrid = ({
       </div>
       {!isLoading ? (
         <div className="grid w-full max-w-7xl grid-cols-12 gap-6">
-          {subjects.map(subject => (
-            <SubjectCard key={subject.id} subject={subject} setSelectedSubject={setSelectedSubject} isSelectable />
-          ))}
+          <AnimatePresence>
+            {subjects.map(subject => (
+              <SubjectCard key={subject.id} subject={subject} setSelectedSubject={setSelectedSubject} isSelectable />
+            ))}
+          </AnimatePresence>
         </div>
       ) : (
         <SubjectTableLoadingState />
