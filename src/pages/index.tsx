@@ -51,11 +51,11 @@ const HomePage: NextPage = () => {
                 <ArrowSmallRightIcon className="ml-2 -mr-1 h-5 w-5 fill-white stroke-white stroke-2" />
               </Link>
               <Link
-                href="/login"
+                href="/dashboard"
                 className="inline-flex items-center justify-center rounded-lg border border-gray-300 px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800"
                 data-testid="home-login-link"
               >
-                Go to login
+                Go to dashboard
               </Link>
             </div>
           </div>
