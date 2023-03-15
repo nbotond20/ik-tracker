@@ -247,13 +247,16 @@ export const SubjectResultModal = ({
                       onChange={e => setSubjectNameInput(e.target.value)}
                     />
                     <InputField
-                      type="number"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       label="Credit"
                       placeholder="Credit"
                       value={subjectCreditInput || ''}
                       min={0}
                       max={100}
-                      onChange={e => setSubjectCreditInput(Number(e.target.value))}
+                      onChange={e =>
+                        setSubjectCreditInput(prev => (e.target.validity.valid ? Number(e.target.value) : prev))
+                      }
                     />
                   </>
                 )}
@@ -319,30 +322,36 @@ export const SubjectResultModal = ({
                         {exam.resultType !== 'PASSFAIL' && exam.resultType !== 'GRADE' && (
                           <div className="flex gap-2">
                             <InputField
-                              type="number"
+                              inputMode="numeric"
+                              pattern="[0-9]*"
                               label="Min Score"
                               placeholder="Min Score"
                               className="w-[calc(50%-4px)]"
                               value={exam.minResult || ''}
                               onChange={e =>
                                 setExams(prev =>
-                                  prev.map((item, i) =>
-                                    i === index ? { ...item, minResult: Number(e.target.value) } : item
-                                  )
+                                  e.target.validity.valid
+                                    ? prev.map((item, i) =>
+                                        i === index ? { ...item, minResult: Number(e.target.value) } : item
+                                      )
+                                    : prev
                                 )
                               }
                             />
                             <InputField
-                              type="number"
+                              inputMode="numeric"
+                              pattern="[0-9]*"
                               label="Max Score"
                               placeholder="Max Score"
                               className="w-[calc(50%-4px)]"
                               value={exam.maxResult || ''}
                               onChange={e =>
                                 setExams(prev =>
-                                  prev.map((item, i) =>
-                                    i === index ? { ...item, maxResult: Number(e.target.value) } : item
-                                  )
+                                  e.target.validity.valid
+                                    ? prev.map((item, i) =>
+                                        i === index ? { ...item, maxResult: Number(e.target.value) } : item
+                                      )
+                                    : prev
                                 )
                               }
                             />

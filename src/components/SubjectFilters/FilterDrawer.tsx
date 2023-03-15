@@ -156,21 +156,31 @@ export const FilterDrawer = ({
                 <FilterDisclosure variant="mobile" title="Credit" active={!!creditRange.min || !!creditRange.max}>
                   <div className="flex items-center gap-4 grow justify-between">
                     <input
-                      type="number"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                       placeholder={'Min'}
                       value={creditRange.min ? creditRange.min : ''}
-                      onChange={e => setCreditRange(prev => ({ ...prev, min: Number(e.target.value) }))}
+                      onChange={e =>
+                        setCreditRange(prev =>
+                          e.target.validity.valid ? { ...prev, min: Number(e.target.value) } : prev
+                        )
+                      }
                       min={1}
                       max={20}
                     />
                     <span className="text-gray-400 dark:text-gray-500">{'-'}</span>
                     <input
-                      type="number"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                       placeholder={'Max'}
                       value={creditRange.max ? creditRange.max : ''}
-                      onChange={e => setCreditRange(prev => ({ ...prev, max: Number(e.target.value) }))}
+                      onChange={e =>
+                        setCreditRange(prev =>
+                          e.target.validity.valid ? { ...prev, max: Number(e.target.value) } : prev
+                        )
+                      }
                       min={1}
                       max={20}
                     />
@@ -180,21 +190,31 @@ export const FilterDrawer = ({
                 <FilterDisclosure variant="mobile" title="Semester" active={!!semesterRange.min || !!semesterRange.max}>
                   <div className="flex items-center gap-4 grow justify-between">
                     <input
-                      type="number"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                       placeholder={'Min'}
                       value={semesterRange.min ? semesterRange.min : ''}
-                      onChange={e => setSemesterRange(prev => ({ ...prev, min: Number(e.target.value) }))}
+                      onChange={e =>
+                        setSemesterRange(prev =>
+                          e.target.validity.valid ? { ...prev, min: Number(e.target.value) } : prev
+                        )
+                      }
                       min={1}
                       max={6}
                     />
                     <span className="text-gray-400 dark:text-gray-500">{'-'}</span>
                     <input
-                      type="number"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                       placeholder={'Max'}
                       value={semesterRange.max ? semesterRange.max : ''}
-                      onChange={e => setSemesterRange(prev => ({ ...prev, max: Number(e.target.value) }))}
+                      onChange={e =>
+                        setSemesterRange(prev =>
+                          e.target.validity.valid ? { ...prev, max: Number(e.target.value) } : prev
+                        )
+                      }
                       min={1}
                       max={6}
                     />

@@ -49,18 +49,20 @@ export const MarkTable = ({ marks, maxResult, editing, setMarks }: MarkTableProp
               <td className="py-1 border border-gray-300 dark:border-gray-600 text-center">
                 {/* TODO: Fix number input (can't remove 0) */}
                 <InputField
-                  type="number"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
                   value={index !== 0 ? (marks[index] !== -1 ? marks[index] : '') : 0}
                   disabled={index === 0}
                   placeholder="-"
                   className="w-1/4 m-auto"
                   inputClassName="text-center px-1 py-[2px]"
                   onChange={e => {
-                    setMarks?.(
-                      prev =>
-                        prev.map((mark, i) =>
-                          i === index ? (e.target.value === '' ? -1 : Number(e.target.value)) : mark
-                        ) as Marks
+                    setMarks?.(prev =>
+                      e.target.validity.valid
+                        ? (prev.map((mark, i) =>
+                            i === index ? (e.target.value === '' ? -1 : Number(e.target.value)) : mark
+                          ) as Marks)
+                        : prev
                     )
                   }}
                 />

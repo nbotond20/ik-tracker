@@ -36,18 +36,21 @@ export const ExamsTable = ({ examResults, setExamResults }: ExamsTableProps) => 
             <td className="px-2 py-1 border border-gray-300 dark:border-gray-600 text-center">
               {exam.resultType !== 'PASSFAIL' ? (
                 <input
-                  type="number"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
                   className="max-w-[60px] text-center bg-gray-50 border border-gray-300 m-auto text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="-"
                   value={exam.result ?? ''}
                   onChange={e =>
                     setExamResults(prev =>
-                      prev.map(examResult => {
-                        if (examResult.id === exam.id) {
-                          return { ...examResult, result: e.target.value === '' ? null : Number(e.target.value) }
-                        }
-                        return examResult
-                      })
+                      e.target.validity.valid
+                        ? prev.map(examResult => {
+                            if (examResult.id === exam.id) {
+                              return { ...examResult, result: e.target.value === '' ? null : Number(e.target.value) }
+                            }
+                            return examResult
+                          })
+                        : prev
                     )
                   }
                 />
