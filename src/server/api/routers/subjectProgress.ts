@@ -1,3 +1,4 @@
+import { TRPCError } from '@trpc/server'
 import { createSubjectProgressInputSchema, updateSubjectProgressInputSchema } from 'src/schemas/subjectProgress-schema'
 import { z } from 'zod'
 
@@ -43,21 +44,42 @@ export const subjectProgressRouter = createTRPCRouter({
     })
   }),
 
-  create: protectedProcedure.input(createSubjectProgressInputSchema).mutation(({ ctx, input }) => {
+  create: protectedProcedure.input(createSubjectProgressInputSchema).mutation(async ({ ctx, input }) => {
     const { session } = ctx
-    return ctx.prisma.subjectProgress.create({
-      data: {
+
+    const subjectProgressesThisSemester = await ctx.prisma.subjectProgress.findMany({
+      where: {
         userId: session.user.id,
         semester: input.semester,
-        subjectId: input.subjectId,
-        subjectName: input.subjectName,
-        credit: input.credit,
-        marks: input.marks,
-        exams: {
-          create: input.exams,
-        },
       },
     })
+
+    const existingSubjectProgress = subjectProgressesThisSemester.find(
+      subjectProgress =>
+        subjectProgress.subjectId === input.subjectId || subjectProgress.subjectName === input.subjectName
+    )
+
+    if (existingSubjectProgress) {
+      throw new TRPCError({ code: 'CONFLICT', message: 'Subject already exists in this semester!' })
+    }
+
+    try {
+      return await ctx.prisma.subjectProgress.create({
+        data: {
+          userId: session.user.id,
+          semester: input.semester,
+          subjectId: input.subjectId,
+          subjectName: input.subjectName,
+          credit: input.credit,
+          marks: input.marks,
+          exams: {
+            create: input.exams,
+          },
+        },
+      })
+    } catch {
+      throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR', message: 'Something went wrong!' })
+    }
   }),
 
   delete: protectedProcedure.input(z.object({ id: z.string() })).mutation(({ ctx, input }) => {

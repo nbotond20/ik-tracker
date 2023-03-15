@@ -44,8 +44,8 @@ const subjectNameNotSubjectId = z.object({
 
 export const createSubjectProgressInputSchema = z
   .union([
-    baseCreateSubjectProgressInputSchema.merge(subjectIdNotSubjectName).strict(),
-    baseCreateSubjectProgressInputSchema.merge(subjectNameNotSubjectId).strict(),
+    baseCreateSubjectProgressInputSchema.merge(subjectIdNotSubjectName),
+    baseCreateSubjectProgressInputSchema.merge(subjectNameNotSubjectId),
   ])
   .refine(
     data => {

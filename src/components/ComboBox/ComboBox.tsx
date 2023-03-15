@@ -10,6 +10,7 @@ interface ComboboxProps {
   className?: string
   label?: string
   placeholder?: string
+  errorMessage?: string
 }
 
 export interface Item {
@@ -26,6 +27,7 @@ export const Combobox = ({
   label,
   initialSelectedItem,
   placeholder,
+  errorMessage,
 }: ComboboxProps) => {
   const [filteredItems, setItemsState] = useState<Item[]>(items)
   const [selectedItem, setSelectedItem] = useState<Item | undefined>(initialSelectedItem)
@@ -57,12 +59,16 @@ export const Combobox = ({
     <div className={className || ''}>
       <HeadlessCombobox value={selectedItem || {}} onChange={setSelectedItem}>
         <div className="relative flex w-full h-full flex-col">
-          <div className="flex flex-col space-y-1">
+          <div className="flex flex-col">
             {label && <label className={`text-sm font-medium text-gray-700 dark:text-gray-200`}>{label}</label>}
-            <div className="relative flex w-full">
+            <div className="relative flex w-full mt-1">
               <HeadlessCombobox.Input
                 onChange={event => setQuery(event.target.value)}
-                className="placeholder:text-gray-400 w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-200 dark:focus:ring-blue-800 pr-9"
+                className={`${
+                  errorMessage
+                    ? 'border-red-500 focus:ring-red-500 border-2'
+                    : 'border-gray-200 focus:ring-blue-300 dark:border-gray-600 dark:focus:ring-blue-800'
+                } placeholder:text-gray-400 w-full rounded-lg border bg-white px-4 py-2.5 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 pr-9`}
                 displayValue={(item: Item) => item.name}
                 placeholder={placeholder}
               />
@@ -70,6 +76,7 @@ export const Combobox = ({
                 <ChevronUpDownIcon className="h-6 w-6 text-gray-400" />
               </HeadlessCombobox.Button>
             </div>
+            <span className="text-red-500 text-sm font-medium">{errorMessage}</span>
           </div>
 
           <HeadlessCombobox.Options className="min-h-[30px] max-h-32 mt-1 overflow-y-auto top-12 rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-200 dark:focus:ring-blue-800 flex flex-col gap-2">

@@ -52,7 +52,7 @@ export const SubjectResultModal = ({
           ...subject,
           courseName: `${subject.courseName} ${subject.code.at(-1) === 'E' ? 'Ea' : ''}${
             subject.code.at(-1) === 'G' ? 'Gy' : ''
-          } (${subject.specialisation})`, // TODO: Not the best way to do this
+          } (${subject.specialisation})`, // TODO: Not ideal
         }))
         .map(item => ({ id: item.id, name: item.courseName, value: item.code })) || []),
     ],
@@ -61,12 +61,14 @@ export const SubjectResultModal = ({
 
   const { data: session } = useSession()
 
-  const { mutateAsync: createSubjectProgress } = api.subjectProgress.create.useMutation({
-    onSuccess: () => {
-      closeModal?.()
-      void handleRefetch()
-    },
-  })
+  const { mutateAsync: createSubjectProgress, error: createSubjectProgressError } =
+    api.subjectProgress.create.useMutation({
+      onSuccess: () => {
+        closeModal?.()
+        void handleRefetch()
+      },
+    })
+
   const { mutateAsync: updateSubjectProgress } = api.subjectProgress.update.useMutation({
     onSuccess: () => {
       closeModal?.()
@@ -120,14 +122,30 @@ export const SubjectResultModal = ({
     if (item.id === '-') {
       setSelectedSubjectId(undefined)
       setShowSubjectInputs(true)
+      setSubjectError({
+        name: '',
+        credit: '',
+        subjectId: '',
+      })
     } else {
       setSelectedSubjectId(item.id)
       setShowSubjectInputs(false)
+      setSubjectError({
+        name: '',
+        credit: '',
+        subjectId: '',
+      })
     }
   }, [])
 
   const [subjectNameInput, setSubjectNameInput] = useState<string | undefined>()
   const [subjectCreditInput, setSubjectCreditInput] = useState<number | null>()
+
+  const [subjectError, setSubjectError] = useState({
+    name: '',
+    credit: '',
+    subjectId: '',
+  })
 
   const [marks, setMarks] = useState<Marks>((subjectProgress?.marks as Marks) || [-1, -1, -1, -1, -1])
 
@@ -135,7 +153,19 @@ export const SubjectResultModal = ({
     if (!session?.user?.currentSemester) return
 
     // Either subjectId or (subjectName and subjectCredit) must be defined
-    if (!selectedSubjectId && (!subjectNameInput || !subjectCreditInput)) return
+    if (!selectedSubjectId && (!subjectNameInput || !subjectCreditInput)) {
+      setSubjectError({
+        name: !selectedSubjectId && !subjectNameInput ? 'Name is required' : '',
+        credit: !selectedSubjectId && !subjectCreditInput ? 'Credit is required' : '',
+        subjectId: !showSubjectInputs && !selectedSubjectId ? 'Subject is required' : '',
+      })
+      return
+    }
+    setSubjectError({
+      name: '',
+      credit: '',
+      subjectId: '',
+    })
 
     const data = {
       ...(selectedSubjectId
@@ -237,6 +267,13 @@ export const SubjectResultModal = ({
                   }
                   label="Subject"
                   placeholder="Select a subject..."
+                  errorMessage={
+                    subjectError.subjectId
+                      ? subjectError.subjectId
+                      : createSubjectProgressError?.data?.code === 'CONFLICT' && !showSubjectInputs
+                      ? createSubjectProgressError?.message
+                      : ''
+                  }
                 />
                 {showSubjectInputs && (
                   <>
@@ -245,6 +282,13 @@ export const SubjectResultModal = ({
                       placeholder="Subject Name"
                       value={subjectNameInput || ''}
                       onChange={e => setSubjectNameInput(e.target.value)}
+                      errorMessage={
+                        subjectError.name
+                          ? subjectError.name
+                          : createSubjectProgressError?.data?.code === 'CONFLICT' && showSubjectInputs
+                          ? createSubjectProgressError?.message
+                          : ''
+                      }
                     />
                     <InputField
                       inputMode="numeric"
@@ -257,6 +301,7 @@ export const SubjectResultModal = ({
                       onChange={e =>
                         setSubjectCreditInput(prev => (e.target.validity.valid ? Number(e.target.value) : prev))
                       }
+                      errorMessage={subjectError.credit}
                     />
                   </>
                 )}
@@ -383,7 +428,7 @@ export const SubjectResultModal = ({
 
                 <div className="flex gap-2 justify-evenly">
                   <Button onClick={() => closeModal?.()}>Cancel</Button>
-                  {/* // TODO: Compare with initial values and ask for confirmation */}
+                  {/* TODO: Compare with initial values and ask for confirmation */}
                   <Button variant="filled" onClick={() => void handleSaveSubjectProgress()}>
                     Save
                   </Button>
