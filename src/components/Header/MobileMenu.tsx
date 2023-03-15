@@ -57,7 +57,7 @@ export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
         >
           {session?.user ? (
             <span
-              className="w-full flex items-center"
+              className="w-full flex items-center text-xl"
               onClick={() => {
                 void signOut({ redirect: false })
                 toggleMenu(false)

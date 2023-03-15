@@ -1,4 +1,5 @@
 import { type NextPage } from 'next'
+import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
@@ -15,6 +16,8 @@ const ArrowUpIcon = dynamic(() => import('@heroicons/react/24/outline/ArrowUpIco
 const ArrowSmallRightIcon = dynamic(() => import('@heroicons/react/24/outline/ArrowSmallRightIcon'))
 
 const HomePage: NextPage = () => {
+  const { data: session } = useSession()
+
   return (
     <div className="hideScrollbar relative max-h-[calc(100vh-64px)] w-screen snap-none overflow-auto scroll-smooth md:snap-y md:snap-mandatory">
       <div
@@ -42,14 +45,16 @@ const HomePage: NextPage = () => {
                 Use our app to track your progress and get the most out of your college experience. Be in control of
                 your future.
               </p>
-              <Link
-                href="/login"
-                className="mr-3 mb-3 inline-flex items-center justify-center rounded-lg bg-primary-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
-                data-testid="home-get-started-link"
-              >
-                Get started
-                <ArrowSmallRightIcon className="ml-2 -mr-1 h-5 w-5 fill-white stroke-white stroke-2" />
-              </Link>
+              {!session?.user && (
+                <Link
+                  href="/login"
+                  className="mr-3 mb-3 inline-flex items-center justify-center rounded-lg bg-primary-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+                  data-testid="home-get-started-link"
+                >
+                  Get started
+                  <ArrowSmallRightIcon className="ml-2 -mr-1 h-5 w-5 fill-white stroke-white stroke-2" />
+                </Link>
+              )}
               <Link
                 href="/dashboard"
                 className="inline-flex items-center justify-center rounded-lg border border-gray-300 px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800"
