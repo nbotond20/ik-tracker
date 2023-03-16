@@ -42,7 +42,7 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
                 <div className="flex items-center">
                   <div
                     className={`flex items-center whitespace-nowrap ${
-                      sortType === tableColumnHeader.sortType ? 'font-medium text-black dark:text-white' : ''
+                      sortType === tableColumnHeader.sortType ? 'text-black dark:text-white' : 'text-gray-400'
                     }`}
                   >
                     {tableColumnHeader.display}

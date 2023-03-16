@@ -93,7 +93,7 @@ export const ProgressCard = ({
       <Accordion
         title={subjectProgress.subject?.courseName ?? subjectProgress.subjectName ?? '-'}
         openByDefault
-        titleClassName="text-black dark:text-white"
+        titleClassName="text-black dark:text-white text-xl"
         setExpanded={setIsAccordionOpen}
       >
         <div className="flex flex-col justify-between h-full">
