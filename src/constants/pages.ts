@@ -18,7 +18,7 @@ export const pages: Page[] = [
   {
     label: 'Dashboard',
     href: '/dashboard',
-    protected: true,
+    /* protected: true, */
   } /* ,
   {
     label: 'Calculator 🚧',
