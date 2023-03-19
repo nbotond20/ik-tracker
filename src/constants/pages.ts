@@ -16,7 +16,7 @@ export const pages: Page[] = [
     href: '/search',
   },
   {
-    label: 'Dashboard 🚧',
+    label: 'Dashboard',
     href: '/dashboard',
     protected: true,
   } /* ,

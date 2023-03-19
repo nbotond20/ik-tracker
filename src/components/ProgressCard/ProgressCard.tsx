@@ -67,7 +67,11 @@ export const ProgressCard = ({
           updateExam({
             id: exam.id,
             partialExam: {
+              name: exam.name,
               result: exam.result,
+              resultType: exam.resultType,
+              maxResult: exam.maxResult,
+              minResult: exam.minResult,
             },
           }),
           {
@@ -142,12 +146,14 @@ export const ProgressCard = ({
                 </tr>
               </tbody>
             </table>
-            <div className="relative overflow-x-auto min-w-[calc(50%-4px)]">
-              <MarkTable
-                marks={subjectProgress.marks as [number, number, number, number, number]}
-                maxResult={maxResultPerSubject}
-              />
-            </div>
+            {!subjectProgress.exams.find(exam => exam.resultType === 'GRADE') && (
+              <div className="relative overflow-x-auto min-w-[calc(50%-4px)]">
+                <MarkTable
+                  marks={subjectProgress.marks as [number, number, number, number, number]}
+                  maxResult={maxResultPerSubject}
+                />
+              </div>
+            )}
           </div>
         </div>
         <div className="w-full flex justify-between mt-6">

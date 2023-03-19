@@ -22,6 +22,7 @@ interface SubjectResultModalProps {
   handleRefetch: () => Promise<void>
   open?: boolean
   closeModal?: () => void
+  semester: number
 }
 
 const resultTypesToComboBoxItems = (resultTypes: ResultType[], examId: string) =>
@@ -40,6 +41,7 @@ export const SubjectResultModal = ({
   open = false,
   closeModal,
   handleRefetch,
+  semester,
 }: SubjectResultModalProps) => {
   const { data: subjects } = api.subject.getAll.useQuery(undefined, {
     enabled: open,
@@ -171,7 +173,7 @@ export const SubjectResultModal = ({
       ...(selectedSubjectId
         ? { subjectId: selectedSubjectId }
         : { subjectName: subjectNameInput!, credit: subjectCreditInput! }),
-      semester: session?.user?.currentSemester,
+      semester,
       marks,
       exams: [
         ...exams.map(exam => ({
@@ -189,7 +191,6 @@ export const SubjectResultModal = ({
         updateSubjectProgress({
           id: subjectProgress.id,
           partialSubjectProgress: {
-            subjectId: selectedSubjectId,
             subjectName: subjectNameInput,
             marks,
             exams: [
@@ -197,8 +198,8 @@ export const SubjectResultModal = ({
                 name: exam.name!,
                 resultType: exam.resultType!,
                 minResult: exam.minResult ?? undefined,
-                maxResult: exam.maxResult ?? undefined,
-                result: undefined,
+                maxResult: exam.resultType === 'POINT' ? exam.maxResult ?? undefined : undefined,
+                result: exam.result ?? undefined,
               })),
             ],
           },
@@ -364,12 +365,12 @@ export const SubjectResultModal = ({
                           onItemSelected={handleOnResultTypeComboBoxChange}
                           placeholder="Select a result type..."
                         />
-                        {exam.resultType !== 'PASSFAIL' && exam.resultType !== 'GRADE' && (
+                        {exam.resultType && exam.resultType !== 'PASSFAIL' && exam.resultType !== 'GRADE' && (
                           <div className="flex gap-2">
                             <InputField
                               inputMode="numeric"
                               pattern="[0-9]*"
-                              label="Min Score"
+                              label="Min Score (Optional)"
                               placeholder="Min Score"
                               className="w-[calc(50%-4px)]"
                               value={exam.minResult || ''}
@@ -383,23 +384,25 @@ export const SubjectResultModal = ({
                                 )
                               }
                             />
-                            <InputField
-                              inputMode="numeric"
-                              pattern="[0-9]*"
-                              label="Max Score"
-                              placeholder="Max Score"
-                              className="w-[calc(50%-4px)]"
-                              value={exam.maxResult || ''}
-                              onChange={e =>
-                                setExams(prev =>
-                                  e.target.validity.valid
-                                    ? prev.map((item, i) =>
-                                        i === index ? { ...item, maxResult: Number(e.target.value) } : item
-                                      )
-                                    : prev
-                                )
-                              }
-                            />
+                            {exam.resultType === 'POINT' && (
+                              <InputField
+                                inputMode="numeric"
+                                pattern="[0-9]*"
+                                label="Max Score"
+                                placeholder="Max Score"
+                                className="w-[calc(50%-4px)]"
+                                value={exam.maxResult || ''}
+                                onChange={e =>
+                                  setExams(prev =>
+                                    e.target.validity.valid
+                                      ? prev.map((item, i) =>
+                                          i === index ? { ...item, maxResult: Number(e.target.value) } : item
+                                        )
+                                      : prev
+                                  )
+                                }
+                              />
+                            )}
                           </div>
                         )}
                       </div>

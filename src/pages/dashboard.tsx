@@ -71,22 +71,37 @@ const DashBoardPage: NextPage = () => {
     setIsModalOpen(true)
   }, [selectedSubjectProgress])
 
+  const [modalOpenError, setModalOpenError] = useState(false)
+
+  useEffect(() => {
+    if (!modalOpenError || semester === 0) return
+    setModalOpenError(false)
+  }, [modalOpenError, semester])
+
   return (
     <ScrollLayout>
-      {isModalOpen && (
+      {isModalOpen && semester !== 0 && (
         <SubjectResultModal
           subjectProgress={selectedSubjectProgress}
           handleRefetch={handleRefetch}
           open={isModalOpen}
           closeModal={handleCloseModal}
+          semester={semester}
         />
       )}
       <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Dashboard</h1>
-          <div className="flex items-center">
+          <div className="flex items-start flex-col">
+            {semester === 0 && modalOpenError && (
+              <span className="text-red-500 text-sm font-medium">Select a semester!</span>
+            )}
             <select
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className={`${
+                modalOpenError
+                  ? 'border-red-500 focus:ring-red-500 border-2'
+                  : 'border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:ring-blue-500 focus:border-blue-500'
+              } bg-gray-50 border text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white`}
               onChange={e => setSemester(Number(e.target.value))}
               value={semester}
             >
@@ -128,6 +143,10 @@ const DashBoardPage: NextPage = () => {
             variant="filled"
             className="text-white col-span-12 m-auto w-full mb-12 mt-4 max-w-[200px]"
             onClick={() => {
+              if (semester === 0) {
+                setModalOpenError(true)
+                return
+              }
               setSelectedSubjectProgress(undefined)
               setIsModalOpen(true)
             }}

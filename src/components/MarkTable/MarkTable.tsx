@@ -18,7 +18,7 @@ export const MarkTable = ({ marks, maxResult, editing, setMarks }: MarkTableProp
       <thead>
         <tr>
           <th scope="col" className="px-1 py-1 border border-gray-300 dark:border-gray-600 text-center">
-            Points
+            Score
           </th>
           <th scope="col" className="px-1 py-1 border border-gray-300 dark:border-gray-600 text-center">
             Grade

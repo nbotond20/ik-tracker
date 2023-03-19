@@ -10,12 +10,41 @@ export const examSchema = z
     maxResult: z.number({ invalid_type_error: 'Maximum must be a number!' }).nullable().optional(),
     result: z.number({ invalid_type_error: 'Result must be a number!' }).nullable().optional(),
   })
-  .strict()
+  .refine(
+    data => {
+      if (data.result == null) return true
+      if (data.resultType === 'PASSFAIL') {
+        return data.result === 1 || data.result === 0
+      }
+      if (data.resultType === 'PERCENT') {
+        return data.result >= 0 && data.result <= 100
+      }
+      if (data.maxResult == null) return true
+      if (data.minResult != null) {
+        return data.result <= data.maxResult && data.result >= data.minResult
+      }
+      return data.result <= data.maxResult
+    },
+    {
+      message: `Result must be between minResult and maxResult`,
+      path: ['result'],
+    }
+  )
+  .refine(
+    data => {
+      if (data.resultType !== 'POINT') return true
+      return data.maxResult != null
+    },
+    {
+      message: `MaxResult must be set for resultType POINT`,
+      path: ['maxResult'],
+    }
+  )
 
 export const updateExamSchema = z
   .object({
     id: z.string({ required_error: 'Missing exam id!' }),
-    partialExam: examSchema.partial(),
+    partialExam: examSchema,
   })
   .strict()
 

@@ -14,7 +14,7 @@ export const ExamsTable = ({ examResults, setExamResults }: ExamsTableProps) => 
         <tr>
           <th scope="col" className="px-3 py-1 bg-gray-50 dark:bg-gray-800"></th>
           <th scope="col" className="px-3 py-1 border border-gray-300 dark:border-gray-600 text-center">
-            Points
+            Score
           </th>
           <th scope="col" className="px-3 py-1 border border-gray-300 dark:border-gray-600 text-center">
             Max

@@ -36,7 +36,7 @@ export const InputField = ({
         } ${
           errorMessage
             ? 'border-red-500 focus:ring-red-500 border-2'
-            : 'border-gray-200 dark:border-gray-600 focus:ring-blue-300 dark:focus:ring-blue-800'
+            : 'border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500'
         }`}
         placeholder={placeholder}
         {...rest}
