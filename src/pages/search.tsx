@@ -1,3 +1,4 @@
+import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
 import { SortMenu } from '@components/SortMenu/SortMenu'
 import { Filters } from '@components/SubjectFilters/Filters'
@@ -13,6 +14,12 @@ const Bars3Icon = dynamic(() => import('@heroicons/react/20/solid/Bars3Icon'))
 const FilterDrawer = dynamic(() => import('@components/SubjectFilters/FilterDrawer').then(mod => mod.FilterDrawer))
 const SubjectGrid = dynamic(() => import('@components/SubjectGrid/SubjectGrid').then(mod => mod.SubjectGrid))
 const SubjectList = dynamic(() => import('@components/SubjectList/SubjectList').then(mod => mod.SubjectList))
+
+const breadcrumbs = [
+  {
+    title: 'Search',
+  },
+]
 
 const SearchPage: NextPage = () => {
   const {
@@ -92,7 +99,9 @@ const SearchPage: NextPage = () => {
             </button>
           </div>
         </div>
-
+        <div className="mt-6">
+          <BreadCrumbs breadcrumbs={breadcrumbs} />
+        </div>
         <section className="pt-6">
           <div className="flex w-full gap-8">
             {/* Filters */}

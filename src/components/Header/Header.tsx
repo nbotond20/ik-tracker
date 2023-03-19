@@ -4,6 +4,7 @@ import { LinkButton } from '@components/Button/Button'
 import { pages as PAGES_CONSTANT } from '@constants/pages'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { DarkModeToggle } from './DarkModeToggle'
 import { HambugerMenuButton } from './HamburgerMenuButton'
@@ -19,6 +20,7 @@ interface HeaderProps {
 export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const { data: session, status } = useSession()
+  const router = useRouter()
 
   const toggleMenu = (open?: boolean) => {
     setIsOpen(prev => open ?? !prev)
@@ -48,7 +50,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
               <>
                 <LinkButton
                   variant="outlined"
-                  href="/login"
+                  href={`/login?callbackUrl=${router.pathname}`}
                   className="mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
                   onClick={() => setIsOpen(false)}
                 >
@@ -58,7 +60,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                   variant="filled"
                   className="mr-2 lg:px-5 lg:py-2.5"
                   onClick={() => setIsOpen(false)}
-                  href="/login"
+                  href={`/login?callbackUrl=${router.pathname}`}
                 >
                   Get started
                 </LinkButton>
@@ -67,7 +69,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
               <>
                 <LinkButton
                   variant="outlined"
-                  href="/login"
+                  href={`/`}
                   className="mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
                   onClick={() =>
                     void signOut({

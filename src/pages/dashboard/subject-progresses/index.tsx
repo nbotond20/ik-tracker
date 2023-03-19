@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
 
+import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { Button } from '@components/Button/Button'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
 import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTableLoadingState'
 import { ProgressCard } from '@components/ProgressCard/ProgressCard'
 import { SubjectResultModal } from '@components/SubjectResultModal/SubjectResultModal'
 import type { SubjectProgressWithExamsAndSubject } from '@models/SubjectProgressWithExamsAndSubject'
+import { authOptions } from '@pages/api/auth/[...nextauth]'
 import { api } from '@utils/api'
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import { getServerSession } from 'next-auth'
 import { useSession } from 'next-auth/react'
-
-import { authOptions } from './api/auth/[...nextauth]'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getServerSession(context.req, context.res, authOptions)
@@ -19,7 +19,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!session?.user) {
     return {
       redirect: {
-        destination: '/login',
+        destination: '/login?callbackUrl=/dashboard/subject-progresses',
         permanent: false,
       },
     }
@@ -32,7 +32,17 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 }
 
-const DashBoardPage: NextPage = () => {
+const breadcrumbs = [
+  {
+    title: 'Dashboard',
+    href: '/dashboard',
+  },
+  {
+    title: 'Subject Progresses',
+  },
+]
+
+const SubjectProgressPage: NextPage = () => {
   const [selectedSubjectProgress, setSelectedSubjectProgress] = useState<
     SubjectProgressWithExamsAndSubject | undefined
   >()
@@ -91,7 +101,7 @@ const DashBoardPage: NextPage = () => {
       )}
       <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Dashboard</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Progress</h1>
           <div className="flex items-start flex-col">
             {semester === 0 && modalOpenError && (
               <span className="text-red-500 text-sm font-medium">Select a semester!</span>
@@ -114,7 +124,10 @@ const DashBoardPage: NextPage = () => {
             </select>
           </div>
         </div>
-        <div className="w-full my-12 h-fit grid gap-6 grid-cols-12">
+        <div className="mt-6">
+          <BreadCrumbs breadcrumbs={breadcrumbs} />
+        </div>
+        <div className="w-full mb-12 mt-6 h-fit grid gap-6 grid-cols-12">
           {isLoading && (
             <div className="col-span-12">
               <SubjectTableLoadingState />
@@ -160,4 +173,4 @@ const DashBoardPage: NextPage = () => {
   )
 }
 
-export default DashBoardPage
+export default SubjectProgressPage

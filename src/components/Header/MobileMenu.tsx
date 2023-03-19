@@ -2,6 +2,7 @@ import type { Page } from '@constants/pages'
 import { signOut, useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { DarkModeToggle } from './DarkModeToggle'
 
@@ -21,6 +22,7 @@ interface MobileMenuProps {
 
 export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
   const { data: session } = useSession()
+  const router = useRouter()
 
   return (
     <div
@@ -57,7 +59,7 @@ export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
         >
           {session?.user ? (
             <span
-              className="w-full flex items-center text-xl"
+              className="w-full flex items-center text-2xl"
               onClick={() => {
                 void signOut({ redirect: false })
                 toggleMenu(false)
@@ -67,7 +69,7 @@ export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
               Logout
             </span>
           ) : (
-            <Link href="/login" className="w-full flex items-center">
+            <Link href={`/login?callbackUrl=${router.pathname}`} className="w-full flex items-center text-2xl">
               <ArrowLeftOnRectangleIcon className="h-5 w-5 mr-2 stroke-2" />
               Login
             </Link>

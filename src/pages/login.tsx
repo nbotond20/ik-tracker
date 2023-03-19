@@ -10,6 +10,7 @@ const SignInPage: NextPage = () => {
   if (session?.user) {
     void router.replace('/')
   }
+  const callbackUrl = router.query.callbackUrl as string
 
   return (
     <div className="flex h-full w-full items-center justify-center">
@@ -41,7 +42,7 @@ const SignInPage: NextPage = () => {
             </div>
             <div className="flex w-full flex-col items-center justify-center gap-4">
               <button
-                onClick={() => void signIn('google')}
+                onClick={() => void signIn('google', { callbackUrl })}
                 type="button"
                 className="inline-flex w-full items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200 dark:focus:ring-gray-800"
               >
@@ -74,7 +75,7 @@ const SignInPage: NextPage = () => {
                 </span>
               </button>
               <button
-                onClick={() => void signIn('github')}
+                onClick={() => void signIn('github', { callbackUrl })}
                 type="button"
                 className="inline-flex w-full items-center rounded-lg bg-[#0d1117] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#0d1117]/90 focus:outline-none focus:ring-4 focus:ring-[#0d1117]/50 dark:hover:bg-[#050708]/30 dark:focus:ring-gray-500"
               >
@@ -98,7 +99,7 @@ const SignInPage: NextPage = () => {
                 </span>
               </button>
               <button
-                onClick={() => void signIn('discord')}
+                onClick={() => void signIn('discord', { callbackUrl })}
                 type="button"
                 className="dark:focus:ring-[#7389da]/55 inline-flex w-full items-center rounded-lg bg-[#7389da] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#7389da]/90 focus:outline-none focus:ring-4 focus:ring-[#7389da]/50"
               >
