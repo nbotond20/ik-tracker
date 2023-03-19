@@ -16,6 +16,9 @@ export const examSchema = z
       if (data.resultType === 'PASSFAIL') {
         return data.result === 1 || data.result === 0
       }
+      if (data.resultType === 'GRADE') {
+        return data.result >= 1 && data.result <= 5
+      }
       if (data.resultType === 'PERCENT') {
         return data.result >= 0 && data.result <= 100
       }
