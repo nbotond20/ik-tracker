@@ -43,49 +43,49 @@ const DashBoardPage: NextPage = () => {
         <div className="grid w-full grid-cols-12 gap-4 pb-12">
           <Link
             href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-3  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
           </Link>
           <Link
             href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-9 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-9 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
           </Link>
           <Link
             href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-9 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-9 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
           </Link>
           <Link
             href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-3  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
           </Link>
           <Link
             href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-3  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
           </Link>
           <Link
             href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-9 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-9 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
           </Link>
           <Link
             href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-9 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-9 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
           </Link>
           <Link
             href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-3  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
           </Link>
