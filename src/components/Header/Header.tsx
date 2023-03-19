@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { LinkButton } from '@components/Button/Button'
 import { pages as PAGES_CONSTANT } from '@constants/pages'
 import { signOut, useSession } from 'next-auth/react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -80,18 +81,22 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                   Log out
                 </LinkButton>
                 <div className="relative mr-2 h-10 w-10 cursor-pointer overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
-                  <svg
-                    className="absolute -left-1 h-12 w-12 text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
+                  {session.user.image ? (
+                    <Image width={48} height={48} src={session.user.image} alt="Avatar" />
+                  ) : (
+                    <svg
+                      className="absolute -left-1 h-12 w-12 text-gray-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  )}
                 </div>
               </>
             )}
