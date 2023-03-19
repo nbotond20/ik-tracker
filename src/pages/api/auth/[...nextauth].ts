@@ -51,6 +51,7 @@ export const authOptions: NextAuthOptions = {
         },
       },
       from: env.EMAIL_FROM,
+      maxAge: 1 * 60 * 60, // 1 hour
     }),
     /**
      * ...add more providers here
