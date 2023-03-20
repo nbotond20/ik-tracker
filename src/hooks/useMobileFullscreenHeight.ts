@@ -29,6 +29,16 @@ const setHeight = () => {
   })
 }
 
+export const setMobileMenuHeight = () => {
+  if (typeof window === 'undefined') return
+
+  const mobileMenu = document.querySelector('[data-mobile-menu-max-height]')
+
+  if (mobileMenu instanceof HTMLElement) {
+    mobileMenu.style.height = `${window.innerHeight - 64}px`
+  }
+}
+
 export const addResizeListener = () => {
   if (typeof window === 'undefined') return
   window.addEventListener('resize', setHeight)

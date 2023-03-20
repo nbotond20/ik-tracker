@@ -1,4 +1,7 @@
+import { useEffect } from 'react'
+
 import type { Page } from '@constants/pages'
+import { setMobileMenuHeight } from '@hooks/useMobileFullscreenHeight'
 import { signOut, useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
@@ -23,6 +26,10 @@ interface MobileMenuProps {
 export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
   const { data: session } = useSession()
   const router = useRouter()
+
+  useEffect(() => {
+    setMobileMenuHeight()
+  }, [isOpen])
 
   return (
     <div
