@@ -76,9 +76,9 @@ const HomePage: NextPage = () => {
         </section>
       </div>
       <div
-        data-mobile-max-height
+        data-mobile-min-height
         id="features"
-        className="relative grid max-h-[calc(100vh-64px)] min-h-[calc(100vh-64px)] w-full snap-start snap-always flex-col items-center justify-center overflow-auto"
+        className="relative grid min-h-[calc(100vh-64px)] w-full snap-start snap-always flex-col items-center justify-center overflow-auto"
       >
         {/* Features */}
         <div

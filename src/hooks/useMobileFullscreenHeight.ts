@@ -16,6 +16,16 @@ const setHeight = () => {
     mobileMenu.style.height = `${window.innerHeight - 64}px`
   }
 
+  const htmlElementsMin = Array.from(document.querySelectorAll('[data-mobile-min-height]'))
+
+  if (htmlElementsMin.length) {
+    htmlElementsMin.forEach(element => {
+      if (element instanceof HTMLElement) {
+        element.style.minHeight = `${window.innerHeight - 64}px`
+      }
+    })
+  }
+
   const htmlElements = Array.from(document.querySelectorAll('[data-mobile-max-height]'))
   if (!htmlElements.length) return
 
