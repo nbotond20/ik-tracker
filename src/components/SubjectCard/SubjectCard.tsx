@@ -11,6 +11,7 @@ interface SubjectCardProps {
 export const SubjectCard = ({ subject, setSelectedSubject, isSelectable }: SubjectCardProps) => {
   return (
     <motion.div
+      data-mobile-max-height-16
       layoutId={subject.id}
       className={`${
         isSelectable ? 'cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700' : ''

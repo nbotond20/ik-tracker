@@ -26,14 +26,16 @@ export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
 
   return (
     <div
+      {...(isOpen ? { 'data-mobile-menu-max-height': '' } : {})}
       className={
         menuItemContainerStyle +
         ` ${
           isOpen ? 'h-[calc(100vh-64px)]' : 'pointer-events-none h-0'
         } border-b-[1px] border-gray-300 dark:border-gray-700`
       }
+      style={{ ...(!isOpen && { height: 0 }) }}
     >
-      <ul className="p-10">
+      <ul className="p-10 pb-0">
         {links.map((link, idx) => {
           const forwardAnimationDelay = 50 + idx * 50
           const backwardAnimationDelay = 100 - idx * 50
@@ -52,7 +54,7 @@ export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
         })}
       </ul>
       <div className="flex-grow" />
-      <div className={`p-10`}>
+      <div className={`p-10 pt-0`}>
         <div
           className={menuItemStyle + `${isOpen ? 'opacity-100 duration-500 ' : 'opacity-0 duration-300 '}`}
           style={{ transitionDelay: isOpen ? `${250}ms` : `${50}ms` }}

@@ -19,10 +19,14 @@ const HomePage: NextPage = () => {
   const { data: session } = useSession()
 
   return (
-    <div className="hideScrollbar relative max-h-[calc(100vh-64px)] w-screen snap-none overflow-auto scroll-smooth md:snap-y md:snap-mandatory">
+    <div
+      data-mobile-max-height
+      className="hideScrollbar relative max-h-[calc(100vh-64px)] min-h-[calc(100vh-64px)] w-screen snap-none overflow-auto scroll-smooth md:snap-y md:snap-mandatory"
+    >
       <div
+        data-mobile-max-height
         id="top"
-        className="flex min-h-[calc(100vh-64px)] w-full snap-center snap-always flex-col items-center justify-center"
+        className="flex max-h-[calc(100vh-64px)] min-h-[calc(100vh-64px)] w-full snap-center snap-always flex-col items-center justify-center"
       >
         <section className="bg-white dark:bg-gray-900">
           <div className="mx-auto flex max-w-screen-xl px-4 lg:grid-cols-12 lg:gap-8 xl:gap-0">
@@ -72,8 +76,9 @@ const HomePage: NextPage = () => {
         </section>
       </div>
       <div
+        data-mobile-max-height
         id="features"
-        className="relative grid min-h-[calc(100vh-64px)] w-full snap-start snap-always flex-col items-center justify-center overflow-auto"
+        className="relative grid max-h-[calc(100vh-64px)] min-h-[calc(100vh-64px)] w-full snap-start snap-always flex-col items-center justify-center overflow-auto"
       >
         {/* Features */}
         <div

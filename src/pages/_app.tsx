@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast'
 import { Header } from '@components/Header/Header'
 import { Layout } from '@components/Layout/Layout'
 import { Maintenance } from '@components/MaintenanceMode/MaintenanceMode'
+import { addResizeListener } from '@hooks/useMobileFullscreenHeight'
 import { useThemeMode } from '@hooks/useThemeMode'
 import '@styles/globals.css'
 import { api } from '@utils/api'
@@ -17,6 +18,7 @@ const HeaderLogo = dynamic(() => import('@components/Header/HeaderLogo').then(mo
 
 const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { session, ...pageProps } }) => {
   useThemeMode()
+  addResizeListener()
 
   return (
     <SessionProvider session={session}>

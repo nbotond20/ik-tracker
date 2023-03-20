@@ -230,7 +230,10 @@ export const SubjectResultModal = ({
           className="fixed top-0 left-0 right-0 z-50 flex h-screen max-h-screen w-full items-center justify-center overflow-hidden p-2 backdrop-blur md:inset-0 md:h-full"
         >
           <div className="sm:cardScrollBar relative max-h-screen w-full h-auto max-w-screen-md">
-            <motion.div className="overflow-y-auto col-span-12 block rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-6 max-h-[calc(100vh-16px)]">
+            <motion.div
+              data-mobile-max-height-16
+              className="overflow-y-auto col-span-12 block rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-6 max-h-[calc(100vh-16px)]"
+            >
               <div className="mb-4 flex items-start justify-between">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {subjectProgress ? 'Edit progress' : 'Add progress'}
