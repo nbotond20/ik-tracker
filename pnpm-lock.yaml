@@ -13,7 +13,7 @@ specifiers:
   '@testing-library/react': 14.0.0
   '@trivago/prettier-plugin-sort-imports': 4.1.1
   '@trpc/client': 10.17.0
-  '@trpc/next': 10.16.0
+  '@trpc/next': 10.17.0
   '@trpc/react-query': 10.16.0
   '@trpc/server': 10.16.0
   '@types/jest': 29.5.0
@@ -71,7 +71,7 @@ dependencies:
   '@prisma/client': 4.11.0_prisma@4.11.0
   '@tanstack/react-query': 4.28.0_biqbaboplfbrettd7655fr4n2y
   '@trpc/client': 10.17.0_@trpc+server@10.16.0
-  '@trpc/next': 10.16.0_dh54vdflbo2cpih3itqctai3zy
+  '@trpc/next': 10.17.0_dh54vdflbo2cpih3itqctai3zy
   '@trpc/react-query': 10.16.0_5xh52whjukodk5eeikaveashzu
   '@trpc/server': 10.16.0
   '@vercel/analytics': 0.1.11_react@18.2.0
@@ -2121,13 +2121,13 @@ packages:
       '@trpc/server': 10.16.0
     dev: false
 
-  /@trpc/next/10.16.0_dh54vdflbo2cpih3itqctai3zy:
-    resolution: {integrity: sha512-2AohDydvvLk2IjnQ1hTnT8cVmLItYf6cFRwJVYnyi35y2DVKXLiIWuKSTzc9xzR5enYFUQJZivXaWx/i0jjcfQ==}
+  /@trpc/next/10.17.0_dh54vdflbo2cpih3itqctai3zy:
+    resolution: {integrity: sha512-48880THMnlUliTxyuDeZDUCkwHQx3oyDA3U3hFpNE5qnefTXE9MvnlfownmfKf0n0Vd+wrpt9A2mDFOyGeOQAA==}
     peerDependencies:
       '@tanstack/react-query': ^4.18.0
-      '@trpc/client': 10.16.0
-      '@trpc/react-query': 10.16.0
-      '@trpc/server': 10.16.0
+      '@trpc/client': 10.17.0
+      '@trpc/react-query': 10.17.0
+      '@trpc/server': 10.17.0
       next: '*'
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
