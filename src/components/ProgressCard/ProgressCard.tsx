@@ -18,6 +18,8 @@ interface ProgressCardProps {
   setSelectedSubjectProgress: Dispatch<SetStateAction<SubjectProgressWithExamsAndSubject | undefined>>
   subjectProgress: SubjectProgressWithExamsAndSubject
   handleRefetch: () => Promise<void>
+  gradeStat?: number
+  open?: boolean
 }
 
 export const ProgressCard = ({
@@ -25,6 +27,8 @@ export const ProgressCard = ({
   setSelectedSubjectProgress,
   subjectProgress,
   handleRefetch,
+  gradeStat,
+  open,
 }: ProgressCardProps) => {
   const maxResultPerSubject = useMemo(
     () => subjectProgress.exams.reduce((acc, exam) => acc + (exam?.maxResult || 0), 0),
@@ -92,13 +96,14 @@ export const ProgressCard = ({
     <motion.div
       className={`flex rounded-lg border border-gray-300 px-4 py-4 shadow dark:border-gray-800 dark:bg-gray-800 bg-gray-50 col-span-12 h-fit lg:col-span-6 2xl:col-span-4 ${
         className || ''
-      } ${isAccordionOpen ? 'h-auto min-h-[600px]' : 'h-max'}`}
+      } ${isAccordionOpen ? 'h-auto lg:min-h-[600px]' : 'h-max'}`}
     >
       <Accordion
         title={subjectProgress.subject?.courseName ?? subjectProgress.subjectName ?? '-'}
-        openByDefault
         titleClassName="text-black dark:text-white text-xl"
         setExpanded={setIsAccordionOpen}
+        grade={gradeStat}
+        openByDefault={open}
       >
         <div className="flex flex-col justify-between h-full">
           <div className="relative overflow-x-auto mb-6">

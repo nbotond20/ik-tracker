@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import { Badge } from '@components/Badge/Badge'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 
 interface AccordionProps {
@@ -9,6 +10,7 @@ interface AccordionProps {
   children: React.ReactNode
   className?: string
   setExpanded?: (expanded: boolean) => unknown
+  grade?: number
 }
 
 export const Accordion = ({
@@ -18,8 +20,13 @@ export const Accordion = ({
   titleClassName,
   className,
   setExpanded,
+  grade,
 }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(openByDefault ?? false)
+
+  useEffect(() => {
+    setIsOpen(openByDefault ?? false)
+  }, [openByDefault])
 
   useEffect(() => {
     if (setExpanded) {
@@ -33,10 +40,17 @@ export const Accordion = ({
         className="flex justify-between items-center w-full text-sm font-medium text-left text-gray-900"
         onClick={() => setIsOpen(prev => !prev)}
       >
-        <h3 className={`text-base whitespace-nowrap text-ellipsis overflow-hidden max-w-[80%] ${titleClassName || ''}`}>
+        <h3
+          className={`flex justify-between w-full text-base whitespace-nowrap text-ellipsis overflow-hidden max-w-[80%] ${
+            titleClassName || ''
+          }`}
+        >
           {title}
         </h3>
-        <ChevronDownIcon className={`${isOpen ? 'transform rotate-180' : ''} w-5 h-5 text-gray-400 ml-4`} />
+        <div className="flex">
+          {grade && <Badge variant={grade >= 4 ? 'success' : grade >= 2 ? 'warning' : 'danger'}>{grade}</Badge>}
+          <ChevronDownIcon className={`${isOpen ? 'transform rotate-180' : ''} w-5 h-5 text-gray-400 ml-4`} />
+        </div>
       </button>
       <div className={`${isOpen ? 'flex flex-col h-full' : 'hidden'} pt-6`}>{children}</div>
     </div>

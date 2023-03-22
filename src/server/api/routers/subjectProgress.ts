@@ -1,4 +1,6 @@
+import type { Marks } from '@components/MarkTable/MarkTable'
 import { TRPCError } from '@trpc/server'
+import { calculateGrade } from '@utils/calculateResultStats'
 import { createSubjectProgressInputSchema, updateSubjectProgressInputSchema } from 'src/schemas/subjectProgress-schema'
 import { z } from 'zod'
 
@@ -109,5 +111,63 @@ export const subjectProgressRouter = createTRPCRouter({
         },
       },
     })
+  }),
+
+  statisticsBySemester: protectedProcedure.input(z.object({ semester: z.number() })).query(async ({ ctx, input }) => {
+    const subjectProgresses = await ctx.prisma.subjectProgress.findMany({
+      where: {
+        userId: ctx.session.user.id,
+        semester: input.semester,
+      },
+      include: {
+        exams: true,
+        subject: true,
+      },
+    })
+
+    const subjectProgressesWithGrade = subjectProgresses.map(subjectProgress => {
+      const grade = calculateGrade(subjectProgress.marks as Marks, subjectProgress.exams) || 1
+
+      return {
+        id: subjectProgress.id,
+        subjectName: (subjectProgress.subject?.courseName || subjectProgress.subjectName)!,
+        credit: (subjectProgress.credit || subjectProgress.subject?.credit)!,
+        grade,
+      }
+    })
+
+    const totalCredit = subjectProgressesWithGrade.reduce((acc, curr) => acc + curr.credit, 0)
+    const passedCredit = subjectProgressesWithGrade.reduce(
+      (acc, curr) => (curr.grade >= 2 ? acc + curr.credit : acc),
+      0
+    )
+    const creditTimesGrade = subjectProgressesWithGrade.reduce((acc, curr) => acc + curr.credit * curr.grade, 0)
+    const creditTimesGradeForPassed = subjectProgressesWithGrade.reduce(
+      (acc, curr) => (curr.grade >= 2 ? acc + curr.credit * curr.grade : acc),
+      0
+    )
+
+    const creditIndex = Math.round((creditTimesGradeForPassed / 30) * 100) / 100
+    const correctedCreditIndex = Math.round(creditIndex * (passedCredit / totalCredit) * 100) / 100
+    const average =
+      Math.round(
+        (subjectProgressesWithGrade.reduce((acc, curr) => acc + curr.grade, 0) / subjectProgresses.length) * 100
+      ) / 100
+    const weightedAverage = Math.round((creditTimesGrade / passedCredit) * 100) / 100
+
+    const subjectCount = subjectProgresses.length
+    const passedSubjectCount = subjectProgressesWithGrade.filter(subjectProgress => subjectProgress.grade >= 2).length
+
+    return {
+      average,
+      creditIndex,
+      totalCredit,
+      subjectCount,
+      passedCredit,
+      weightedAverage,
+      passedSubjectCount,
+      correctedCreditIndex,
+      subjectProgressesWithGrade,
+    }
   }),
 })

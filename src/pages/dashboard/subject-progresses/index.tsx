@@ -66,8 +66,17 @@ const SubjectProgressPage: NextPage = () => {
     { enabled: !!session?.user }
   )
 
+  const { data: statistics } = api.subjectProgress.statisticsBySemester.useQuery(
+    {
+      semester: semester,
+    },
+    { enabled: !!session?.user }
+  )
+
+  const { subjectProgress } = api.useContext()
   const handleRefetch = async () => {
     await refetchSubjectProgresses()
+    await subjectProgress.statisticsBySemester.invalidate()
   }
 
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -88,6 +97,8 @@ const SubjectProgressPage: NextPage = () => {
     setModalOpenError(false)
   }, [modalOpenError, semester])
 
+  const [openAll, setOpenAll] = useState(false)
+
   return (
     <ScrollLayout>
       {isModalOpen && semester !== 0 && (
@@ -102,6 +113,22 @@ const SubjectProgressPage: NextPage = () => {
       <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Progress</h1>
+          <button onClick={() => setOpenAll(prev => !prev)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-gray-500 dark:text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d={openAll ? 'M19 9l-7 7-7-7' : 'M5 15l7-7 7 7'}
+              />
+            </svg>
+          </button>
           <div className="flex items-start flex-col">
             {semester === 0 && modalOpenError && (
               <span className="text-red-500 text-sm font-medium">Select a semester!</span>
@@ -140,6 +167,8 @@ const SubjectProgressPage: NextPage = () => {
                 subjectProgress={subjectProgress}
                 key={subjectProgress.id}
                 handleRefetch={handleRefetch}
+                gradeStat={statistics?.subjectProgressesWithGrade.find(sp => sp.id === subjectProgress.id)?.grade}
+                open={openAll}
               />
             ))}
           {subjectProgresses?.length === 0 && (
