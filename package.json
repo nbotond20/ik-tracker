@@ -36,7 +36,7 @@
     "@trpc/server": "10.17.0",
     "@vercel/analytics": "0.1.11",
     "flowbite": "1.6.4",
-    "framer-motion": "10.8.4",
+    "framer-motion": "10.8.5",
     "next": "13.2.4",
     "next-auth": "4.20.1",
     "next-pwa": "5.6.0",
