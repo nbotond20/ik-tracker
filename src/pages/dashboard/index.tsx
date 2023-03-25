@@ -1,9 +1,17 @@
+import { Badge } from '@components/Badge/Badge'
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
+import { api } from '@utils/api'
 import type { NextPage, GetServerSidePropsContext } from 'next'
 import { getServerSession } from 'next-auth'
+import { useSession } from 'next-auth/react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
+
+const CalculatorIcon = dynamic(() => import('@heroicons/react/24/solid/CalculatorIcon'))
+const PresentationChartLineIcon = dynamic(() => import('@heroicons/react/24/solid/PresentationChartLineIcon'))
+const AcademicCapIcon = dynamic(() => import('@heroicons/react/24/solid/AcademicCapIcon'))
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getServerSession(context.req, context.res, authOptions)
@@ -31,6 +39,14 @@ const breadcrumbs = [
 ]
 
 const DashBoardPage: NextPage = () => {
+  const { data: session } = useSession()
+  const { data: statistics } = api.subjectProgress.statisticsBySemester.useQuery(
+    {
+      semester: session?.user?.currentSemester ?? 0,
+    },
+    { enabled: !!session?.user?.currentSemester }
+  )
+
   return (
     <ScrollLayout>
       <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 md:px-6 lg:px-8">
@@ -43,94 +59,155 @@ const DashBoardPage: NextPage = () => {
         <div className="grid w-full grid-cols-12 gap-4 pb-12">
           <Link
             href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-3  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+            className="col-span-12 lg:col-span-4  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
-            <div className="flex items-center justify-between mt-4">
-              <div className="flex items-center">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-100">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M10 12a2 2 0 100-4 2 2 0 000 4zm0 1a3 3 0 100-6 3 3 0 000 6z"
-                      clipRule="evenodd"
-                    ></path>
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm0 1a9 9 0 100-18 9 9 0 000 18z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <div className="ml-3">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">Completed</p>
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">12</p>
-                </div>
+            <div className="flex items-center gap-4">
+              <div className=" flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
+                <PresentationChartLineIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
               </div>
-              <div className="flex items-center">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-100">
-                  <svg className="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M10 12a2 2 0 100-4 2 2 0 000 4zm0 1a3 3 0 100-6 3 3 0 000 6z"
-                      clipRule="evenodd"
-                    ></path>
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm0 1a9 9 0 100-18 9 9 0 000 18z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <div className="ml-3">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">In Progress</p>
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">12</p>
-                </div>
-              </div>
+              <h2 className=" text-xl font-bold dark:text-white">Tracker</h2>
             </div>
           </Link>
           <Link
-            href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-9 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+            href="/dashboard/calculator"
+            className="col-span-12 sm:col-span-6 lg:col-span-4  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
+            <div className="flex items-center gap-4">
+              <div className=" flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
+                <CalculatorIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
+              </div>
+              <h2 className=" text-xl font-bold dark:text-white">Calculator</h2>
+            </div>
           </Link>
           <Link
-            href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-9 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+            href="/dashboard/planner"
+            className="col-span-12 sm:col-span-6 lg:col-span-4  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
+            <div className="flex items-center gap-4">
+              <div className=" flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
+                <AcademicCapIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
+              </div>
+              <h2 className=" text-xl font-bold dark:text-white">Planner</h2>
+            </div>
           </Link>
-          <Link
-            href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-3  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
-          >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
-          </Link>
-          <Link
-            href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-3  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
-          >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
-          </Link>
-          <Link
-            href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-9 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
-          >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
-          </Link>
-          <Link
-            href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-9 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
-          >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
-          </Link>
-          <Link
-            href="/dashboard/subject-progresses"
-            className="h-[500px] max-h-[500px] col-span-12 md:col-span-6 lg:col-span-3  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
-          >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Subject Progresses</h3>
-          </Link>
+          {/* STATISTICS */}
+          <div className="col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
+            <h2 className=" text-xl font-bold dark:text-white mb-4">
+              Statistics for current semester ({session?.user?.currentSemester}.)
+            </h2>
+            <div className="w-full flex flex-col lg:flex-row gap-8 justify-between">
+              <div>
+                <table className="mb-4">
+                  <thead>
+                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                      <th className="py-1 pr-2 text-left">Σ Credit</th>
+                      <th className="py-1 px-2 text-left"></th>
+                      <th className="py-1 px-2 text-left hidden sm:table-cell"></th>
+                    </tr>
+                  </thead>
+                  <tbody className="flex-1 sm:flex-none">
+                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                      <td className="py-1 pr-2 text-left">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                          Total Credit
+                        </span>
+                      </td>
+                      <td className="py-1 px-2 text-left">{statistics?.totalCredit}</td>
+                      <td className="py-1 px-2 text-left hidden sm:table-cell"></td>
+                    </tr>
+                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                      <td className="py-1 pr-2 text-left">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                          Passed Credit
+                        </span>
+                      </td>
+                      <td className="py-1 px-2 text-left">{statistics?.passedCredit}</td>
+                      <td className="py-1 px-2 text-left hidden sm:table-cell"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table>
+                  <thead>
+                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                      <th className="py-1 pr-2 text-left">Σ Average</th>
+                      <th className="py-1 px-2 text-left"></th>
+                      <th className="py-1 px-2 text-left hidden sm:table-cell"></th>
+                    </tr>
+                  </thead>
+                  <tbody className="flex-1 sm:flex-none">
+                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                      <td className="py-1 pr-2 text-left">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                          Credit Index
+                        </span>
+                      </td>
+                      <td className="py-1 px-2 text-left">{statistics?.creditIndex}</td>
+                      <td className="py-1 px-2 text-left hidden sm:table-cell"></td>
+                    </tr>
+                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                      <td className="py-1 pr-2 text-left">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                          Corrected Credit Index
+                        </span>
+                      </td>
+                      <td className="py-1 px-2 text-left">{statistics?.correctedCreditIndex}</td>
+                      <td className="py-1 px-2 text-left hidden sm:table-cell"></td>
+                    </tr>
+                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                      <td className="py-1 pr-2 text-left">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                          Weighted Average
+                        </span>
+                      </td>
+                      <td className="py-1 px-2 text-left">{statistics?.weightedAverage}</td>
+                      <td className="py-1 px-2 text-left hidden sm:table-cell"></td>
+                    </tr>
+                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                      <td className="py-1 pr-2 text-left">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">Average</span>
+                      </td>
+                      <td className="py-1 px-2 text-left">{statistics?.average}</td>
+                      <td className="py-1 px-2 text-left hidden sm:table-cell"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <table>
+                  <thead>
+                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                      <th className="py-1 pr-2 text-left">Subject</th>
+                      <th className="py-1 px-2 text-left">Grade</th>
+                      <th className="py-1 px-2 text-left hidden sm:table-cell">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody className="flex-1 sm:flex-none">
+                    {statistics?.subjectProgressesWithGrade.map(statistic => (
+                      <tr key={statistic.id} className="rounded-lg text-gray-600 text-sm leading-normal">
+                        <td className="py-1 pr-2 text-left">
+                          <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                            {statistic.subjectName}
+                          </span>
+                        </td>
+                        <td className="py-1 px-2 text-left">
+                          <Badge
+                            variant={statistic.grade >= 4 ? 'success' : statistic.grade >= 2 ? 'warning' : 'danger'}
+                          >
+                            {statistic.grade}
+                          </Badge>
+                        </td>
+                        <td className="py-1 px-2 text-left hidden sm:table-cell">
+                          <Badge variant={statistic.grade >= 2 ? 'success' : 'danger'}>
+                            {statistic.grade >= 2 ? 'Passed' : 'Failed'}
+                          </Badge>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </ScrollLayout>

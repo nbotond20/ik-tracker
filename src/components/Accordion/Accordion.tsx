@@ -41,15 +41,15 @@ export const Accordion = ({
         onClick={() => setIsOpen(prev => !prev)}
       >
         <h3
-          className={`flex justify-between w-full text-base whitespace-nowrap text-ellipsis overflow-hidden max-w-[80%] ${
+          className={`w-full text-base whitespace-nowrap text-ellipsis overflow-hidden max-w-[80%] ${
             titleClassName || ''
           }`}
         >
           {title}
         </h3>
-        <div className="flex">
+        <div className="flex ml-2 sm:ml-4">
           {grade && <Badge variant={grade >= 4 ? 'success' : grade >= 2 ? 'warning' : 'danger'}>{grade}</Badge>}
-          <ChevronDownIcon className={`${isOpen ? 'transform rotate-180' : ''} w-5 h-5 text-gray-400 ml-4`} />
+          <ChevronDownIcon className={`${isOpen ? 'transform rotate-180' : ''} w-5 h-5 text-gray-400 ml-2 sm:ml-4`} />
         </div>
       </button>
       <div className={`${isOpen ? 'flex flex-col h-full' : 'hidden'} pt-6`}>{children}</div>
