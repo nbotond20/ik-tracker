@@ -13,23 +13,49 @@ export const examSchema = z
   .refine(
     data => {
       if (data.result == null) return true
-      if (data.resultType === 'PASSFAIL') {
-        return data.result === 1 || data.result === 0
-      }
-      if (data.resultType === 'GRADE') {
-        return data.result >= 1 && data.result <= 5
-      }
-      if (data.resultType === 'PERCENT') {
-        return data.result >= 0 && data.result <= 100
-      }
+      if (data.resultType !== 'POINT' && data.resultType !== 'PERCENT') return true
+
       if (data.maxResult == null) return true
-      if (data.minResult != null) {
-        return data.result <= data.maxResult && data.result >= data.minResult
-      }
-      return data.result <= data.maxResult
+      return data.result <= data.maxResult && data.result >= 0
     },
     {
-      message: `Result must be between minResult and maxResult`,
+      message: `Result must be between 0 and maxResult!`,
+      path: ['result'],
+    }
+  )
+  .refine(
+    data => {
+      if (data.result == null) return true
+      if (data.resultType !== 'PASSFAIL') return true
+
+      return data.result === 0 || data.result === 1
+    },
+    {
+      message: `Result must be 0 or 1 for resultType PASSFAIL!`,
+      path: ['result'],
+    }
+  )
+  .refine(
+    data => {
+      if (data.result == null) return true
+      if (data.resultType !== 'GRADE') return true
+
+      return data.result >= 1 && data.result <= 5
+    },
+    {
+      message: `Result must be between 1 and 5 for resultType GRADE!`,
+      path: ['result'],
+    }
+  )
+  .refine(
+    data => {
+      if (data.result == null) return true
+      if (data.resultType !== 'PERCENT') return true
+
+      return data.result >= 0 && data.result <= 100
+    },
+    {
+      message: `Result must be between 0 and 100 for resultType PERCENT!`,
       path: ['result'],
     }
   )
@@ -39,7 +65,7 @@ export const examSchema = z
       return data.maxResult != null
     },
     {
-      message: `MaxResult must be set for resultType POINT`,
+      message: `MaxResult must be set for resultType POINT!`,
       path: ['maxResult'],
     }
   )

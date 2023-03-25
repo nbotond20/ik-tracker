@@ -28,17 +28,17 @@ export const calculateGrade = (marks: Marks, exams: Exam[]) => {
 
   const scoreSum = exams.reduce((acc, exam) => acc + (exam?.result || 0), 0)
 
-  if (scoreSum < marks[1]) {
-    return 1
-  } else if (scoreSum < marks[2]) {
-    return 2
-  } else if (scoreSum < marks[3]) {
-    return 3
-  } else if (scoreSum < marks[4]) {
-    return 4
-  } else {
+  if (marks[4] !== -1 && scoreSum >= marks[4]) {
     return 5
+  } else if (marks[3] !== -1 && scoreSum >= marks[3]) {
+    return 4
+  } else if (marks[2] !== -1 && scoreSum >= marks[2]) {
+    return 3
+  } else if (marks[1] !== -1 && scoreSum >= marks[1]) {
+    return 2
   }
+
+  return 1
 }
 
 export const calculatePercentage = (exams: Exam[]) => {

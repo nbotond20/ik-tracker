@@ -49,10 +49,21 @@ export const ProgressCard = ({
   const percentage = useMemo(() => calculatePercentage(subjectProgress.exams), [subjectProgress.exams])
 
   const { mutateAsync: updateExam } = api.exam.update.useMutation({
-    onSuccess: () => {
+    onSuccess: data => {
       void handleRefetch()
+      setExamsErrorMessages(prev => {
+        delete prev[data.id]
+        return prev
+      })
+    },
+    onError: (error, data) => {
+      const errorMessage = error?.data?.zodError?.fieldErrors?.partialExam
+      if (errorMessage && errorMessage[0]) {
+        setExamsErrorMessages(prev => ({ ...prev, [data.id]: errorMessage[0]! }))
+      }
     },
   })
+  const [examsErrorMessages, setExamsErrorMessages] = useState<Record<string, string>>({})
 
   const [examResults, setExamResults] = useState<Exam[]>(subjectProgress.exams)
   const examResultsChanged = useMemo(
@@ -81,7 +92,7 @@ export const ProgressCard = ({
           {
             loading: 'Saving progress...',
             success: <b>Successfully saved progress!</b>,
-            error: <b>Failed to save progress</b>,
+            error: <b>Failed to save progress.</b>,
           }
         )
       }
@@ -107,7 +118,11 @@ export const ProgressCard = ({
       >
         <div className="flex flex-col justify-between h-full">
           <div className="relative overflow-x-auto mb-6">
-            <ExamsTable examResults={examResults} setExamResults={setExamResults} />
+            <ExamsTable
+              examResults={examResults}
+              setExamResults={setExamResults}
+              examsErrorMessages={examsErrorMessages}
+            />
           </div>
           <div className="flex w-full gap-4 sm:gap-2 flex-col sm:flex-row">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 min-w-[calc(50%-8px)]">
