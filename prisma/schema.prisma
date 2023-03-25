@@ -57,7 +57,7 @@ model User {
     accounts          Account[]
     sessions          Session[]
     SubjectProgresses SubjectProgress[]
-    currentSemester   Int?
+    currentSemester   Int               @default(1)
 }
 
 model VerificationToken {
