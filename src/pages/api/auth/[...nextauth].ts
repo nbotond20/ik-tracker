@@ -68,7 +68,7 @@ export const authOptions: NextAuthOptions = {
     verifyRequest: '/verify-email',
   },
   session: {
-    // strategy: 'jwt',
+    strategy: 'jwt',
     maxAge: 24 * 60 * 60, // 1 day
   },
 }
