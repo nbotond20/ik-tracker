@@ -57,7 +57,7 @@ export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
               style={{ transitionDelay: isOpen ? `${forwardAnimationDelay}ms` : `${backwardAnimationDelay}ms` }}
             >
               <Link href={link.href} className="w-full text-3xl" onClick={() => toggleMenu(false)}>
-                {link.label}
+                {t(link.label)}
               </Link>
             </li>
           )
