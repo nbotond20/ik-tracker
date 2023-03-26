@@ -96,78 +96,72 @@ const DashBoardPage: NextPage = () => {
               Statistics for current semester ({session?.user?.currentSemester}.)
             </h2>
             <div className="w-full flex flex-col lg:flex-row gap-8 justify-between">
-              <div>
+              <div className="flex flex-col justify-center">
                 <table className="mb-4">
                   <thead>
-                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                    <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
                       <th className="py-1 pr-2 text-left">Σ Credit</th>
                       <th className="py-1 px-2 text-left"></th>
-                      <th className="py-1 px-2 text-left hidden sm:table-cell"></th>
                     </tr>
                   </thead>
                   <tbody className="flex-1 sm:flex-none">
-                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                       <td className="py-1 pr-2 text-left">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
                           Total Credit
                         </span>
                       </td>
-                      <td className="py-1 px-2 text-left">{statistics?.totalCredit}</td>
-                      <td className="py-1 px-2 text-left hidden sm:table-cell"></td>
+                      <td className="py-1 px-2 text-left font-semibold">{statistics?.totalCredit}</td>
                     </tr>
-                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                       <td className="py-1 pr-2 text-left">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
                           Passed Credit
                         </span>
                       </td>
-                      <td className="py-1 px-2 text-left">{statistics?.passedCredit}</td>
-                      <td className="py-1 px-2 text-left hidden sm:table-cell"></td>
+                      <td className="py-1 px-2 text-left font-semibold">{statistics?.passedCredit}</td>
                     </tr>
                   </tbody>
                 </table>
                 <table>
                   <thead>
-                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                    <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
                       <th className="py-1 pr-2 text-left">Σ Average</th>
                       <th className="py-1 px-2 text-left"></th>
-                      <th className="py-1 px-2 text-left hidden sm:table-cell"></th>
                     </tr>
                   </thead>
                   <tbody className="flex-1 sm:flex-none">
-                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                       <td className="py-1 pr-2 text-left">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
                           Credit Index
                         </span>
                       </td>
-                      <td className="py-1 px-2 text-left">{statistics?.creditIndex}</td>
-                      <td className="py-1 px-2 text-left hidden sm:table-cell"></td>
+                      <td className="py-1 px-2 text-left font-semibold">{statistics?.creditIndex}</td>
                     </tr>
-                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                       <td className="py-1 pr-2 text-left">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
                           Corrected Credit Index
                         </span>
                       </td>
-                      <td className="py-1 px-2 text-left">{statistics?.correctedCreditIndex}</td>
-                      <td className="py-1 px-2 text-left hidden sm:table-cell"></td>
+                      <td className="py-1 px-2 text-left font-semibold">{statistics?.correctedCreditIndex}</td>
                     </tr>
-                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                       <td className="py-1 pr-2 text-left">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
                           Weighted Average
                         </span>
                       </td>
-                      <td className="py-1 px-2 text-left">{statistics?.weightedAverage}</td>
-                      <td className="py-1 px-2 text-left hidden sm:table-cell"></td>
+                      <td className="py-1 px-2 text-left font-semibold">{statistics?.weightedAverage}</td>
                     </tr>
-                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                       <td className="py-1 pr-2 text-left">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">Average</span>
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
+                          Average
+                        </span>
                       </td>
-                      <td className="py-1 px-2 text-left">{statistics?.average}</td>
-                      <td className="py-1 px-2 text-left hidden sm:table-cell"></td>
+                      <td className="py-1 px-2 text-left font-semibold">{statistics?.average}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -175,7 +169,7 @@ const DashBoardPage: NextPage = () => {
               <div>
                 <table>
                   <thead>
-                    <tr className="rounded-lg text-gray-600 text-sm leading-normal">
+                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                       <th className="py-1 pr-2 text-left">Subject</th>
                       <th className="py-1 px-2 text-left">Grade</th>
                       <th className="py-1 px-2 text-left hidden sm:table-cell">Status</th>
@@ -183,7 +177,10 @@ const DashBoardPage: NextPage = () => {
                   </thead>
                   <tbody className="flex-1 sm:flex-none">
                     {statistics?.subjectProgressesWithGrade.map(statistic => (
-                      <tr key={statistic.id} className="rounded-lg text-gray-600 text-sm leading-normal">
+                      <tr
+                        key={statistic.id}
+                        className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal"
+                      >
                         <td className="py-1 pr-2 text-left">
                           <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
                             {statistic.subjectName}
