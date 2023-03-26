@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import type { TableColumnHeader } from '@components/SubjectTable/SubjectTable'
 import type { CompareType } from '@utils/subjectComparator'
@@ -11,7 +12,7 @@ interface SortMenuProps {
 
 export const SortMenu = ({ handleSetSortedSubjects, tableColumnHeaders }: SortMenuProps) => {
   const [isOpen, setIsOpen] = useState(false)
-
+  const { t } = useTranslation()
   return (
     <div className="relative inline-block text-left">
       <div>
@@ -20,7 +21,7 @@ export const SortMenu = ({ handleSetSortedSubjects, tableColumnHeaders }: SortMe
           type="button"
           className="group inline-flex justify-center text-sm font-medium  hover:text-gray-900"
         >
-          <span className="dark:text-gray-300 text-gray-700">Sort</span>
+          <span className="dark:text-gray-300 text-gray-700">{t('search.sortBtn')}</span>
           <svg
             className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
             xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +55,7 @@ export const SortMenu = ({ handleSetSortedSubjects, tableColumnHeaders }: SortMe
                 }}
                 key={tableColumnHeader.sortType}
               >
-                {tableColumnHeader.display}
+                {t(tableColumnHeader.display)}
               </div>
             ))}
           </div>

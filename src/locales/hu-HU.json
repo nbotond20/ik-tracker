@@ -7,22 +7,22 @@
   "home": {
     "ctaPrimary": "Kezdjük el",
     "ctaSecondary": "Ugrás a vezérlőpulthoz",
-    "description": "Használd az alkalmazásunkat, hogy követhesd az előrehaladásodat, és a legtöbbet hozd ki az egyetemi élményedből. Irányítsd a jövődet.",
+    "description": "Használd az alkalmazásunkat, hogy követhesd az előrehaladásodat, és a legtöbbet hozd ki az egyetemi élményedből. Legyen a jövőd a kezedben.",
     "features": {
       "calculator": {
-        "description": "Használd a kalkulátorunkat, hogy kiszámold a GPA-d és még többet. Mi segítünk elérni a céljaidat.",
+        "description": "Használd a kalkulátorunkat, hogy kiszámold a átlagaidat és még többet. Mi segítünk elérni a céljaidat.",
         "title": "Kalkulátor"
       },
       "download": {
-        "description": "Töltsd le az alkalmazásunkat, hogy elérhesd az adataidat a telefonodról. Az alkalmazásunkkal az előrehaladásodat is nyomon követheted útközben.",
+        "description": "Töltsd le az alkalmazásunkat a mobilodra egy gyorsabb és egyszerűbb élményért. Legyen kéznél mindenhol, ahol szükséged van rá.",
         "title": "Alkalmazás letöltése"
       },
       "planning": {
-        "description": "Tervezd meg a következő félévedet könnyedén. Használd a követelmények ellenőrzőnket, hogy biztos lehess a diploma megszerzéséhez szükséges előrehaladásodban.",
+        "description": "Tervezd meg a következő félévedet könnyedén. Használd az előfeltételek ellenőrzését, hogy biztos lehess abban, hogy jó úton haladsz a diplomád felé.",
         "title": "Tervezés"
       },
       "save": {
-        "description": "Biztonságosan jelentkezz be a Google, a Discord vagy a Github fiókod segítségével, hogy menthesd az adataidat. Mi megóvjuk az adataid biztonságát, és bárhol elérheted az előrehaladásodat.",
+        "description": "Biztonságosan jelentkezz be Google, Discord vagy Github fiókod segítségével, hogy elmentsd adatataidat valamint, hogy hozzáférj a teljes felhasználói élményhez.",
         "title": "Adatok mentése"
       },
       "search": {
@@ -30,11 +30,11 @@
         "title": "Keresés"
       },
       "tracking": {
-        "description": "Kövesd nyomon az előrehaladásodat velünk. Mi segítünk neked nyomon követni az eredményeidet, az értekezéseket és még sok mást. Legyél a játék tetején.",
+        "description": "Kövesd nyomon az előrehaladásodat velünk. Mi segítünk elérni a céljaidat. Ne gondolkozz többet, csak lépj be és kezdj el tanulni.",
         "title": "Nyomon követés"
       }
     },
-    "title": "Kövesd nyomon az előrehaladásodat"
+    "title": "Kövesd nyomon az előrehaladásod"
   },
   "routes": {
     "calculator": "Kalkulátor",
@@ -79,7 +79,17 @@
           "compulsoryElective": "Kötelező választható"
         },
         "title": "Tantárgy típusa"
-      }
+      },
+      "title": "Szűrők"
+    },
+    "sortBtn": "Rendezés",
+    "tableHeaderColums": {
+      "code": "Kód",
+      "courseName": "Kurzus neve",
+      "credit": "Kredit",
+      "creditType": "Kredit típusa",
+      "semester": "Félév",
+      "subjectType": "Tantárgy típusa"
     },
     "title": "Keresés"
   }

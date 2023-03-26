@@ -79,7 +79,17 @@
           "compulsoryElective": "Compulsory Elective"
         },
         "title": "Subject Type"
-      }
+      },
+      "title": "Filters"
+    },
+    "sortBtn": "Sort",
+    "tableHeaderColums": {
+      "code": "Code",
+      "courseName": "Course Name",
+      "credit": "Credit",
+      "creditType": "Credit Type",
+      "semester": "Semester",
+      "subjectType": "Subject Type"
     },
     "title": "Search"
   }

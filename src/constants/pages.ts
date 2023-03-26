@@ -32,30 +32,30 @@ export const pages: Page[] = [
 
 export const tableColumnHeaders = [
   {
-    display: 'Code',
+    display: 'search.tableHeaderColums.code',
     sortType: 'code',
   },
   {
-    display: 'Course Name',
+    display: 'search.tableHeaderColums.courseName',
     sortType: 'name',
   },
   {
-    display: 'Credit',
+    display: 'search.tableHeaderColums.credit',
     sortType: 'credit',
     classes: 'hidden md:table-cell',
   },
   {
-    display: 'Semester',
+    display: 'search.tableHeaderColums.semester',
     sortType: 'semester',
     classes: 'hidden xl:table-cell',
   },
   {
-    display: 'Credit Type',
+    display: 'search.tableHeaderColums.creditType',
     sortType: 'subjectGroupType',
     classes: 'hidden xl:table-cell',
   },
   {
-    display: 'Subject Type',
+    display: 'search.tableHeaderColums.subjectType',
     sortType: 'subjectType',
     classes: 'hidden 2xl:table-cell',
   },

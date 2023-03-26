@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTableLoadingState'
 import { Pagination } from '@components/Pagination/Pagination'
@@ -35,7 +36,7 @@ export const SubjectGrid = ({
   totalElements,
 }: SubjectGridProps) => {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
-
+  const { t } = useTranslation()
   return (
     <div className="col-span-8 grow xl:col-span-9">
       <div className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400 rounded-lg mb-6 flex justify-between">
@@ -53,7 +54,7 @@ export const SubjectGrid = ({
                   sortType === tableColumnHeader.sortType ? 'font-extrabold text-black dark:text-white' : ''
                 }`}
               >
-                {tableColumnHeader.display}
+                {t(tableColumnHeader.display)}
                 <ChevronUpDownIcon className="w-5 h-5" />
               </div>
             </div>

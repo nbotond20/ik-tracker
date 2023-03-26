@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
@@ -24,7 +25,7 @@ interface TableProps {
 
 export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeaders }: TableProps) => {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
-
+  const { t } = useTranslation()
   return (
     <>
       <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
@@ -45,7 +46,7 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
                       sortType === tableColumnHeader.sortType ? 'text-black dark:text-white' : 'text-gray-400'
                     }`}
                   >
-                    {tableColumnHeader.display}
+                    {t(tableColumnHeader.display)}
                     <ChevronUpDownIcon className="w-5 h-5" />
                   </div>
                 </div>
