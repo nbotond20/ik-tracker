@@ -103,7 +103,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                 </div>
               </>
             )}
-            <LanguageToggle className="hidden lg:inline-flex" />
+            <LanguageToggle className="hidden lg:inline-flex mr-2" />
             <DarkModeToggle className="hidden lg:inline-flex" />
           </div>
           <NavLinks links={pages || PAGES_CONSTANT} />

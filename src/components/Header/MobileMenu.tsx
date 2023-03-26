@@ -87,7 +87,7 @@ export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
             </Link>
           )}
 
-          <LanguageToggle />
+          <LanguageToggle className="mr-2" />
           <DarkModeToggle />
         </div>
       </div>
