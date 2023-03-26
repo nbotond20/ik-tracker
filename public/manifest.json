@@ -1,5 +1,4 @@
 {
-  "background_color": "#ffffff",
   "description": "ELTE IK Progress Tracker",
   "display": "standalone",
   "icons": [
@@ -21,12 +20,6 @@
     {
       "sizes": "512x512",
       "src": "/icon-512x512.png",
-      "type": "image/png"
-    },
-    {
-      "purpose": "maskable",
-      "sizes": "192x192",
-      "src": "/icon-192x192.png",
       "type": "image/png"
     }
   ],
@@ -79,6 +72,5 @@
       "url": "/dashboard/planner"
     }
   ],
-  "start_url": "/",
-  "theme_color": "#ffffff"
+  "start_url": "/"
 }
