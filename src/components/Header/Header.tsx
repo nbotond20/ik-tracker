@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { LinkButton } from '@components/Button/Button'
 import { pages as PAGES_CONSTANT } from '@constants/pages'
@@ -9,6 +10,7 @@ import { useRouter } from 'next/router'
 
 import { DarkModeToggle } from './DarkModeToggle'
 import { HambugerMenuButton } from './HamburgerMenuButton'
+import { LanguageToggle } from './LanguageToggleButton'
 import { MobileMenu } from './MobileMenu'
 import { NavLinks } from './NavLinks'
 
@@ -19,6 +21,7 @@ interface HeaderProps {
 }
 
 export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
+  const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
   const { data: session, status } = useSession()
   const router = useRouter()
@@ -55,7 +58,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                   className="mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
                   onClick={() => setIsOpen(false)}
                 >
-                  Log in
+                  {t('header.login')}
                 </LinkButton>
                 <LinkButton
                   variant="filled"
@@ -63,7 +66,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                   onClick={() => setIsOpen(false)}
                   href={`/login?callbackUrl=${router.pathname}`}
                 >
-                  Get started
+                  {t('header.getStarted')}
                 </LinkButton>
               </>
             ) : (
@@ -78,7 +81,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                     })
                   }
                 >
-                  Log out
+                  {t('header.logout')}
                 </LinkButton>
                 <div className="relative mr-2 h-10 w-10 cursor-pointer overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
                   {session.user.image ? (
@@ -100,6 +103,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                 </div>
               </>
             )}
+            <LanguageToggle className="hidden lg:inline-flex" />
             <DarkModeToggle className="hidden lg:inline-flex" />
           </div>
           <NavLinks links={pages || PAGES_CONSTANT} />

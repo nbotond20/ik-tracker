@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import Link from 'next/link'
 
 interface Breadcrumb {
@@ -10,6 +12,7 @@ export interface BreadcrumbsProps {
 }
 
 export const BreadCrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
+  const { t } = useTranslation()
   return (
     <nav className="flex" aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-1 md:space-x-3">
@@ -27,7 +30,7 @@ export const BreadCrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
             >
               <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
             </svg>
-            Home
+            {t('routes.home')}
           </Link>
         </li>
         {breadcrumbs?.map((breadcrumb, index) =>
@@ -51,7 +54,7 @@ export const BreadCrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
                   href={breadcrumb.href || '/'}
                   className="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"
                 >
-                  {breadcrumb.title}
+                  {t(breadcrumb.title)}
                 </Link>
               </div>
             </li>
@@ -72,7 +75,7 @@ export const BreadCrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
                   ></path>
                 </svg>
                 <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
-                  {breadcrumb.title}
+                  {t(breadcrumb.title)}
                 </span>
               </div>
             </li>

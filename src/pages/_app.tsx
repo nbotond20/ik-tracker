@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Toaster } from 'react-hot-toast'
 
 import { Header } from '@components/Header/Header'
@@ -7,6 +8,7 @@ import { addResizeListener } from '@hooks/useMobileFullscreenHeight'
 import { useThemeMode } from '@hooks/useThemeMode'
 import '@styles/globals.css'
 import { api } from '@utils/api'
+import { loadLanguage } from '@utils/loadLanguage'
 import { Analytics } from '@vercel/analytics/react'
 import type { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
@@ -14,11 +16,17 @@ import type { AppType } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 
+import '../i18n/i18n'
+
 const HeaderLogo = dynamic(() => import('@components/Header/HeaderLogo').then(mod => mod.HeaderLogo))
 
 const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { session, ...pageProps } }) => {
   useThemeMode()
   addResizeListener()
+
+  useEffect(() => {
+    loadLanguage()
+  }, [])
 
   return (
     <SessionProvider session={session}>

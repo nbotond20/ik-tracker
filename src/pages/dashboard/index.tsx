@@ -34,7 +34,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 const breadcrumbs = [
   {
-    title: 'Dashboard',
+    title: 'routes.dashboard',
   },
 ]
 

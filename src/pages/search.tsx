@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
 import { SortMenu } from '@components/SortMenu/SortMenu'
@@ -17,7 +19,7 @@ const SubjectList = dynamic(() => import('@components/SubjectList/SubjectList').
 
 const breadcrumbs = [
   {
-    title: 'Search',
+    title: 'routes.search',
   },
 ]
 
@@ -48,6 +50,8 @@ const SearchPage: NextPage = () => {
     handleSetSortedSubjects,
   } = useSearchPage()
 
+  const { t } = useTranslation()
+
   return (
     <ScrollLayout>
       {/* Mobile filter drawer */}
@@ -70,7 +74,7 @@ const SearchPage: NextPage = () => {
       <div className="w-full max-w-screen-2xl px-2 sm:px-4 lg:px-8 flex flex-col">
         {/* Header */}
         <div className="flex items-baseline justify-between border-b border-gray-200 pt-12 pb-6">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Search</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{t('search.title')}</h1>
           <div className="flex items-center">
             <SortMenu
               sortType={sortType}

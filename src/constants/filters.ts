@@ -3,29 +3,29 @@ import type { SpecialisationType, SubjectGroupType, SubjectType } from '@prisma/
 export const filters = [
   {
     id: 'subjectType',
-    name: 'Subject Type',
+    name: 'search.filters.subjectType.title',
     type: 'checkbox',
     options: [
-      { value: 'TOR' as SubjectType, label: 'Base', checked: false },
-      { value: 'KOT' as SubjectType, label: 'Compulsory', checked: false },
-      { value: 'KV' as SubjectType, label: 'Compulsory Elective', checked: false },
+      { value: 'TOR' as SubjectType, label: 'search.filters.subjectType.options.base', checked: false },
+      { value: 'KOT' as SubjectType, label: 'search.filters.subjectType.options.compulsory', checked: false },
+      { value: 'KV' as SubjectType, label: 'search.filters.subjectType.options.compulsoryElective', checked: false },
     ],
   },
   {
     id: 'subjectGroupType',
-    name: 'Credit Type',
+    name: 'search.filters.creditType.title',
     type: 'checkbox',
     options: [
-      { value: 'INF' as SubjectGroupType, label: 'Informatics', checked: false },
-      { value: 'SZAM' as SubjectGroupType, label: 'Computing', checked: false },
-      { value: 'MAT' as SubjectGroupType, label: 'Mathematics', checked: false },
-      { value: 'EGYEB' as SubjectGroupType, label: 'Other', checked: false },
-      { value: 'SZAKDOLGOZAT' as SubjectGroupType, label: 'Thesis', checked: false },
+      { value: 'INF' as SubjectGroupType, label: 'search.filters.creditType.options.informatics', checked: false },
+      { value: 'SZAM' as SubjectGroupType, label: 'search.filters.creditType.options.computing', checked: false },
+      { value: 'MAT' as SubjectGroupType, label: 'search.filters.creditType.options.mathematics', checked: false },
+      { value: 'EGYEB' as SubjectGroupType, label: 'search.filters.creditType.options.other', checked: false },
+      { value: 'SZAKDOLGOZAT' as SubjectGroupType, label: 'search.filters.creditType.options.thesis', checked: false },
     ],
   },
   {
     id: 'specialisation',
-    name: 'Specialisation',
+    name: 'search.filters.specialisation.title',
     type: 'checkbox',
     options: [
       { value: 'A' as SpecialisationType, label: 'A', checked: false },

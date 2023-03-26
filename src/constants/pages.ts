@@ -8,15 +8,15 @@ export interface Page {
 
 export const pages: Page[] = [
   {
-    label: 'Home',
+    label: 'routes.home',
     href: '/',
   },
   {
-    label: 'Search',
+    label: 'routes.search',
     href: '/search',
   },
   {
-    label: 'Dashboard',
+    label: 'routes.dashboard',
     href: '/dashboard',
     /* protected: true, */
   } /* ,

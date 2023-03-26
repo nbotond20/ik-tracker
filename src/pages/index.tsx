@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { type NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
@@ -17,6 +19,7 @@ const ArrowSmallRightIcon = dynamic(() => import('@heroicons/react/24/outline/Ar
 
 const HomePage: NextPage = () => {
   const { data: session } = useSession()
+  const { t } = useTranslation()
 
   return (
     <div
@@ -39,15 +42,14 @@ const HomePage: NextPage = () => {
                   className="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight dark:text-white md:text-5xl xl:text-6xl"
                   data-testid="home-title"
                 >
-                  Track your progress with us
+                  {t('home.title')}
                 </h1>
               </div>
               <p
                 className="mb-6 max-w-2xl font-light text-gray-500 dark:text-gray-400 md:text-lg lg:mb-8 lg:text-xl"
                 data-testid="home-subtitle"
               >
-                Use our app to track your progress and get the most out of your college experience. Be in control of
-                your future.
+                {t('home.description')}
               </p>
               {!session?.user && (
                 <Link
@@ -55,7 +57,7 @@ const HomePage: NextPage = () => {
                   className="mr-3 mb-3 inline-flex items-center justify-center rounded-lg bg-primary-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
                   data-testid="home-get-started-link"
                 >
-                  Get started
+                  {t('home.ctaPrimary')}
                   <ArrowSmallRightIcon className="ml-2 -mr-1 h-5 w-5 fill-white stroke-white stroke-2" />
                 </Link>
               )}
@@ -64,7 +66,7 @@ const HomePage: NextPage = () => {
                 className="inline-flex items-center justify-center rounded-lg border border-gray-300 px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800"
                 data-testid="home-login-link"
               >
-                Go to dashboard
+                {t('home.ctaSecondary')}
               </Link>
             </div>
           </div>
@@ -89,60 +91,43 @@ const HomePage: NextPage = () => {
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <PresentationChartLineIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h2 className="mb-2 text-xl font-bold dark:text-white">Tracking</h2>
-            <p className="text-gray-500 dark:text-gray-400">
-              Track your progress with us. We will help you keep track of your grades, assignments, and more. Be on top
-              of your game.
-            </p>
+            <h2 className="mb-2 text-xl font-bold dark:text-white">{t('home.features.tracking.title')}</h2>
+            <p className="text-gray-500 dark:text-gray-400">{t('home.features.tracking.description')}</p>
           </div>
           <div>
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <AcademicCapIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h2 className="mb-2 text-xl font-bold dark:text-white">Planning</h2>
-            <p className="text-gray-500 dark:text-gray-400">
-              Plan your next semester with ease. Use our requirements checker to make sure you are on track to graduate
-            </p>
+            <h2 className="mb-2 text-xl font-bold dark:text-white">{t('home.features.planning.title')}</h2>
+            <p className="text-gray-500 dark:text-gray-400">{t('home.features.planning.description')}</p>
           </div>
           <div>
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <CalculatorIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h2 className="mb-2 text-xl font-bold dark:text-white">Calculator</h2>
-            <p className="text-gray-500 dark:text-gray-400">
-              Use our calculator to calculate your GPA and more. We will help you achieve your goals.
-            </p>
+            <h2 className="mb-2 text-xl font-bold dark:text-white">{t('home.features.calculator.title')}</h2>
+            <p className="text-gray-500 dark:text-gray-400">{t('home.features.calculator.description')}</p>
           </div>
           <div>
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <MagnifyingGlassIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h2 className="mb-2 text-xl font-bold dark:text-white">Search</h2>
-            <p className="text-gray-500 dark:text-gray-400">
-              Not sure what to take? Use our search feature to find the perfect course for you. Filter based on your
-              needs and requirements.
-            </p>
+            <h2 className="mb-2 text-xl font-bold dark:text-white">{t('home.features.search.title')}</h2>
+            <p className="text-gray-500 dark:text-gray-400">{t('home.features.search.description')}</p>
           </div>
           <div>
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <UserCircleIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h2 className="mb-2 text-xl font-bold dark:text-white">Save your data</h2>
-            <p className="text-gray-500 dark:text-gray-400">
-              Login safely with <span className="font-bold">Google</span>, <span className="font-bold">Discord</span> or{' '}
-              <span className="font-bold">Github</span> to save your data. We will keep your data safe and secure. You
-              can access your progress from anywhere.
-            </p>
+            <h2 className="mb-2 text-xl font-bold dark:text-white">{t('home.features.save.title')}</h2>
+            <p className="text-gray-500 dark:text-gray-400">{t('home.features.save.description')}</p>
           </div>
           <div>
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
               <ArrowDownCircleIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
             </div>
-            <h2 className="mb-2 text-xl font-bold dark:text-white">Download our app</h2>
-            <p className="text-gray-500 dark:text-gray-400">
-              Download our app to access your data from your phone. You can also use our app to track your progress on
-              the go.
-            </p>
+            <h2 className="mb-2 text-xl font-bold dark:text-white">{t('home.features.download.title')}</h2>
+            <p className="text-gray-500 dark:text-gray-400">{t('home.features.download.description')}</p>
           </div>
         </div>
         <div className="absolute bottom-6 left-1/2 animate-bounce" style={{ translate: '-50%' }}>

@@ -1,0 +1,86 @@
+{
+  "header": {
+    "getStarted": "Kezdjük el",
+    "login": "Bejelentkezés",
+    "logout": "Kijelentkezés"
+  },
+  "home": {
+    "ctaPrimary": "Kezdjük el",
+    "ctaSecondary": "Ugrás a vezérlőpulthoz",
+    "description": "Használd az alkalmazásunkat, hogy követhesd az előrehaladásodat, és a legtöbbet hozd ki az egyetemi élményedből. Irányítsd a jövődet.",
+    "features": {
+      "calculator": {
+        "description": "Használd a kalkulátorunkat, hogy kiszámold a GPA-d és még többet. Mi segítünk elérni a céljaidat.",
+        "title": "Kalkulátor"
+      },
+      "download": {
+        "description": "Töltsd le az alkalmazásunkat, hogy elérhesd az adataidat a telefonodról. Az alkalmazásunkkal az előrehaladásodat is nyomon követheted útközben.",
+        "title": "Alkalmazás letöltése"
+      },
+      "planning": {
+        "description": "Tervezd meg a következő félévedet könnyedén. Használd a követelmények ellenőrzőnket, hogy biztos lehess a diploma megszerzéséhez szükséges előrehaladásodban.",
+        "title": "Tervezés"
+      },
+      "save": {
+        "description": "Biztonságosan jelentkezz be a Google, a Discord vagy a Github fiókod segítségével, hogy menthesd az adataidat. Mi megóvjuk az adataid biztonságát, és bárhol elérheted az előrehaladásodat.",
+        "title": "Adatok mentése"
+      },
+      "search": {
+        "description": "Nem tudod, milyen tárgyat vegyél fel? Használd a kereső funkcióinkat, hogy megtaláld a számodra tökéletes kurzust. Szűrj a szükségleteid és követelményeid alapján.",
+        "title": "Keresés"
+      },
+      "tracking": {
+        "description": "Kövesd nyomon az előrehaladásodat velünk. Mi segítünk neked nyomon követni az eredményeidet, az értekezéseket és még sok mást. Legyél a játék tetején.",
+        "title": "Nyomon követés"
+      }
+    },
+    "title": "Kövesd nyomon az előrehaladásodat"
+  },
+  "routes": {
+    "calculator": "Kalkulátor",
+    "dashboard": "Irányítópult",
+    "home": "Főoldal",
+    "planer": "Tervező",
+    "progress": "Előrehaladás",
+    "search": "Keresés"
+  },
+  "search": {
+    "filters": {
+      "credit": {
+        "title": "Kredit"
+      },
+      "creditType": {
+        "options": {
+          "computing": "Számítástudományi",
+          "informatics": "Informatikai",
+          "mathematics": "Matematikai",
+          "other": "Egyéb",
+          "thesis": "Szakdolgozat"
+        },
+        "title": "Kredit típusa"
+      },
+      "preReq": {
+        "placeholder": "Keresés előfeltételek között",
+        "title": "Előfeltételek"
+      },
+      "searchInput": {
+        "placeholder": "Keresés tantárgyak között"
+      },
+      "semester": {
+        "title": "Félév"
+      },
+      "specialisation": {
+        "title": "Specializáció"
+      },
+      "subjectType": {
+        "options": {
+          "base": "Törzsanyag",
+          "compulsory": "Kötelező",
+          "compulsoryElective": "Kötelező választható"
+        },
+        "title": "Tantárgy típusa"
+      }
+    },
+    "title": "Keresés"
+  }
+}

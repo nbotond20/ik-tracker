@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import type { Page } from '@constants/pages'
 import { setMobileMenuHeight } from '@hooks/useMobileFullscreenHeight'
@@ -8,6 +9,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { DarkModeToggle } from './DarkModeToggle'
+import { LanguageToggle } from './LanguageToggleButton'
 
 const ArrowRightOnRectangleIcon = dynamic(() => import('@heroicons/react/24/outline/ArrowRightOnRectangleIcon'))
 const ArrowLeftOnRectangleIcon = dynamic(() => import('@heroicons/react/24/outline/ArrowLeftOnRectangleIcon'))
@@ -24,6 +26,7 @@ interface MobileMenuProps {
 }
 
 export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
+  const { t } = useTranslation()
   const { data: session } = useSession()
   const router = useRouter()
 
@@ -75,15 +78,16 @@ export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
               }}
             >
               <ArrowRightOnRectangleIcon className="h-5 w-5 mr-2 stroke-2" />
-              Logout
+              {t('header.logout')}
             </span>
           ) : (
             <Link href={`/login?callbackUrl=${router.pathname}`} className="w-full flex items-center text-2xl">
               <ArrowLeftOnRectangleIcon className="h-5 w-5 mr-2 stroke-2" />
-              Login
+              {t('header.login')}
             </Link>
           )}
 
+          <LanguageToggle />
           <DarkModeToggle />
         </div>
       </div>

@@ -1,14 +1,86 @@
 {
-  "components": {
-    "header": {
-      "getStarter": "Get started",
-      "login": "Log in"
+  "header": {
+    "getStarted": "Get started",
+    "login": "Log in",
+    "logout": "Log out"
+  },
+  "home": {
+    "ctaPrimary": "Get started",
+    "ctaSecondary": "Go to dashboard",
+    "description": "Use our app to track your progress and get the most out of your college experience. Be in control of your future.",
+    "features": {
+      "calculator": {
+        "description": "Use our calculator to calculate your GPA and more. We will help you achieve your goals.",
+        "title": "Calculator"
+      },
+      "download": {
+        "description": "Download our app to access your data from your phone. You can also use our app to track your progress on the go.",
+        "title": "Download our app"
+      },
+      "planning": {
+        "description": "Plan your next semester with ease. Use our requirements checker to make sure you are on track to graduate.",
+        "title": "Planning"
+      },
+      "save": {
+        "description": "Login safely with Google, Discord or Github to save your data. We will keep your data safe and secure. You can access your progress from anywhere.",
+        "title": "Save your data"
+      },
+      "search": {
+        "description": "Not sure what to take? Use our search feature to find the perfect course for you. Filter based on your needs and requirements.",
+        "title": "Search"
+      },
+      "tracking": {
+        "description": "Track your progress with us. We will help you keep track of your grades, assignments, and more. Be on top of your game.",
+        "title": "Tracking"
+      }
     },
-    "navLinks": {
-      "about": "About",
-      "blog": "Blog",
-      "contact": "Contact",
-      "home": "Home"
-    }
+    "title": "Track your progress with us"
+  },
+  "routes": {
+    "calculator": "Calculator",
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "planer": "Planner",
+    "progress": "Progress",
+    "search": "Search"
+  },
+  "search": {
+    "filters": {
+      "credit": {
+        "title": "Credit"
+      },
+      "creditType": {
+        "options": {
+          "computing": "Computing",
+          "informatics": "Informatics",
+          "mathematics": "Mathematics",
+          "other": "Other",
+          "thesis": "Thesis"
+        },
+        "title": "Credit Type"
+      },
+      "preReq": {
+        "placeholder": "Search Pre-requisites",
+        "title": "Pre-requisites"
+      },
+      "searchInput": {
+        "placeholder": "Search Subjects"
+      },
+      "semester": {
+        "title": "Semester"
+      },
+      "specialisation": {
+        "title": "Specialisation"
+      },
+      "subjectType": {
+        "options": {
+          "base": "Base",
+          "compulsory": "Compulsory",
+          "compulsoryElective": "Compulsory Elective"
+        },
+        "title": "Subject Type"
+      }
+    },
+    "title": "Search"
   }
 }

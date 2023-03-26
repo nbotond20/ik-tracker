@@ -34,11 +34,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 const breadcrumbs = [
   {
-    title: 'Dashboard',
+    title: 'routes.dashboard',
     href: '/dashboard',
   },
   {
-    title: 'Subject Progresses',
+    title: 'routes.progress',
   },
 ]
 
