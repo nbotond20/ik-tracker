@@ -24,9 +24,9 @@
       "type": "image/png"
     },
     {
-      "purpose": "any maskable",
-      "sizes": "512x512",
-      "src": "/icon-512x512.png",
+      "purpose": "maskable",
+      "sizes": "192x192",
+      "src": "/icon-192x192.png",
       "type": "image/png"
     }
   ],
@@ -35,12 +35,48 @@
   "short_name": "IK-Tracker",
   "shortcuts": [
     {
+      "icons": [
+        {
+          "sizes": "192x192",
+          "src": "/magnifing-glass-icon-192x192.png",
+          "type": "image/png"
+        }
+      ],
       "name": "Search",
       "url": "/search"
     },
     {
-      "name": "Dashboard",
-      "url": "/dashboard"
+      "icons": [
+        {
+          "sizes": "192x192",
+          "src": "/progress-icon-192x192.png",
+          "type": "image/png"
+        }
+      ],
+      "name": "Progress",
+      "url": "/dashboard/subject-progresses"
+    },
+    {
+      "icons": [
+        {
+          "sizes": "192x192",
+          "src": "/calculator-icon-192x192.png",
+          "type": "image/png"
+        }
+      ],
+      "name": "Calculator",
+      "url": "/dashboard/calculator"
+    },
+    {
+      "icons": [
+        {
+          "sizes": "192x192",
+          "src": "/planner-icon-192x192.png",
+          "type": "image/png"
+        }
+      ],
+      "name": "Planner",
+      "url": "/dashboard/planner"
     }
   ],
   "start_url": "/",

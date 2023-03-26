@@ -9,7 +9,7 @@ const applyThemeMode = (themeMode: 'light' | 'dark') => {
   }
 }
 
-const getThemeModeFromLocalStorage = () => {
+export const getThemeModeFromLocalStorage = () => {
   if (typeof window !== 'undefined') {
     const mode = localStorage.getItem('theme')
     return mode ? (mode === 'dark' ? 'dark' : 'light') : undefined
