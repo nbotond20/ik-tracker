@@ -1,30 +1,48 @@
 {
-    "display": "standalone",
-    "scope": "/",
-    "start_url": "/",
-    "name": "ELTE IK Progress Tracker",
-    "short_name": "IK-Tracker",
-    "description": "ELTE IK Progress Tracker",
-    "icons": [
-        {
-            "src": "/icon-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-256x256.png",
-            "sizes": "256x256",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-384x384.png",
-            "sizes": "384x384",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ]
+  "background_color": "#ffffff",
+  "description": "ELTE IK Progress Tracker",
+  "display": "standalone",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "src": "/icon-192x192.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "256x256",
+      "src": "/icon-256x256.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "384x384",
+      "src": "/icon-384x384.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "/icon-512x512.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any maskable",
+      "sizes": "512x512",
+      "src": "/icon-512x512.png",
+      "type": "image/png"
+    }
+  ],
+  "name": "ELTE IK Progress Tracker",
+  "scope": "/",
+  "short_name": "IK-Tracker",
+  "shortcuts": [
+    {
+      "name": "Search",
+      "url": "/search"
+    },
+    {
+      "name": "Dashboard",
+      "url": "/dashboard"
+    }
+  ],
+  "start_url": "/",
+  "theme_color": "#ffffff"
 }

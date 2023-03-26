@@ -5,7 +5,7 @@ export default function Document() {
     <Html>
       <Head>
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" href="/icon-256x256.png" />
         <meta name="description" content="ELTE IK Progress Tracker" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />

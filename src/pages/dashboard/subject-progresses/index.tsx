@@ -113,7 +113,7 @@ const SubjectProgressPage: NextPage = () => {
       <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Progress</h1>
-          <button onClick={() => setOpenAll(prev => !prev)}>
+          <button onClick={() => setOpenAll(prev => !prev)} type="button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 text-gray-500 dark:text-gray-400"
