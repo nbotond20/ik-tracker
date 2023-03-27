@@ -35,7 +35,7 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
               <th
                 scope="col"
                 className={`cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-600 sm:p-3 ${
-                  tableColumnHeader.classes ? tableColumnHeader.classes : ''
+                  tableColumnHeader.classes || ''
                 }`}
                 onClick={() => handleSort(tableColumnHeader.sortType)}
                 key={tableColumnHeader.sortType}
@@ -68,46 +68,22 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
                   <th
                     scope="row"
                     className={`px-2 py-2 font-medium text-gray-900 dark:text-white sm:whitespace-nowrap sm:px-4 ${
-                      tableColumnHeaders[0]!.classes ? tableColumnHeaders[0]!.classes : ''
+                      tableColumnHeaders[0]!.classes || ''
                     }`}
                   >
                     {subject.code}
                   </th>
-                  <td
-                    className={`px-2 py-2 sm:whitespace-nowrap sm:px-4 ${
-                      tableColumnHeaders[1]!.classes ? tableColumnHeaders[1]!.classes : ''
-                    }`}
-                  >
+                  <td className={`px-2 py-2 sm:whitespace-nowrap sm:px-4 ${tableColumnHeaders[1]!.classes || ''}`}>
                     {subject.courseName}
                   </td>
-                  <td
-                    className={`px-2 py-2 sm:px-4 ${
-                      tableColumnHeaders[2]!.classes ? tableColumnHeaders[2]!.classes : ''
-                    }`}
-                  >
-                    {subject.credit}
-                  </td>
-                  <td
-                    className={`px-2 py-2 sm:px-4 ${
-                      tableColumnHeaders[3]!.classes ? tableColumnHeaders[3]!.classes : ''
-                    }`}
-                  >
+                  <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[2]!.classes || ''}`}>{subject.credit}</td>
+                  <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[3]!.classes || ''}`}>
                     {subject.semester.join(', ')}
                   </td>
-                  <td
-                    className={`px-2 py-2 sm:px-4 ${
-                      tableColumnHeaders[4]!.classes ? tableColumnHeaders[4]!.classes : ''
-                    }`}
-                  >
+                  <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[4]!.classes || ''}`}>
                     {subject.subjectGroupType}
                   </td>
-                  <td
-                    className={`px-2 py-2 sm:px-4 ${
-                      tableColumnHeaders[5]!.classes ? tableColumnHeaders[5]!.classes : ''
-                    }`}
-                  >
-                    {subject.subjectType}
-                  </td>
+                  <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[5]!.classes || ''}`}>{subject.subjectType}</td>
                   <td className="cursor-pointer px-2 py-2">
                     <div className="relative h-5 w-5">
                       <InformationCircleIcon />
