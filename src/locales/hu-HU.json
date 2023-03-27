@@ -1,4 +1,17 @@
 {
+  "calculator": {
+    "subjects": {
+      "addSubjectBtn": "Tantárgy hozzáadása",
+      "credit": "Kredit",
+      "empty": "Nincs megjeleníthető tantárgy",
+      "grade": "Érdemjegy",
+      "optional": "Nem kötelező",
+      "subjectCode": "Tárgy kódja",
+      "subjectName": "Tárgy neve",
+      "title": "Tantárgyak"
+    },
+    "title": "Kalkulátor"
+  },
   "header": {
     "getStarted": "Kezdjük el",
     "login": "Bejelentkezés",

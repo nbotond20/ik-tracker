@@ -1,7 +1,9 @@
 import { Badge } from '@components/Badge/Badge'
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
+import { StatisticsTable } from '@components/StatisticsTable/StatisticsTable'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
+import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
 import type { NextPage, GetServerSidePropsContext } from 'next'
 import { getServerSession } from 'next-auth'
@@ -37,6 +39,8 @@ const breadcrumbs = [
     title: 'routes.dashboard',
   },
 ]
+
+type Statistics = RouterOutputs['subjectProgress']['statisticsBySemester']
 
 const DashBoardPage: NextPage = () => {
   const { data: session } = useSession()
@@ -95,84 +99,14 @@ const DashBoardPage: NextPage = () => {
             <h2 className=" text-xl font-bold dark:text-white mb-4">
               Statistics for current semester ({session?.user?.currentSemester}.)
             </h2>
-            <div className="w-full flex flex-col lg:flex-row gap-8 justify-between">
-              <div className="flex flex-col justify-center">
-                <table className="mb-4">
-                  <thead>
-                    <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
-                      <th className="py-1 pr-2 text-left">Σ Credit</th>
-                      <th className="py-1 px-2 text-left"></th>
-                    </tr>
-                  </thead>
-                  <tbody className="flex-1 sm:flex-none">
-                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
-                      <td className="py-1 pr-2 text-left">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                          Total Credit
-                        </span>
-                      </td>
-                      <td className="py-1 px-2 text-left font-semibold">{statistics?.totalCredit}</td>
-                    </tr>
-                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
-                      <td className="py-1 pr-2 text-left">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                          Passed Credit
-                        </span>
-                      </td>
-                      <td className="py-1 px-2 text-left font-semibold">{statistics?.passedCredit}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table>
-                  <thead>
-                    <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
-                      <th className="py-1 pr-2 text-left">Σ Average</th>
-                      <th className="py-1 px-2 text-left"></th>
-                    </tr>
-                  </thead>
-                  <tbody className="flex-1 sm:flex-none">
-                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
-                      <td className="py-1 pr-2 text-left">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                          Credit Index
-                        </span>
-                      </td>
-                      <td className="py-1 px-2 text-left font-semibold">{statistics?.creditIndex}</td>
-                    </tr>
-                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
-                      <td className="py-1 pr-2 text-left">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                          Corrected Credit Index
-                        </span>
-                      </td>
-                      <td className="py-1 px-2 text-left font-semibold">{statistics?.correctedCreditIndex}</td>
-                    </tr>
-                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
-                      <td className="py-1 pr-2 text-left">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                          Weighted Average
-                        </span>
-                      </td>
-                      <td className="py-1 px-2 text-left font-semibold">{statistics?.weightedAverage}</td>
-                    </tr>
-                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
-                      <td className="py-1 pr-2 text-left">
-                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                          Average
-                        </span>
-                      </td>
-                      <td className="py-1 px-2 text-left font-semibold">{statistics?.average}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div className="w-full flex flex-col lg:flex-row gap-8 justify-evenly">
+              <StatisticsTable statistics={statistics as Omit<Statistics, 'subjectProgressesWithGrade'>} />
               <div>
-                <table>
+                <table className="w-full">
                   <thead>
-                    <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
-                      <th className="py-1 pr-2 text-left">Subject</th>
-                      <th className="py-1 px-2 text-left">Grade</th>
-                      <th className="py-1 px-2 text-left hidden sm:table-cell">Status</th>
+                    <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
+                      <th className="py-1 pr-2 text-left text-base">Subject</th>
+                      <th className="py-1 px-2 text-right text-base">Grade</th>
                     </tr>
                   </thead>
                   <tbody className="flex-1 sm:flex-none">
@@ -182,20 +116,15 @@ const DashBoardPage: NextPage = () => {
                         className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal"
                       >
                         <td className="py-1 pr-2 text-left">
-                          <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                          <span className="block whitespace-nowrap overflow-hidden text-ellipsis max-w-[90%]">
                             {statistic.subjectName}
                           </span>
                         </td>
-                        <td className="py-1 px-2 text-left">
+                        <td className="py-1 px-2 text-right">
                           <Badge
                             variant={statistic.grade >= 4 ? 'success' : statistic.grade >= 2 ? 'warning' : 'danger'}
                           >
                             {statistic.grade}
-                          </Badge>
-                        </td>
-                        <td className="py-1 px-2 text-left hidden sm:table-cell">
-                          <Badge variant={statistic.grade >= 2 ? 'success' : 'danger'}>
-                            {statistic.grade >= 2 ? 'Passed' : 'Failed'}
                           </Badge>
                         </td>
                       </tr>

@@ -1,4 +1,17 @@
 {
+  "calculator": {
+    "subjects": {
+      "addSubjectBtn": "Add Subject",
+      "credit": "Credit",
+      "grade": "Grade",
+      "subjectCode": "Subject Code",
+      "subjectName": "Subject Name",
+      "title": "Subjects",
+      "optional": "Optional",
+      "empty": "No subjects added"
+    },
+    "title": "Calculator"
+  },
   "header": {
     "getStarted": "Get started",
     "login": "Log in",

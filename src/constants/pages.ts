@@ -18,16 +18,16 @@ export const pages: Page[] = [
   {
     label: 'routes.dashboard',
     href: '/dashboard',
-    /* protected: true, */
-  } /* ,
-  {
-    label: 'Calculator 🚧',
-    href: '/calculator',
+    protected: true,
   },
+  {
+    label: 'routes.calculator',
+    href: '/dashboard/calculator',
+  } /* ,
   {
     label: 'Current Semester 🚧',
     href: '/about',
-  }, */,
+  } */,
 ]
 
 export const tableColumnHeaders = [
