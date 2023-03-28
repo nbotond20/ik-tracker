@@ -12,6 +12,12 @@
     },
     "title": "Calculator"
   },
+  "components": {
+    "confirmDialog": {
+      "cancelBtn": "No, cancel",
+      "confirmBtn": "Yes, I'm sure"
+    }
+  },
   "header": {
     "getStarted": "Get started",
     "login": "Log in",

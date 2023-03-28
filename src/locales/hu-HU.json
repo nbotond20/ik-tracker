@@ -12,6 +12,12 @@
     },
     "title": "Kalkulátor"
   },
+  "components": {
+    "confirmDialog": {
+      "cancelBtn": "Mégse",
+      "confirmBtn": "Igen, biztos"
+    }
+  },
   "header": {
     "getStarted": "Kezdjük el",
     "login": "Bejelentkezés",
