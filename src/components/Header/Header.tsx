@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { LinkButton } from '@components/Button/Button'
+import { LoadingSpinner } from '@components/Spinner/Spinner'
 import { pages as PAGES_CONSTANT } from '@constants/pages'
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
@@ -50,59 +51,61 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
             </span>
           </Link>
           <div className="flex items-center lg:order-2">
-            {!session?.user ? (
-              <>
-                <LinkButton
-                  variant="outlined"
-                  href={`/login?callbackUrl=${router.pathname}`}
-                  className="mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {t('header.login')}
-                </LinkButton>
-                <LinkButton
-                  variant="filled"
-                  className="mr-2 lg:px-5 lg:py-2.5"
-                  onClick={() => setIsOpen(false)}
-                  href={`/login?callbackUrl=${router.pathname}`}
-                >
-                  {t('header.getStarted')}
-                </LinkButton>
-              </>
-            ) : (
-              <>
-                <LinkButton
-                  variant="outlined"
-                  href={`/`}
-                  className="mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
-                  onClick={() =>
-                    void signOut({
-                      callbackUrl: '/',
-                    })
-                  }
-                >
-                  {t('header.logout')}
-                </LinkButton>
-                <div className="relative mr-2 h-10 w-10 cursor-pointer overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
-                  {session.user.image ? (
-                    <Image width={48} height={48} src={session.user.image} alt="Avatar" />
-                  ) : (
-                    <svg
-                      className="absolute -left-1 h-12 w-12 text-gray-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  )}
-                </div>
-              </>
-            )}
+            {status === 'loading' && <LoadingSpinner />}
+            {status !== 'loading' &&
+              (!session?.user ? (
+                <>
+                  <LinkButton
+                    variant="outlined"
+                    href={`/login?callbackUrl=${router.pathname}`}
+                    className="mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {t('header.login')}
+                  </LinkButton>
+                  <LinkButton
+                    variant="filled"
+                    className="mr-2 lg:px-5 lg:py-2.5"
+                    onClick={() => setIsOpen(false)}
+                    href={`/login?callbackUrl=${router.pathname}`}
+                  >
+                    {t('header.getStarted')}
+                  </LinkButton>
+                </>
+              ) : (
+                <>
+                  <LinkButton
+                    variant="outlined"
+                    href={`/`}
+                    className="mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
+                    onClick={() =>
+                      void signOut({
+                        callbackUrl: '/',
+                      })
+                    }
+                  >
+                    {t('header.logout')}
+                  </LinkButton>
+                  <div className="relative mr-2 h-10 w-10 cursor-pointer overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
+                    {session.user.image ? (
+                      <Image width={48} height={48} src={session.user.image} alt="Avatar" />
+                    ) : (
+                      <svg
+                        className="absolute -left-1 h-12 w-12 text-gray-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    )}
+                  </div>
+                </>
+              ))}
             <LanguageToggle className="hidden lg:inline-flex mr-2" />
             <DarkModeToggle className="hidden lg:inline-flex" />
           </div>

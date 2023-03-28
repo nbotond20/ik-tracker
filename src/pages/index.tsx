@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 
+import { LoadingPage } from '@components/Spinner/Spinner'
 import { type NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
@@ -18,8 +19,12 @@ const ArrowUpIcon = dynamic(() => import('@heroicons/react/24/outline/ArrowUpIco
 const ArrowSmallRightIcon = dynamic(() => import('@heroicons/react/24/outline/ArrowSmallRightIcon'))
 
 const HomePage: NextPage = () => {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const { t } = useTranslation()
+
+  if (status === 'loading') {
+    return <LoadingPage />
+  }
 
   return (
     <div

@@ -1,6 +1,7 @@
 import { Badge } from '@components/Badge/Badge'
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
+import { LoadingSpinner } from '@components/Spinner/Spinner'
 import { StatisticsTable } from '@components/StatisticsTable/StatisticsTable'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
 import type { RouterOutputs } from '@utils/api'
@@ -43,8 +44,8 @@ const breadcrumbs = [
 type Statistics = RouterOutputs['subjectProgress']['statisticsBySemester']
 
 const DashBoardPage: NextPage = () => {
-  const { data: session } = useSession()
-  const { data: statistics } = api.subjectProgress.statisticsBySemester.useQuery(
+  const { data: session, status } = useSession()
+  const { data: statistics, isLoading } = api.subjectProgress.statisticsBySemester.useQuery(
     {
       semester: session?.user?.currentSemester ?? 0,
     },
@@ -96,43 +97,50 @@ const DashBoardPage: NextPage = () => {
           </Link>
           {/* STATISTICS */}
           <div className="col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
-            <h2 className=" text-xl font-bold dark:text-white mb-4">
-              Statistics for current semester ({session?.user?.currentSemester}.)
+            <h2 className="text-xl font-bold dark:text-white mb-4 flex gap-2">
+              Statistics for current semester{' '}
+              {status !== 'loading' ? `(${session?.user?.currentSemester || 1}).` : <LoadingSpinner />}
             </h2>
-            <div className="w-full flex flex-col lg:flex-row gap-8 justify-evenly">
-              <StatisticsTable statistics={statistics as Omit<Statistics, 'subjectProgressesWithGrade'>} />
-              <div>
-                <table className="w-full">
-                  <thead>
-                    <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
-                      <th className="py-1 pr-2 text-left text-base">Subject</th>
-                      <th className="py-1 px-2 text-right text-base">Grade</th>
-                    </tr>
-                  </thead>
-                  <tbody className="flex-1 sm:flex-none">
-                    {statistics?.subjectProgressesWithGrade.map(statistic => (
-                      <tr
-                        key={statistic.id}
-                        className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal"
-                      >
-                        <td className="py-1 pr-2 text-left">
-                          <span className="block whitespace-nowrap overflow-hidden text-ellipsis max-w-[90%]">
-                            {statistic.subjectName}
-                          </span>
-                        </td>
-                        <td className="py-1 px-2 text-right">
-                          <Badge
-                            variant={statistic.grade >= 4 ? 'success' : statistic.grade >= 2 ? 'warning' : 'danger'}
-                          >
-                            {statistic.grade}
-                          </Badge>
-                        </td>
+            {!isLoading ? (
+              <div className="w-full flex flex-col lg:flex-row gap-8 justify-evenly">
+                <StatisticsTable statistics={statistics as Omit<Statistics, 'subjectProgressesWithGrade'>} />
+                <div>
+                  <table className="w-full">
+                    <thead>
+                      <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
+                        <th className="py-1 pr-2 text-left text-base">Subject</th>
+                        <th className="py-1 px-2 text-right text-base">Grade</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="flex-1 sm:flex-none">
+                      {statistics?.subjectProgressesWithGrade.map(statistic => (
+                        <tr
+                          key={statistic.id}
+                          className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal"
+                        >
+                          <td className="py-1 pr-2 text-left">
+                            <span className="block whitespace-nowrap overflow-hidden text-ellipsis max-w-[90%]">
+                              {statistic.subjectName}
+                            </span>
+                          </td>
+                          <td className="py-1 px-2 text-right">
+                            <Badge
+                              variant={statistic.grade >= 4 ? 'success' : statistic.grade >= 2 ? 'warning' : 'danger'}
+                            >
+                              {statistic.grade}
+                            </Badge>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="w-full flex justify-center items-center h-40">
+                <LoadingSpinner />
+              </div>
+            )}
           </div>
         </div>
       </div>
