@@ -1,3 +1,6 @@
+import { useTranslation } from 'react-i18next'
+
+import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
 import { SortMenu } from '@components/SortMenu/SortMenu'
 import { Filters } from '@components/SubjectFilters/Filters'
@@ -6,6 +9,7 @@ import { tableColumnHeaders } from '@constants/pages'
 import { useSearchPage } from '@hooks/useSearchPage'
 import type { NextPage } from 'next'
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 
 const FunnelIcon = dynamic(() => import('@heroicons/react/20/solid/FunnelIcon'))
 const Squares2X2Icon = dynamic(() => import('@heroicons/react/20/solid/Squares2X2Icon'))
@@ -13,6 +17,12 @@ const Bars3Icon = dynamic(() => import('@heroicons/react/20/solid/Bars3Icon'))
 const FilterDrawer = dynamic(() => import('@components/SubjectFilters/FilterDrawer').then(mod => mod.FilterDrawer))
 const SubjectGrid = dynamic(() => import('@components/SubjectGrid/SubjectGrid').then(mod => mod.SubjectGrid))
 const SubjectList = dynamic(() => import('@components/SubjectList/SubjectList').then(mod => mod.SubjectList))
+
+const breadcrumbs = [
+  {
+    title: 'routes.search',
+  },
+]
 
 const SearchPage: NextPage = () => {
   const {
@@ -41,8 +51,13 @@ const SearchPage: NextPage = () => {
     handleSetSortedSubjects,
   } = useSearchPage()
 
+  const { t } = useTranslation()
+
   return (
     <ScrollLayout>
+      <Head>
+        <title>{`IK-Tracker - ${t('routes.search')}`}</title>
+      </Head>
       {/* Mobile filter drawer */}
       <FilterDrawer
         mobileFiltersOpen={mobileFiltersOpen}
@@ -60,10 +75,10 @@ const SearchPage: NextPage = () => {
         setSemesterRange={setSemesterRange}
       />
 
-      <div className="w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8 flex flex-col">
+      <div className="w-full max-w-screen-2xl px-2 sm:px-4 lg:px-8 flex flex-col">
         {/* Header */}
-        <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Search</h1>
+        <div className="flex items-baseline justify-between border-b border-gray-200 pt-12 pb-6">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{t('search.title')}</h1>
           <div className="flex items-center">
             <SortMenu
               sortType={sortType}
@@ -92,8 +107,10 @@ const SearchPage: NextPage = () => {
             </button>
           </div>
         </div>
-
-        <section className="pt-6 pb-24">
+        <div className="mt-6">
+          <BreadCrumbs breadcrumbs={breadcrumbs} />
+        </div>
+        <section className="pt-6">
           <div className="flex w-full gap-8">
             {/* Filters */}
             <Filters

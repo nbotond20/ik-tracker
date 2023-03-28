@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { useIsSmallerThanBreakpoint } from '@utils/getCurrentBreakpoint'
+import { useIsSmallerThanBreakpoint } from '@hooks/useIsSmallerThanBreakpoint'
 
 const genericHamburgerLine = `h-[2px] w-4 my-[2px] rounded-full bg-gray-400 transition ease transform duration-500`
 

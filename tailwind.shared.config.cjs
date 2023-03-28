@@ -25,7 +25,7 @@ module.exports = {
     },
     fontFamily: {
       'body': [
-        'Montserrat',
+        'Inter',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',
@@ -42,7 +42,7 @@ module.exports = {
         'Noto Color Emoji',
       ],
       'sans': [
-        'Montserrat',
+        'Inter',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',

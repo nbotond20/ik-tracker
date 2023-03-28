@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
@@ -24,7 +25,7 @@ interface TableProps {
 
 export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeaders }: TableProps) => {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
-
+  const { t } = useTranslation()
   return (
     <>
       <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
@@ -34,7 +35,7 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
               <th
                 scope="col"
                 className={`cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-600 sm:p-3 ${
-                  tableColumnHeader.classes ? tableColumnHeader.classes : ''
+                  tableColumnHeader.classes || ''
                 }`}
                 onClick={() => handleSort(tableColumnHeader.sortType)}
                 key={tableColumnHeader.sortType}
@@ -42,10 +43,10 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
                 <div className="flex items-center">
                   <div
                     className={`flex items-center whitespace-nowrap ${
-                      sortType === tableColumnHeader.sortType ? 'font-extrabold text-black dark:text-white' : ''
+                      sortType === tableColumnHeader.sortType ? 'text-black dark:text-white' : 'text-gray-400'
                     }`}
                   >
-                    {tableColumnHeader.display}
+                    {t(tableColumnHeader.display)}
                     <ChevronUpDownIcon className="w-5 h-5" />
                   </div>
                 </div>
@@ -67,46 +68,22 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
                   <th
                     scope="row"
                     className={`px-2 py-2 font-medium text-gray-900 dark:text-white sm:whitespace-nowrap sm:px-4 ${
-                      tableColumnHeaders[0]!.classes ? tableColumnHeaders[0]!.classes : ''
+                      tableColumnHeaders[0]!.classes || ''
                     }`}
                   >
                     {subject.code}
                   </th>
-                  <td
-                    className={`px-2 py-2 sm:whitespace-nowrap sm:px-4 ${
-                      tableColumnHeaders[1]!.classes ? tableColumnHeaders[1]!.classes : ''
-                    }`}
-                  >
+                  <td className={`px-2 py-2 sm:whitespace-nowrap sm:px-4 ${tableColumnHeaders[1]!.classes || ''}`}>
                     {subject.courseName}
                   </td>
-                  <td
-                    className={`px-2 py-2 sm:px-4 ${
-                      tableColumnHeaders[2]!.classes ? tableColumnHeaders[2]!.classes : ''
-                    }`}
-                  >
-                    {subject.credit}
-                  </td>
-                  <td
-                    className={`px-2 py-2 sm:px-4 ${
-                      tableColumnHeaders[3]!.classes ? tableColumnHeaders[3]!.classes : ''
-                    }`}
-                  >
+                  <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[2]!.classes || ''}`}>{subject.credit}</td>
+                  <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[3]!.classes || ''}`}>
                     {subject.semester.join(', ')}
                   </td>
-                  <td
-                    className={`px-2 py-2 sm:px-4 ${
-                      tableColumnHeaders[4]!.classes ? tableColumnHeaders[4]!.classes : ''
-                    }`}
-                  >
+                  <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[4]!.classes || ''}`}>
                     {subject.subjectGroupType}
                   </td>
-                  <td
-                    className={`px-2 py-2 sm:px-4 ${
-                      tableColumnHeaders[5]!.classes ? tableColumnHeaders[5]!.classes : ''
-                    }`}
-                  >
-                    {subject.subjectType}
-                  </td>
+                  <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[5]!.classes || ''}`}>{subject.subjectType}</td>
                   <td className="cursor-pointer px-2 py-2">
                     <div className="relative h-5 w-5">
                       <InformationCircleIcon />
@@ -126,7 +103,7 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
       </table>
 
       {selectedSubject && (
-        <motion.div className="fixed top-0 left-0 right-0 z-50 flex h-screen max-h-screen w-full items-center justify-center overflow-hidden p-4 backdrop-blur md:inset-0 md:h-full">
+        <motion.div className="fixed top-0 left-0 right-0 z-50 flex h-screen max-h-screen w-full items-center justify-center overflow-hidden p-2 backdrop-blur md:inset-0 md:h-full">
           <div className="sm:cardScrollBar relative h-full max-h-screen w-full max-w-5xl md:h-auto">
             <SubjectCard subject={selectedSubject} setSelectedSubject={setSelectedSubject} />
           </div>

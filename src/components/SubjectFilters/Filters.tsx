@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { FilterDisclosure } from '@components/FilterDisclosure/FilterDisclosure'
 import { SearchInput } from '@components/SearchInput/SearchInput'
@@ -61,6 +62,8 @@ export const Filters = ({
     [setCheckboxFilters]
   )
 
+  const { t } = useTranslation()
+
   return (
     <div className="col-span-4 hidden w-64 min-w-fit max-w-xs grow lg:block xl:col-span-3 sticky top-0">
       <h3 className="sr-only">Filters</h3>
@@ -71,7 +74,7 @@ export const Filters = ({
         const isOneSelected = filter.options.some(option => isChecked(checkboxFilters, filter.id, option.value))
         return (
           <React.Fragment key={filter.id}>
-            <FilterDisclosure title={filter.name} active={isOneSelected}>
+            <FilterDisclosure title={t(filter.name)} active={isOneSelected}>
               <div className="space-y-4">
                 {filter.options.map((option, optionIdx) => (
                   <div key={option.value} className="flex items-center">
@@ -88,7 +91,7 @@ export const Filters = ({
                       htmlFor={`filter-${filter.id}-${optionIdx}`}
                       className="ml-3 text-sm text-gray-600 dark:text-gray-400"
                     >
-                      {option.label}
+                      {t(option.label)}
                     </label>
                   </div>
                 ))}
@@ -98,60 +101,64 @@ export const Filters = ({
         )
       })}
       {/* Credit */}
-      <FilterDisclosure title={'Credit'} active={!!creditRange.min || !!creditRange.max}>
+      <FilterDisclosure title={t('search.filters.credit.title')} active={!!creditRange.min || !!creditRange.max}>
         <div className="flex items-center gap-4 grow justify-between">
           <input
-            type="number"
+            inputMode="numeric"
+            pattern="[0-9]*"
             className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={'Min'}
             value={creditRange.min ? creditRange.min : ''}
-            onChange={e => setCreditRange(prev => ({ ...prev, min: Number(e.target.value) }))}
-            min={1}
-            max={20}
+            onChange={e =>
+              setCreditRange(prev => (e.target.validity.valid ? { ...prev, min: Number(e.target.value) } : prev))
+            }
           />
           <span className="text-gray-400 dark:text-gray-500">{'-'}</span>
           <input
-            type="number"
+            inputMode="numeric"
+            pattern="[0-9]*"
             className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={'Max'}
             value={creditRange.max ? creditRange.max : ''}
-            onChange={e => setCreditRange(prev => ({ ...prev, max: Number(e.target.value) }))}
-            min={1}
-            max={20}
+            onChange={e =>
+              setCreditRange(prev => (e.target.validity.valid ? { ...prev, max: Number(e.target.value) } : prev))
+            }
           />
         </div>
       </FilterDisclosure>
       {/* Semester */}
-      <FilterDisclosure title={'Semester'} active={!!semesterRange.min || !!semesterRange.max}>
+      <FilterDisclosure title={t('search.filters.semester.title')} active={!!semesterRange.min || !!semesterRange.max}>
         <div className="flex items-center gap-4 grow justify-between">
           <input
-            type="number"
+            inputMode="numeric"
+            pattern="[0-9]*"
             className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={'Min'}
             value={semesterRange.min ? semesterRange.min : ''}
-            onChange={e => setSemesterRange(prev => ({ ...prev, min: Number(e.target.value) }))}
-            min={1}
-            max={6}
+            onChange={e =>
+              setSemesterRange(prev => (e.target.validity.valid ? { ...prev, min: Number(e.target.value) } : prev))
+            }
           />
           <span className="text-gray-400 dark:text-gray-500">{'-'}</span>
           <input
-            type="number"
+            inputMode="numeric"
+            pattern="[0-9]*"
             className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={'Max'}
             value={semesterRange.max ? semesterRange.max : ''}
-            onChange={e => setSemesterRange(prev => ({ ...prev, max: Number(e.target.value) }))}
-            min={1}
-            max={6}
+            onChange={e =>
+              setSemesterRange(prev => (e.target.validity.valid ? { ...prev, max: Number(e.target.value) } : prev))
+            }
           />
         </div>
       </FilterDisclosure>
       {/* Pre requirements */}
-      <FilterDisclosure title={'Pre Requirements'} active={!!preReqSearchTerm}>
+      <FilterDisclosure title={t('search.filters.preReq.title')} active={!!preReqSearchTerm}>
         <div className="space-y-4">
           <SearchInput
             value={preReqSearchTerm}
             onChange={e => setPreReqSearchTerm(e.target.value)}
-            placeholder="Sreach by pre requirement (code)"
+            placeholder={t('search.filters.preReq.placeholder') || ''}
           />
         </div>
       </FilterDisclosure>

@@ -1,0 +1,126 @@
+{
+  "calculator": {
+    "subjects": {
+      "addSubjectBtn": "Tantárgy hozzáadása",
+      "credit": "Kredit",
+      "empty": "Nincs megjeleníthető tantárgy",
+      "grade": "Érdemjegy",
+      "optional": "Nem kötelező",
+      "subjectCode": "Tárgy kódja",
+      "subjectName": "Tárgy neve",
+      "title": "Tantárgyak"
+    },
+    "title": "Kalkulátor"
+  },
+  "components": {
+    "confirmDialog": {
+      "cancelBtn": "Mégse",
+      "confirmBtn": "Igen, biztos"
+    }
+  },
+  "header": {
+    "getStarted": "Kezdjük el",
+    "login": "Bejelentkezés",
+    "logout": "Kijelentkezés"
+  },
+  "home": {
+    "ctaPrimary": "Kezdjük el",
+    "ctaSecondary": "Ugrás a vezérlőpulthoz",
+    "description": "Használd az alkalmazásunkat, hogy követhesd az előrehaladásodat, és a legtöbbet hozd ki az egyetemi élményedből. Legyen a jövőd a kezedben.",
+    "features": {
+      "calculator": {
+        "description": "Használd a kalkulátorunkat, hogy kiszámold a átlagaidat és még többet. Mi segítünk elérni a céljaidat.",
+        "title": "Kalkulátor"
+      },
+      "download": {
+        "description": "Töltsd le az alkalmazásunkat a mobilodra egy gyorsabb és egyszerűbb élményért. Legyen kéznél mindenhol, ahol szükséged van rá.",
+        "title": "Alkalmazás letöltése"
+      },
+      "planning": {
+        "description": "Tervezd meg a következő félévedet könnyedén. Használd az előfeltételek ellenőrzését, hogy biztos lehess abban, hogy jó úton haladsz a diplomád felé.",
+        "title": "Tervezés"
+      },
+      "save": {
+        "description": "Biztonságosan jelentkezz be Google, Discord vagy Github fiókod segítségével, hogy elmentsd adatataidat valamint, hogy hozzáférj a teljes felhasználói élményhez.",
+        "title": "Adatok mentése"
+      },
+      "search": {
+        "description": "Nem tudod, milyen tárgyat vegyél fel? Használd a kereső funkcióinkat, hogy megtaláld a számodra tökéletes kurzust. Szűrj a szükségleteid és követelményeid alapján.",
+        "title": "Keresés"
+      },
+      "tracking": {
+        "description": "Kövesd nyomon az előrehaladásodat velünk. Mi segítünk elérni a céljaidat. Ne gondolkozz többet, csak lépj be és kezdj el tanulni.",
+        "title": "Nyomon követés"
+      }
+    },
+    "title": "Kövesd nyomon az előrehaladásod"
+  },
+  "internalError": {
+    "description": "Hiba történt a kiszolgálón. Kérjük, próbáld újra később.",
+    "title": "Hiba történt"
+  },
+  "notFound": {
+    "backBtn": "Vissza a főoldalra",
+    "description": "A keresett oldal nem található. Kérjük, ellenőrizd a címet, vagy kattints az alábbi gombra, hogy visszatérj a főoldalra.",
+    "title": "Nem található"
+  },
+  "routes": {
+    "calculator": "Kalkulátor",
+    "dashboard": "Irányítópult",
+    "home": "Főoldal",
+    "login": "Bejelentkezés",
+    "planer": "Tervező",
+    "progress": "Előrehaladás",
+    "search": "Keresés",
+    "verify": "Hitelesítés"
+  },
+  "search": {
+    "filters": {
+      "credit": {
+        "title": "Kredit"
+      },
+      "creditType": {
+        "options": {
+          "computing": "Számítástudományi",
+          "informatics": "Informatikai",
+          "mathematics": "Matematikai",
+          "other": "Egyéb",
+          "thesis": "Szakdolgozat"
+        },
+        "title": "Kredit típusa"
+      },
+      "preReq": {
+        "placeholder": "Keresés előfeltételek között",
+        "title": "Előfeltételek"
+      },
+      "searchInput": {
+        "placeholder": "Keresés tantárgyak között"
+      },
+      "semester": {
+        "title": "Félév"
+      },
+      "specialisation": {
+        "title": "Specializáció"
+      },
+      "subjectType": {
+        "options": {
+          "base": "Törzsanyag",
+          "compulsory": "Kötelező",
+          "compulsoryElective": "Kötelező választható"
+        },
+        "title": "Tantárgy típusa"
+      },
+      "title": "Szűrők"
+    },
+    "sortBtn": "Rendezés",
+    "tableHeaderColums": {
+      "code": "Kód",
+      "courseName": "Kurzus neve",
+      "credit": "Kredit",
+      "creditType": "Kredit típusa",
+      "semester": "Félév",
+      "subjectType": "Tantárgy típusa"
+    },
+    "title": "Keresés"
+  }
+}

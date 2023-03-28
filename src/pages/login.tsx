@@ -1,5 +1,9 @@
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import type { NextPage } from 'next'
 import { useSession, signIn } from 'next-auth/react'
+import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -10,9 +14,17 @@ const SignInPage: NextPage = () => {
   if (session?.user) {
     void router.replace('/')
   }
+  const callbackUrl = router.query.callbackUrl as string
+
+  const [email, setEmail] = useState('')
+
+  const { t } = useTranslation()
 
   return (
     <div className="flex h-full w-full items-center justify-center">
+      <Head>
+        <title>{`IK-Tracker - ${t('routes.login')}`}</title>
+      </Head>
       <div className="relative w-full max-w-sm overflow-auto p-4 bg-white dark:border-gray-700 dark:bg-gray-900 sm:rounded-lg sm:border sm:border-gray-200 sm:shadow-md dark:sm:bg-gray-800 md:min-w-[400px] sm:p-8">
         <div className="space-y-6">
           <h4 className="mb-10 text-3xl font-medium text-gray-900 dark:text-white">Login to our platform</h4>
@@ -26,11 +38,16 @@ const SignInPage: NextPage = () => {
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400"
               placeholder="Email"
               required
+              value={email}
+              onChange={e => setEmail(e.target.value)}
             />
           </div>
 
           <div className="flex flex-col justify-center">
-            <button className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <button
+              onClick={() => void signIn('email', { email, callbackUrl })}
+              className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
               Login with email
             </button>
             <div className="inline-flex w-full items-center justify-center">
@@ -41,7 +58,7 @@ const SignInPage: NextPage = () => {
             </div>
             <div className="flex w-full flex-col items-center justify-center gap-4">
               <button
-                onClick={() => void signIn('google')}
+                onClick={() => void signIn('google', { callbackUrl })}
                 type="button"
                 className="inline-flex w-full items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200 dark:focus:ring-gray-800"
               >
@@ -74,7 +91,7 @@ const SignInPage: NextPage = () => {
                 </span>
               </button>
               <button
-                onClick={() => void signIn('github')}
+                onClick={() => void signIn('github', { callbackUrl })}
                 type="button"
                 className="inline-flex w-full items-center rounded-lg bg-[#0d1117] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#0d1117]/90 focus:outline-none focus:ring-4 focus:ring-[#0d1117]/50 dark:hover:bg-[#050708]/30 dark:focus:ring-gray-500"
               >
@@ -98,7 +115,7 @@ const SignInPage: NextPage = () => {
                 </span>
               </button>
               <button
-                onClick={() => void signIn('discord')}
+                onClick={() => void signIn('discord', { callbackUrl })}
                 type="button"
                 className="dark:focus:ring-[#7389da]/55 inline-flex w-full items-center rounded-lg bg-[#7389da] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#7389da]/90 focus:outline-none focus:ring-4 focus:ring-[#7389da]/50"
               >

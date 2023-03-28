@@ -34,7 +34,8 @@
       "@server/*": ["src/server/*"],
       "@env/*": ["src/env/*"],
       "@constants/*": ["src/constants/*"],
-      "@cypress/*": ["cypress/*"]
+      "@cypress/*": ["cypress/*"],
+      "@models/*": ["src/models/*"]
     }
   },
   "typeRoots": ["./node_modules/@types", "node_modules/jest/build"],

@@ -1,30 +1,88 @@
 {
-    "display": "standalone",
-    "scope": "/",
-    "start_url": "/",
-    "name": "ELTE IK Progress Tracker",
-    "short_name": "IK-Tracker",
-    "description": "ELTE IK Progress Tracker",
-    "icons": [
+  "description": "ELTE IK Progress Tracker",
+  "display": "standalone",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "src": "/icon-192x192.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "256x256",
+      "src": "/icon-256x256.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "384x384",
+      "src": "/icon-384x384.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "/icon-512x512.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "192x192",
+      "src": "/maskable-icon-192x192.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "/maskable-icon-512x512.png",
+      "type": "image/png"
+    }
+  ],
+  "name": "ELTE IK Progress Tracker",
+  "scope": "/",
+  "short_name": "IK-Tracker",
+  "shortcuts": [
+    {
+      "icons": [
         {
-            "src": "/icon-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-256x256.png",
-            "sizes": "256x256",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-384x384.png",
-            "sizes": "384x384",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
+          "sizes": "192x192",
+          "src": "/magnifing-glass-icon-192x192.png",
+          "type": "image/png"
         }
-    ]
+      ],
+      "name": "Search",
+      "url": "/search"
+    },
+    {
+      "icons": [
+        {
+          "sizes": "192x192",
+          "src": "/progress-icon-192x192.png",
+          "type": "image/png"
+        }
+      ],
+      "name": "Progress",
+      "url": "/dashboard/subject-progresses"
+    },
+    {
+      "icons": [
+        {
+          "sizes": "192x192",
+          "src": "/calculator-icon-192x192.png",
+          "type": "image/png"
+        }
+      ],
+      "name": "Calculator",
+      "url": "/dashboard/calculator"
+    },
+    {
+      "icons": [
+        {
+          "sizes": "192x192",
+          "src": "/planner-icon-192x192.png",
+          "type": "image/png"
+        }
+      ],
+      "name": "Planner",
+      "url": "/dashboard/planner"
+    }
+  ],
+  "start_url": "/"
 }

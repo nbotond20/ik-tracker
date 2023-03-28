@@ -49,13 +49,15 @@ model Session {
 }
 
 model User {
-    id            String    @id @default(auto()) @map("_id") @db.ObjectId
-    name          String?
-    email         String?   @unique
-    emailVerified DateTime?
-    image         String?
-    accounts      Account[]
-    sessions      Session[]
+    id                String            @id @default(auto()) @map("_id") @db.ObjectId
+    name              String?
+    email             String?           @unique
+    emailVerified     DateTime?
+    image             String?
+    accounts          Account[]
+    sessions          Session[]
+    SubjectProgresses SubjectProgress[]
+    currentSemester   Int               @default(1)
 }
 
 model VerificationToken {
@@ -66,6 +68,8 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+// Next auth end
 
 model Subject {
     id                String             @id @default(auto()) @map("_id") @db.ObjectId
@@ -84,6 +88,7 @@ model Subject {
     specialisation    SpecialisationType
     subjectGroupType  SubjectGroupType
     subjectType       SubjectType
+    SubjectProgresses SubjectProgress[]
 }
 
 enum ExamType {
@@ -115,4 +120,37 @@ enum SubjectType {
     KV
     KOT
     TOR
+}
+
+model SubjectProgress {
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    subjectId   String?  @db.ObjectId
+    subject     Subject? @relation(fields: [subjectId], references: [id], onDelete: SetNull)
+    subjectName String?
+    credit      Int?
+    userId      String   @db.ObjectId
+    user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    exams       Exam[]
+    semester    Int      @default(1)
+    marks       Float[]
+
+    @@unique([subjectId, userId, semester, subjectName])
+}
+
+model Exam {
+    id                String          @id @default(auto()) @map("_id") @db.ObjectId
+    name              String
+    subjectProgressId String          @db.ObjectId
+    subjectProgress   SubjectProgress @relation(fields: [subjectProgressId], references: [id], onDelete: Cascade)
+    result            Float?
+    minResult         Float?
+    maxResult         Float?
+    resultType        ResultType
+}
+
+enum ResultType {
+    PERCENT
+    GRADE
+    POINT
+    PASSFAIL
 }

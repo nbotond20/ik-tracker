@@ -1,4 +1,6 @@
+import type { Dispatch, SetStateAction } from 'react'
 import { Fragment, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { FilterDisclosure } from '@components/FilterDisclosure/FilterDisclosure'
 import { SearchInput } from '@components/SearchInput/SearchInput'
@@ -29,11 +31,11 @@ interface FilterDrawerProps {
   preReqSearchTerm: string
   setPreReqSearchTerm: (value: string) => void
   checkboxFilters: CheckboxFilterTypes
-  setCheckboxFilters: (value: CheckboxFilterTypes | ((prevVar: CheckboxFilterTypes) => CheckboxFilterTypes)) => void
+  setCheckboxFilters: Dispatch<SetStateAction<CheckboxFilterTypes>>
   creditRange: Range
-  setCreditRange: (value: Range | ((prevVar: Range) => Range)) => void
+  setCreditRange: Dispatch<SetStateAction<Range>>
   semesterRange: Range
-  setSemesterRange: (value: Range | ((prevVar: Range) => Range)) => void
+  setSemesterRange: Dispatch<SetStateAction<Range>>
 }
 
 export const FilterDrawer = ({
@@ -77,6 +79,8 @@ export const FilterDrawer = ({
     [setCheckboxFilters]
   )
 
+  const { t } = useTranslation()
+
   return (
     <Transition.Root show={mobileFiltersOpen} as={Fragment}>
       <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen}>
@@ -104,7 +108,7 @@ export const FilterDrawer = ({
           >
             <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl dark:bg-gray-900">
               <div className="flex items-center justify-between px-4">
-                <h2 className="text-lg font-medium text-gray-900 dark:text-white">Filters</h2>
+                <h2 className="text-lg font-medium text-gray-900 dark:text-white">{t('search.filters.title')}</h2>
                 <button
                   type="button"
                   className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400 dark:bg-gray-900"
@@ -126,7 +130,7 @@ export const FilterDrawer = ({
                     isChecked(checkboxFilters, filter.id, option.value)
                   )
                   return (
-                    <FilterDisclosure key={filter.id} variant="mobile" title={filter.name} active={isOneSelected}>
+                    <FilterDisclosure key={filter.id} variant="mobile" title={t(filter.name)} active={isOneSelected}>
                       <div className="space-y-6">
                         {filter.options.map((option, optionIdx) => (
                           <div key={option.value} className="flex items-center">
@@ -143,7 +147,7 @@ export const FilterDrawer = ({
                               htmlFor={`filter-${filter.id}-${optionIdx}`}
                               className="ml-3 text-sm text-gray-600 dark:text-gray-400"
                             >
-                              {option.label}
+                              {t(option.label)}
                             </label>
                           </div>
                         ))}
@@ -152,60 +156,88 @@ export const FilterDrawer = ({
                   )
                 })}
                 {/* Credit */}
-                <FilterDisclosure variant="mobile" title="Credit" active={!!creditRange.min || !!creditRange.max}>
+                <FilterDisclosure
+                  variant="mobile"
+                  title={t('search.filters.credit.title')}
+                  active={!!creditRange.min || !!creditRange.max}
+                >
                   <div className="flex items-center gap-4 grow justify-between">
                     <input
-                      type="number"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                       placeholder={'Min'}
                       value={creditRange.min ? creditRange.min : ''}
-                      onChange={e => setCreditRange(prev => ({ ...prev, min: Number(e.target.value) }))}
+                      onChange={e =>
+                        setCreditRange(prev =>
+                          e.target.validity.valid ? { ...prev, min: Number(e.target.value) } : prev
+                        )
+                      }
                       min={1}
                       max={20}
                     />
                     <span className="text-gray-400 dark:text-gray-500">{'-'}</span>
                     <input
-                      type="number"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                       placeholder={'Max'}
                       value={creditRange.max ? creditRange.max : ''}
-                      onChange={e => setCreditRange(prev => ({ ...prev, max: Number(e.target.value) }))}
+                      onChange={e =>
+                        setCreditRange(prev =>
+                          e.target.validity.valid ? { ...prev, max: Number(e.target.value) } : prev
+                        )
+                      }
                       min={1}
                       max={20}
                     />
                   </div>
                 </FilterDisclosure>
                 {/* Semester */}
-                <FilterDisclosure variant="mobile" title="Semester" active={!!semesterRange.min || !!semesterRange.max}>
+                <FilterDisclosure
+                  variant="mobile"
+                  title={t('search.filters.semester.title')}
+                  active={!!semesterRange.min || !!semesterRange.max}
+                >
                   <div className="flex items-center gap-4 grow justify-between">
                     <input
-                      type="number"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                       placeholder={'Min'}
                       value={semesterRange.min ? semesterRange.min : ''}
-                      onChange={e => setSemesterRange(prev => ({ ...prev, min: Number(e.target.value) }))}
+                      onChange={e =>
+                        setSemesterRange(prev =>
+                          e.target.validity.valid ? { ...prev, min: Number(e.target.value) } : prev
+                        )
+                      }
                       min={1}
                       max={6}
                     />
                     <span className="text-gray-400 dark:text-gray-500">{'-'}</span>
                     <input
-                      type="number"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                       placeholder={'Max'}
                       value={semesterRange.max ? semesterRange.max : ''}
-                      onChange={e => setSemesterRange(prev => ({ ...prev, max: Number(e.target.value) }))}
+                      onChange={e =>
+                        setSemesterRange(prev =>
+                          e.target.validity.valid ? { ...prev, max: Number(e.target.value) } : prev
+                        )
+                      }
                       min={1}
                       max={6}
                     />
                   </div>
                 </FilterDisclosure>
                 {/* Pre requirments */}
-                <FilterDisclosure variant="mobile" title="Pre Requirements" active={!!preReqSearchTerm}>
+                <FilterDisclosure variant="mobile" title={t('search.filters.preReq.title')} active={!!preReqSearchTerm}>
                   <div className="space-y-4">
                     <SearchInput
                       value={preReqSearchTerm}
                       onChange={e => setPreReqSearchTerm(e.target.value)}
-                      placeholder="Sreach by pre requirement (code)"
+                      placeholder={t('search.filters.preReq.placeholder') || ''}
                     />
                   </div>
                 </FilterDisclosure>

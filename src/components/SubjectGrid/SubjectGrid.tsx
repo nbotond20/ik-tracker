@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTableLoadingState'
 import { Pagination } from '@components/Pagination/Pagination'
@@ -6,7 +7,7 @@ import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { tableColumnHeaders } from '@constants/pages'
 import type { Subject } from '@prisma/client'
 import type { CompareType } from '@utils/subjectComparator'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 
 const ChevronUpDownIcon = dynamic(() => import('@heroicons/react/24/solid/ChevronUpDownIcon'))
@@ -35,13 +36,13 @@ export const SubjectGrid = ({
   totalElements,
 }: SubjectGridProps) => {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
-
+  const { t } = useTranslation()
   return (
     <div className="col-span-8 grow xl:col-span-9">
       <div className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400 rounded-lg mb-6 flex justify-between">
         {tableColumnHeaders.map((tableColumnHeader, idx) => (
           <div
-            className={`grow cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-600 sm:p-3 ${
+            className={`grow cursor-pointer p-2 hover:bg-gray-50 dark:hover:bg-gray-600 sm:p-3 font-semibold ${
               tableColumnHeader.classes ? tableColumnHeader.classes : ''
             } ${idx === 0 ? 'rounded-l-lg' : ''} ${idx === tableColumnHeaders.length - 1 ? 'rounded-r-lg' : ''}`}
             onClick={() => handleSetSortedSubjects(tableColumnHeader.sortType)}
@@ -53,7 +54,7 @@ export const SubjectGrid = ({
                   sortType === tableColumnHeader.sortType ? 'font-extrabold text-black dark:text-white' : ''
                 }`}
               >
-                {tableColumnHeader.display}
+                {t(tableColumnHeader.display)}
                 <ChevronUpDownIcon className="w-5 h-5" />
               </div>
             </div>
@@ -62,15 +63,17 @@ export const SubjectGrid = ({
       </div>
       {!isLoading ? (
         <div className="grid w-full max-w-7xl grid-cols-12 gap-6">
-          {subjects.map(subject => (
-            <SubjectCard key={subject.id} subject={subject} setSelectedSubject={setSelectedSubject} isSelectable />
-          ))}
+          <AnimatePresence>
+            {subjects.map(subject => (
+              <SubjectCard key={subject.id} subject={subject} setSelectedSubject={setSelectedSubject} isSelectable />
+            ))}
+          </AnimatePresence>
         </div>
       ) : (
         <SubjectTableLoadingState />
       )}
       {selectedSubject && (
-        <motion.div className="fixed top-0 left-0 right-0 z-50 flex h-screen max-h-screen w-full items-center justify-center overflow-hidden p-4 backdrop-blur md:inset-0 md:h-full">
+        <motion.div className="fixed top-0 left-0 right-0 z-50 flex h-screen max-h-screen w-full items-center justify-center overflow-hidden p-2 backdrop-blur md:inset-0 md:h-full">
           <div className="sm:cardScrollBar relative h-full max-h-screen w-full max-w-5xl md:h-auto">
             <SubjectCard subject={selectedSubject} setSelectedSubject={setSelectedSubject} />
           </div>

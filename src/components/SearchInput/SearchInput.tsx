@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import dynamic from 'next/dynamic'
 
 const MagnifyingGlassIcon = dynamic(() => import('@heroicons/react/24/outline/MagnifyingGlassIcon'))
@@ -11,6 +13,7 @@ interface SearchInputProps {
 }
 
 export const SearchInput = ({ placeholder, label, className, value, onChange }: SearchInputProps) => {
+  const { t } = useTranslation()
   return (
     <div className={className}>
       <label htmlFor="default-search" className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -24,7 +27,7 @@ export const SearchInput = ({ placeholder, label, className, value, onChange }: 
           type="search"
           id="default-search"
           className="block w-full min-w-fit rounded-lg border border-gray-300 bg-gray-50 p-3 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-          placeholder={placeholder || 'Search Subjects'}
+          placeholder={placeholder || t('search.filters.searchInput.placeholder') || 'Search'}
           value={value}
           onChange={onChange}
         />

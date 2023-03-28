@@ -1,4 +1,4 @@
-import { SubjectInfo } from '@components/SubjectInfo/SubjectInfo'
+import { InputField } from '@components/InputField/InputField'
 import type { Subject } from '@prisma/client'
 import { motion } from 'framer-motion'
 
@@ -11,10 +11,11 @@ interface SubjectCardProps {
 export const SubjectCard = ({ subject, setSelectedSubject, isSelectable }: SubjectCardProps) => {
   return (
     <motion.div
+      data-mobile-max-height-16
       layoutId={subject.id}
       className={`${
         isSelectable ? 'cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700' : ''
-      } overflow-y-auto col-span-12 block rounded-lg border border-gray-200 bg-white p-6 shadow  dark:border-gray-700 dark:bg-gray-800 xl:col-span-6 max-h-[calc(100vh-32px)]`}
+      } overflow-y-auto col-span-12 block rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-6 max-h-[calc(100vh-16px)]`}
       onClick={() => isSelectable && setSelectedSubject(subject)}
     >
       <div className="mb-4 flex items-start justify-between">
@@ -37,33 +38,36 @@ export const SubjectCard = ({ subject, setSelectedSubject, isSelectable }: Subje
         )}
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <SubjectInfo value={subject.code} label="Subject Code" />
-        <SubjectInfo value={subject.courseName} label="Course Name" />
-        <SubjectInfo value={subject.credit} label="Credit" className="hidden md:flex" />
-        <SubjectInfo value={subject.semester.join(', ')} label="Semester" className="hidden md:flex" />
-        <SubjectInfo value={subject.subjectGroupType} label="Credit Type" className="hidden md:flex" />
-        <SubjectInfo value={subject.subjectType} label="Subject Type" className="hidden md:flex" />
+        <InputField disabled value={subject.code} label="Subject Code" />
+        <InputField disabled value={subject.courseName} label="Course Name" />
+        <InputField disabled value={subject.credit} label="Credit" className="hidden md:flex" />
+        <InputField disabled value={subject.semester.join(', ')} label="Semester" className="hidden md:flex" />
+        <InputField disabled value={subject.subjectGroupType} label="Credit Type" className="hidden md:flex" />
+        <InputField disabled value={subject.subjectType} label="Subject Type" className="hidden md:flex" />
         {!isSelectable && (
           <>
-            <SubjectInfo value={subject.credit} label="Credit" className="md:hidden" />
-            <SubjectInfo value={subject.semester.join(', ')} label="Semester" className="md:hidden" />
-            <SubjectInfo value={subject.subjectGroupType} label="Credit Type" className="md:hidden" />
-            <SubjectInfo value={subject.subjectType} label="Subject Type" className="md:hidden" />
-            <SubjectInfo value={subject.consultation} label="Consultation" />
-            <SubjectInfo value={subject.labor} label="Labor" />
-            <SubjectInfo value={subject.lecture} label="Lecture" />
-            <SubjectInfo value={subject.practice} label="Practice" />
-            <SubjectInfo
+            <InputField disabled value={subject.credit} label="Credit" className="md:hidden" />
+            <InputField disabled value={subject.semester.join(', ')} label="Semester" className="md:hidden" />
+            <InputField disabled value={subject.subjectGroupType} label="Credit Type" className="md:hidden" />
+            <InputField disabled value={subject.subjectType} label="Subject Type" className="md:hidden" />
+            <InputField disabled value={subject.consultation} label="Consultation" />
+            <InputField disabled value={subject.labor} label="Labor" />
+            <InputField disabled value={subject.lecture} label="Lecture" />
+            <InputField disabled value={subject.practice} label="Practice" />
+            <InputField
+              disabled
               value={subject.preRequirements1 ? subject.preRequirements1 : 'None'}
               label="Pre Requirements 1"
             />
-            <SubjectInfo
+            <InputField
+              disabled
               value={subject.preRequirements2 ? subject.preRequirements2 : 'None'}
               label="Pre Requirements 2"
             />
-            <SubjectInfo value={subject.specialisation} label="Specialisation" />
-            <SubjectInfo value={subject.examType ? subject.examType : '-'} label="Exam Type" />
-            <SubjectInfo
+            <InputField disabled value={subject.specialisation} label="Specialisation" />
+            <InputField disabled value={subject.examType ? subject.examType : '-'} label="Exam Type" />
+            <InputField
+              disabled
               value={subject.practiceGradeType ? subject.practiceGradeType : '-'}
               label="Practice Grade Type"
             />
