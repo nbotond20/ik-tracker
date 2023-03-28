@@ -106,7 +106,7 @@ const SubjectProgressPage: NextPage = () => {
   return (
     <ScrollLayout>
       <Head>
-        <title>IK-Tracker - {t('routes.progress').toString()}</title>
+        <title>{`IK-Tracker - ${t('routes.progress')}`}</title>
       </Head>
       {isModalOpen && semester !== 0 && (
         <SubjectResultModal

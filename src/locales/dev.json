@@ -55,6 +55,15 @@
     },
     "title": "Track your progress with us"
   },
+  "internalError": {
+    "description": "We are already working to solve the problem.",
+    "title": "Internal Server Error."
+  },
+  "notFound": {
+    "backBtn": "Back to Homepage",
+    "description": "Sorry, we can't find that page. Please check the URL and try again.",
+    "title": "Something's missing."
+  },
   "routes": {
     "calculator": "Calculator",
     "dashboard": "Dashboard",

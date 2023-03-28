@@ -55,6 +55,15 @@
     },
     "title": "Kövesd nyomon az előrehaladásod"
   },
+  "internalError": {
+    "description": "Hiba történt a kiszolgálón. Kérjük, próbáld újra később.",
+    "title": "Hiba történt"
+  },
+  "notFound": {
+    "backBtn": "Vissza a főoldalra",
+    "description": "A keresett oldal nem található. Kérjük, ellenőrizd a címet, vagy kattints az alábbi gombra, hogy visszatérj a főoldalra.",
+    "title": "Nem található"
+  },
   "routes": {
     "calculator": "Kalkulátor",
     "dashboard": "Irányítópult",

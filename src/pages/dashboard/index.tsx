@@ -60,7 +60,7 @@ const DashBoardPage: NextPage = () => {
   return (
     <ScrollLayout>
       <Head>
-        <title>IK-Tracker - {t('routes.dashboard').toString()}</title>
+        <title>{`IK-Tracker - ${t('routes.dashboard')}`}</title>
       </Head>
       <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
