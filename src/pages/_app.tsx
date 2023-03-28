@@ -31,10 +31,10 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
   return (
     <SessionProvider session={session}>
       <Maintenance>
-        <Head>
-          <title>IK-Tracker</title>
-        </Head>
         <Layout Header={() => <Header Logo={() => <HeaderLogo />} />}>
+          <Head>
+            <title>IK-Tracker</title>
+          </Head>
           <Toaster
             toastOptions={{
               className: 'bg-white text-black dark:bg-gray-700 dark:text-white',

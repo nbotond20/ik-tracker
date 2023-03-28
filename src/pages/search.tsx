@@ -56,7 +56,7 @@ const SearchPage: NextPage = () => {
   return (
     <ScrollLayout>
       <Head>
-        <title>IK-Tracker - {t('routes.search')}</title>
+        <title>IK-Tracker - {t('routes.search').toString()}</title>
       </Head>
       {/* Mobile filter drawer */}
       <FilterDrawer
