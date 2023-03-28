@@ -53,9 +53,11 @@
     "calculator": "Kalkulátor",
     "dashboard": "Irányítópult",
     "home": "Főoldal",
+    "login": "Bejelentkezés",
     "planer": "Tervező",
     "progress": "Előrehaladás",
-    "search": "Keresés"
+    "search": "Keresés",
+    "verify": "Hitelesítés"
   },
   "search": {
     "filters": {

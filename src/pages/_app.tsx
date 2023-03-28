@@ -32,7 +32,7 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
     <SessionProvider session={session}>
       <Maintenance>
         <Head>
-          <title>ELTE IK Progress Tracker</title>
+          <title>IK-Tracker</title>
         </Head>
         <Layout Header={() => <Header Logo={() => <HeaderLogo />} />}>
           <Toaster

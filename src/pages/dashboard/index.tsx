@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { Badge } from '@components/Badge/Badge'
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
@@ -10,6 +12,7 @@ import type { NextPage, GetServerSidePropsContext } from 'next'
 import { getServerSession } from 'next-auth'
 import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 import Link from 'next/link'
 
 const CalculatorIcon = dynamic(() => import('@heroicons/react/24/solid/CalculatorIcon'))
@@ -52,8 +55,13 @@ const DashBoardPage: NextPage = () => {
     { enabled: !!session?.user?.currentSemester }
   )
 
+  const { t } = useTranslation()
+
   return (
     <ScrollLayout>
+      <Head>
+        <title>IK-Tracker - {t('routes.dashboard')}</title>
+      </Head>
       <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Dashboard</h1>

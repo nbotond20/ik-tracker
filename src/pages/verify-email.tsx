@@ -1,5 +1,8 @@
+import { useTranslation } from 'react-i18next'
+
 import type { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 const VerifyEmailPage: NextPage = () => {
@@ -10,8 +13,13 @@ const VerifyEmailPage: NextPage = () => {
     void router.replace('/')
   }
 
+  const { t } = useTranslation()
+
   return (
     <div className="flex h-full w-full items-center justify-center">
+      <Head>
+        <title>IK-Tracker - {t('routes.verify')}</title>
+      </Head>
       <div className="relative w-full max-w-sm overflow-auto p-4 bg-white dark:border-gray-700 dark:bg-gray-900 sm:rounded-lg sm:border sm:border-gray-200 sm:shadow-md dark:sm:bg-gray-800 md:min-w-[400px] sm:p-8">
         <div className="flex flex-col items-center">
           <div className="flex flex-col space-y-6 justify-center items-center">

@@ -9,6 +9,7 @@ import { tableColumnHeaders } from '@constants/pages'
 import { useSearchPage } from '@hooks/useSearchPage'
 import type { NextPage } from 'next'
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 
 const FunnelIcon = dynamic(() => import('@heroicons/react/20/solid/FunnelIcon'))
 const Squares2X2Icon = dynamic(() => import('@heroicons/react/20/solid/Squares2X2Icon'))
@@ -54,6 +55,9 @@ const SearchPage: NextPage = () => {
 
   return (
     <ScrollLayout>
+      <Head>
+        <title>IK-Tracker - {t('routes.search')}</title>
+      </Head>
       {/* Mobile filter drawer */}
       <FilterDrawer
         mobileFiltersOpen={mobileFiltersOpen}

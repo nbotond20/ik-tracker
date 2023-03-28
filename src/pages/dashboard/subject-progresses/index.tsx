@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { Button } from '@components/Button/Button'
@@ -12,6 +13,7 @@ import { api } from '@utils/api'
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import { getServerSession } from 'next-auth'
 import { useSession } from 'next-auth/react'
+import Head from 'next/head'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getServerSession(context.req, context.res, authOptions)
@@ -99,8 +101,13 @@ const SubjectProgressPage: NextPage = () => {
 
   const [openAll, setOpenAll] = useState(false)
 
+  const { t } = useTranslation()
+
   return (
     <ScrollLayout>
+      <Head>
+        <title>IK-Tracker - {t('routes.progress')}</title>
+      </Head>
       {isModalOpen && semester !== 0 && (
         <SubjectResultModal
           subjectProgress={selectedSubjectProgress}

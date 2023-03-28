@@ -9,6 +9,7 @@ import { StatisticsTable } from '@components/StatisticsTable/StatisticsTable'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { calculateStatistics } from '@utils/calculateStatistics'
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import { v4 as uuidv4 } from 'uuid'
 
 const breadcrumbs = [
@@ -58,6 +59,9 @@ const CalculatorPage: NextPage = () => {
 
   return (
     <ScrollLayout>
+      <Head>
+        <title>IK-Tracker - {t('routes.calculator')}</title>
+      </Head>
       <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{t('calculator.title')}</h1>

@@ -3,12 +3,12 @@
     "subjects": {
       "addSubjectBtn": "Add Subject",
       "credit": "Credit",
+      "empty": "No subjects added",
       "grade": "Grade",
+      "optional": "Optional",
       "subjectCode": "Subject Code",
       "subjectName": "Subject Name",
-      "title": "Subjects",
-      "optional": "Optional",
-      "empty": "No subjects added"
+      "title": "Subjects"
     },
     "title": "Calculator"
   },
@@ -53,9 +53,11 @@
     "calculator": "Calculator",
     "dashboard": "Dashboard",
     "home": "Home",
+    "login": "Login",
     "planer": "Planner",
     "progress": "Progress",
-    "search": "Search"
+    "search": "Search",
+    "verify": "Verify Email"
   },
   "search": {
     "filters": {

@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import type { NextPage } from 'next'
 import { useSession, signIn } from 'next-auth/react'
+import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -16,8 +18,13 @@ const SignInPage: NextPage = () => {
 
   const [email, setEmail] = useState('')
 
+  const { t } = useTranslation()
+
   return (
     <div className="flex h-full w-full items-center justify-center">
+      <Head>
+        <title>IK-Tracker - {t('routes.login')}</title>
+      </Head>
       <div className="relative w-full max-w-sm overflow-auto p-4 bg-white dark:border-gray-700 dark:bg-gray-900 sm:rounded-lg sm:border sm:border-gray-200 sm:shadow-md dark:sm:bg-gray-800 md:min-w-[400px] sm:p-8">
         <div className="space-y-6">
           <h4 className="mb-10 text-3xl font-medium text-gray-900 dark:text-white">Login to our platform</h4>
