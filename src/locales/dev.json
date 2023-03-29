@@ -64,12 +64,25 @@
     "description": "Sorry, we can't find that page. Please check the URL and try again.",
     "title": "Something's missing."
   },
+  "profile": {
+    "alreadyLinked": "Already linked",
+    "currentSemester": "Current Semester",
+    "email": "Email",
+    "linkDiscord": "Link Discord Account",
+    "linkGithub": "Link Github Account",
+    "linkGoogle": "Link Google Account",
+    "name": "Name",
+    "title": "Profile",
+    "verifyEmail": "Verify Email",
+    "verified": "Verified"
+  },
   "routes": {
     "calculator": "Calculator",
     "dashboard": "Dashboard",
     "home": "Home",
     "login": "Login",
     "planer": "Planner",
+    "profile": "Profile",
     "progress": "Progress",
     "search": "Search",
     "verify": "Verify Email"

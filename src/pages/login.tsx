@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { LoadingPage } from '@components/Spinner/Spinner'
 import type { NextPage } from 'next'
 import { useSession, signIn } from 'next-auth/react'
 import Head from 'next/head'
@@ -8,17 +9,22 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const SignInPage: NextPage = () => {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const router = useRouter()
 
-  if (session?.user) {
-    void router.replace('/')
-  }
+  useEffect(() => {
+    if (status !== 'loading' && session?.user) {
+      void router.replace('/')
+    }
+  }, [router, session?.user, status])
+
   const callbackUrl = router.query.callbackUrl as string
 
   const [email, setEmail] = useState('')
 
   const { t } = useTranslation()
+
+  if (status === 'loading') return <LoadingPage />
 
   return (
     <div className="flex h-full w-full items-center justify-center">

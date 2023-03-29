@@ -64,12 +64,25 @@
     "description": "A keresett oldal nem található. Kérjük, ellenőrizd a címet, vagy kattints az alábbi gombra, hogy visszatérj a főoldalra.",
     "title": "Nem található"
   },
+  "profile": {
+    "alreadyLinked": "Csatlakoztatva",
+    "currentSemester": "Jelenlegi félév",
+    "email": "Email",
+    "linkDiscord": "Discord fiók csatolása",
+    "linkGithub": "Github fiók csatolása",
+    "linkGoogle": "Google fiók csatolása",
+    "name": "Név",
+    "title": "Profil",
+    "verified": "Megerősítve",
+    "verifyEmail": "Email megerősítése"
+  },
   "routes": {
     "calculator": "Kalkulátor",
     "dashboard": "Irányítópult",
     "home": "Főoldal",
     "login": "Bejelentkezés",
     "planer": "Tervező",
+    "profile": "Profil",
     "progress": "Előrehaladás",
     "search": "Keresés",
     "verify": "Hitelesítés"
