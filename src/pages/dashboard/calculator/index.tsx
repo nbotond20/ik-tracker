@@ -112,12 +112,16 @@ const CalculatorPage: NextPage = () => {
                     className="col-span-6 2xl:col-span-1 lg:col-span-2"
                     inputMode="numeric"
                     pattern="[0-9]*"
-                    value={subject.credit || ''}
+                    value={subject.credit ?? ''}
                     placeholder="-"
                     onChange={e => {
                       e.target.validity.valid &&
                         setSubjects(prev =>
-                          prev.map(s => (s.id === subject.id ? { ...s, credit: Number(e.target.value) } : s))
+                          prev.map(s =>
+                            s.id === subject.id
+                              ? { ...s, credit: e.target.value === '' ? undefined : Number(e.target.value) }
+                              : s
+                          )
                         )
                     }}
                   />
@@ -126,12 +130,16 @@ const CalculatorPage: NextPage = () => {
                     className="col-span-6 lg:col-span-2 2xl:col-span-1"
                     inputMode="numeric"
                     pattern="[0-9]*"
-                    value={subject.grade || ''}
+                    value={subject.grade ?? ''}
                     placeholder="-"
                     onChange={e => {
                       e.target.validity.valid &&
                         setSubjects(prev =>
-                          prev.map(s => (s.id === subject.id ? { ...s, grade: Number(e.target.value) } : s))
+                          prev.map(s =>
+                            s.id === subject.id
+                              ? { ...s, grade: e.target.value === '' ? undefined : Number(e.target.value) }
+                              : s
+                          )
                         )
                     }}
                   />
