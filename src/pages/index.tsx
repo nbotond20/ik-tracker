@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { MacBookSVG } from '@components/SVG/MacBookSVG'
@@ -22,16 +21,6 @@ const ArrowSmallRightIcon = dynamic(() => import('@heroicons/react/24/outline/Ar
 const HomePage: NextPage = () => {
   const { data: session, status } = useSession()
   const { t } = useTranslation()
-
-  useEffect(() => {
-    void Notification.requestPermission().then(permission => {
-      if (permission === 'granted') {
-        new Notification('Welcome to the new version of the website!', {
-          body: 'We hope you enjoy the new features and design!',
-        })
-      }
-    })
-  }, [])
 
   if (status === 'loading') {
     return <LoadingPage />
