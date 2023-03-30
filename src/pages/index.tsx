@@ -36,7 +36,7 @@ const HomePage: NextPage = () => {
         id="top"
         className="flex max-h-[calc(100vh-64px)] min-h-[calc(100vh-64px)] w-full snap-center snap-always flex-col items-center justify-center"
       >
-        <section className="bg-white dark:bg-gray-900">
+        <section>
           <div className="mx-auto flex max-w-screen-xl px-4 lg:grid-cols-12 lg:gap-8 xl:gap-0">
             <div className="relative hidden h-1/2 w-1/2 lg:col-span-5 lg:mt-0 lg:flex">
               <MacBookSVG />
