@@ -115,7 +115,7 @@ const DashBoardPage: NextPage = () => {
                 <StatisticsTable statistics={statistics as Omit<Statistics, 'subjectProgressesWithGrade'>} />
                 {statistics?.subjectProgressesWithGrade && statistics?.subjectProgressesWithGrade.length > 0 && (
                   <div>
-                    <table className="w-full">
+                    <table>
                       <thead>
                         <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
                           <th className="py-1 pr-2 text-left text-base">Subject</th>
@@ -128,11 +128,7 @@ const DashBoardPage: NextPage = () => {
                             key={statistic.id}
                             className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal"
                           >
-                            <td className="py-1 pr-2 text-left">
-                              <span className="block whitespace-nowrap overflow-hidden text-ellipsis max-w-[90%]">
-                                {statistic.subjectName}
-                              </span>
-                            </td>
+                            <td className="py-1 pr-2 text-left">{statistic.subjectName}</td>
                             <td className="py-1 px-2 text-right">
                               <Badge
                                 variant={statistic.grade >= 4 ? 'success' : statistic.grade >= 2 ? 'warning' : 'danger'}
