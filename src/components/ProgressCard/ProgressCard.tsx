@@ -209,7 +209,6 @@ export const ProgressCard = ({
             >
               Delete
             </button>
-            {/* //TODO: Add confirmation modal to DELETE */}
             <button
               disabled={!examResultsChanged}
               type="button"
