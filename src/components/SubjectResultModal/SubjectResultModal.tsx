@@ -152,8 +152,6 @@ export const SubjectResultModal = ({
   const [marks, setMarks] = useState<Marks>((subjectProgress?.marks as Marks) || [-1, -1, -1, -1, -1])
 
   const handleSaveSubjectProgress = () => {
-    if (user?.currentSemester) return
-
     // Either subjectId or (subjectName and subjectCredit) must be defined
     if (!selectedSubjectId && (!subjectNameInput || !subjectCreditInput)) {
       setSubjectError({

@@ -33,7 +33,7 @@ export const userRouter = createTRPCRouter({
   }),
 
   updateCurrentSemester: protectedProcedure
-    .input(z.object({ currentSemester: z.number() }))
+    .input(z.object({ currentSemester: z.number().min(1).max(99) }))
     .mutation(({ ctx, input }) => {
       const { user } = ctx.session
 

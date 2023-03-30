@@ -113,37 +113,39 @@ const DashBoardPage: NextPage = () => {
             {!isLoading && !isUserLoading ? (
               <div className="w-full flex flex-col lg:flex-row gap-8 justify-evenly">
                 <StatisticsTable statistics={statistics as Omit<Statistics, 'subjectProgressesWithGrade'>} />
-                <div>
-                  <table className="w-full">
-                    <thead>
-                      <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
-                        <th className="py-1 pr-2 text-left text-base">Subject</th>
-                        <th className="py-1 px-2 text-right text-base">Grade</th>
-                      </tr>
-                    </thead>
-                    <tbody className="flex-1 sm:flex-none">
-                      {statistics?.subjectProgressesWithGrade.map(statistic => (
-                        <tr
-                          key={statistic.id}
-                          className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal"
-                        >
-                          <td className="py-1 pr-2 text-left">
-                            <span className="block whitespace-nowrap overflow-hidden text-ellipsis max-w-[90%]">
-                              {statistic.subjectName}
-                            </span>
-                          </td>
-                          <td className="py-1 px-2 text-right">
-                            <Badge
-                              variant={statistic.grade >= 4 ? 'success' : statistic.grade >= 2 ? 'warning' : 'danger'}
-                            >
-                              {statistic.grade}
-                            </Badge>
-                          </td>
+                {statistics?.subjectProgressesWithGrade && statistics?.subjectProgressesWithGrade.length > 0 && (
+                  <div>
+                    <table className="w-full">
+                      <thead>
+                        <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
+                          <th className="py-1 pr-2 text-left text-base">Subject</th>
+                          <th className="py-1 px-2 text-right text-base">Grade</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                      </thead>
+                      <tbody className="flex-1 sm:flex-none">
+                        {statistics?.subjectProgressesWithGrade.map(statistic => (
+                          <tr
+                            key={statistic.id}
+                            className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal"
+                          >
+                            <td className="py-1 pr-2 text-left">
+                              <span className="block whitespace-nowrap overflow-hidden text-ellipsis max-w-[90%]">
+                                {statistic.subjectName}
+                              </span>
+                            </td>
+                            <td className="py-1 px-2 text-right">
+                              <Badge
+                                variant={statistic.grade >= 4 ? 'success' : statistic.grade >= 2 ? 'warning' : 'danger'}
+                              >
+                                {statistic.grade}
+                              </Badge>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
               </div>
             ) : (
               <div className="w-full flex justify-center items-center h-40">

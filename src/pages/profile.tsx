@@ -43,10 +43,12 @@ const ProfilePage: NextPage = () => {
     setCurrentSemester(user?.currentSemester)
   }, [user?.currentSemester])
 
+  const { user: userContext } = api.useContext()
   const { mutateAsync: updateCurrentSemester, isLoading: isUpdateSemesterLoading } =
     api.user.updateCurrentSemester.useMutation({
       onSuccess: () => {
         setIsSemesterEditing(false)
+        void userContext.invalidate()
       },
     })
 
