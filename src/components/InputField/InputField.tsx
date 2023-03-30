@@ -7,6 +7,7 @@ interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   editable?: boolean
   IconMenu?: JSX.Element | null
   errorMessage?: string
+  error?: boolean
 }
 
 export const InputField = ({
@@ -17,6 +18,7 @@ export const InputField = ({
   labelClassName,
   IconMenu,
   errorMessage,
+  error,
   ...rest
 }: InputFieldProps) => {
   return (
@@ -34,7 +36,7 @@ export const InputField = ({
         className={`placeholder:text-gray-400 rounded-lg mt-1 border bg-white px-4 py-2.5 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200  ${
           inputClassName || ''
         } ${
-          errorMessage
+          errorMessage || error
             ? 'border-red-500 focus:ring-red-500 border-2'
             : 'border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500'
         }`}

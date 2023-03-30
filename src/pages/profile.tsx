@@ -44,13 +44,16 @@ const ProfilePage: NextPage = () => {
   }, [user?.currentSemester])
 
   const { user: userContext } = api.useContext()
-  const { mutateAsync: updateCurrentSemester, isLoading: isUpdateSemesterLoading } =
-    api.user.updateCurrentSemester.useMutation({
-      onSuccess: () => {
-        setIsSemesterEditing(false)
-        void userContext.invalidate()
-      },
-    })
+  const {
+    mutateAsync: updateCurrentSemester,
+    isLoading: isUpdateSemesterLoading,
+    error: updateCurrentSemesterError,
+  } = api.user.updateCurrentSemester.useMutation({
+    onSuccess: () => {
+      setIsSemesterEditing(false)
+      void userContext.invalidate()
+    },
+  })
 
   const handleSemesterChange = useCallback(() => {
     if (currentSemester) {
@@ -126,7 +129,7 @@ const ProfilePage: NextPage = () => {
                 <InputField
                   className="col-span-6 sm:col-span-8 md:col-span-10"
                   label={t('profile.currentSemester') || ''}
-                  value={currentSemester}
+                  value={currentSemester || ''}
                   inputMode="numeric"
                   pattern="[0-9]*"
                   onChange={e => e.target.validity.valid && setCurrentSemester(Number(e.target.value))}
@@ -134,6 +137,7 @@ const ProfilePage: NextPage = () => {
                   inputClassName={`${
                     isSemesterEditing ? 'bg-white dark:bg-gray-700' : 'bg-gray-100 dark:bg-gray-600 text-gray-500'
                   }`}
+                  error={!!updateCurrentSemesterError?.data?.zodError?.fieldErrors?.currentSemester?.[0]}
                 />
                 <button
                   onClick={() => {
@@ -161,6 +165,11 @@ const ProfilePage: NextPage = () => {
                     </div>
                   )}
                 </button>
+                {updateCurrentSemesterError?.data?.zodError?.fieldErrors?.currentSemester?.[0] && (
+                  <span className="text-red-500 text-sm font-medium col-span-12">
+                    {updateCurrentSemesterError?.data?.zodError?.fieldErrors?.currentSemester?.[0]}
+                  </span>
+                )}
               </div>
 
               <div className="mt-4 flex w-full flex-col items-center justify-center gap-4 col-span-12 max-w-sm m-auto">
