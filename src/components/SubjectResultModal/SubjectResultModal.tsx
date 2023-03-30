@@ -439,7 +439,6 @@ export const SubjectResultModal = ({
 
                   <div className="flex gap-2 justify-evenly">
                     <Button onClick={() => closeModal?.()}>Cancel</Button>
-                    {/* TODO: Compare with initial values and ask for confirmation */}
                     <Button variant="filled" onClick={() => void handleSaveSubjectProgress()}>
                       Save
                     </Button>
