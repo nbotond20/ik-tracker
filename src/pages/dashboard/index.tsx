@@ -3,14 +3,13 @@ import { useTranslation } from 'react-i18next'
 import { Badge } from '@components/Badge/Badge'
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
-import { LoadingSpinner } from '@components/Spinner/Spinner'
+import { LoadingPage, LoadingSpinner } from '@components/Spinner/Spinner'
 import { StatisticsTable } from '@components/StatisticsTable/StatisticsTable'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
 import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
 import type { NextPage, GetServerSidePropsContext } from 'next'
 import { getServerSession } from 'next-auth'
-import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -47,15 +46,17 @@ const breadcrumbs = [
 type Statistics = RouterOutputs['subjectProgress']['statisticsBySemester']
 
 const DashBoardPage: NextPage = () => {
-  const { data: session, status } = useSession()
+  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery()
   const { data: statistics, isLoading } = api.subjectProgress.statisticsBySemester.useQuery(
     {
-      semester: session?.user?.currentSemester ?? 0,
+      semester: user?.currentSemester ?? 0,
     },
-    { enabled: !!session?.user?.currentSemester }
+    { enabled: !!user?.currentSemester }
   )
 
   const { t } = useTranslation()
+
+  if (isLoading || isUserLoading) return <LoadingPage />
 
   return (
     <ScrollLayout>
@@ -107,9 +108,9 @@ const DashBoardPage: NextPage = () => {
           <div className="col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
             <h2 className="text-xl font-bold dark:text-white mb-4 flex gap-2">
               Statistics for current semester{' '}
-              {status !== 'loading' ? `(${session?.user?.currentSemester || 1}).` : <LoadingSpinner />}
+              {!isLoading && !isUserLoading ? `(${user?.currentSemester || 1}).` : <LoadingSpinner />}
             </h2>
-            {!isLoading ? (
+            {!isLoading && !isUserLoading ? (
               <div className="w-full flex flex-col lg:flex-row gap-8 justify-evenly">
                 <StatisticsTable statistics={statistics as Omit<Statistics, 'subjectProgressesWithGrade'>} />
                 <div>

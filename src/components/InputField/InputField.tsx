@@ -5,7 +5,7 @@ interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   labelClassName?: string
   inputClassName?: string
   editable?: boolean
-  IconMenu?: JSX.Element
+  IconMenu?: JSX.Element | null
   errorMessage?: string
 }
 

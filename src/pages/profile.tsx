@@ -1,10 +1,12 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import { toast } from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { InputField } from '@components/InputField/InputField'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
-import { LoadingPage } from '@components/Spinner/Spinner'
+import { LoadingPage, LoadingSpinner } from '@components/Spinner/Spinner'
+import { CheckBadgeIcon } from '@heroicons/react/24/solid'
 import { api } from '@utils/api'
 import type { NextPage } from 'next'
 import { signIn, useSession } from 'next-auth/react'
@@ -33,6 +35,35 @@ const ProfilePage: NextPage = () => {
   }, [router, session?.user, status])
 
   const callbackUrl = router.query.callbackUrl as string
+
+  const [isSemesterEditing, setIsSemesterEditing] = useState(false)
+  const [currentSemester, setCurrentSemester] = useState(user?.currentSemester)
+
+  useEffect(() => {
+    setCurrentSemester(user?.currentSemester)
+  }, [user?.currentSemester])
+
+  const { mutateAsync: updateCurrentSemester, isLoading: isUpdateSemesterLoading } =
+    api.user.updateCurrentSemester.useMutation({
+      onSuccess: () => {
+        setIsSemesterEditing(false)
+      },
+    })
+
+  const handleSemesterChange = useCallback(() => {
+    if (currentSemester) {
+      void toast.promise(
+        updateCurrentSemester({
+          currentSemester: currentSemester,
+        }),
+        {
+          loading: 'Updating current semester...',
+          success: <b>Successfully updated current semester!</b>,
+          error: <b>Failed to update current semester.</b>,
+        }
+      )
+    }
+  }, [currentSemester, updateCurrentSemester])
 
   if (!session?.user || isProviderQueryLoading || isUserQueryLoading) return <LoadingPage />
 
@@ -74,34 +105,75 @@ const ProfilePage: NextPage = () => {
               <InputField
                 label={t('profile.name') || ''}
                 value={session?.user?.name || ''}
-                className="col-span-12"
+                className="col-span-12 md:col-span-6"
                 disabled
               />
               <InputField
-                label={`${t('profile.email')} ${user?.emailVerified ? '(' + t('profile.verified') + ')' : ''}` || ''}
+                label={
+                  `${t('profile.email')} ${
+                    user?.emailVerified ? '(' + t('profile.verified') + ')' : '(' + t('profile.notVerified') + ')'
+                  }` || ''
+                }
                 value={session?.user?.email || ''}
-                className="col-span-12"
+                className="col-span-12 md:col-span-6"
                 disabled
+                IconMenu={user?.emailVerified && <CheckBadgeIcon className="h-5 w-5 text-green-400" />}
               />
-              {session.user.email && !user?.emailVerified && (
+
+              <div className="col-span-12 grid grid-cols-12 gap-2 items-end">
+                <InputField
+                  className="col-span-6 sm:col-span-8 md:col-span-10"
+                  label={t('profile.currentSemester') || ''}
+                  value={currentSemester}
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  onChange={e => e.target.validity.valid && setCurrentSemester(Number(e.target.value))}
+                  disabled={!isSemesterEditing || isUpdateSemesterLoading}
+                  inputClassName={`${
+                    isSemesterEditing ? 'bg-white dark:bg-gray-700' : 'bg-gray-100 dark:bg-gray-600 text-gray-500'
+                  }`}
+                />
                 <button
-                  onClick={() => void signIn('email', { email: session.user!.email, callbackUrl })}
-                  className="col-span-12 w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  onClick={() => {
+                    if (!isSemesterEditing) {
+                      setIsSemesterEditing(true)
+                    } else {
+                      handleSemesterChange()
+                    }
+                  }}
+                  className={`${
+                    isSemesterEditing
+                      ? 'max-h-[42px] min-h-[42px] col-span-6 sm:col-span-4 md:col-span-2 w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                      : 'max-h-[42px] min-h-[42px] col-span-6 sm:col-span-4 md:col-span-2 w-full py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600'
+                  }`}
                 >
-                  {t('profile.verifyEmail')}
+                  {!isUpdateSemesterLoading ? (
+                    !isSemesterEditing ? (
+                      t('profile.edit')
+                    ) : (
+                      t('profile.save')
+                    )
+                  ) : (
+                    <div className="flex w-full justify-center items-center">
+                      <LoadingSpinner size={24} />
+                    </div>
+                  )}
                 </button>
-              )}
-              <InputField
-                label={t('profile.currentSemester') || ''}
-                value={session?.user?.currentSemester || ''}
-                className="col-span-12"
-                disabled
-              />
-              <div className="flex w-full flex-col items-center justify-center gap-4 col-span-12 max-w-sm m-auto">
+              </div>
+
+              <div className="mt-4 flex w-full flex-col items-center justify-center gap-4 col-span-12 max-w-sm m-auto">
+                {session.user.email && !user?.emailVerified && (
+                  <button
+                    onClick={() => void signIn('email', { email: session.user!.email, callbackUrl })}
+                    className="col-span-12 w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    {t('profile.verifyEmail')}
+                  </button>
+                )}
                 <button
                   onClick={() => void signIn('google', { callbackUrl })}
                   type="button"
-                  className="inline-flex w-full items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200 dark:focus:ring-gray-800"
+                  className="disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-gray-200 inline-flex w-full items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200 dark:focus:ring-gray-800"
                   disabled={providers?.includes('google')}
                 >
                   <span className="flex w-full items-center justify-center gap-2">
@@ -135,12 +207,12 @@ const ProfilePage: NextPage = () => {
                 <button
                   onClick={() => void signIn('github', { callbackUrl })}
                   type="button"
-                  className="inline-flex w-full items-center rounded-lg bg-[#0d1117] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#0d1117]/90 focus:outline-none focus:ring-4 focus:ring-[#0d1117]/50 dark:hover:bg-[#050708]/30 dark:focus:ring-gray-500"
+                  className="disabled:cursor-not-allowed disabled:bg-[#0d1117]/70 disabled:dark:bg-[#0d1117]/30 inline-flex w-full items-center rounded-lg bg-[#0d1117] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#0d1117]/70 focus:outline-none focus:ring-4 focus:ring-[#0d1117]/50 dark:hover:bg-[#050708]/30 dark:focus:ring-gray-500"
                   disabled={providers?.includes('github')}
                 >
                   <span className="flex w-full items-center justify-center gap-2">
                     <svg
-                      className="mr-2 -ml-1 h-4 w-4"
+                      className="h-4 w-4"
                       aria-hidden="true"
                       focusable="false"
                       data-prefix="fab"
@@ -160,7 +232,7 @@ const ProfilePage: NextPage = () => {
                 <button
                   onClick={() => void signIn('discord', { callbackUrl })}
                   type="button"
-                  className="dark:focus:ring-[#7389da]/55 inline-flex w-full items-center rounded-lg bg-[#7389da] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#7389da]/90 focus:outline-none focus:ring-4 focus:ring-[#7389da]/50"
+                  className="disabled:cursor-not-allowed disabled:bg-[#7389da]/90 disabled:dark:bg-[#7389da]/90 dark:focus:ring-[#7389da]/55 inline-flex w-full items-center rounded-lg bg-[#7389da] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#7389da]/90 focus:outline-none focus:ring-4 focus:ring-[#7389da]/50"
                   disabled={providers?.includes('discord')}
                 >
                   <span className="flex w-full items-center justify-center gap-2">

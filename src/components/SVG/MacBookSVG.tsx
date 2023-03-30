@@ -55,13 +55,13 @@ export const MacBookSVG = () => {
         </defs>
         <style>
           {`.s0 { fill: #121212 } 
-  		.s1 { fill: none;stroke: #c5c5c5;stroke-linejoin: round;stroke-width: 2 } 
-  		.s2 { fill: #282828 } 
-  		.s3 { fill: url(#g1) } 
-  		.s4 { fill: #103470 } 
-  		.s5 { filter: url(#f1);fill: url(#g2) } 
-  		.s6 { fill: url(#g3) } 
-  		.s7 { fill: url(#g4) } 
+  		      .s1 { fill: none;stroke: #c5c5c5;stroke-linejoin: round;stroke-width: 2 } 
+  		      .s2 { fill: #282828 } 
+  		      .s3 { fill: url(#g1) } 
+  		      .s4 { fill: #103470 } 
+  		      .s5 { filter: url(#f1);fill: url(#g2) } 
+  		      .s6 { fill: url(#g3) } 
+  		      .s7 { fill: url(#g4) } 
           `}
         </style>
         <g id="Page 1">

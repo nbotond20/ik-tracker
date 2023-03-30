@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next'
 
+import { MacBookSVG } from '@components/SVG/MacBookSVG'
 import { LoadingPage } from '@components/Spinner/Spinner'
 import { type NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
-const DynamicMacBookSVG = dynamic(() => import('@components/SVG/MacBookSVG').then(mod => mod.MacBookSVG))
 const CalculatorIcon = dynamic(() => import('@heroicons/react/24/solid/CalculatorIcon'))
 const PresentationChartLineIcon = dynamic(() => import('@heroicons/react/24/solid/PresentationChartLineIcon'))
 const AcademicCapIcon = dynamic(() => import('@heroicons/react/24/solid/AcademicCapIcon'))
@@ -39,7 +39,7 @@ const HomePage: NextPage = () => {
         <section className="bg-white dark:bg-gray-900">
           <div className="mx-auto flex max-w-screen-xl px-4 lg:grid-cols-12 lg:gap-8 xl:gap-0">
             <div className="relative hidden h-1/2 w-1/2 lg:col-span-5 lg:mt-0 lg:flex">
-              <DynamicMacBookSVG />
+              <MacBookSVG />
             </div>
             <div className="mr-auto place-self-center lg:col-span-7">
               <div className="block">

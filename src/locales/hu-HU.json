@@ -67,11 +67,14 @@
   "profile": {
     "alreadyLinked": "Csatlakoztatva",
     "currentSemester": "Jelenlegi félév",
+    "edit": "Szerkesztés",
     "email": "Email",
     "linkDiscord": "Discord fiók csatolása",
     "linkGithub": "Github fiók csatolása",
     "linkGoogle": "Google fiók csatolása",
     "name": "Név",
+    "notVerified": "Nincs megerősítve",
+    "save": "Mentés",
     "title": "Profil",
     "verified": "Megerősítve",
     "verifyEmail": "Email megerősítése"

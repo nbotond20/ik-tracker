@@ -1,3 +1,5 @@
+import { z } from 'zod'
+
 import { createTRPCRouter, protectedProcedure } from '../trpc'
 
 export const userRouter = createTRPCRouter({
@@ -25,7 +27,26 @@ export const userRouter = createTRPCRouter({
       },
       select: {
         emailVerified: true,
+        currentSemester: true,
       },
     })
   }),
+
+  updateCurrentSemester: protectedProcedure
+    .input(z.object({ currentSemester: z.number() }))
+    .mutation(({ ctx, input }) => {
+      const { user } = ctx.session
+
+      return ctx.prisma.user.update({
+        where: {
+          id: user.id,
+        },
+        data: {
+          currentSemester: input.currentSemester,
+        },
+        select: {
+          currentSemester: true,
+        },
+      })
+    }),
 })

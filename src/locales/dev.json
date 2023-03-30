@@ -67,14 +67,17 @@
   "profile": {
     "alreadyLinked": "Already linked",
     "currentSemester": "Current Semester",
+    "edit": "Edit",
     "email": "Email",
     "linkDiscord": "Link Discord Account",
     "linkGithub": "Link Github Account",
     "linkGoogle": "Link Google Account",
     "name": "Name",
+    "notVerified": "Not Verified",
+    "save": "Save",
     "title": "Profile",
-    "verifyEmail": "Verify Email",
-    "verified": "Verified"
+    "verified": "Verified",
+    "verifyEmail": "Verify Email"
   },
   "routes": {
     "calculator": "Calculator",
