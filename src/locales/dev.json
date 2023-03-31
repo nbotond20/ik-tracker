@@ -59,6 +59,10 @@
     "description": "We are already working to solve the problem.",
     "title": "Internal Server Error."
   },
+  "maintenance": {
+    "description": " We are currently working on the site. Please check back later.",
+    "title": "Under Maintenance"
+  },
   "notFound": {
     "backBtn": "Back to Homepage",
     "description": "Sorry, we can't find that page. Please check the URL and try again.",

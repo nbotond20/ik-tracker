@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { env } from '@env/client.mjs'
 import Head from 'next/head'
 
@@ -6,9 +8,11 @@ interface MaintenanceProps {
 }
 
 export const Maintenance = ({ children }: MaintenanceProps) => {
-  const isProduction = env.NEXT_PUBLIC_VERCEL_ENV === 'production'
+  const isMaintenanceOn = env?.NEXT_PUBLIC_MAINTENANCE === 'on'
 
-  return !isProduction ? (
+  const { t } = useTranslation()
+
+  return !isMaintenanceOn ? (
     <>{children}</>
   ) : (
     <>
@@ -30,10 +34,10 @@ export const Maintenance = ({ children }: MaintenanceProps) => {
             />
           </svg>
           <h1 className="mb-4 text-4xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-5xl xl:text-6xl dark:text-white">
-            Under Maintenance
+            {t('maintenance.title')}
           </h1>
           <p className="font-light text-gray-500 md:text-lg xl:text-xl dark:text-gray-400">
-            Our Enterprise administrators are performing scheduled maintenance.
+            {t('maintenance.description')}
           </p>
         </div>
       </section>

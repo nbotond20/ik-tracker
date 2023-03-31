@@ -59,6 +59,10 @@
     "description": "Hiba történt a kiszolgálón. Kérjük, próbáld újra később.",
     "title": "Hiba történt"
   },
+  "maintenance": {
+    "description": "Az oldal karbantartás alatt áll. Kérjük, próbáld újra később.",
+    "title": "Karbantartás"
+  },
   "notFound": {
     "backBtn": "Vissza a főoldalra",
     "description": "A keresett oldal nem található. Kérjük, ellenőrizd a címet, vagy kattints az alábbi gombra, hogy visszatérj a főoldalra.",
