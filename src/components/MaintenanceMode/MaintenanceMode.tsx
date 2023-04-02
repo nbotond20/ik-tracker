@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 
-import { env } from '@env/client.mjs'
+import { LoadingPage } from '@components/Spinner/Spinner'
+import { useIsFeatureflagEnabled } from '@hooks/useIsFeatureflagEnabled'
 import Head from 'next/head'
 
 interface MaintenanceProps {
@@ -8,9 +9,11 @@ interface MaintenanceProps {
 }
 
 export const Maintenance = ({ children }: MaintenanceProps) => {
-  const isMaintenanceOn = env?.NEXT_PUBLIC_MAINTENANCE === 'on'
+  const { isEnabled: isMaintenanceOn, isLoading } = useIsFeatureflagEnabled('maintenance')
 
   const { t } = useTranslation()
+
+  if (isLoading) return <LoadingPage />
 
   return !isMaintenanceOn ? (
     <>{children}</>
