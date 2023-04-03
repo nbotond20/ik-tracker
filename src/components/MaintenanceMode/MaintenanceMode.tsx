@@ -1,16 +1,23 @@
+import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { env } from '@env/client.mjs'
+import { LoadingPage } from '@components/Spinner/Spinner'
 import Head from 'next/head'
+import type { FeatureFlagContextType } from 'src/contexts/FeatureFlagContext'
+import { FeatureFlagContext } from 'src/contexts/FeatureFlagContext'
 
 interface MaintenanceProps {
   children: React.ReactNode
 }
 
 export const Maintenance = ({ children }: MaintenanceProps) => {
-  const isMaintenanceOn = env?.NEXT_PUBLIC_MAINTENANCE === 'on'
+  const { isFeatureFlagEnabled, isLoading } = useContext(FeatureFlagContext) as FeatureFlagContextType
+
+  const isMaintenanceOn = isFeatureFlagEnabled('maintenance') && !isLoading
 
   const { t } = useTranslation()
+
+  if (isLoading) return <LoadingPage />
 
   return !isMaintenanceOn ? (
     <>{children}</>
