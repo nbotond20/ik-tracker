@@ -11,11 +11,9 @@ interface MaintenanceProps {
 }
 
 export const Maintenance = ({ children }: MaintenanceProps) => {
-  const { isFeatureFlagEnabled, isLoading } = useContext(FeatureFlagContext) as FeatureFlagContextType
-
-  const isMaintenanceOn = isFeatureFlagEnabled('maintenance') && !isLoading
-
   const { t } = useTranslation()
+  const { isFeatureFlagEnabled, isLoading } = useContext(FeatureFlagContext) as FeatureFlagContextType
+  const isMaintenanceOn = isFeatureFlagEnabled('maintenance') && !isLoading
 
   if (isLoading) return <LoadingPage />
 
