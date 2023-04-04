@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
-import type { PreRequirement, Subject } from '@prisma/client'
+import type { RouterOutputs } from '@utils/api'
 import type { CompareType } from '@utils/subjectComparator'
 import { AnimatePresence, motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
@@ -15,16 +15,16 @@ export interface TableColumnHeader {
   sortType: CompareType
   classes?: string
 }
-
+type Subject = RouterOutputs['subject']['getAll'][number]
 interface TableProps {
-  subjects: (Subject & PreRequirement[])[]
+  subjects: Subject[]
   handleSort: (sortType: CompareType) => void
   sortType: string | undefined
   tableColumnHeaders: TableColumnHeader[]
 }
 
 export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeaders }: TableProps) => {
-  const [selectedSubject, setSelectedSubject] = useState<(Subject & PreRequirement[]) | null>(null)
+  const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
   const { t } = useTranslation()
   return (
     <>
