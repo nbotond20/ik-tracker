@@ -77,6 +77,10 @@
     "description": "A keresett oldal nem található. Kérjük, ellenőrizd a címet, vagy kattints az alábbi gombra, hogy visszatérj a főoldalra.",
     "title": "Nem található"
   },
+  "offline": {
+    "description": "Nem vagy online. Kérjük, ellenőrizd az internetkapcsolatot, és próbáld újra.",
+    "title": "Nincs internetkapcsolat"
+  },
   "planner": {
     "title": "Tervező"
   },
