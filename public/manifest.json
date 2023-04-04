@@ -65,23 +65,23 @@
       "icons": [
         {
           "sizes": "192x192",
-          "src": "/calculator-icon-192x192.png",
-          "type": "image/png"
-        }
-      ],
-      "name": "Calculator",
-      "url": "/dashboard/calculator"
-    },
-    {
-      "icons": [
-        {
-          "sizes": "192x192",
           "src": "/planner-icon-192x192.png",
           "type": "image/png"
         }
       ],
       "name": "Planner",
       "url": "/dashboard/planner"
+    },
+    {
+      "icons": [
+        {
+          "sizes": "192x192",
+          "src": "/calculator-icon-192x192.png",
+          "type": "image/png"
+        }
+      ],
+      "name": "Calculator",
+      "url": "/dashboard/calculator"
     }
   ],
   "start_url": "/"
