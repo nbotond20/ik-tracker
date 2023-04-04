@@ -14,7 +14,7 @@ export const IKTrackerLoading = () => {
     >
       <style>
         {
-          '@keyframes float-btt-in-05b402be-2ffc-4e78-9fc7-823844891fd4{0%{animation-timing-function:cubic-bezier(.2242,.7499,.3142,.8148);transform:translate(0,14.925px) rotate(0deg) scale(1,1) skewX(0deg) skewY(0deg);opacity:.05}to{transform:translate(0,0) rotate(0deg) scale(1,1) skewX(0deg) skewY(0deg);opacity:1}}'
+          '@keyframes float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554{0%{animation-timing-function:cubic-bezier(.2242,.7499,.3142,.8148);transform:translate(0,14.925px) rotate(0deg) scale(1,1) skewX(0deg) skewY(0deg);opacity:.05}to{transform:translate(0,0) rotate(0deg) scale(1,1) skewX(0deg) skewY(0deg);opacity:1}}'
         }
       </style>
       <g
@@ -27,15 +27,15 @@ export const IKTrackerLoading = () => {
           style={{
             transform: 'matrix(1,0,0,1,0,14.925)',
             opacity: 0.05,
-            transformOrigin: '-115.87px -3.5722px',
-            animation: '.847458s linear 0s 1 normal forwards running float-btt-in-05b402be-2ffc-4e78-9fc7-823844891fd4',
+            transformOrigin: '-106.15px -3.747px',
+            animation: '1s linear 0s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
           }}
         >
           <path
-            d="M1.2-32.69v-.91h14.64v.91H13.2V-.91h2.64V0H1.2v-.91h2.64v-31.78H1.2"
+            d="M8.88 0H4.32v-33.6h4.56V0"
             fill="#2563eb"
             strokeWidth="none"
-            transform="translate(15.61 138.228)"
+            transform="translate(27.25 138.053)"
             style={{
               fill: '#2563eb',
             }}
@@ -46,16 +46,15 @@ export const IKTrackerLoading = () => {
           style={{
             transform: 'matrix(1,0,0,1,0,14.925)',
             opacity: 0.05,
-            transformOrigin: '-89.4px -3.5722px',
-            animation:
-              '.847458s linear .0559322s 1 normal forwards running float-btt-in-05b402be-2ffc-4e78-9fc7-823844891fd4',
+            transformOrigin: '-83.205px -3.527px',
+            animation: '1s linear .066s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
           }}
         >
           <path
-            d="M18.24-32.69v-.91h14.64v.91h-2.64v15.17l.38-.1 13.54-15.07h-3.79v-.91h8.4v.91h-2.88l-8.26 9.22L49.15-.91h2.59V0h-15.4v-.91h2.25l-7.92-15.31-.43.09V-.91h2.64V0H18.24v-.91h2.64v-31.78h-2.64"
+            d="M26.35-17.28 41.57-2.69 38.4.58 22.08-15.46V0h-4.56v-33.6h4.56v15.31l14.3-15.45 3.08 2.83-13.11 13.63"
             fill="#2563eb"
             strokeWidth="none"
-            transform="translate(15.61 138.228)"
+            transform="translate(27.25 138.053)"
             style={{
               fill: '#2563eb',
             }}
@@ -66,16 +65,15 @@ export const IKTrackerLoading = () => {
           style={{
             transform: 'matrix(1,0,0,1,0,14.925)',
             opacity: 0.05,
-            transformOrigin: '-63.67px -.832199px',
-            animation:
-              '.847458s linear .111864s 1 normal forwards running float-btt-in-05b402be-2ffc-4e78-9fc7-823844891fd4',
+            transformOrigin: '-58.7px -3.412px',
+            animation: '1s linear .132s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
           }}
         >
           <path
-            d="M66.77-13.34h-12.1v-1.44h12.1v1.44"
+            d="M62.21-14.5H45.89v-3.93h16.32v3.93"
             fill="#2563eb"
             strokeWidth="none"
-            transform="translate(15.61 138.228)"
+            transform="translate(27.25 138.053)"
             style={{
               fill: '#2563eb',
             }}
@@ -86,16 +84,15 @@ export const IKTrackerLoading = () => {
           style={{
             transform: 'matrix(1,0,0,1,0,14.925)',
             opacity: 0.05,
-            transformOrigin: '-38.85px -3.5722px',
-            animation:
-              '.847458s linear .167797s 1 normal forwards running float-btt-in-05b402be-2ffc-4e78-9fc7-823844891fd4',
+            transformOrigin: '-34.1px -3.747px',
+            animation: '1s linear .198s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
           }}
         >
           <path
-            d="M71.38-33.6H99.7l.48 12.05h-.92q-2.11-6.39-3.74-8.71-1.63-2.33-4.7-2.33h-.58v31.58h4.08V0H76.8v-1.01h4.08v-31.58h-.62q-3.08 0-4.76 2.42-1.68 2.43-3.69 8.62h-.91l.48-12.05"
+            d="M66.05-29.57v-4.03h25.2v4.03H80.93V0h-4.56v-29.57H66.05"
             fill="#2563eb"
             strokeWidth="none"
-            transform="translate(15.61 138.228)"
+            transform="translate(27.25 138.053)"
             style={{
               fill: '#2563eb',
             }}
@@ -106,16 +103,15 @@ export const IKTrackerLoading = () => {
           style={{
             transform: 'matrix(1,0,0,1,0,14.925)',
             opacity: 0.05,
-            transformOrigin: '-11.375px 1.5628px',
-            animation:
-              '.847458s linear .223729s 1 normal forwards running float-btt-in-05b402be-2ffc-4e78-9fc7-823844891fd4',
+            transformOrigin: '-9.765px .282995px',
+            animation: '1s linear .264s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
           }}
         >
           <path
-            d="M117.5-21.5q-1.77 0-3.12 2.3-1.34 2.3-1.34 5.47V-.86h3.41V0h-14.98v-.86h2.64v-21.12h-2.64v-.87h11.57v4.61q.62-2.45 2.4-3.77 1.78-1.32 4.03-1.32 2.26 0 3.67 1.27 1.42 1.28 1.42 3.6 0 2.33-1.06 3.58-1.05 1.25-3.24 1.25-2.18 0-3.21-1.44-1.03-1.44-.27-3.99h1.73q1.2-2.44-1.01-2.44"
+            d="m110.4-25.25-1.3 4.47q-.91-.39-2.16-.39-1.34 0-2.61.58-1.27.57-2.26 1.73-.98 1.15-1.58 2.95-.6 1.8-.6 4.25V0h-4.32v-24.96h4.17v5.42q.44-1.15 1.16-2.25.72-1.11 1.7-1.92.98-.82 2.28-1.32 1.3-.51 2.88-.51.72 0 1.42.08.69.07 1.22.21"
             fill="#2563eb"
             strokeWidth="none"
-            transform="translate(15.61 138.228)"
+            transform="translate(27.25 138.053)"
             style={{
               fill: '#2563eb',
             }}
@@ -126,16 +122,15 @@ export const IKTrackerLoading = () => {
           style={{
             transform: 'matrix(1,0,0,1,0,14.925)',
             opacity: 0.05,
-            transformOrigin: '13.295px 1.8028px',
-            animation:
-              '.847458s linear .279661s 1 normal forwards running float-btt-in-05b402be-2ffc-4e78-9fc7-823844891fd4',
+            transformOrigin: '11.62px .572995px',
+            animation: '1s linear .33s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
           }}
         >
           <path
-            d="M136.03-11.28h1.39v-3.7q0-4.56-.5-6.12-.5-1.56-1.94-1.56-.87 0-1.56.46-.7.46-.7 1.25t.29 1.61h1.2q.38 1 .38 2.42t-1.2 2.45q-1.2 1.03-3.02 1.03-4.13 0-4.13-3.98 0-5.91 10.03-5.91 5.71 0 7.9 1.95 2.18 1.94 2.18 7.12v9.75q0 2.49 1.39 2.49 1.64 0 1.92-4.94l.72.05q-.19 4.22-1.58 5.81-1.39 1.58-4.56 1.58-5.76 0-6.62-3.55-.63 1.82-1.88 2.69-1.24.86-3.64.86-7.11 0-7.11-5.81 0-3.41 2.71-4.68 2.72-1.27 8.33-1.27zm-1.92 5.9q0 2.5.27 3.22.26.72 1 .72.75 0 1.4-1.22.64-1.23.64-3.39v-4.46h-.33q-2.98 0-2.98 4.37v.76"
+            d="M111.6-12.34q0-2.78.86-5.2.87-2.43 2.43-4.2 1.56-1.78 3.74-2.79 2.19-1.01 4.78-1.01 2.16 0 3.91.75 1.75.74 3.05 1.85v-2.02h3.93v18.91q0 1.83.89 2.38.89.55 1.95.55l-.92 3.36q-4.6 0-5.56-3.74-.58.76-1.32 1.51-.75.74-1.71 1.32-.96.57-2.16.91-1.2.34-2.64.34-2.35 0-4.39-.92-2.04-.91-3.55-2.59-1.51-1.68-2.4-4.05-.89-2.38-.89-5.36zm12.19 9.08q1.83 0 3.46-.87 1.63-.86 2.73-2.25v-13.4q-1.29-.91-2.85-1.46-1.56-.55-3.29-.55t-3.17.67q-1.44.67-2.47 1.9-1.03 1.22-1.61 2.95-.57 1.73-.57 3.79 0 2.02.57 3.72.58 1.7 1.63 2.93 1.06 1.22 2.48 1.89 1.41.68 3.09.68"
             fill="#2563eb"
             strokeWidth="none"
-            transform="translate(15.61 138.228)"
+            transform="translate(27.25 138.053)"
             style={{
               fill: '#2563eb',
             }}
@@ -146,16 +141,15 @@ export const IKTrackerLoading = () => {
           style={{
             transform: 'matrix(1,0,0,1,0,14.925)',
             opacity: 0.05,
-            transformOrigin: '37.585px 1.8028px',
-            animation:
-              '.847458s linear .335593s 1 normal forwards running float-btt-in-05b402be-2ffc-4e78-9fc7-823844891fd4',
+            transformOrigin: '37.635px .572995px',
+            animation: '1s linear .396s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
           }}
         >
           <path
-            d="M164.3-22.46q-2.11 0-3.02 2.3-.91 2.3-.91 7.63v2.5q0 4.75 1.05 6.81 1.06 2.07 3.89 2.07t4.51-1.92q1.68-1.92 2.16-4.37l.87.1q-.91 4.12-3.36 5.95-2.5 1.87-6.87 1.87-5.56 0-8.54-3-2.98-3-2.98-8.78 0-5.79 3.39-8.91 3.38-3.12 9.43-3.12 4.27 0 6.53 1.66 2.25 1.65 2.25 4.15 0 2.5-1.08 3.65t-2.97 1.15q-1.9 0-3.05-1.01t-1.15-2.97q0-.87.24-1.73h1.58q.34-.96.34-1.73 0-2.3-2.31-2.3"
+            d="m159.65-24.05-1.3 3.65q-1.39-.67-2.59-.98-1.2-.32-2.69-.32-1.68 0-3.14.63-1.47.62-2.52 1.8-1.06 1.17-1.66 2.85-.6 1.68-.6 3.84 0 1.97.55 3.65.56 1.68 1.56 2.95 1.01 1.28 2.4 2 1.4.72 3.12.72 1.83 0 3.12-.39 1.3-.38 2.79-1.2l1.34 3.65q-1.53.82-3.36 1.3-1.82.48-4.17.48-2.69 0-4.85-.96-2.16-.96-3.7-2.69-1.53-1.73-2.37-4.13-.84-2.4-.84-5.28 0-2.69.84-5.06.84-2.38 2.42-4.16 1.58-1.77 3.82-2.8 2.23-1.04 5.01-1.04 2.16 0 3.75.39 1.58.38 3.07 1.1"
             fill="#2563eb"
             strokeWidth="none"
-            transform="translate(15.61 138.228)"
+            transform="translate(27.25 138.053)"
             style={{
               fill: '#2563eb',
             }}
@@ -166,16 +160,15 @@ export const IKTrackerLoading = () => {
           style={{
             transform: 'matrix(1,0,0,1,0,14.925)',
             opacity: 0.05,
-            transformOrigin: '63.605px -4.7722px',
-            animation:
-              '.847458s linear .391525s 1 normal forwards running float-btt-in-05b402be-2ffc-4e78-9fc7-823844891fd4',
+            transformOrigin: '62.425px -4.467px',
+            animation: '1s linear .462s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
           }}
         >
           <path
-            d="M202.61 0h-13.35v-.86h2.21L186.05-12l-.91.24v10.9h2.2V0h-13.77v-.86h2.64v-34.28h-2.83V-36h11.76v23.28l.76-.29 10.8-8.97h-4.51v-.87h9.46v.87h-3.36l-5.71 4.84 8.3 16.28h1.73V0"
+            d="M165.07 0v-35.52h4.32v20.3l11.28-10.22 2.5 2.74-9.65 8.54L185.28-2.4 182.3.48l-12.91-13.3V0h-4.32"
             fill="#2563eb"
             strokeWidth="none"
-            transform="translate(15.61 138.228)"
+            transform="translate(27.25 138.053)"
             style={{
               fill: '#2563eb',
             }}
@@ -186,16 +179,15 @@ export const IKTrackerLoading = () => {
           style={{
             transform: 'matrix(1,0,0,1,0,14.925)',
             opacity: 0.05,
-            transformOrigin: '89.3882px 1.8028px',
-            animation:
-              '.847458s linear .447458s 1 normal forwards running float-btt-in-05b402be-2ffc-4e78-9fc7-823844891fd4',
+            transformOrigin: '85.465px .572995px',
+            animation: '1s linear .528s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
           }}
         >
           <path
-            d="M214.75.48q-6.19 0-9.29-3.19-3.09-3.19-3.09-8.88 0-5.69 3.48-8.71 3.48-3.03 8.85-3.03 10.9 0 10.47 10.95h-13.54v1.87q0 4.7 1.2 7.1 1.2 2.4 4.18 2.4 5.57 0 7.29-5.95l.87.14q-.91 3.46-3.29 5.38T214.75.48zm-3.07-16.18v2.36h4.94v-2.36q0-3.88-.45-5.3-.46-1.42-1.83-1.42-1.36 0-2.01 1.52-.65 1.51-.65 5.2"
+            d="M209.09-10.7h-17.47q.43 3.5 2.44 5.47 2.02 1.97 5.33 1.97 2.16 0 3.89-.46t3.31-1.18l1.01 3.7q-1.73.82-3.89 1.3-2.16.48-4.85.48-2.68 0-4.84-.89-2.16-.89-3.68-2.55-1.51-1.65-2.32-4.08-.82-2.42-.82-5.54 0-2.78.82-5.18.81-2.4 2.3-4.16 1.49-1.75 3.55-2.73 2.07-.99 4.61-.99 2.69 0 4.7.92 2.02.91 3.36 2.49 1.35 1.59 2.02 3.7.67 2.11.67 4.46 0 1.68-.14 3.27zm-10.71-11.09q-2.83 0-4.63 1.92-1.8 1.92-2.18 5.66h13.68q0-3.65-1.83-5.61-1.82-1.97-5.04-1.97"
             fill="#2563eb"
             strokeWidth="none"
-            transform="translate(15.61 138.228)"
+            transform="translate(27.25 138.053)"
             style={{
               fill: '#2563eb',
             }}
@@ -206,16 +198,15 @@ export const IKTrackerLoading = () => {
           style={{
             transform: 'matrix(1,0,0,1,0,14.925)',
             opacity: 0.05,
-            transformOrigin: '114.05px 1.5628px',
-            animation:
-              '.847458s linear .50339s 1 normal forwards running float-btt-in-05b402be-2ffc-4e78-9fc7-823844891fd4',
+            transformOrigin: '109.655px .282995px',
+            animation: '1s linear .594s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
           }}
         >
           <path
-            d="M242.93-21.5q-1.78 0-3.12 2.3-1.35 2.3-1.35 5.47V-.86h3.41V0H226.9v-.86h2.64v-21.12h-2.64v-.87h11.56v4.61q.63-2.45 2.4-3.77 1.78-1.32 4.04-1.32 2.25 0 3.67 1.27 1.41 1.28 1.41 3.6 0 2.33-1.05 3.58-1.06 1.25-3.24 1.25-2.19 0-3.22-1.44-1.03-1.44-.26-3.99h1.73q1.2-2.44-1.01-2.44"
+            d="m229.82-25.25-1.29 4.47q-.91-.39-2.16-.39-1.35 0-2.62.58-1.27.57-2.25 1.73-.99 1.15-1.59 2.95-.6 1.8-.6 4.25V0h-4.32v-24.96h4.18v5.42q.43-1.15 1.15-2.25.72-1.11 1.7-1.92.99-.82 2.28-1.32 1.3-.51 2.88-.51.72 0 1.42.08.7.07 1.22.21"
             fill="#2563eb"
             strokeWidth="none"
-            transform="translate(15.61 138.228)"
+            transform="translate(27.25 138.053)"
             style={{
               fill: '#2563eb',
             }}
