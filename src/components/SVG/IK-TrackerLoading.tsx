@@ -14,7 +14,7 @@ export const IKTrackerLoading = () => {
     >
       <style>
         {
-          '@keyframes float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554{0%{animation-timing-function:cubic-bezier(.2242,.7499,.3142,.8148);transform:translate(0,14.925px) rotate(0deg) scale(1,1) skewX(0deg) skewY(0deg);opacity:.05}to{transform:translate(0,0) rotate(0deg) scale(1,1) skewX(0deg) skewY(0deg);opacity:1}}'
+          '@keyframes float-in-from-under{0%{animation-timing-function:cubic-bezier(.2242,.7499,.3142,.8148);transform:translate(0,50px) rotate(0deg) scale(1,1) skewX(0deg) skewY(0deg);opacity:.05}to{transform:translate(0,0) rotate(0deg) scale(1,1) skewX(0deg) skewY(0deg);opacity:1}}'
         }
       </style>
       <g
@@ -25,10 +25,10 @@ export const IKTrackerLoading = () => {
       >
         <g
           style={{
-            transform: 'matrix(1,0,0,1,0,14.925)',
+            transform: 'matrix(10,0,10,0,0,30)',
             opacity: 0.05,
             transformOrigin: '-106.15px -3.747px',
-            animation: '1s linear 0s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
+            animation: '1s linear 0s 1 normal forwards running float-in-from-under',
           }}
         >
           <path
@@ -44,10 +44,10 @@ export const IKTrackerLoading = () => {
         </g>
         <g
           style={{
-            transform: 'matrix(1,0,0,1,0,14.925)',
+            transform: 'matrix(10,0,10,0,0,30)',
             opacity: 0.05,
             transformOrigin: '-83.205px -3.527px',
-            animation: '1s linear .066s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
+            animation: '1s linear .066s 1 normal forwards running float-in-from-under',
           }}
         >
           <path
@@ -63,10 +63,10 @@ export const IKTrackerLoading = () => {
         </g>
         <g
           style={{
-            transform: 'matrix(1,0,0,1,0,14.925)',
+            transform: 'matrix(10,0,10,0,0,30)',
             opacity: 0.05,
             transformOrigin: '-58.7px -3.412px',
-            animation: '1s linear .132s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
+            animation: '1s linear .132s 1 normal forwards running float-in-from-under',
           }}
         >
           <path
@@ -82,10 +82,10 @@ export const IKTrackerLoading = () => {
         </g>
         <g
           style={{
-            transform: 'matrix(1,0,0,1,0,14.925)',
+            transform: 'matrix(10,0,10,0,0,30)',
             opacity: 0.05,
             transformOrigin: '-34.1px -3.747px',
-            animation: '1s linear .198s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
+            animation: '1s linear .198s 1 normal forwards running float-in-from-under',
           }}
         >
           <path
@@ -101,10 +101,10 @@ export const IKTrackerLoading = () => {
         </g>
         <g
           style={{
-            transform: 'matrix(1,0,0,1,0,14.925)',
+            transform: 'matrix(10,0,10,0,0,30)',
             opacity: 0.05,
             transformOrigin: '-9.765px .282995px',
-            animation: '1s linear .264s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
+            animation: '1s linear .264s 1 normal forwards running float-in-from-under',
           }}
         >
           <path
@@ -120,10 +120,10 @@ export const IKTrackerLoading = () => {
         </g>
         <g
           style={{
-            transform: 'matrix(1,0,0,1,0,14.925)',
+            transform: 'matrix(10,0,10,0,0,30)',
             opacity: 0.05,
             transformOrigin: '11.62px .572995px',
-            animation: '1s linear .33s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
+            animation: '1s linear .33s 1 normal forwards running float-in-from-under',
           }}
         >
           <path
@@ -139,10 +139,10 @@ export const IKTrackerLoading = () => {
         </g>
         <g
           style={{
-            transform: 'matrix(1,0,0,1,0,14.925)',
+            transform: 'matrix(10,0,10,0,0,30)',
             opacity: 0.05,
             transformOrigin: '37.635px .572995px',
-            animation: '1s linear .396s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
+            animation: '1s linear .396s 1 normal forwards running float-in-from-under',
           }}
         >
           <path
@@ -158,10 +158,10 @@ export const IKTrackerLoading = () => {
         </g>
         <g
           style={{
-            transform: 'matrix(1,0,0,1,0,14.925)',
+            transform: 'matrix(10,0,10,0,0,30)',
             opacity: 0.05,
             transformOrigin: '62.425px -4.467px',
-            animation: '1s linear .462s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
+            animation: '1s linear .462s 1 normal forwards running float-in-from-under',
           }}
         >
           <path
@@ -177,10 +177,10 @@ export const IKTrackerLoading = () => {
         </g>
         <g
           style={{
-            transform: 'matrix(1,0,0,1,0,14.925)',
+            transform: 'matrix(10,0,10,0,0,30)',
             opacity: 0.05,
             transformOrigin: '85.465px .572995px',
-            animation: '1s linear .528s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
+            animation: '1s linear .528s 1 normal forwards running float-in-from-under',
           }}
         >
           <path
@@ -196,10 +196,10 @@ export const IKTrackerLoading = () => {
         </g>
         <g
           style={{
-            transform: 'matrix(1,0,0,1,0,14.925)',
+            transform: 'matrix(10,0,10,0,0,30)',
             opacity: 0.05,
             transformOrigin: '109.655px .282995px',
-            animation: '1s linear .594s 1 normal forwards running float-btt-in-e4ced70a-3240-4a64-945c-54bf9d9ef554',
+            animation: '1s linear .594s 1 normal forwards running float-in-from-under',
           }}
         >
           <path

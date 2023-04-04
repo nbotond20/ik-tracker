@@ -22,7 +22,7 @@ export const Maintenance = ({ children }: MaintenanceProps) => {
     setIsAnimationPlaying(true)
     setTimeout(() => {
       setIsAnimationPlaying(false)
-    }, 1500)
+    }, 2000)
   }, [])
 
   if (isAnimationPlaying || isLoading) return <LoadingPage CustomLoadingIcon={<IKTrackerLoading />} />
