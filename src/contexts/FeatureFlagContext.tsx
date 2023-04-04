@@ -1,10 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 
 import { env } from '@env/client.mjs'
-import type { Socket } from 'socket.io-client'
-import { io } from 'socket.io-client'
-
-const SOCKET_URL = env.NEXT_PUBLIC_SOCKET_URL
+import { useSocket } from '@hooks/useSocket'
 
 export interface IFeatureFlag {
   id: string
@@ -21,27 +18,15 @@ export const FeatureFlagContext = createContext<FeatureFlagContextType | null>(n
 
 const API_URL = env.NEXT_PUBLIC_FEATURE_FLAGS_URL
 
-let socket: Socket
 export const FeatureFlagProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
   const [featureFlags, setFeatureFlags] = useState<IFeatureFlag[]>([])
-  const [isSocketConnected, setIsSocketConnected] = useState(false)
+
+  const { socket, isConnected: isSocketConnected } = useSocket()
 
   useEffect(() => {
-    socket = io(SOCKET_URL)
-
-    socket.on('connect', () => {
-      setIsSocketConnected(true)
-    })
-
-    return () => {
-      socket.disconnect()
-      setIsSocketConnected(false)
-    }
-  }, [])
-
-  useEffect(() => {
+    if (!socket) return
     setIsLoading(true)
     fetch(API_URL)
       .then(res => res.json())
@@ -65,7 +50,7 @@ export const FeatureFlagProvider = ({ children }: { children: React.ReactNode })
         setFeatureFlags(prev => prev.filter(flag => flag.id !== data.id))
       })
     }
-  }, [isSocketConnected])
+  }, [isSocketConnected, socket])
 
   const isFeatureFlagEnabled = (flag: string) => {
     const featureFlag = featureFlags.find(f => f.name === flag)

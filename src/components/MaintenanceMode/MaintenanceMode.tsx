@@ -22,7 +22,7 @@ export const Maintenance = ({ children }: MaintenanceProps) => {
   ) : (
     <>
       <Head>
-        <title>ELTE IK Progress Tracker</title>
+        <title>IK-Tracker - Maintenance</title>
         <meta name="description" content="ELTE IK Progress Tracker" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
