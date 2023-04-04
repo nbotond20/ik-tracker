@@ -1,6 +1,7 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { IKTrackerLoading } from '@components/SVG/IK-TrackerLoading'
 import { LoadingPage } from '@components/Spinner/Spinner'
 import Head from 'next/head'
 import type { FeatureFlagContextType } from 'src/contexts/FeatureFlagContext'
@@ -15,7 +16,16 @@ export const Maintenance = ({ children }: MaintenanceProps) => {
   const { isFeatureFlagEnabled, isLoading } = useContext(FeatureFlagContext) as FeatureFlagContextType
   const isMaintenanceOn = isFeatureFlagEnabled('maintenance') && !isLoading
 
-  if (isLoading) return <LoadingPage />
+  const [isAnimationPlaying, setIsAnimationPlaying] = useState(false)
+
+  useEffect(() => {
+    setIsAnimationPlaying(true)
+    setTimeout(() => {
+      setIsAnimationPlaying(false)
+    }, 1500)
+  }, [])
+
+  if (isAnimationPlaying || isLoading) return <LoadingPage CustomLoadingIcon={<IKTrackerLoading />} />
 
   return !isMaintenanceOn ? (
     <>{children}</>
