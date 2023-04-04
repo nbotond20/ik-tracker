@@ -2,11 +2,11 @@ import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTable
 import { Pagination } from '@components/Pagination/Pagination'
 import { SubjectTable } from '@components/SubjectTable/SubjectTable'
 import { tableColumnHeaders } from '@constants/pages'
-import type { Subject } from '@prisma/client'
+import type { PreRequirement, Subject } from '@prisma/client'
 import type { CompareType } from '@utils/subjectComparator'
 
 interface SubjectListProps {
-  subjects: Subject[]
+  subjects: (Subject & PreRequirement[])[]
   isLoading: boolean
   sortType?: CompareType
   handleSetSortedSubjects: (type: CompareType) => void

@@ -21,6 +21,10 @@
       "label": "Showing <textFormat>{{from}}</textFormat> to <textFormat>{{to}}</textFormat> of <textFormat>{{outOf}}</textFormat> entries.",
       "nextBtn": "Next",
       "prevBtn": "Prev"
+    },
+    "subjectCard": {
+      "or": "or",
+      "weak": "weak"
     }
   },
   "header": {

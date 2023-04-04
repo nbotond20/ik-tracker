@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
-import type { SpecialisationType, Subject, SubjectGroupType, SubjectType } from '@prisma/client'
+import type { SpecialisationType, SubjectGroupType, SubjectType } from '@prisma/client'
+import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
 import { type CompareType, subjectComparator } from '@utils/subjectComparator'
 
@@ -21,6 +22,7 @@ export type Range = {
   max: number | null
 }
 
+type Subject = RouterOutputs['subject']['getAll'][number]
 export const useSearchPage = () => {
   const { data: subjects, isLoading } = api.subject.getAll.useQuery()
 
@@ -69,8 +71,8 @@ export const useSearchPage = () => {
         const subjectCode = subject.code.toLowerCase()
         const search = searchTerm.toLowerCase()
 
-        const subjectPreReq1 = subject.preRequirements1?.toLowerCase() || ''
-        const subjectPreReq2 = subject.preRequirements2?.toLowerCase() || ''
+        const subjectPreReq1 = /* subject.preRequirements1?.toLowerCase() ||  */ ''
+        const subjectPreReq2 = /* subject.preRequirements2?.toLowerCase() ||  */ ''
         const subjectPreReq = `${subjectPreReq1} ${subjectPreReq2}`.trim()
 
         const preReqSearch = preReqSearchTerm.toLowerCase()

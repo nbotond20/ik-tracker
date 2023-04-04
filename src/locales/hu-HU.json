@@ -21,6 +21,10 @@
       "label": "<textFormat>{{from}}</textFormat>-tól <textFormat>{{to}}</textFormat>-ig mutatva a(z) <textFormat>{{outOf}}</textFormat> bejegyzésből.",
       "nextBtn": "Követkő",
       "prevBtn": "Előző"
+    },
+    "subjectCard": {
+      "or": "vagy",
+      "weak": "gyenge"
     }
   },
   "header": {
