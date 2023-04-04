@@ -30,7 +30,7 @@ const PlannerPage: NextPage = () => {
       </Head>
       <div className="w-full max-w-screen-2xl px-2 sm:px-4 lg:px-8 flex flex-col">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{t('profile.title')}</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{t('planner.title')}</h1>
         </div>
         <div className="mt-6">
           <BreadCrumbs breadcrumbs={breadcrumbs} />
