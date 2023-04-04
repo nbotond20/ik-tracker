@@ -14,9 +14,7 @@ export const calculateStatistics = (subjects: CalculateStatisticsProps[]) => {
   const creditIndex = Math.round((creditTimesGradeForPassed / 30) * 100) / 100
   const correctedCreditIndex = Math.round(creditIndex * (passedCredit / totalCredit) * 100) / 100
   const average =
-    Math.round(
-      (subjects.reduce((acc, curr) => acc + curr.grade, 0) / subjects.filter(e => e.grade >= 2).length) * 100
-    ) / 100
+    Math.round((subjects.reduce((acc, curr) => acc + curr.grade, 0) / subjects.filter(e => e.grade).length) * 100) / 100
   const weightedAverage = Math.round((creditTimesGradeForPassed / passedCredit) * 100) / 100
 
   const subjectCount = subjects.length
