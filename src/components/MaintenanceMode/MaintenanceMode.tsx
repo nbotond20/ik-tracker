@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IKTrackerLoading } from '@components/SVG/IK-TrackerLoading'
-import { LoadingPage } from '@components/Spinner/Spinner'
+import { LoadingPage, LoadingSpinner } from '@components/Spinner/Spinner'
+import { motion } from 'framer-motion'
 import Head from 'next/head'
 import type { FeatureFlagContextType } from 'src/contexts/FeatureFlagContext'
 import { FeatureFlagContext } from 'src/contexts/FeatureFlagContext'
@@ -16,7 +17,7 @@ export const Maintenance = ({ children }: MaintenanceProps) => {
   const { isFeatureFlagEnabled, isLoading } = useContext(FeatureFlagContext) as FeatureFlagContextType
   const isMaintenanceOn = isFeatureFlagEnabled('maintenance') && !isLoading
 
-  const [isAnimationPlaying, setIsAnimationPlaying] = useState(false)
+  const [isAnimationPlaying, setIsAnimationPlaying] = useState<boolean | undefined>(undefined)
 
   useEffect(() => {
     setIsAnimationPlaying(true)
@@ -25,7 +26,21 @@ export const Maintenance = ({ children }: MaintenanceProps) => {
     }, 2000)
   }, [])
 
-  if (isAnimationPlaying || isLoading) return <LoadingPage CustomLoadingIcon={<IKTrackerLoading />} />
+  if (isAnimationPlaying || isLoading)
+    return (
+      <LoadingPage
+        CustomLoadingIcon={
+          <div className="relative">
+            <IKTrackerLoading />
+            {isAnimationPlaying === false && isLoading && (
+              <motion.div className="flex w-full justify-center">
+                <LoadingSpinner size={45} />
+              </motion.div>
+            )}
+          </div>
+        }
+      />
+    )
 
   return !isMaintenanceOn ? (
     <>{children}</>
