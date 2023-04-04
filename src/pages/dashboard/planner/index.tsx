@@ -35,7 +35,13 @@ const PlannerPage: NextPage = () => {
         <div className="mt-6">
           <BreadCrumbs breadcrumbs={breadcrumbs} />
         </div>
-        <div className="pb-12"></div>
+        <div className="w-full mb-12 mt-6 h-fit grid gap-6 grid-cols-12 pb-12">
+          <div className="xl:order-2 col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-4 2xl:col-span-3"></div>
+          <div className="xl:order-1 col-span-12 xl:col-span-8 2xl:col-span-9 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
+            <h2 className=" text-xl font-bold dark:text-white mb-4">{t('planner.subjects.title')}</h2>
+            <table></table>
+          </div>
+        </div>
       </div>
     </ScrollLayout>
   )
