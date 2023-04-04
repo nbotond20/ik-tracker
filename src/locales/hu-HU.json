@@ -16,6 +16,11 @@
     "confirmDialog": {
       "cancelBtn": "Mégse",
       "confirmBtn": "Igen, biztos"
+    },
+    "pagination": {
+      "label": "<textFormat>{{from}}</textFormat>-tól <textFormat>{{to}}</textFormat>-ig mutatva a(z) <textFormat>{{outOf}}</textFormat> bejegyzésből.",
+      "nextBtn": "Követkő",
+      "prevBtn": "Előző"
     }
   },
   "header": {
@@ -67,6 +72,9 @@
     "backBtn": "Vissza a főoldalra",
     "description": "A keresett oldal nem található. Kérjük, ellenőrizd a címet, vagy kattints az alábbi gombra, hogy visszatérj a főoldalra.",
     "title": "Nem található"
+  },
+  "planner": {
+    "title": "Tervező"
   },
   "profile": {
     "alreadyLinked": "Csatlakoztatva",

@@ -16,6 +16,11 @@
     "confirmDialog": {
       "cancelBtn": "No, cancel",
       "confirmBtn": "Yes, I'm sure"
+    },
+    "pagination": {
+      "label": "Showing <textFormat>{{from}}</textFormat> to <textFormat>{{to}}</textFormat> of <textFormat>{{outOf}}</textFormat> entries.",
+      "nextBtn": "Next",
+      "prevBtn": "Prev"
     }
   },
   "header": {
@@ -68,6 +73,9 @@
     "description": "Sorry, we can't find that page. Please check the URL and try again.",
     "title": "Something's missing."
   },
+  "planner": {
+    "title": "Planner"
+  },
   "profile": {
     "alreadyLinked": "Already linked",
     "currentSemester": "Current Semester",
@@ -88,7 +96,7 @@
     "dashboard": "Dashboard",
     "home": "Home",
     "login": "Login",
-    "planer": "Planner",
+    "planner": "Planner",
     "profile": "Profile",
     "progress": "Progress",
     "search": "Search",
