@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 
 import { IKTrackerLoading } from '@components/SVG/IK-TrackerLoading'
 import { LoadingPage, LoadingSpinner } from '@components/Spinner/Spinner'
-import { motion } from 'framer-motion'
 import Head from 'next/head'
 import type { FeatureFlagContextType } from 'src/contexts/FeatureFlagContext'
 import { FeatureFlagContext } from 'src/contexts/FeatureFlagContext'
@@ -33,9 +32,9 @@ export const Maintenance = ({ children }: MaintenanceProps) => {
           <div className="relative">
             <IKTrackerLoading />
             {isAnimationPlaying === false && isLoading && (
-              <motion.div className="flex w-full justify-center">
+              <div className="flex w-full justify-center">
                 <LoadingSpinner size={45} />
-              </motion.div>
+              </div>
             )}
           </div>
         }
