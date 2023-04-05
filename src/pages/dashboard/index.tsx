@@ -106,7 +106,7 @@ const DashBoardPage: NextPage = () => {
           </Link>
           {/* STATISTICS */}
           <div className="col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
-            <h2 className="text-xl font-bold dark:text-white mb-4 flex gap-2">
+            <h2 className="text-xl font-bold dark:text-white mb-6 flex gap-2">
               Statistics for current semester{' '}
               {!isLoading && !isUserLoading ? `(${user?.currentSemester || 1}).` : <LoadingSpinner />}
             </h2>
