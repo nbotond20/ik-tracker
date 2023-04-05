@@ -1,3 +1,5 @@
+import { Trans, useTranslation } from 'react-i18next'
+
 import dynamic from 'next/dynamic'
 
 const ChevronRightIcon = dynamic(() => import('@heroicons/react/24/outline/ChevronRightIcon'))
@@ -20,18 +22,21 @@ export const Pagination = ({
   totalResults,
   className,
 }: PaginationProps) => {
+  const { t } = useTranslation()
+
   return (
     <div className={`${className || ''} flex flex-col items-center pb-5 mt-6`}>
       <span className="text-sm text-gray-700 dark:text-gray-400">
-        Showing{' '}
-        <span className="font-semibold text-gray-900 dark:text-white">
-          {totalResults !== 0 ? pageNum * elementsPerPage - elementsPerPage + 1 : 0}
-        </span>{' '}
-        to{' '}
-        <span className="font-semibold text-gray-900 dark:text-white">
-          {pageNum * elementsPerPage < totalResults ? pageNum * elementsPerPage : totalResults}
-        </span>{' '}
-        of <span className="font-semibold text-gray-900 dark:text-white">{totalResults}</span> Entries
+        <Trans
+          t={t}
+          i18nKey="components.pagination.label"
+          values={{
+            from: totalResults !== 0 ? pageNum * elementsPerPage - elementsPerPage + 1 : 0,
+            to: pageNum * elementsPerPage < totalResults ? pageNum * elementsPerPage : totalResults,
+            outOf: totalResults,
+          }}
+          components={{ textFormat: <span className="font-semibold text-gray-900 dark:text-white" /> }}
+        />
       </span>
       <div className="flex flex-col items-center pb-5 mt-2">
         <div className="inline-flex mt-2 xs:mt-0">

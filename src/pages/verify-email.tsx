@@ -1,19 +1,25 @@
+import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { LoadingPage } from '@components/Spinner/Spinner'
 import type { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 const VerifyEmailPage: NextPage = () => {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const router = useRouter()
 
-  if (session?.user) {
-    void router.replace('/')
-  }
+  useEffect(() => {
+    if (status !== 'loading' && session?.user) {
+      void router.replace('/')
+    }
+  }, [router, session?.user, status])
 
   const { t } = useTranslation()
+
+  if (status === 'loading') return <LoadingPage />
 
   return (
     <div className="flex h-full w-full items-center justify-center">

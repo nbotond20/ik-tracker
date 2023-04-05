@@ -1,19 +1,52 @@
-import { env } from '@env/client.mjs'
+import { useContext, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { IKTrackerLoading } from '@components/SVG/IK-TrackerLoading'
+import { LoadingPage, LoadingSpinner } from '@components/Spinner/Spinner'
 import Head from 'next/head'
+import type { FeatureFlagContextType } from 'src/contexts/FeatureFlagContext'
+import { FeatureFlagContext } from 'src/contexts/FeatureFlagContext'
 
 interface MaintenanceProps {
   children: React.ReactNode
 }
 
 export const Maintenance = ({ children }: MaintenanceProps) => {
-  const isProduction = env.NEXT_PUBLIC_VERCEL_ENV === 'production'
+  const { t } = useTranslation()
+  const { isFeatureFlagEnabled, isLoading } = useContext(FeatureFlagContext) as FeatureFlagContextType
+  const isMaintenanceOn = isFeatureFlagEnabled('maintenance') && !isLoading
 
-  return !isProduction ? (
+  const [isAnimationPlaying, setIsAnimationPlaying] = useState<boolean | undefined>(undefined)
+
+  useEffect(() => {
+    setIsAnimationPlaying(true)
+    setTimeout(() => {
+      setIsAnimationPlaying(false)
+    }, 2000)
+  }, [])
+
+  if (isAnimationPlaying || isLoading)
+    return (
+      <LoadingPage
+        CustomLoadingIcon={
+          <div className="relative">
+            <IKTrackerLoading />
+            {isAnimationPlaying === false && isLoading && (
+              <div className="flex w-full justify-center">
+                <LoadingSpinner size={45} />
+              </div>
+            )}
+          </div>
+        }
+      />
+    )
+
+  return !isMaintenanceOn ? (
     <>{children}</>
   ) : (
     <>
       <Head>
-        <title>ELTE IK Progress Tracker</title>
+        <title>IK-Tracker - Maintenance</title>
         <meta name="description" content="ELTE IK Progress Tracker" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -30,10 +63,10 @@ export const Maintenance = ({ children }: MaintenanceProps) => {
             />
           </svg>
           <h1 className="mb-4 text-4xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-5xl xl:text-6xl dark:text-white">
-            Under Maintenance
+            {t('maintenance.title')}
           </h1>
           <p className="font-light text-gray-500 md:text-lg xl:text-xl dark:text-gray-400">
-            Our Enterprise administrators are performing scheduled maintenance.
+            {t('maintenance.description')}
           </p>
         </div>
       </section>

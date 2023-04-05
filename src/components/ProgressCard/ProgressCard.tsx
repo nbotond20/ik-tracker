@@ -36,11 +36,12 @@ export const ProgressCard = ({
     [subjectProgress.exams]
   )
 
-  const { mutateAsync: deleteSubjectProgress } = api.subjectProgress.delete.useMutation({
-    onSuccess: () => {
-      void handleRefetch()
-    },
-  })
+  const { mutateAsync: deleteSubjectProgress, isLoading: isDeletingSubjectProgress } =
+    api.subjectProgress.delete.useMutation({
+      onSuccess: () => {
+        void handleRefetch()
+      },
+    })
 
   const [isAccordionOpen, setIsAccordionOpen] = useState(false)
   const grade = useMemo(
@@ -126,6 +127,7 @@ export const ProgressCard = ({
           isOpen={isConfirmModalOpen}
           onConfirm={handleDelete}
           setIsOpen={setIsConfirmModalOpen}
+          isActionLoading={isDeletingSubjectProgress}
         />
         <Accordion
           title={subjectProgress.subject?.courseName ?? subjectProgress.subjectName ?? '-'}
@@ -209,7 +211,6 @@ export const ProgressCard = ({
             >
               Delete
             </button>
-            {/* //TODO: Add confirmation modal to DELETE */}
             <button
               disabled={!examResultsChanged}
               type="button"

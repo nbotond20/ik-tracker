@@ -63,6 +63,9 @@ export const clientSchema = z.object({
     () => process.env.NEXT_PUBLIC_VERCEL_ENV ?? 'development',
     process.env.NEXT_PUBLIC_VERCEL_ENV ? z.enum(['development', 'preview', 'production']) : z.string()
   ),
+  NEXT_PUBLIC_SOCKET_URL: z.string(),
+  NEXT_PUBLIC_FEATURE_FLAGS_URL: z.string(),
+  NEXT_PUBLIC_SOCKET_SECRET: z.string(),
 })
 
 /**
@@ -74,4 +77,7 @@ export const clientSchema = z.object({
 export const clientEnv = {
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   NEXT_PUBLIC_VERCEL_ENV: process.env.NEXT_PUBLIC_VERCEL_ENV,
+  NEXT_PUBLIC_SOCKET_URL: process.env.NEXT_PUBLIC_SOCKET_URL,
+  NEXT_PUBLIC_FEATURE_FLAGS_URL: process.env.NEXT_PUBLIC_FEATURE_FLAGS_URL,
+  NEXT_PUBLIC_SOCKET_SECRET: process.env.NEXT_PUBLIC_SOCKET_SECRET,
 }

@@ -68,6 +68,32 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   })
 }
 
+const transformError = (error: TRPCError) => {
+  if (error.cause instanceof ZodError) {
+    const errorObject: {
+      [key: number]: {
+        [key: string]: string
+      }
+    } = {}
+
+    const defaultErrorArray = error.cause.errors.map(err => ({
+      index: err.path[2] as number,
+      path: err.path[3] as string,
+      message: err.message,
+    }))
+
+    defaultErrorArray.forEach(err => {
+      errorObject[err.index] = {
+        ...errorObject[err.index],
+        [err.path]: err.message,
+      }
+    })
+
+    return errorObject
+  }
+  return null
+}
+
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
   errorFormatter({ shape, error }) {
@@ -76,6 +102,7 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
       data: {
         ...shape.data,
         zodError: error.cause instanceof ZodError ? error.cause.flatten() : null,
+        zodErrorObject: error.cause instanceof ZodError ? transformError(error) : null,
       },
     }
   },

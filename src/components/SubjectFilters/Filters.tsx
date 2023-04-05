@@ -108,9 +108,11 @@ export const Filters = ({
             pattern="[0-9]*"
             className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={'Min'}
-            value={creditRange.min ? creditRange.min : ''}
+            value={creditRange.min ?? ''}
             onChange={e =>
-              setCreditRange(prev => (e.target.validity.valid ? { ...prev, min: Number(e.target.value) } : prev))
+              setCreditRange(prev =>
+                e.target.validity.valid ? { ...prev, min: e.target.value === '' ? null : Number(e.target.value) } : prev
+              )
             }
           />
           <span className="text-gray-400 dark:text-gray-500">{'-'}</span>
@@ -119,9 +121,11 @@ export const Filters = ({
             pattern="[0-9]*"
             className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={'Max'}
-            value={creditRange.max ? creditRange.max : ''}
+            value={creditRange.max ?? ''}
             onChange={e =>
-              setCreditRange(prev => (e.target.validity.valid ? { ...prev, max: Number(e.target.value) } : prev))
+              setCreditRange(prev =>
+                e.target.validity.valid ? { ...prev, max: e.target.value === '' ? null : Number(e.target.value) } : prev
+              )
             }
           />
         </div>
@@ -134,9 +138,11 @@ export const Filters = ({
             pattern="[0-9]*"
             className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={'Min'}
-            value={semesterRange.min ? semesterRange.min : ''}
+            value={semesterRange.min ?? ''}
             onChange={e =>
-              setSemesterRange(prev => (e.target.validity.valid ? { ...prev, min: Number(e.target.value) } : prev))
+              setSemesterRange(prev =>
+                e.target.validity.valid ? { ...prev, min: e.target.value === '' ? null : Number(e.target.value) } : prev
+              )
             }
           />
           <span className="text-gray-400 dark:text-gray-500">{'-'}</span>
@@ -145,9 +151,11 @@ export const Filters = ({
             pattern="[0-9]*"
             className="flex rounded-lg border w-24 xl:w-32 border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder={'Max'}
-            value={semesterRange.max ? semesterRange.max : ''}
+            value={semesterRange.max ?? ''}
             onChange={e =>
-              setSemesterRange(prev => (e.target.validity.valid ? { ...prev, max: Number(e.target.value) } : prev))
+              setSemesterRange(prev =>
+                e.target.validity.valid ? { ...prev, max: e.target.value === '' ? null : Number(e.target.value) } : prev
+              )
             }
           />
         </div>

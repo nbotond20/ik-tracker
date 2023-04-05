@@ -15,6 +15,7 @@ import { SessionProvider } from 'next-auth/react'
 import type { AppType } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
+import { FeatureFlagProvider } from 'src/contexts/FeatureFlagContext'
 
 import '../i18n/i18n'
 
@@ -30,19 +31,21 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
 
   return (
     <SessionProvider session={session}>
-      <Maintenance>
-        <Layout Header={() => <Header Logo={() => <HeaderLogo />} />}>
-          <Head>
-            <title>IK-Tracker</title>
-          </Head>
-          <Toaster
-            toastOptions={{
-              className: 'bg-white text-black dark:bg-gray-700 dark:text-white',
-            }}
-          />
-          <Component {...pageProps} />
-        </Layout>
-      </Maintenance>
+      <FeatureFlagProvider>
+        <Maintenance>
+          <Layout Header={() => <Header Logo={() => <HeaderLogo />} />}>
+            <Head>
+              <title>IK-Tracker</title>
+            </Head>
+            <Toaster
+              toastOptions={{
+                className: 'bg-white text-black dark:bg-gray-700 dark:text-white',
+              }}
+            />
+            <Component {...pageProps} />
+          </Layout>
+        </Maintenance>
+      </FeatureFlagProvider>
       <Analytics />
     </SessionProvider>
   )

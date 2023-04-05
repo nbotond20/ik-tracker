@@ -6,13 +6,13 @@ import { Button } from '@components/Button/Button'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
 import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTableLoadingState'
 import { ProgressCard } from '@components/ProgressCard/ProgressCard'
+import { LoadingPage } from '@components/Spinner/Spinner'
 import { SubjectResultModal } from '@components/SubjectResultModal/SubjectResultModal'
 import type { SubjectProgressWithExamsAndSubject } from '@models/SubjectProgressWithExamsAndSubject'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
 import { api } from '@utils/api'
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import { getServerSession } from 'next-auth'
-import { useSession } from 'next-auth/react'
 import Head from 'next/head'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -49,13 +49,13 @@ const SubjectProgressPage: NextPage = () => {
     SubjectProgressWithExamsAndSubject | undefined
   >()
 
-  const { data: session } = useSession()
-  const [semester, setSemester] = useState(session?.user?.currentSemester ?? 0)
+  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery()
+  const [semester, setSemester] = useState(user?.currentSemester ?? 0)
 
   useEffect(() => {
-    if (!session?.user) return
-    setSemester(session?.user?.currentSemester ?? 0)
-  }, [session?.user])
+    if (!user) return
+    setSemester(user?.currentSemester ?? 0)
+  }, [user])
 
   const {
     data: subjectProgresses,
@@ -65,14 +65,14 @@ const SubjectProgressPage: NextPage = () => {
     {
       semester: semester,
     },
-    { enabled: !!session?.user }
+    { enabled: !!user }
   )
 
-  const { data: statistics } = api.subjectProgress.statisticsBySemester.useQuery(
+  const { data: statistics, isLoading: isStatisticsLoading } = api.subjectProgress.statisticsBySemester.useQuery(
     {
       semester: semester,
     },
-    { enabled: !!session?.user }
+    { enabled: !!user }
   )
 
   const { subjectProgress } = api.useContext()
@@ -102,6 +102,8 @@ const SubjectProgressPage: NextPage = () => {
   const [openAll, setOpenAll] = useState(false)
 
   const { t } = useTranslation()
+
+  if (isUserLoading) return <LoadingPage />
 
   return (
     <ScrollLayout>
@@ -150,7 +152,7 @@ const SubjectProgressPage: NextPage = () => {
               value={semester}
             >
               <option value={0}>Select a semester...</option>
-              {Array.from({ length: session?.user?.currentSemester || 1 }, (_, i) => i + 1).map(idx => (
+              {Array.from({ length: user?.currentSemester || 1 }, (_, i) => i + 1).map(idx => (
                 <option key={idx} value={idx}>
                   Semester {idx}
                 </option>
@@ -168,6 +170,7 @@ const SubjectProgressPage: NextPage = () => {
             </div>
           )}
           {!isLoading &&
+            !isStatisticsLoading &&
             subjectProgresses?.map(subjectProgress => (
               <ProgressCard
                 setSelectedSubjectProgress={setSelectedSubjectProgress}

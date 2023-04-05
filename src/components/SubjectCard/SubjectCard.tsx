@@ -1,6 +1,10 @@
+import { useTranslation } from 'react-i18next'
+
 import { InputField } from '@components/InputField/InputField'
-import type { Subject } from '@prisma/client'
+import type { RouterOutputs } from '@utils/api'
 import { motion } from 'framer-motion'
+
+type Subject = RouterOutputs['subject']['getAll'][number]
 
 interface SubjectCardProps {
   subject: Subject
@@ -9,6 +13,8 @@ interface SubjectCardProps {
 }
 
 export const SubjectCard = ({ subject, setSelectedSubject, isSelectable }: SubjectCardProps) => {
+  const { t } = useTranslation()
+
   return (
     <motion.div
       data-mobile-max-height-16
@@ -56,13 +62,19 @@ export const SubjectCard = ({ subject, setSelectedSubject, isSelectable }: Subje
             <InputField disabled value={subject.practice} label="Practice" />
             <InputField
               disabled
-              value={subject.preRequirements1 ? subject.preRequirements1 : 'None'}
-              label="Pre Requirements 1"
-            />
-            <InputField
-              disabled
-              value={subject.preRequirements2 ? subject.preRequirements2 : 'None'}
-              label="Pre Requirements 2"
+              value={
+                subject.preRequirements
+                  .map(
+                    pr =>
+                      pr.code +
+                      (pr.type === 0 ? `(${t('components.subjectCard.weak')})` : '') +
+                      (pr.or.length > 0
+                        ? ` ${t('components.subjectCard.or')} ` + pr.or.join(` ${t('components.subjectCard.or')} `)
+                        : '')
+                  )
+                  .join(', ') || 'None'
+              }
+              label="Pre Requirements"
             />
             <InputField disabled value={subject.specialisation} label="Specialisation" />
             <InputField disabled value={subject.examType ? subject.examType : '-'} label="Exam Type" />

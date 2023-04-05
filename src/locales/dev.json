@@ -16,6 +16,15 @@
     "confirmDialog": {
       "cancelBtn": "No, cancel",
       "confirmBtn": "Yes, I'm sure"
+    },
+    "pagination": {
+      "label": "Showing <textFormat>{{from}}</textFormat> to <textFormat>{{to}}</textFormat> of <textFormat>{{outOf}}</textFormat> entries.",
+      "nextBtn": "Next",
+      "prevBtn": "Prev"
+    },
+    "subjectCard": {
+      "or": "or",
+      "weak": "weak"
     }
   },
   "header": {
@@ -59,17 +68,44 @@
     "description": "We are already working to solve the problem.",
     "title": "Internal Server Error."
   },
+  "maintenance": {
+    "description": " We are currently working on the site. Please check back later.",
+    "title": "Under Maintenance"
+  },
   "notFound": {
     "backBtn": "Back to Homepage",
     "description": "Sorry, we can't find that page. Please check the URL and try again.",
     "title": "Something's missing."
+  },
+  "offline": {
+    "description": "You are currently offline. Please check your internet connection.",
+    "title": "You are offline."
+  },
+  "planner": {
+    "title": "Planner"
+  },
+  "profile": {
+    "alreadyLinked": "Already linked",
+    "currentSemester": "Current Semester",
+    "edit": "Edit",
+    "email": "Email",
+    "linkDiscord": "Link Discord Account",
+    "linkGithub": "Link Github Account",
+    "linkGoogle": "Link Google Account",
+    "name": "Name",
+    "notVerified": "Not Verified",
+    "save": "Save",
+    "title": "Profile",
+    "verified": "Verified",
+    "verifyEmail": "Verify Email"
   },
   "routes": {
     "calculator": "Calculator",
     "dashboard": "Dashboard",
     "home": "Home",
     "login": "Login",
-    "planer": "Planner",
+    "planner": "Planner",
+    "profile": "Profile",
     "progress": "Progress",
     "search": "Search",
     "verify": "Verify Email"

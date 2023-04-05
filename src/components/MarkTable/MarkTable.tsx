@@ -47,7 +47,6 @@ export const MarkTable = ({ marks, maxResult, editing, setMarks }: MarkTableProp
           Array.from(Array(5).keys()).map((_, index) => (
             <tr key={index}>
               <td className="py-1 border border-gray-300 dark:border-gray-600 text-center">
-                {/* TODO: Fix number input (can't remove 0) */}
                 <InputField
                   inputMode="numeric"
                   pattern="[0-9]*"

@@ -2,7 +2,7 @@ import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTable
 import { Pagination } from '@components/Pagination/Pagination'
 import { SubjectTable } from '@components/SubjectTable/SubjectTable'
 import { tableColumnHeaders } from '@constants/pages'
-import type { Subject } from '@prisma/client'
+import type { RouterOutputs } from '@utils/api'
 import type { CompareType } from '@utils/subjectComparator'
 
 interface SubjectListProps {
@@ -16,6 +16,8 @@ interface SubjectListProps {
   elementsPerPage: number
   totalElements: number
 }
+
+type Subject = RouterOutputs['subject']['getAll'][number]
 
 export const SubjectList = ({
   subjects,

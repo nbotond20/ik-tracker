@@ -16,6 +16,15 @@
     "confirmDialog": {
       "cancelBtn": "Mégse",
       "confirmBtn": "Igen, biztos"
+    },
+    "pagination": {
+      "label": "<textFormat>{{from}}</textFormat>-tól <textFormat>{{to}}</textFormat>-ig mutatva a(z) <textFormat>{{outOf}}</textFormat> bejegyzésből.",
+      "nextBtn": "Követkő",
+      "prevBtn": "Előző"
+    },
+    "subjectCard": {
+      "or": "vagy",
+      "weak": "gyenge"
     }
   },
   "header": {
@@ -59,10 +68,36 @@
     "description": "Hiba történt a kiszolgálón. Kérjük, próbáld újra később.",
     "title": "Hiba történt"
   },
+  "maintenance": {
+    "description": "Az oldal karbantartás alatt áll. Kérjük, próbáld újra később.",
+    "title": "Karbantartás"
+  },
   "notFound": {
     "backBtn": "Vissza a főoldalra",
     "description": "A keresett oldal nem található. Kérjük, ellenőrizd a címet, vagy kattints az alábbi gombra, hogy visszatérj a főoldalra.",
     "title": "Nem található"
+  },
+  "offline": {
+    "description": "Nem vagy online. Kérjük, ellenőrizd az internetkapcsolatot, és próbáld újra.",
+    "title": "Nincs internetkapcsolat"
+  },
+  "planner": {
+    "title": "Tervező"
+  },
+  "profile": {
+    "alreadyLinked": "Csatlakoztatva",
+    "currentSemester": "Jelenlegi félév",
+    "edit": "Szerkesztés",
+    "email": "Email",
+    "linkDiscord": "Discord fiók csatolása",
+    "linkGithub": "Github fiók csatolása",
+    "linkGoogle": "Google fiók csatolása",
+    "name": "Név",
+    "notVerified": "Nincs megerősítve",
+    "save": "Mentés",
+    "title": "Profil",
+    "verified": "Megerősítve",
+    "verifyEmail": "Email megerősítése"
   },
   "routes": {
     "calculator": "Kalkulátor",
@@ -70,6 +105,7 @@
     "home": "Főoldal",
     "login": "Bejelentkezés",
     "planer": "Tervező",
+    "profile": "Profil",
     "progress": "Előrehaladás",
     "search": "Keresés",
     "verify": "Hitelesítés"

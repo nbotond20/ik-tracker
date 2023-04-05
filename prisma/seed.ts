@@ -4,6 +4,7 @@ import { prisma } from '../src/server/db'
 
 async function main() {
   const subjects = mockSubjects.success ? mockSubjects.data : []
+
   for (const subject of subjects) {
     await prisma.subject.create({
       data: {
@@ -16,8 +17,7 @@ async function main() {
         lecture: subject.lecture,
         practice: subject.practice,
         practiceGradeType: subject.practiceGradeType,
-        preRequirements1: subject.preRequirements1,
-        preRequirements2: subject.preRequirements2,
+        preRequirements: { create: subject.preRequirements },
         semester: subject.semester,
         specialisation: subject.specialisation,
         subjectGroupType: subject.subjectGroupType,

@@ -5,13 +5,14 @@ import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTable
 import { Pagination } from '@components/Pagination/Pagination'
 import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { tableColumnHeaders } from '@constants/pages'
-import type { Subject } from '@prisma/client'
+import type { RouterOutputs } from '@utils/api'
 import type { CompareType } from '@utils/subjectComparator'
 import { AnimatePresence, motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 
 const ChevronUpDownIcon = dynamic(() => import('@heroicons/react/24/solid/ChevronUpDownIcon'))
 
+type Subject = RouterOutputs['subject']['getAll'][number]
 interface SubjectGridProps {
   subjects: Subject[]
   isLoading: boolean
