@@ -19,7 +19,8 @@
     "preinstall": "npx only-allow pnpm",
     "cypress:open": "cypress open --e2e",
     "cypress": "cypress run",
-    "db-seed": "NODE_ENV=development prisma db seed"
+    "db-seed": "NODE_ENV=development prisma db seed",
+    "typecheck": "tsc --noEmit --incremental"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
