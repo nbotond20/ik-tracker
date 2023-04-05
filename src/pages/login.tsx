@@ -5,7 +5,6 @@ import { LoadingPage } from '@components/Spinner/Spinner'
 import type { NextPage } from 'next'
 import { useSession, signIn } from 'next-auth/react'
 import Head from 'next/head'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const SignInPage: NextPage = () => {
@@ -149,12 +148,12 @@ const SignInPage: NextPage = () => {
               </button>
             </div>
           </div>
-          <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+          {/* <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?{' '}
             <Link href="/register" className="text-blue-700 hover:underline dark:text-blue-500">
               Create account
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
