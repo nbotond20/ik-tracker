@@ -68,7 +68,7 @@ const SubjectProgressPage: NextPage = () => {
     { enabled: !!user }
   )
 
-  const { data: statistics } = api.subjectProgress.statisticsBySemester.useQuery(
+  const { data: statistics, isLoading: isStatisticsLoading } = api.subjectProgress.statisticsBySemester.useQuery(
     {
       semester: semester,
     },
@@ -170,6 +170,7 @@ const SubjectProgressPage: NextPage = () => {
             </div>
           )}
           {!isLoading &&
+            !isStatisticsLoading &&
             subjectProgresses?.map(subjectProgress => (
               <ProgressCard
                 setSelectedSubjectProgress={setSelectedSubjectProgress}

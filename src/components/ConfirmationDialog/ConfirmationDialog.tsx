@@ -1,13 +1,22 @@
 import { useTranslation } from 'react-i18next'
 
+import { LoadingSpinner } from '@components/Spinner/Spinner'
+
 interface ConfirmationDialogProps {
   isOpen: boolean
   setIsOpen: (isOpen: boolean) => void
   onConfirm: () => void
   title: string
+  isActionLoading?: boolean
 }
 
-export const ConfirmationDialog = ({ isOpen, setIsOpen, onConfirm, title }: ConfirmationDialogProps) => {
+export const ConfirmationDialog = ({
+  isOpen,
+  setIsOpen,
+  onConfirm,
+  title,
+  isActionLoading,
+}: ConfirmationDialogProps) => {
   const { t } = useTranslation()
 
   return (
@@ -65,10 +74,17 @@ export const ConfirmationDialog = ({ isOpen, setIsOpen, onConfirm, title }: Conf
                 </button>
                 <button
                   type="submit"
-                  className="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900"
+                  className="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 disabled:bg-red-300 dark:disabled:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900"
                   onClick={() => onConfirm()}
+                  disabled={isActionLoading}
                 >
-                  {t('components.confirmDialog.confirmBtn')}
+                  {!isActionLoading ? (
+                    t('components.confirmDialog.confirmBtn')
+                  ) : (
+                    <div className="flex justify-center w-12">
+                      <LoadingSpinner size={22} />
+                    </div>
+                  )}
                 </button>
               </div>
             </div>
