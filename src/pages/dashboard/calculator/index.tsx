@@ -21,7 +21,7 @@ const breadcrumbs = [
   },
 ]
 
-interface Subject {
+interface ISubject {
   id: string
   code?: string
   name?: string
@@ -32,7 +32,7 @@ interface Subject {
 const CalculatorPage: NextPage = () => {
   const { t } = useTranslation()
 
-  const [subjects, setSubjects] = useState<Subject[]>([
+  const [subjects, setSubjects] = useState<ISubject[]>([
     {
       id: uuidv4(),
     },
@@ -46,7 +46,7 @@ const CalculatorPage: NextPage = () => {
   useEffect(() => {
     const subjects = localStorage.getItem('subjects')
     if (subjects) {
-      setSubjects(JSON.parse(subjects) as Subject[])
+      setSubjects(JSON.parse(subjects) as ISubject[])
     }
   }, [])
 

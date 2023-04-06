@@ -82,6 +82,11 @@
     "title": "You are offline."
   },
   "planner": {
+    "subjects": {
+      "subjectCode": "Code",
+      "subjectName": "Name",
+      "title": "Subjects"
+    },
     "title": "Planner"
   },
   "profile": {

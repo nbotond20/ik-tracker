@@ -82,6 +82,11 @@
     "title": "Nincs internetkapcsolat"
   },
   "planner": {
+    "subjects": {
+      "subjectCode": "Kód",
+      "subjectName": "Név",
+      "title": "Tantárgyak"
+    },
     "title": "Tervező"
   },
   "profile": {
