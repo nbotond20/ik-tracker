@@ -2,6 +2,7 @@ import type { Dispatch, SetStateAction } from 'react'
 import React from 'react'
 
 import { InputField } from '@components/InputField/InputField'
+import type { ResultType } from '@prisma/client'
 
 export type Marks = [number, number, number, number, number]
 
@@ -10,9 +11,10 @@ interface MarkTableProps {
   marks: Marks
   editing?: boolean
   setMarks?: Dispatch<SetStateAction<Marks>>
+  resultType?: ResultType
 }
 
-export const MarkTable = ({ marks, maxResult, editing, setMarks }: MarkTableProps) => {
+export const MarkTable = ({ marks, maxResult, editing, setMarks, resultType }: MarkTableProps) => {
   return (
     <table className="w-full text-sm text-gray-500 dark:text-gray-400 ">
       <thead>
@@ -31,7 +33,7 @@ export const MarkTable = ({ marks, maxResult, editing, setMarks }: MarkTableProp
           marks.map((mark, index) => (
             <tr key={index}>
               <td className="px-1 py-1 border border-gray-300 dark:border-gray-600 text-center">
-                {mark !== -1 ? `${mark}p` : '-'}
+                {mark !== -1 ? `${mark}${resultType === 'PERCENT' ? '%' : 'p'}` : '-'}
               </td>
               <td className="px-1 py-1 border border-gray-300 dark:border-gray-600 text-center">{index + 1}</td>
               <td className="px-1 py-1 border border-gray-300 dark:border-gray-600 text-center">
