@@ -7,6 +7,7 @@ import { ConfirmationDialog } from '@components/ConfirmationDialog/ConfirmationD
 import { ExamsTable } from '@components/ExamTable/ExamTable'
 import type { Marks } from '@components/MarkTable/MarkTable'
 import { MarkTable } from '@components/MarkTable/MarkTable'
+import { LoadingSpinner } from '@components/Spinner/Spinner'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import type { SubjectProgressWithExamsAndSubject } from '@models/SubjectProgressWithExamsAndSubject'
 import type { Exam } from '@prisma/client'
@@ -77,29 +78,37 @@ export const ProgressCard = ({
     [examResults, subjectProgress]
   )
 
-  const handleUpdateExams = () => {
+  const [isSvaingProgress, setIsSavingProgress] = useState(false)
+  const handleUpdateExams = async () => {
     if (!examResultsChanged) return
-    examResults.forEach((exam, idx) => {
-      if (exam.result !== subjectProgress.exams[idx]!.result) {
-        void toast.promise(
-          updateExam({
-            id: exam.id,
-            partialExam: {
-              name: exam.name,
-              result: exam.result,
-              resultType: exam.resultType,
-              maxResult: exam.maxResult,
-              minResult: exam.minResult,
-            },
-          }),
-          {
-            loading: 'Saving progress...',
-            success: <b>Successfully saved progress!</b>,
-            error: <b>Failed to save progress.</b>,
-          }
-        )
+    setIsSavingProgress(true)
+    const promises = examResults.map(exam => {
+      if (exam.result !== subjectProgress.exams[examResults.indexOf(exam)]!.result) {
+        return updateExam({
+          id: exam.id,
+          partialExam: {
+            name: exam.name,
+            result: exam.result,
+            resultType: exam.resultType,
+            maxResult: exam.maxResult,
+            minResult: exam.minResult,
+          },
+        })
       }
     })
+    await toast
+      .promise(Promise.all(promises), {
+        loading: 'Saving progress...',
+        success: <b>Successfully saved progress!</b>,
+        error: <b>Failed to save progress.</b>,
+      })
+      .then(() => {
+        setExamsErrorMessages({})
+      })
+      .catch(() => {
+        setExamResults(subjectProgress.exams)
+      })
+    setIsSavingProgress(false)
   }
 
   useEffect(() => {
@@ -221,9 +230,15 @@ export const ProgressCard = ({
               disabled={!examResultsChanged}
               type="button"
               className="disabled:bg-blue-400 dark:disabled:bg-blue-900 disabled:text-gray-200 dark:disabled:text-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              onClick={handleUpdateExams}
+              onClick={() => void handleUpdateExams()}
             >
-              Save Changes
+              {!isSvaingProgress ? (
+                'Save Changes'
+              ) : (
+                <div className="flex justify-center w-12">
+                  <LoadingSpinner size={22} />
+                </div>
+              )}
             </button>
           </div>
         </Accordion>
