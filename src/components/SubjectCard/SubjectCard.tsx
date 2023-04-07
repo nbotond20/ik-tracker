@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 
 import { InputField } from '@components/InputField/InputField'
+import { PlusIcon } from '@heroicons/react/24/outline'
 import type { RouterOutputs } from '@utils/api'
 import { motion } from 'framer-motion'
 
@@ -10,9 +11,17 @@ interface SubjectCardProps {
   subject: Subject
   setSelectedSubject: (subject: Subject | null) => void
   isSelectable?: boolean
+  handleCreateSubjectProgress?: (subjectId: string) => void
+  isLoggedIn?: boolean
 }
 
-export const SubjectCard = ({ subject, setSelectedSubject, isSelectable }: SubjectCardProps) => {
+export const SubjectCard = ({
+  subject,
+  setSelectedSubject,
+  isSelectable,
+  handleCreateSubjectProgress,
+  isLoggedIn,
+}: SubjectCardProps) => {
   const { t } = useTranslation()
 
   return (
@@ -25,7 +34,18 @@ export const SubjectCard = ({ subject, setSelectedSubject, isSelectable }: Subje
       onClick={() => isSelectable && setSelectedSubject(subject)}
     >
       <div className="mb-4 flex items-start justify-between">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{subject.courseName}</h3>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white flex gap-2 justify-between w-full">
+          <span>{subject.courseName}</span>
+          {isLoggedIn && handleCreateSubjectProgress && isSelectable && (
+            <PlusIcon
+              className="w-6 h-6"
+              onClick={e => {
+                e.stopPropagation()
+                handleCreateSubjectProgress(subject.id)
+              }}
+            />
+          )}
+        </h3>
         {!isSelectable && (
           <button
             onClick={() => setSelectedSubject && setSelectedSubject(null)}

@@ -6,8 +6,10 @@ import { Pagination } from '@components/Pagination/Pagination'
 import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { tableColumnHeaders } from '@constants/pages'
 import type { RouterOutputs } from '@utils/api'
+import { api } from '@utils/api'
 import type { CompareType } from '@utils/subjectComparator'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 
 const ChevronUpDownIcon = dynamic(() => import('@heroicons/react/24/solid/ChevronUpDownIcon'))
@@ -23,6 +25,7 @@ interface SubjectGridProps {
   handleNextPage: () => void
   elementsPerPage: number
   totalElements: number
+  handleCreateSubjectProgress: (subjectId: string) => void
 }
 
 export const SubjectGrid = ({
@@ -35,9 +38,12 @@ export const SubjectGrid = ({
   handleNextPage,
   elementsPerPage,
   totalElements,
+  handleCreateSubjectProgress,
 }: SubjectGridProps) => {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
   const { t } = useTranslation()
+  const { data: session } = useSession()
+  const { data: user } = api.user.getUser.useQuery()
   return (
     <div className="col-span-8 grow xl:col-span-9">
       <div className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400 rounded-lg mb-6 flex justify-between">
@@ -66,7 +72,14 @@ export const SubjectGrid = ({
         <div className="grid w-full max-w-7xl grid-cols-12 gap-6">
           <AnimatePresence>
             {subjects.map(subject => (
-              <SubjectCard key={subject.id} subject={subject} setSelectedSubject={setSelectedSubject} isSelectable />
+              <SubjectCard
+                key={subject.id}
+                subject={subject}
+                setSelectedSubject={setSelectedSubject}
+                isSelectable
+                handleCreateSubjectProgress={handleCreateSubjectProgress}
+                isLoggedIn={!!session && user?.isCurrentSemesterSet}
+              />
             ))}
           </AnimatePresence>
         </div>

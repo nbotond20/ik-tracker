@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { SubjectCard } from '@components/SubjectCard/SubjectCard'
-import { InformationCircleIcon } from '@heroicons/react/24/outline'
+import { InformationCircleIcon, PlusIcon } from '@heroicons/react/24/outline'
 import type { RouterOutputs } from '@utils/api'
 import type { CompareType } from '@utils/subjectComparator'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -21,9 +21,18 @@ interface TableProps {
   handleSort: (sortType: CompareType) => void
   sortType: string | undefined
   tableColumnHeaders: TableColumnHeader[]
+  handleCreateSubjectProgress: (subjectId: string) => void
+  isLoggedIn?: boolean
 }
 
-export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeaders }: TableProps) => {
+export const SubjectTable = ({
+  subjects,
+  handleSort,
+  sortType,
+  tableColumnHeaders,
+  handleCreateSubjectProgress,
+  isLoggedIn,
+}: TableProps) => {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
   const { t } = useTranslation()
   return (
@@ -84,11 +93,23 @@ export const SubjectTable = ({ subjects, handleSort, sortType, tableColumnHeader
                     {subject.subjectGroupType}
                   </td>
                   <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[5]!.classes || ''}`}>{subject.subjectType}</td>
-                  <td className="cursor-pointer px-2 py-2">
-                    <div className="relative h-5 w-5">
-                      <InformationCircleIcon />
-                    </div>
-                  </td>
+                  {isLoggedIn ? (
+                    <td
+                      className="cursor-pointer px-2 py-2"
+                      onClick={e => {
+                        e.stopPropagation()
+                        handleCreateSubjectProgress(subject.id)
+                      }}
+                    >
+                      <div className="relative h-5 w-5">
+                        <PlusIcon />
+                      </div>
+                    </td>
+                  ) : (
+                    <td className="px-2 py-2">
+                      <InformationCircleIcon className="h-5 w-5" />
+                    </td>
+                  )}
                 </motion.tr>
               ))}
             {subjects.length === 0 && (

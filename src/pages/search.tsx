@@ -1,13 +1,17 @@
+import { toast } from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
 import { SortMenu } from '@components/SortMenu/SortMenu'
+import { LoadingPage } from '@components/Spinner/Spinner'
 import { Filters } from '@components/SubjectFilters/Filters'
 import { filters } from '@constants/filters'
 import { tableColumnHeaders } from '@constants/pages'
 import { useSearchPage } from '@hooks/useSearchPage'
+import { api } from '@utils/api'
 import type { NextPage } from 'next'
+import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 
@@ -52,6 +56,28 @@ const SearchPage: NextPage = () => {
   } = useSearchPage()
 
   const { t } = useTranslation()
+
+  const { mutateAsync: createSubjectProgress } = api.subjectProgress.create.useMutation()
+
+  const { data: session, status } = useSession()
+  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
+
+  const handleCreateSubjectProgress = (subjectId: string) => {
+    if (!user?.currentSemester || !user?.isCurrentSemesterSet) return
+
+    void toast.promise(
+      createSubjectProgress({ subjectId, semester: user?.currentSemester, marks: [-1, -1, -1, -1, -1] }),
+      {
+        loading: 'Creating subject progress...',
+        success: <b>Successfully created subject progress!</b>,
+        error: <b>Failed to create subject progress.</b>,
+      }
+    )
+  }
+
+  if (status === 'loading' || (isUserLoading && session) || isLoading) return <LoadingPage />
 
   return (
     <ScrollLayout>
@@ -139,6 +165,7 @@ const SearchPage: NextPage = () => {
                 handlePrevPage={handlePrevPage}
                 elementsPerPage={elementsPerPage}
                 totalElements={totalResults}
+                handleCreateSubjectProgress={handleCreateSubjectProgress}
               />
             ) : (
               <SubjectList
@@ -151,6 +178,7 @@ const SearchPage: NextPage = () => {
                 handlePrevPage={handlePrevPage}
                 elementsPerPage={elementsPerPage}
                 totalElements={totalResults}
+                handleCreateSubjectProgress={handleCreateSubjectProgress}
               />
             )}
           </div>
