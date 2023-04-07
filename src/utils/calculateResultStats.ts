@@ -6,7 +6,8 @@ const everyExamPassed = (exams: Exam[]) =>
     exam =>
       (exam.resultType === 'GRADE' && exam.result && exam.result > 1) ||
       (exam.resultType === 'PASSFAIL' && exam?.result === 1) ||
-      (exam.result && exam.minResult && exam?.result >= exam?.minResult)
+      (exam.result && exam.minResult && exam?.result >= exam?.minResult) ||
+      !exam.minResult
   )
 
 export const calculateGrade = (marks: Marks, exams: Exam[]) => {
