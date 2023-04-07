@@ -28,6 +28,7 @@ export const userRouter = createTRPCRouter({
       select: {
         emailVerified: true,
         currentSemester: true,
+        isCurrentSemesterSet: true,
       },
     })
   }),
@@ -43,6 +44,7 @@ export const userRouter = createTRPCRouter({
         },
         data: {
           currentSemester: input.currentSemester,
+          isCurrentSemesterSet: true,
         },
         select: {
           currentSemester: true,

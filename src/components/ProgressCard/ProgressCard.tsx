@@ -7,6 +7,7 @@ import { ConfirmationDialog } from '@components/ConfirmationDialog/ConfirmationD
 import { ExamsTable } from '@components/ExamTable/ExamTable'
 import type { Marks } from '@components/MarkTable/MarkTable'
 import { MarkTable } from '@components/MarkTable/MarkTable'
+import { TrashIcon } from '@heroicons/react/24/outline'
 import type { SubjectProgressWithExamsAndSubject } from '@models/SubjectProgressWithExamsAndSubject'
 import type { Exam } from '@prisma/client'
 import { api } from '@utils/api'
@@ -115,6 +116,10 @@ export const ProgressCard = ({
     })
   }
 
+  const handleClose = () => {
+    setIsConfirmModalOpen(false)
+  }
+
   return (
     <>
       <motion.div
@@ -126,8 +131,9 @@ export const ProgressCard = ({
           title="Are you sure you want to delete this item?"
           isOpen={isConfirmModalOpen}
           onConfirm={handleDelete}
-          setIsOpen={setIsConfirmModalOpen}
+          onClose={handleClose}
           isActionLoading={isDeletingSubjectProgress}
+          Icon={TrashIcon}
         />
         <Accordion
           title={subjectProgress.subject?.courseName ?? subjectProgress.subjectName ?? '-'}

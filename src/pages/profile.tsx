@@ -44,14 +44,19 @@ const ProfilePage: NextPage = () => {
   }, [user?.currentSemester])
 
   const { user: userContext } = api.useContext()
+
   const {
     mutateAsync: updateCurrentSemester,
     isLoading: isUpdateSemesterLoading,
     error: updateCurrentSemesterError,
   } = api.user.updateCurrentSemester.useMutation({
-    onSuccess: () => {
+    onSuccess: async () => {
       setIsSemesterEditing(false)
-      void userContext.invalidate()
+      const { setCurrentSemester } = router.query
+      await userContext.invalidate()
+      if (setCurrentSemester) {
+        void router.push('/dashboard/subject-progresses')
+      }
     },
   })
 
@@ -69,6 +74,13 @@ const ProfilePage: NextPage = () => {
       )
     }
   }, [currentSemester, updateCurrentSemester])
+
+  useEffect(() => {
+    const { setCurrentSemester } = router.query
+    if (setCurrentSemester) {
+      setIsSemesterEditing(true)
+    }
+  }, [router.query])
 
   if (!session?.user || isProviderQueryLoading || isUserQueryLoading) return <LoadingPage />
 
@@ -138,6 +150,7 @@ const ProfilePage: NextPage = () => {
                     isSemesterEditing ? 'bg-white dark:bg-gray-700' : 'bg-gray-100 dark:bg-gray-600 text-gray-500'
                   }`}
                   error={!!updateCurrentSemesterError?.data?.zodError?.fieldErrors?.currentSemester?.[0]}
+                  autoFocus={isSemesterEditing}
                 />
                 <button
                   onClick={() => {
