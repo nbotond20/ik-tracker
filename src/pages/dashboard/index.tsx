@@ -114,31 +114,33 @@ const DashBoardPage: NextPage = () => {
               <div className="w-full flex flex-col lg:flex-row gap-8 justify-evenly">
                 <StatisticsTable statistics={statistics as Omit<Statistics, 'subjectProgressesWithGrade'>} />
                 {statistics?.subjectProgressesWithGrade && statistics?.subjectProgressesWithGrade.length > 0 && (
-                  <table>
-                    <thead>
-                      <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
-                        <th className="py-1 pr-2 text-left text-base">Subject</th>
-                        <th className="py-1 px-2 text-right text-base">Grade</th>
-                      </tr>
-                    </thead>
-                    <tbody className="flex-1 sm:flex-none">
-                      {statistics?.subjectProgressesWithGrade.map(statistic => (
-                        <tr
-                          key={statistic.id}
-                          className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal"
-                        >
-                          <td className="py-1 pr-2 text-left">{statistic.subjectName}</td>
-                          <td className="py-1 px-2 text-right">
-                            <Badge
-                              variant={statistic.grade >= 4 ? 'success' : statistic.grade >= 2 ? 'warning' : 'danger'}
-                            >
-                              {statistic.grade}
-                            </Badge>
-                          </td>
+                  <div className="w-full lg:w-auto">
+                    <table className="w-full lg:w-auto">
+                      <thead>
+                        <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
+                          <th className="py-1 pr-2 text-left text-base">Subject</th>
+                          <th className="py-1 px-2 text-right text-base">Grade</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody className="flex-1 sm:flex-none">
+                        {statistics?.subjectProgressesWithGrade.map(statistic => (
+                          <tr
+                            key={statistic.id}
+                            className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal"
+                          >
+                            <td className="py-1 pr-2 text-left">{statistic.subjectName}</td>
+                            <td className="py-1 px-2 text-right">
+                              <Badge
+                                variant={statistic.grade >= 4 ? 'success' : statistic.grade >= 2 ? 'warning' : 'danger'}
+                              >
+                                {statistic.grade}
+                              </Badge>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 )}
               </div>
             ) : (
