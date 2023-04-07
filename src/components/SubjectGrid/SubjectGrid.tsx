@@ -43,7 +43,7 @@ export const SubjectGrid = ({
       <div className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400 rounded-lg mb-6 flex justify-between">
         {tableColumnHeaders.map((tableColumnHeader, idx) => (
           <div
-            className={`grow cursor-pointer p-2 hover:bg-gray-50 dark:hover:bg-gray-600 sm:p-3 font-semibold ${
+            className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 grow p-2 sm:p-3 ${
               tableColumnHeader.classes ? tableColumnHeader.classes : ''
             } ${idx === 0 ? 'rounded-l-lg' : ''} ${idx === tableColumnHeaders.length - 1 ? 'rounded-r-lg' : ''}`}
             onClick={() => handleSetSortedSubjects(tableColumnHeader.sortType)}
@@ -51,8 +51,8 @@ export const SubjectGrid = ({
           >
             <div className="flex items-center">
               <div
-                className={`flex items-center whitespace-nowrap ${
-                  sortType === tableColumnHeader.sortType ? 'font-extrabold text-black dark:text-white' : ''
+                className={`font-medium flex items-center whitespace-nowrap ${
+                  sortType === tableColumnHeader.sortType ? 'text-black dark:text-white' : 'text-gray-400'
                 }`}
               >
                 {t(tableColumnHeader.display)}
