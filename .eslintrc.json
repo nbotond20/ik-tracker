@@ -80,7 +80,8 @@
     "*.md",
     "*.prisma",
     "globals.css",
-    "*.code-workspace"
+    "*.code-workspace",
+    "*.dbml"
   ],
   "settings": {
     "react": {

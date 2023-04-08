@@ -1,0 +1,162 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Account {
+  id String [pk]
+  userId String [not null]
+  type String [not null]
+  provider String [not null]
+  providerAccountId String [not null]
+  refresh_token String
+  access_token String
+  expires_at Int
+  token_type String
+  scope String
+  id_token String
+  session_state String
+  user User [not null]
+  refresh_token_expires_in Int
+
+  indexes {
+    (provider, providerAccountId) [unique]
+  }
+}
+
+Table Session {
+  id String [pk]
+  sessionToken String [unique, not null]
+  userId String [not null]
+  expires DateTime [not null]
+  user User [not null]
+}
+
+Table User {
+  id String [pk]
+  name String
+  email String [unique]
+  emailVerified DateTime
+  image String
+  accounts Account [not null]
+  sessions Session [not null]
+  SubjectProgresses SubjectProgress [not null]
+  currentSemester Int [not null, default: 1]
+  isCurrentSemesterSet Boolean [not null, default: false]
+}
+
+Table VerificationToken {
+  id String [pk]
+  identifier String [not null]
+  token String [unique, not null]
+  expires DateTime [not null]
+
+  indexes {
+    (identifier, token) [unique]
+  }
+}
+
+Table Subject {
+  id String [pk]
+  code String [not null]
+  consultation Int [not null]
+  courseName String [not null]
+  credit Int [not null]
+  examType ExamType
+  labor Int [not null]
+  lecture Int [not null]
+  practice Int [not null]
+  practiceGradeType PracticeGradeType
+  preRequirements PreRequirement [not null]
+  semester Int[] [not null]
+  specialisation SpecialisationType [not null]
+  subjectGroupType SubjectGroupType [not null]
+  subjectType SubjectType [not null]
+  SubjectProgresses SubjectProgress [not null]
+}
+
+Table PreRequirement {
+  id String [pk]
+  code String [not null]
+  type Int [not null]
+  or String[] [not null]
+  Subject Subject
+  subjectId String
+}
+
+Table SubjectProgress {
+  id String [pk]
+  subjectId String
+  subject Subject
+  subjectName String
+  credit Int
+  userId String [not null]
+  user User [not null]
+  exams Exam [not null]
+  semester Int [not null, default: 1]
+  marks Float[] [not null]
+
+  indexes {
+    (subjectId, userId, semester, subjectName) [unique]
+  }
+}
+
+Table Exam {
+  id String [pk]
+  name String [not null]
+  subjectProgressId String [not null]
+  subjectProgress SubjectProgress [not null]
+  result Float
+  minResult Float
+  maxResult Float
+  resultType ResultType [not null]
+}
+
+Enum ExamType {
+  K
+  X
+}
+
+Enum PracticeGradeType {
+  FG
+  G
+}
+
+Enum SpecialisationType {
+  A
+  B
+  C
+  ABC
+}
+
+Enum SubjectGroupType {
+  INF
+  SZAM
+  EGYEB
+  MAT
+  SZAKDOLGOZAT
+}
+
+Enum SubjectType {
+  KV
+  KOT
+  TOR
+}
+
+Enum ResultType {
+  PERCENT
+  GRADE
+  POINT
+  PASSFAIL
+}
+
+Ref: Account.userId > User.id [delete: Cascade]
+
+Ref: Session.userId > User.id [delete: Cascade]
+
+Ref: PreRequirement.subjectId > Subject.id
+
+Ref: SubjectProgress.subjectId > Subject.id [delete: Set Null]
+
+Ref: SubjectProgress.userId > User.id [delete: Cascade]
+
+Ref: Exam.subjectProgressId > SubjectProgress.id [delete: Cascade]
