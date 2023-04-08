@@ -55,7 +55,7 @@ const ProfilePage: NextPage = () => {
       const { setCurrentSemester } = router.query
       await userContext.invalidate()
       if (setCurrentSemester) {
-        void router.push('/dashboard/subject-progresses')
+        void router.push('/dashboard/progress')
       }
     },
   })

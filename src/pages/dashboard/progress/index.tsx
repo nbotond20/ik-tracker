@@ -24,7 +24,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!session?.user) {
     return {
       redirect: {
-        destination: '/login?callbackUrl=/dashboard/subject-progresses',
+        destination: '/login?callbackUrl=/dashboard/progress',
         permanent: false,
       },
     }

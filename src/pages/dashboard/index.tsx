@@ -72,7 +72,7 @@ const DashBoardPage: NextPage = () => {
         </div>
         <div className="grid w-full grid-cols-12 gap-4 pb-12">
           <Link
-            href="/dashboard/subject-progresses"
+            href="/dashboard/progress"
             className="col-span-12 lg:col-span-4  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
             <div className="flex items-center gap-4">
