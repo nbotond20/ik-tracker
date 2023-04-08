@@ -3,11 +3,14 @@ import { useTranslation } from 'react-i18next'
 
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
-import { LoadingPage } from '@components/Spinner/Spinner'
-import type { Subject } from '@prisma/client'
+import { LoadingPage, LoadingSpinner } from '@components/Spinner/Spinner'
+import { CheckIcon, XMarkIcon, TrashIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import type { RouterOutputs } from '@utils/api'
+import { api } from '@utils/api'
 import type { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import Head from 'next/head'
+import { v4 as uuidv4 } from 'uuid'
 
 const breadcrumbs = [
   {
@@ -19,12 +22,41 @@ const breadcrumbs = [
   },
 ]
 
-interface ISubject {
+type IsAvailableReturnType = RouterOutputs['subjectProgress']['isSubjectAvailableForSemester']
+interface Subject {
   id: string
   code?: string
   name?: string
   credit?: number
-  subject?: Subject
+  isLoading?: boolean
+  isFetched?: boolean
+}
+interface ISubject extends Subject {
+  subject?: IsAvailableReturnType['subject']
+  missingPreReqsType?: IsAvailableReturnType['missingPreReqsType']
+}
+
+const getIcon = (status?: 'success' | 'error' | 'warning' | 'loading') => {
+  if (!status) return null
+  switch (status) {
+    case 'success':
+      return <CheckIcon className="h-6 w-6 text-green-500 stroke-2" />
+    case 'error':
+      return <XMarkIcon className="h-6 w-6 text-red-500 stroke-2" />
+    case 'warning':
+      return <ExclamationTriangleIcon className="h-6 w-6 text-yellow-500 stroke-2" />
+    case 'loading':
+      return <LoadingSpinner size={24} />
+  }
+}
+
+const getIconForSubject = (subject: ISubject) => {
+  if (subject.isLoading) return getIcon('loading')
+
+  if (!subject.missingPreReqsType) return getIcon()
+  if (subject.missingPreReqsType === 'not_met') return getIcon('error')
+  if (subject.missingPreReqsType === 'weak_not_met') return getIcon('warning')
+  if (subject.missingPreReqsType === 'met') return getIcon('success')
 }
 
 const PlannerPage: NextPage = () => {
@@ -33,13 +65,51 @@ const PlannerPage: NextPage = () => {
 
   const [subjects, setSubjects] = useState<ISubject[]>([
     {
-      id: '1',
+      id: uuidv4(),
     },
   ])
 
   useEffect(() => {
-    setSubjects([])
-  }, [])
+    if (subjects[subjects.length - 1]?.code !== undefined) setSubjects([...subjects, { id: uuidv4() }])
+
+    if (
+      subjects.length === 2 &&
+      !(subjects[subjects.length - 1]?.code !== undefined) &&
+      !(subjects[subjects.length - 2]?.code !== undefined)
+    )
+      setSubjects(subjects.slice(0, subjects.length - 1))
+
+    if (
+      subjects.length > 2 &&
+      !(subjects[subjects.length - 1]?.code !== undefined) &&
+      !(subjects[subjects.length - 2]?.code !== undefined)
+    )
+      setSubjects(subjects.slice(0, subjects.length - 1))
+  }, [subjects])
+
+  const { mutateAsync: isSubjectAvailableForSemester } = api.subjectProgress.isSubjectAvailableForSemester.useMutation()
+  const handleSubjectChange = async (event: React.ChangeEvent<HTMLInputElement>, subject: ISubject) => {
+    const code = event.target.value
+    if (!code) return setSubjects(prev => prev.map(s => (s.id === subject.id ? { ...s, code: undefined } : s)))
+
+    setSubjects(prev => prev.map(s => (s.id === subject.id ? { ...s, isLoading: true, code } : s)))
+    const data = await isSubjectAvailableForSemester({
+      subjectCode: code,
+    })
+    setSubjects(prev =>
+      prev.map(s =>
+        s.id === subject.id
+          ? {
+              ...s,
+              isLoading: false,
+              subject: data.subject,
+              missingPreReqsType: data.missingPreReqsType,
+              isFetched: true,
+            }
+          : s
+      )
+    )
+  }
 
   if (status === 'loading') return <LoadingPage />
 
@@ -59,63 +129,77 @@ const PlannerPage: NextPage = () => {
           <div className="xl:order-2 col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-4 2xl:col-span-3"></div>
           <div className="xl:order-1 col-span-12 xl:col-span-8 2xl:col-span-9 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
             <h2 className=" text-xl font-bold dark:text-white mb-6">{t('planner.subjects.title')}</h2>
-            <div className="flex justify-center items-center flex-col gap-4">
-              <table>
-                <thead>
-                  <tr className="text-left dark:text-gray-200 text-gray-500">
-                    <th className="w-96 align-bottom px-2 pl-0 py-2">
-                      <span
-                        className="text-left"
+            <div className="grid grid-cols-12 gap-4">
+              {subjects.map((subject, idx) => (
+                <div className="grid grid-cols-12 col-span-12 items-center gap-2" key={idx}>
+                  <div className="col-span-11 relative">
+                    <input
+                      onChange={e => void handleSubjectChange(e, subject)}
+                      placeholder="Code"
+                      className="pr-8 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
+                      value={subject.code}
+                    />
+                    <div
+                      className="absolute"
+                      style={{
+                        top: 3,
+                        right: 5,
+                      }}
+                    >
+                      {getIconForSubject(subject)}
+                    </div>
+                  </div>
+                  {idx !== subjects.length - 1 ? (
+                    <div
+                      className="col-span-1 flex justify-center cursor-pointer"
+                      onClick={() => setSubjects(prev => prev.filter(s => s.id !== subject.id))}
+                    >
+                      <TrashIcon className="h-6 w-6 text-red-500" />
+                    </div>
+                  ) : (
+                    <div className="col-span-1" />
+                  )}
+                  <div className="col-span-1" />
+                  {subject.code && !subject.isLoading && !subject.subject && subject.isFetched && (
+                    <div className="col-span-10 isolate relative">
+                      <div
                         style={{
-                          writingMode: 'sideways-lr',
+                          height: '25px',
+                          width: '17px',
+                          position: 'absolute',
+                          borderBottomLeftRadius: '10px',
+                          top: -8,
+                          left: -17,
+                          zIndex: -1,
                         }}
-                      >
-                        {t('planner.subjects.table.code')}
-                      </span>
-                    </th>
-                    <th className="w-96 align-bottom px-2 py-2">
-                      <span
-                        className="text-left"
+                        className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2"
+                      />
+                      <input
+                        tabIndex={-1}
+                        placeholder="Credit"
+                        className="w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
+                      />
+                      <div
                         style={{
-                          writingMode: 'sideways-lr',
+                          height: '45px',
+                          width: '17px',
+                          borderBottomLeftRadius: '10px',
+                          position: 'absolute',
+                          top: 10,
+                          left: -17,
+                          zIndex: -1,
                         }}
-                      >
-                        {t('planner.subjects.table.code')}
-                      </span>
-                    </th>
-                    <th className="w-96 align-bottom px-2 py-2">
-                      <span
-                        className="text-left"
-                        style={{
-                          writingMode: 'sideways-lr',
-                        }}
-                      >
-                        {t('planner.subjects.table.code')}
-                      </span>
-                    </th>
-                    <th className="w-96 align-bottom px-2 py-2">
-                      <span
-                        className="text-left"
-                        style={{
-                          writingMode: 'sideways-lr',
-                        }}
-                      >
-                        {t('planner.subjects.table.code')}
-                      </span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {subjects.map((e, idx) => (
-                    <tr key={idx}>
-                      <td className="">
-                        <input className="col-span-12 2xl:col-span-4 lg:col-span-4 placeholder:text-gray-400 rounded-lg mt-1 border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500 " />
-                      </td>
-                      {idx !== subjects.length - 1 && <hr className="w-full lg:hidden" />}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                        className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2"
+                      />
+                      <input
+                        tabIndex={-1}
+                        placeholder="Semester"
+                        className="mt-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>

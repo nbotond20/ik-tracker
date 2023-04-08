@@ -142,4 +142,35 @@ export const subjectProgressRouter = createTRPCRouter({
       subjectProgressesWithGrade,
     }
   }),
+
+  isSubjectAvailableForSemester: protectedProcedure
+    .input(z.object({ subjectCode: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const subjects = await ctx.prisma.subject.findMany({
+        include: {
+          preRequirements: true,
+        },
+      })
+
+      const subjectCodesWithPreReqs = subjects
+        .filter(
+          subject =>
+            subject.preRequirements.some(preReq => preReq.code === input.subjectCode) ||
+            subject.preRequirements.some(preReq => preReq.or.includes(input.subjectCode))
+        )
+        .map(subject => ({ code: subject.code, preRequirements: subject.preRequirements }))
+
+      const uniqueSubjectCodesWithPreReqs = Array.from(new Set(subjectCodesWithPreReqs.map(subject => subject.code)))
+
+      // eslint-disable-next-line no-console
+      console.log(uniqueSubjectCodesWithPreReqs)
+      const missingPreReqsType: 'met' | 'not_met' | 'weak_not_met' | undefined = undefined
+
+      const firstSubject = await ctx.prisma.subject.findFirst()
+
+      return {
+        subject: firstSubject,
+        missingPreReqsType,
+      }
+    }),
 })
