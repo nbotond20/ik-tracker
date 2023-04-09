@@ -141,7 +141,110 @@ const PlannerPage: NextPage = () => {
           <BreadCrumbs breadcrumbs={breadcrumbs} />
         </div>
         <div className="w-full mb-12 mt-6 h-fit grid gap-6 grid-cols-12 pb-12">
-          <div className="xl:order-2 col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-4 2xl:col-span-3"></div>
+          <div className="order-2 col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-4 2xl:col-span-3">
+            <div className="flex flex-col justify-center">
+              <table className="mb-4 w-full">
+                <thead>
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
+                    <th className="py-1 pr-2 text-left text-base">Σ Credit per Subject Types</th>
+                    <th className="py-1 px-2 text-right">30</th>
+                  </tr>
+                </thead>
+                <tbody className="flex-1 sm:flex-none">
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
+                    <td className="py-1 pr-2 text-left">
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
+                        Base Credit
+                      </span>
+                    </td>
+                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                  </tr>
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
+                    <td className="py-1 pr-2 text-left">
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
+                        Compulsory Credit
+                      </span>
+                    </td>
+                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                  </tr>
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
+                    <td className="py-1 pr-2 text-left">
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
+                        Compulsory Elective Credit
+                      </span>
+                    </td>
+                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table className="mb-4 w-full">
+                <thead>
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
+                    <th className="py-1 pr-2 text-left text-base">Σ Compulsory Elective Credit Types</th>
+                    <th className="py-1 px-2 text-right">30</th>
+                  </tr>
+                </thead>
+                <tbody className="flex-1 sm:flex-none">
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
+                    <td className="py-1 pr-2 text-left">
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
+                        Informatics
+                      </span>
+                    </td>
+                    <td className="py-1 px-2 text-right font-semibold">{15}</td>
+                  </tr>
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
+                    <td className="py-1 pr-2 text-left">
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
+                        Computing
+                      </span>
+                    </td>
+                    <td className="py-1 px-2 text-right font-semibold">{15}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table className="w-full">
+                <thead>
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
+                    <th className="py-1 pr-2 text-left text-base">Σ Weekly Hours</th>
+                    <th className="py-1 px-2 text-right">30</th>
+                  </tr>
+                </thead>
+                <tbody className="flex-1 sm:flex-none">
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
+                    <td className="py-1 pr-2 text-left">
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
+                        Lecture
+                      </span>
+                    </td>
+                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                  </tr>
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
+                    <td className="py-1 pr-2 text-left">
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
+                        Practice
+                      </span>
+                    </td>
+                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                  </tr>
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
+                    <td className="py-1 pr-2 text-left">
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">Labor</span>
+                    </td>
+                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                  </tr>
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
+                    <td className="py-1 pr-2 text-left">
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
+                        Consultation
+                      </span>
+                    </td>
+                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
           <div className="xl:order-1 col-span-12 xl:col-span-8 2xl:col-span-9 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
             <h2 className=" text-xl font-bold dark:text-white mb-6">{t('planner.subjects.title')}</h2>
             <div className="grid grid-cols-12">

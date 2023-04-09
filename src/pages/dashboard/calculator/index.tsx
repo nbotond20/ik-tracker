@@ -100,7 +100,7 @@ const CalculatorPage: NextPage = () => {
         </div>
         <div className="w-full mb-12 mt-6 h-fit grid gap-6 grid-cols-12 pb-12">
           {/* Statistics */}
-          <div className="xl:order-2 col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-4 2xl:col-span-3">
+          <div className="order-2 col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-4 2xl:col-span-3">
             <div className="top-4 sticky">
               <StatisticsTable statistics={statistics} />
             </div>
