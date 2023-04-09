@@ -28,6 +28,7 @@ specifiers:
   '@typescript-eslint/parser': 5.57.1
   '@vercel/analytics': 0.1.11
   autoprefixer: 10.4.14
+  cross-env: ^7.0.3
   cypress: 12.9.0
   eslint: 8.38.0
   eslint-config-next: 13.3.0
@@ -117,6 +118,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.57.1_ee6im73s67lpei4iwnuz5bbxxm
   '@typescript-eslint/parser': 5.57.1_ze6bmax3gcsfve3yrzu6npguhe
   autoprefixer: 10.4.14_postcss@8.4.21
+  cross-env: 7.0.3
   cypress: 12.9.0
   eslint: 8.38.0
   eslint-config-next: 13.3.0_ze6bmax3gcsfve3yrzu6npguhe
@@ -3848,6 +3850,14 @@ packages:
     dependencies:
       crc-32: 1.2.2
       readable-stream: 3.6.2
+    dev: true
+
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
     dev: true
 
   /cross-spawn/7.0.3:
