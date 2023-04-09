@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
-import { LoadingPage, LoadingSpinner } from '@components/Spinner/Spinner'
-import { CheckIcon, XMarkIcon, TrashIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import { LoadingPage } from '@components/Spinner/Spinner'
+import { SubjectCard } from '@components/SubjectCard/SubjectCard'
+import { TrashIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
+import { debounce } from '@utils/debounce'
+import { getIconForSubject, getInputBGColor } from '@utils/plannerHelperFunctions'
 import type { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import Head from 'next/head'
@@ -31,32 +34,9 @@ interface Subject {
   isLoading?: boolean
   isFetched?: boolean
 }
-interface ISubject extends Subject {
+export interface ISubject extends Subject {
   subject?: IsAvailableReturnType['subject']
   missingPreReqsType?: IsAvailableReturnType['missingPreReqsType']
-}
-
-const getIcon = (status?: 'success' | 'error' | 'warning' | 'loading') => {
-  if (!status) return null
-  switch (status) {
-    case 'success':
-      return <CheckIcon className="h-6 w-6 text-green-500 stroke-2" />
-    case 'error':
-      return <XMarkIcon className="h-6 w-6 text-red-500 stroke-2" />
-    case 'warning':
-      return <ExclamationTriangleIcon className="h-6 w-6 text-yellow-500 stroke-2" />
-    case 'loading':
-      return <LoadingSpinner size={24} />
-  }
-}
-
-const getIconForSubject = (subject: ISubject) => {
-  if (subject.isLoading) return getIcon('loading')
-
-  if (!subject.missingPreReqsType) return getIcon()
-  if (subject.missingPreReqsType === 'not_met') return getIcon('error')
-  if (subject.missingPreReqsType === 'weak_not_met') return getIcon('warning')
-  if (subject.missingPreReqsType === 'met') return getIcon('success')
 }
 
 const PlannerPage: NextPage = () => {
@@ -88,14 +68,17 @@ const PlannerPage: NextPage = () => {
   }, [subjects])
 
   const { mutateAsync: isSubjectAvailableForSemester } = api.subjectProgress.isSubjectAvailableForSemester.useMutation()
+
   const handleSubjectChange = async (event: React.ChangeEvent<HTMLInputElement>, subject: ISubject) => {
     const code = event.target.value
     if (!code) return setSubjects(prev => prev.map(s => (s.id === subject.id ? { ...s, code: undefined } : s)))
 
     setSubjects(prev => prev.map(s => (s.id === subject.id ? { ...s, isLoading: true, code } : s)))
+
     const data = await isSubjectAvailableForSemester({
       subjectCode: code,
     })
+
     setSubjects(prev =>
       prev.map(s =>
         s.id === subject.id
@@ -111,6 +94,31 @@ const PlannerPage: NextPage = () => {
     )
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedHandleSubjectChange = useCallback(debounce(handleSubjectChange, 250), [])
+
+  useEffect(() => {
+    const subjects = localStorage.getItem('subjects')
+    if (subjects) {
+      setSubjects(JSON.parse(subjects) as ISubject[])
+    }
+  }, [])
+
+  useEffect(() => {
+    if (subjects.length === 1 && subjects[0]?.code === undefined) {
+      localStorage.removeItem('subjects')
+      return
+    }
+    localStorage.setItem('subjects', JSON.stringify(subjects))
+  }, [subjects])
+
+  const handleDeleteSubject = (id: string) => {
+    setSubjects(subjects.filter(s => s.id !== id))
+    if (subjects.length === 1) localStorage.removeItem('subjects')
+  }
+
+  const [selectedSubject, setSelectedSubject] = useState<IsAvailableReturnType['subject'] | null>(null)
+
   if (status === 'loading') return <LoadingPage />
 
   return (
@@ -118,6 +126,13 @@ const PlannerPage: NextPage = () => {
       <Head>
         <title>{`IK-Tracker - ${t('routes.planner')}`}</title>
       </Head>
+      {selectedSubject && (
+        <div className="fixed top-0 left-0 right-0 z-50 flex h-screen max-h-screen w-full items-center justify-center overflow-hidden p-2 backdrop-blur md:inset-0 md:h-full">
+          <div className="sm:cardScrollBar relative h-full max-h-screen w-full max-w-5xl md:h-auto">
+            <SubjectCard subject={selectedSubject} setSelectedSubject={setSelectedSubject} />
+          </div>
+        </div>
+      )}
       <div className="w-full max-w-screen-2xl px-2 sm:px-4 lg:px-8 flex flex-col">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{t('planner.title')}</h1>
@@ -129,15 +144,36 @@ const PlannerPage: NextPage = () => {
           <div className="xl:order-2 col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-4 2xl:col-span-3"></div>
           <div className="xl:order-1 col-span-12 xl:col-span-8 2xl:col-span-9 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
             <h2 className=" text-xl font-bold dark:text-white mb-6">{t('planner.subjects.title')}</h2>
-            <div className="grid grid-cols-12 gap-4">
+            <div className="grid grid-cols-12">
               {subjects.map((subject, idx) => (
-                <div className="grid grid-cols-12 col-span-12 items-center gap-2" key={idx}>
-                  <div className="col-span-11 relative">
+                <div className="grid grid-cols-12 col-span-12 items-center" key={idx}>
+                  <div className={`${subjects.length > 1 ? 'col-span-11' : 'col-span-12'} relative mb-2 flex`}>
+                    {subject.subject && (
+                      <div
+                        className="absolute cursor-pointer"
+                        style={{
+                          top: 3,
+                          left: 5,
+                        }}
+                        onClick={() => setSelectedSubject(subject.subject)}
+                      >
+                        <InformationCircleIcon className="h-6 w-6 text-gray-500" />
+                      </div>
+                    )}
                     <input
-                      onChange={e => void handleSubjectChange(e, subject)}
+                      onChange={e => {
+                        setSubjects(prev =>
+                          prev.map(s =>
+                            s.id === subject.id ? { ...s, code: e.target.value === '' ? undefined : e.target.value } : s
+                          )
+                        )
+                        void debouncedHandleSubjectChange(e, subject)
+                      }}
                       placeholder="Code"
-                      className="pr-8 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
-                      value={subject.code}
+                      className={`${subject.subject ? 'pl-8' : ''} ${getInputBGColor(
+                        subject
+                      )} pr-8 w-full placeholder:text-gray-400 rounded-lg border px-2 py-1 text-sm font-medium focus:outline-none focus:ring-1 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500`}
+                      value={subject.code || ''}
                     />
                     <div
                       className="absolute"
@@ -151,8 +187,8 @@ const PlannerPage: NextPage = () => {
                   </div>
                   {idx !== subjects.length - 1 ? (
                     <div
-                      className="col-span-1 flex justify-center cursor-pointer"
-                      onClick={() => setSubjects(prev => prev.filter(s => s.id !== subject.id))}
+                      className="col-span-1 flex justify-center cursor-pointer ml-2 mb-2"
+                      onClick={() => handleDeleteSubject(subject.id)}
                     >
                       <TrashIcon className="h-6 w-6 text-red-500" />
                     </div>
@@ -191,11 +227,20 @@ const PlannerPage: NextPage = () => {
                         }}
                         className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2"
                       />
-                      <input
+                      <select
                         tabIndex={-1}
-                        placeholder="Semester"
-                        className="mt-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
-                      />
+                        placeholder="Subject Type"
+                        className="mt-2 mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
+                        defaultValue={'select'}
+                      >
+                        <option value="select" disabled>
+                          Select a subject type...
+                        </option>
+                        <option value="TÖR">Törzsanyag</option>
+                        <option value="KÖT">Kötelező</option>
+                        <option value="KV">Kötelezően választható</option>
+                        <option value="SZAB">Szabadon választható</option>
+                      </select>
                     </div>
                   )}
                 </div>

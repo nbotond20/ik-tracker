@@ -6,20 +6,26 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 import devLng from '../locales/dev.json'
 import huLng from '../locales/hu-HU.json'
 
+// Check if the i18next instance is already initialized
+// If it is, then we don't need to initialize it again
+
 // eslint-disable-next-line import/no-named-as-default-member
-void i18next
-  .use(initReactI18next)
-  .use(LanguageDetector)
-  .init({
-    lng: 'en',
-    fallbackLng: 'en',
-    debug: process.env.NODE_ENV === 'development',
-    resources: {
-      en: {
-        translation: devLng,
+if (!i18next.isInitialized) {
+  // eslint-disable-next-line import/no-named-as-default-member
+  void i18next
+    .use(initReactI18next)
+    .use(LanguageDetector)
+    .init({
+      lng: 'en',
+      fallbackLng: 'en',
+      debug: process.env.NODE_ENV === 'development',
+      resources: {
+        en: {
+          translation: devLng,
+        },
+        hu: {
+          translation: huLng,
+        },
       },
-      hu: {
-        translation: huLng,
-      },
-    },
-  })
+    })
+}

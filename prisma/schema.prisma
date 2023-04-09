@@ -87,6 +87,8 @@ model Subject {
     subjectGroupType  SubjectGroupType
     subjectType       SubjectType
     SubjectProgresses SubjectProgress[]
+
+    @@unique([code, specialisation])
 }
 
 model PreRequirement {
