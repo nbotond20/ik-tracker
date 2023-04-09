@@ -19,15 +19,19 @@ export const pages: Page[] = [
     label: 'routes.dashboard',
     href: '/dashboard',
     protected: true,
-  } /*,
+  } /* ,
   {
     label: 'routes.calculator',
     href: '/dashboard/calculator',
-  } ,
+  },
   {
-    label: 'Current Semester 🚧',
-    href: '/about',
-  } */,
+    label: 'routes.planner',
+    href: '/dashboard/planner',
+  },
+  {
+    label: 'routes.progress',
+    href: '/dashboard/progress',
+  }, */,
 ]
 
 export const tableColumnHeaders = [
