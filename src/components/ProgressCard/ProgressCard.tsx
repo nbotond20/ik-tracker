@@ -171,7 +171,7 @@ export const ProgressCard = ({
                   <td
                     className={`${getGradeColor(
                       grade
-                    )} px-3 py-2 border border-gray-300 dark:border-gray-600 text-center dark:text-gray-50 text-gray-800 font-medium`}
+                    )} px-3 py-2 border border-gray-300 dark:border-gray-600 text-center font-medium`}
                   >
                     {grade || '-'}
                   </td>
