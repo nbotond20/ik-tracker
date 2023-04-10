@@ -16,21 +16,23 @@ export const pages: Page[] = [
     href: '/search',
   },
   {
+    label: 'routes.calculator',
+    href: '/dashboard/calculator',
+  },
+  {
     label: 'routes.dashboard',
     href: '/dashboard',
     protected: true,
   } /* ,
   {
-    label: 'routes.calculator',
-    href: '/dashboard/calculator',
-  },
-  {
     label: 'routes.planner',
     href: '/dashboard/planner',
+    protected: true,
   },
   {
     label: 'routes.progress',
     href: '/dashboard/progress',
+    protected: true,
   }, */,
 ]
 

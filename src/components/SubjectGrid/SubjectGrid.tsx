@@ -26,6 +26,7 @@ interface SubjectGridProps {
   elementsPerPage: number
   totalElements: number
   handleCreateSubjectProgress: (subjectId: string) => void
+  handleAddToPlanner: (subject: Subject) => Promise<void>
 }
 
 export const SubjectGrid = ({
@@ -39,6 +40,7 @@ export const SubjectGrid = ({
   elementsPerPage,
   totalElements,
   handleCreateSubjectProgress,
+  handleAddToPlanner,
 }: SubjectGridProps) => {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
   const { t } = useTranslation()
@@ -78,6 +80,7 @@ export const SubjectGrid = ({
                 setSelectedSubject={setSelectedSubject}
                 isSelectable
                 handleCreateSubjectProgress={handleCreateSubjectProgress}
+                handleAddToPlanner={handleAddToPlanner}
                 isLoggedIn={!!session && user?.isCurrentSemesterSet}
               />
             ))}

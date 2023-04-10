@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { AddMenu } from '@components/AddMenu/AddMenu'
 import { SubjectCard } from '@components/SubjectCard/SubjectCard'
-import { InformationCircleIcon, PlusIcon } from '@heroicons/react/24/outline'
+import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import type { RouterOutputs } from '@utils/api'
 import type { CompareType } from '@utils/subjectComparator'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -23,6 +24,7 @@ interface TableProps {
   tableColumnHeaders: TableColumnHeader[]
   handleCreateSubjectProgress: (subjectId: string) => void
   isLoggedIn?: boolean
+  handleAddToPlanner: (subject: Subject) => Promise<void>
 }
 
 export const SubjectTable = ({
@@ -32,6 +34,7 @@ export const SubjectTable = ({
   tableColumnHeaders,
   handleCreateSubjectProgress,
   isLoggedIn,
+  handleAddToPlanner,
 }: TableProps) => {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
   const { t } = useTranslation()
@@ -94,16 +97,19 @@ export const SubjectTable = ({
                   </td>
                   <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[5]!.classes || ''}`}>{subject.subjectType}</td>
                   {isLoggedIn ? (
-                    <td
-                      className="cursor-pointer px-2 py-2"
-                      onClick={e => {
-                        e.stopPropagation()
-                        handleCreateSubjectProgress(subject.id)
-                      }}
-                    >
-                      <div className="relative h-5 w-5">
-                        <PlusIcon />
-                      </div>
+                    <td className="cursor-pointer px-2 py-2">
+                      <AddMenu
+                        menuItems={[
+                          {
+                            name: 'Add to planner',
+                            onClick: () => void handleAddToPlanner(subject),
+                          },
+                          {
+                            name: 'Add to progress',
+                            onClick: () => handleCreateSubjectProgress(subject.id),
+                          },
+                        ]}
+                      />
                     </td>
                   ) : (
                     <td className="px-2 py-2">

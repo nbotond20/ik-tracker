@@ -30,7 +30,7 @@ const ProfilePage: NextPage = () => {
 
   useEffect(() => {
     if (!session?.user && status !== 'loading') {
-      void router.push('/login')
+      void router.push(`/login?callbackUrl=${router.pathname}`)
     }
   }, [router, session?.user, status])
 

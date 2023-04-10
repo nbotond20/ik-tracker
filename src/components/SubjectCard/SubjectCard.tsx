@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 
+import { AddMenu } from '@components/AddMenu/AddMenu'
 import { InputField } from '@components/InputField/InputField'
-import { PlusIcon } from '@heroicons/react/24/outline'
 import type { RouterOutputs } from '@utils/api'
 import { motion } from 'framer-motion'
 
@@ -13,6 +13,7 @@ interface SubjectCardProps {
   isSelectable?: boolean
   handleCreateSubjectProgress?: (subjectId: string) => void
   isLoggedIn?: boolean
+  handleAddToPlanner?: (subject: Subject) => Promise<void>
 }
 
 export const SubjectCard = ({
@@ -21,6 +22,7 @@ export const SubjectCard = ({
   isSelectable,
   handleCreateSubjectProgress,
   isLoggedIn,
+  handleAddToPlanner,
 }: SubjectCardProps) => {
   const { t } = useTranslation()
 
@@ -36,13 +38,18 @@ export const SubjectCard = ({
       <div className="mb-4 flex items-start justify-between">
         <h3 className="text-xl font-semibold text-gray-900 dark:text-white flex gap-2 justify-between w-full">
           <span>{subject.courseName}</span>
-          {isLoggedIn && handleCreateSubjectProgress && isSelectable && (
-            <PlusIcon
-              className="w-6 h-6"
-              onClick={e => {
-                e.stopPropagation()
-                handleCreateSubjectProgress(subject.id)
-              }}
+          {isLoggedIn && handleAddToPlanner && handleCreateSubjectProgress && isSelectable && (
+            <AddMenu
+              menuItems={[
+                {
+                  name: 'Add to planner',
+                  onClick: () => void handleAddToPlanner(subject),
+                },
+                {
+                  name: 'Add to progress',
+                  onClick: () => handleCreateSubjectProgress(subject.id),
+                },
+              ]}
             />
           )}
         </h3>

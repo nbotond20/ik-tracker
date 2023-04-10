@@ -15,6 +15,7 @@ import { authOptions } from '@pages/api/auth/[...nextauth]'
 import { api } from '@utils/api'
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import { getServerSession } from 'next-auth'
+import { useSession } from 'next-auth/react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
@@ -119,6 +120,8 @@ const SubjectProgressPage: NextPage = () => {
     }
   }, [isUserLoading, user?.isCurrentSemesterSet])
 
+  const { data: session } = useSession()
+
   if (isUserLoading) return <LoadingPage />
 
   if (!user?.isCurrentSemesterSet)
@@ -131,6 +134,11 @@ const SubjectProgressPage: NextPage = () => {
         confirmText="Set current semester"
       />
     )
+
+  if (!session) {
+    void router.push(`/login?callbackUrl=${router.pathname}`)
+    return <LoadingPage />
+  }
 
   return (
     <ScrollLayout>

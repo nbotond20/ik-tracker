@@ -13,6 +13,7 @@ import { getIconForSubject, getInputBGColor } from '@utils/plannerHelperFunction
 import type { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { v4 as uuidv4 } from 'uuid'
 
 const breadcrumbs = [
@@ -40,7 +41,8 @@ export interface ISubject extends Subject {
 }
 
 const PlannerPage: NextPage = () => {
-  const { status } = useSession()
+  const router = useRouter()
+  const { data: session, status } = useSession()
   const { t } = useTranslation()
 
   const [subjects, setSubjects] = useState<ISubject[]>([
@@ -69,8 +71,7 @@ const PlannerPage: NextPage = () => {
 
   const { mutateAsync: isSubjectAvailableForSemester } = api.subjectProgress.isSubjectAvailableForSemester.useMutation()
 
-  const handleSubjectChange = async (event: React.ChangeEvent<HTMLInputElement>, subject: ISubject) => {
-    const code = event.target.value
+  const handleSubjectChange = async (code: string, subject: ISubject) => {
     if (!code) return setSubjects(prev => prev.map(s => (s.id === subject.id ? { ...s, code: undefined } : s)))
 
     setSubjects(prev => prev.map(s => (s.id === subject.id ? { ...s, isLoading: true, code } : s)))
@@ -121,6 +122,11 @@ const PlannerPage: NextPage = () => {
 
   if (status === 'loading') return <LoadingPage />
 
+  if (!session) {
+    void router.push(`/login?callbackUrl=${router.pathname}`)
+    return <LoadingPage />
+  }
+
   return (
     <ScrollLayout>
       <Head>
@@ -133,7 +139,7 @@ const PlannerPage: NextPage = () => {
           </div>
         </div>
       )}
-      <div className="w-full max-w-screen-2xl px-2 sm:px-4 lg:px-8 flex flex-col">
+      <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 lg:px-8 flex flex-col">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{t('planner.title')}</h1>
         </div>
@@ -270,7 +276,7 @@ const PlannerPage: NextPage = () => {
                             s.id === subject.id ? { ...s, code: e.target.value === '' ? undefined : e.target.value } : s
                           )
                         )
-                        void debouncedHandleSubjectChange(e, subject)
+                        void debouncedHandleSubjectChange(e.target.value, subject)
                       }}
                       placeholder="Code"
                       className={`${subject.subject ? 'pl-8' : ''} ${getInputBGColor(

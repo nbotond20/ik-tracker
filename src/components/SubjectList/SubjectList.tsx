@@ -18,6 +18,7 @@ interface SubjectListProps {
   elementsPerPage: number
   totalElements: number
   handleCreateSubjectProgress: (subjectId: string) => void
+  handleAddToPlanner: (subject: Subject) => Promise<void>
 }
 
 type Subject = RouterOutputs['subject']['getAll'][number]
@@ -33,6 +34,7 @@ export const SubjectList = ({
   elementsPerPage,
   totalElements,
   handleCreateSubjectProgress,
+  handleAddToPlanner,
 }: SubjectListProps) => {
   const { data: session } = useSession()
   const { data: user } = api.user.getUser.useQuery()
@@ -46,6 +48,7 @@ export const SubjectList = ({
             handleSort={handleSetSortedSubjects}
             tableColumnHeaders={tableColumnHeaders}
             handleCreateSubjectProgress={handleCreateSubjectProgress}
+            handleAddToPlanner={handleAddToPlanner}
             isLoggedIn={!!session && user?.isCurrentSemesterSet}
           />
         </div>
