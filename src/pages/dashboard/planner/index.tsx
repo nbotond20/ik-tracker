@@ -322,7 +322,7 @@ const PlannerPage: NextPage = () => {
                       <input
                         tabIndex={-1}
                         placeholder="Credit"
-                        className="w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
+                        className="mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
                       />
                       <div
                         style={{
@@ -330,7 +330,7 @@ const PlannerPage: NextPage = () => {
                           width: '17px',
                           borderBottomLeftRadius: '10px',
                           position: 'absolute',
-                          top: 10,
+                          top: 9,
                           left: -17,
                           zIndex: -1,
                         }}
@@ -339,7 +339,33 @@ const PlannerPage: NextPage = () => {
                       <select
                         tabIndex={-1}
                         placeholder="Subject Type"
-                        className="mt-2 mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
+                        className="mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
+                        defaultValue={'select'}
+                      >
+                        <option value="select" disabled>
+                          Select a subject type...
+                        </option>
+                        <option value="TÖR">Törzsanyag</option>
+                        <option value="KÖT">Kötelező</option>
+                        <option value="KV">Kötelezően választható</option>
+                        <option value="SZAB">Szabadon választható</option>
+                      </select>
+                      <div
+                        style={{
+                          height: '45px',
+                          width: '17px',
+                          borderBottomLeftRadius: '10px',
+                          position: 'absolute',
+                          top: 46,
+                          left: -17,
+                          zIndex: -1,
+                        }}
+                        className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2"
+                      />
+                      <select
+                        tabIndex={-1}
+                        placeholder="Subject Type"
+                        className="mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
                         defaultValue={'select'}
                       >
                         <option value="select" disabled>
