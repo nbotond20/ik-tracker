@@ -36,7 +36,7 @@
     "@trpc/react-query": "10.19.1",
     "@trpc/server": "10.19.1",
     "@vercel/analytics": "0.1.11",
-    "flowbite": "1.6.4",
+    "flowbite": "1.6.5",
     "framer-motion": "10.11.2",
     "i18next": "^22.4.13",
     "i18next-browser-languagedetector": "^7.0.1",
