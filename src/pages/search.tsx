@@ -116,6 +116,7 @@ const SearchPage: NextPage = () => {
     localStorage.setItem(
       'subjects',
       JSON.stringify([
+        ...localSubjects.filter(s => !!s.code),
         {
           id: uuidv4(),
           code: subject.code,
@@ -124,7 +125,7 @@ const SearchPage: NextPage = () => {
           missingPreReqsType: data.missingPreReqsType,
           isFetched: true,
         },
-        ...localSubjects,
+        ...localSubjects.filter(s => !s.code),
       ])
     )
     toast.success(<b>Successfully added to the planner!</b>)

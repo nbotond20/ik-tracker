@@ -70,7 +70,7 @@ export const SubjectTable = ({
         <motion.tbody>
           <AnimatePresence>
             {subjects &&
-              subjects.map(subject => (
+              subjects.map((subject, idx) => (
                 <motion.tr
                   layoutId={subject.id}
                   key={subject.id}
@@ -99,6 +99,7 @@ export const SubjectTable = ({
                   {isLoggedIn ? (
                     <td className="cursor-pointer px-2 py-2">
                       <AddMenu
+                        isLast={idx > subjects.length - 3}
                         menuItems={[
                           {
                             name: 'Add to planner',

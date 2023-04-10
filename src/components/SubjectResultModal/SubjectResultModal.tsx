@@ -245,7 +245,7 @@ export const SubjectResultModal = ({
         >
           {!isUserLoading && !isSubjectsLoading && user ? (
             <div className="sm:cardScrollBar relative max-h-screen w-full h-auto max-w-screen-md">
-              <motion.div
+              <div
                 data-mobile-max-height-16
                 className="overflow-y-auto col-span-12 block rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-6 max-h-[calc(100vh-16px)]"
               >
@@ -469,7 +469,7 @@ export const SubjectResultModal = ({
                     </Button>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           ) : (
             <LoadingPage />
