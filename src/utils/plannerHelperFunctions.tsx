@@ -28,9 +28,9 @@ export const getInputBGColor = (subject: ISubject): string => {
 
 export const getIconForSubject = (subject: ISubject) => {
   if (subject.isLoading) return getIcon('loading')
-
   if (!subject.missingPreReqsType) return getIcon()
   if (subject.missingPreReqsType === 'not_met') return getIcon('error')
   if (subject.missingPreReqsType === 'weak_not_met') return getIcon('warning')
   if (subject.missingPreReqsType === 'met') return getIcon('success')
+  return null
 }

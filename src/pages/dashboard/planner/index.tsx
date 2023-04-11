@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
+import { PlannerInputGroup } from '@components/PlannerInputGroup/PlannerInputGroup'
 import { LoadingPage } from '@components/Spinner/Spinner'
 import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { TrashIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
@@ -281,7 +282,7 @@ const PlannerPage: NextPage = () => {
                       placeholder="Code"
                       className={`${subject.subject ? 'pl-8' : ''} ${getInputBGColor(
                         subject
-                      )} pr-8 w-full placeholder:text-gray-400 rounded-lg border px-2 py-1 text-sm font-medium focus:outline-none focus:ring-1 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500`}
+                      )} h-[30px] pr-8 w-full placeholder:text-gray-400 rounded-lg border px-2 py-1 text-sm font-medium focus:outline-none focus:ring-1 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500`}
                       value={subject.code || ''}
                     />
                     <div
@@ -305,79 +306,9 @@ const PlannerPage: NextPage = () => {
                     <div className="col-span-1" />
                   )}
                   <div className="col-span-1" />
-                  {subject.code && !subject.isLoading && !subject.subject && subject.isFetched && (
-                    <div className="col-span-10 isolate relative">
-                      <div
-                        style={{
-                          height: '25px',
-                          width: '17px',
-                          position: 'absolute',
-                          borderBottomLeftRadius: '10px',
-                          top: -8,
-                          left: -17,
-                          zIndex: -1,
-                        }}
-                        className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2"
-                      />
-                      <input
-                        tabIndex={-1}
-                        placeholder="Credit"
-                        className="mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
-                      />
-                      <div
-                        style={{
-                          height: '45px',
-                          width: '17px',
-                          borderBottomLeftRadius: '10px',
-                          position: 'absolute',
-                          top: 9,
-                          left: -17,
-                          zIndex: -1,
-                        }}
-                        className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2"
-                      />
-                      <select
-                        tabIndex={-1}
-                        placeholder="Subject Type"
-                        className="mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
-                        defaultValue={'select'}
-                      >
-                        <option value="select" disabled>
-                          Select a subject type...
-                        </option>
-                        <option value="TÖR">Törzsanyag</option>
-                        <option value="KÖT">Kötelező</option>
-                        <option value="KV">Kötelezően választható</option>
-                        <option value="SZAB">Szabadon választható</option>
-                      </select>
-                      <div
-                        style={{
-                          height: '45px',
-                          width: '17px',
-                          borderBottomLeftRadius: '10px',
-                          position: 'absolute',
-                          top: 46,
-                          left: -17,
-                          zIndex: -1,
-                        }}
-                        className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2"
-                      />
-                      <select
-                        tabIndex={-1}
-                        placeholder="Subject Type"
-                        className="mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
-                        defaultValue={'select'}
-                      >
-                        <option value="select" disabled>
-                          Select a subject type...
-                        </option>
-                        <option value="TÖR">Törzsanyag</option>
-                        <option value="KÖT">Kötelező</option>
-                        <option value="KV">Kötelezően választható</option>
-                        <option value="SZAB">Szabadon választható</option>
-                      </select>
-                    </div>
-                  )}
+                  <PlannerInputGroup
+                    show={!!subject.code && !subject.isLoading && !subject.subject && subject.isFetched}
+                  />
                 </div>
               ))}
             </div>
