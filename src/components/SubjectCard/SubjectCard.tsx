@@ -34,7 +34,6 @@ export const SubjectCard = ({
       className={`${
         isSelectable ? 'cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700' : ''
       } overflow-y-auto col-span-12 block rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-6 max-h-[calc(100vh-16px)]`}
-      onClick={() => isSelectable && setSelectedSubject(subject)}
     >
       <ClickAwayListener
         onClickAway={() => {
@@ -44,7 +43,7 @@ export const SubjectCard = ({
       >
         <div className="mb-4 flex items-start justify-between">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white flex gap-2 justify-between w-full">
-            <span>{subject.courseName}</span>
+            <span onClick={() => isSelectable && setSelectedSubject(subject)}>{subject.courseName}</span>
             {isLoggedIn && handleAddToPlanner && handleCreateSubjectProgress && isSelectable && (
               <AddMenu
                 menuItems={[
@@ -77,7 +76,10 @@ export const SubjectCard = ({
             </button>
           )}
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div
+          className="grid grid-cols-1 gap-4 md:grid-cols-2"
+          onClick={() => isSelectable && setSelectedSubject(subject)}
+        >
           <InputField disabled value={subject.code} label="Subject Code" />
           <InputField disabled value={subject.courseName} label="Course Name" />
           <InputField disabled value={subject.credit} label="Credit" className="hidden md:flex" />

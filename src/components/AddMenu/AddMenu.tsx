@@ -23,7 +23,8 @@ export const AddMenu = <T,>({ menuItems }: AddMenuProps<T>) => {
     >
       <PlusIcon
         className="w-6 h-6 cursor-pointer"
-        onClick={() => {
+        onClick={e => {
+          e.stopPropagation()
           setIsOpen(isOpen => !isOpen)
         }}
       />
