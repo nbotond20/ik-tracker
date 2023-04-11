@@ -42,6 +42,7 @@ export const ProgressCard = ({
     api.subjectProgress.delete.useMutation({
       onSuccess: () => {
         void handleRefetch()
+        setIsConfirmModalOpen(false)
       },
     })
 

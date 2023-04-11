@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from 'react'
 
 interface Props {
   children: ReactNode
-  onClickAway: () => void
+  onClickAway: ((e: MouseEvent) => void) | (() => void)
 }
 
 export const ClickAwayListener = ({ children, onClickAway }: Props) => {
@@ -12,7 +12,7 @@ export const ClickAwayListener = ({ children, onClickAway }: Props) => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
-        onClickAway()
+        onClickAway(event)
       }
     }
 

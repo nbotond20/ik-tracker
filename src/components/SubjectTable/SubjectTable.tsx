@@ -70,36 +70,53 @@ export const SubjectTable = ({
         <motion.tbody>
           <AnimatePresence>
             {subjects &&
-              subjects.map((subject, idx) => (
+              subjects.map(subject => (
                 <motion.tr
                   layoutId={subject.id}
                   key={subject.id}
-                  onClick={() => setSelectedSubject(subject)}
-                  className="cursor-pointer border-b bg-white hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600"
+                  className="border-b bg-white hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600"
                 >
                   <th
+                    onClick={() => setSelectedSubject(subject)}
                     scope="row"
-                    className={`px-2 py-2 font-medium text-gray-900 dark:text-white sm:whitespace-nowrap sm:px-4 ${
+                    className={`cursor-pointer px-2 py-2 font-medium text-gray-900 dark:text-white sm:whitespace-nowrap sm:px-4 ${
                       tableColumnHeaders[0]!.classes || ''
                     }`}
                   >
                     {subject.code}
                   </th>
-                  <td className={`px-2 py-2 sm:whitespace-nowrap sm:px-4 ${tableColumnHeaders[1]!.classes || ''}`}>
+                  <td
+                    onClick={() => setSelectedSubject(subject)}
+                    className={`cursor-pointer px-2 py-2 sm:whitespace-nowrap sm:px-4 ${
+                      tableColumnHeaders[1]!.classes || ''
+                    }`}
+                  >
                     {subject.courseName}
                   </td>
-                  <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[2]!.classes || ''}`}>{subject.credit}</td>
-                  <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[3]!.classes || ''}`}>
+                  <td
+                    onClick={() => setSelectedSubject(subject)}
+                    className={`cursor-pointer px-2 py-2 sm:px-4 ${tableColumnHeaders[2]!.classes || ''}`}
+                  >
+                    {subject.credit}
+                  </td>
+                  <td
+                    onClick={() => setSelectedSubject(subject)}
+                    className={`cursor-pointer px-2 py-2 sm:px-4 ${tableColumnHeaders[3]!.classes || ''}`}
+                  >
                     {subject.semester.join(', ')}
                   </td>
-                  <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[4]!.classes || ''}`}>
+                  <td
+                    onClick={() => setSelectedSubject(subject)}
+                    className={`cursor-pointer px-2 py-2 sm:px-4 ${tableColumnHeaders[4]!.classes || ''}`}
+                  >
                     {subject.subjectGroupType}
                   </td>
-                  <td className={`px-2 py-2 sm:px-4 ${tableColumnHeaders[5]!.classes || ''}`}>{subject.subjectType}</td>
+                  <td className={`cursor-pointer px-2 py-2 sm:px-4 ${tableColumnHeaders[5]!.classes || ''}`}>
+                    {subject.subjectType}
+                  </td>
                   {isLoggedIn ? (
-                    <td className="cursor-pointer px-2 py-2">
+                    <td className="px-2 py-2">
                       <AddMenu
-                        isLast={idx > subjects.length - 3}
                         menuItems={[
                           {
                             name: 'Add to planner',
@@ -113,7 +130,7 @@ export const SubjectTable = ({
                       />
                     </td>
                   ) : (
-                    <td className="px-2 py-2">
+                    <td className="px-2 py-2" onClick={() => setSelectedSubject(subject)}>
                       <InformationCircleIcon className="h-5 w-5" />
                     </td>
                   )}
