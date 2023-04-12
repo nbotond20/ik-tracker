@@ -79,8 +79,7 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
             tabIndex={-1}
             placeholder="Subject Type"
             className="h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
-            defaultValue={'select'}
-            value={subject.subjectType}
+            value={subject.subjectType || 'select'}
             onChange={e =>
               setSubjects(prev =>
                 prev.map(sub => {
@@ -116,8 +115,7 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
             tabIndex={-1}
             placeholder="Subject Type"
             className="h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
-            defaultValue={'select'}
-            value={subject.creditType}
+            value={subject.creditType || 'select'}
             onChange={e =>
               setSubjects(prev =>
                 prev.map(sub => {
