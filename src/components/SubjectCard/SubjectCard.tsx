@@ -1,8 +1,10 @@
+import { toast } from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 
 import { AddMenu } from '@components/AddMenu/AddMenu'
 import { ClickAwayListener } from '@components/ClickAwayListener/ClickAwayListener'
 import { InputField } from '@components/InputField/InputField'
+import { ClipboardDocumentListIcon } from '@heroicons/react/24/outline'
 import type { RouterOutputs } from '@utils/api'
 import { motion } from 'framer-motion'
 
@@ -85,7 +87,23 @@ export const SubjectCard = ({
           className="grid grid-cols-1 gap-4 md:grid-cols-2"
           onClick={() => isSelectable && setSelectedSubject(subject)}
         >
-          <InputField disabled value={subject.code} label="Subject Code" />
+          <div className="relative">
+            <InputField disabled value={subject.code} label="Subject Code" />
+            <ClipboardDocumentListIcon
+              className="h-6 w-6 text-gray-500 dark:text-gray-200 right-2 cursor-pointer absolute"
+              onClick={e => {
+                e.stopPropagation()
+                void toast.promise(navigator.clipboard.writeText(subject.code), {
+                  loading: 'Copying...',
+                  success: 'Copied!',
+                  error: 'Failed to copy',
+                })
+              }}
+              style={{
+                bottom: 9,
+              }}
+            />
+          </div>
           <InputField disabled value={subject.courseName} label="Course Name" />
           <InputField disabled value={subject.credit} label="Credit" className="hidden md:flex" />
           <InputField disabled value={subject.semester.join(', ')} label="Semester" className="hidden md:flex" />
