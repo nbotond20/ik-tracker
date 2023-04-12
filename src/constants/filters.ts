@@ -28,10 +28,10 @@ export const filters = [
     name: 'search.filters.specialisation.title',
     type: 'checkbox',
     options: [
-      { value: 'A' as SpecialisationType, label: 'A', checked: false },
-      { value: 'B' as SpecialisationType, label: 'B', checked: false },
-      { value: 'C' as SpecialisationType, label: 'C', checked: false },
-      { value: 'ABC' as SpecialisationType, label: 'ABC', checked: false },
+      { value: 'A' as SpecialisationType, label: 'search.filters.specialisation.options.A', checked: false },
+      { value: 'B' as SpecialisationType, label: 'search.filters.specialisation.options.B', checked: false },
+      { value: 'C' as SpecialisationType, label: 'search.filters.specialisation.options.C', checked: false },
+      { value: 'ABC' as SpecialisationType, label: 'search.filters.specialisation.options.ABC', checked: false },
     ],
   },
 ]

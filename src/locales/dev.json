@@ -141,6 +141,12 @@
         "title": "Semester"
       },
       "specialisation": {
+        "options": {
+          "A": "A",
+          "ABC": "ABC",
+          "B": "B",
+          "C": "C"
+        },
         "title": "Specialisation"
       },
       "subjectType": {
