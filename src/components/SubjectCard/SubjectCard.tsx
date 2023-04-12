@@ -34,6 +34,9 @@ export const SubjectCard = ({
       className={`${
         isSelectable ? 'cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700' : ''
       } overflow-y-auto col-span-12 block rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-6 max-h-[calc(100vh-16px)]`}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 10 }}
     >
       <ClickAwayListener
         onClickAway={() => {
@@ -43,7 +46,9 @@ export const SubjectCard = ({
       >
         <div className="mb-4 flex items-start justify-between">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white flex gap-2 justify-between w-full">
-            <span onClick={() => isSelectable && setSelectedSubject(subject)}>{subject.courseName}</span>
+            <span onClick={() => isSelectable && setSelectedSubject(subject)} className="flex flex-grow">
+              {subject.courseName}
+            </span>
             {isLoggedIn && handleAddToPlanner && handleCreateSubjectProgress && isSelectable && (
               <AddMenu
                 menuItems={[
