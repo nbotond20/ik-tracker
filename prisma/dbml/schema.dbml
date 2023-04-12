@@ -72,6 +72,10 @@ Table Subject {
   subjectGroupType SubjectGroupType [not null]
   subjectType SubjectType [not null]
   SubjectProgresses SubjectProgress [not null]
+
+  indexes {
+    (code, specialisation) [unique]
+  }
 }
 
 Table PreRequirement {
