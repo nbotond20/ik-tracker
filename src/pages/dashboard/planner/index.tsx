@@ -7,6 +7,7 @@ import { PlannerInputGroup } from '@components/PlannerInputGroup/PlannerInputGro
 import { LoadingPage } from '@components/Spinner/Spinner'
 import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { TrashIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
+import type { SubjectGroupType, SubjectType } from '@prisma/client'
 import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
 import { debounce } from '@utils/debounce'
@@ -35,6 +36,12 @@ interface Subject {
   credit?: number
   isLoading?: boolean
   isFetched?: boolean
+  subjectType?: SubjectType | 'SZAB'
+  creditType?: SubjectGroupType
+  lecture?: number
+  practice?: number
+  labor?: number
+  consultation?: number
 }
 export interface ISubject extends Subject {
   subject?: IsAvailableReturnType['subject']
@@ -307,6 +314,8 @@ const PlannerPage: NextPage = () => {
                   )}
                   <div className="col-span-1" />
                   <PlannerInputGroup
+                    subject={subject}
+                    setSubjects={setSubjects}
                     show={!!subject.code && !subject.isLoading && !subject.subject && subject.isFetched}
                   />
                 </div>

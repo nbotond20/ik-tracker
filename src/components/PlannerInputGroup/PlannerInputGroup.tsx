@@ -1,12 +1,16 @@
+import type { Dispatch, SetStateAction } from 'react'
 import { useState } from 'react'
 
 import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
+import type { ISubject } from '@pages/dashboard/planner'
 
 interface PlannerInputGroupProps {
   show: boolean | undefined
+  subject: ISubject
+  setSubjects: Dispatch<SetStateAction<ISubject[]>>
 }
 
-export const PlannerInputGroup = ({ show }: PlannerInputGroupProps) => {
+export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGroupProps) => {
   const [showInput, setShowInput] = useState(true)
   return show ? (
     <div className="col-span-10 isolate relative">
@@ -45,6 +49,19 @@ export const PlannerInputGroup = ({ show }: PlannerInputGroupProps) => {
             tabIndex={-1}
             placeholder="Credit"
             className="h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
+            value={subject.credit || ''}
+            inputMode="numeric"
+            pattern="[0-9]*"
+            onChange={e =>
+              setSubjects(prev =>
+                prev.map(sub => {
+                  if (sub.id === subject.id) {
+                    return { ...sub, credit: e.target.value === '' ? undefined : Number(e.target.value) }
+                  }
+                  return sub
+                })
+              )
+            }
           />
           <div
             style={{
@@ -63,6 +80,17 @@ export const PlannerInputGroup = ({ show }: PlannerInputGroupProps) => {
             placeholder="Subject Type"
             className="h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
             defaultValue={'select'}
+            value={subject.subjectType}
+            onChange={e =>
+              setSubjects(prev =>
+                prev.map(sub => {
+                  if (sub.id === subject.id) {
+                    return { ...sub, subjectType: e.target.value as 'TOR' | 'KOT' | 'KV' | 'SZAB' }
+                  }
+                  return sub
+                })
+              )
+            }
           >
             <option value="select" disabled>
               Select a subject type...
@@ -89,6 +117,17 @@ export const PlannerInputGroup = ({ show }: PlannerInputGroupProps) => {
             placeholder="Subject Type"
             className="h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
             defaultValue={'select'}
+            value={subject.creditType}
+            onChange={e =>
+              setSubjects(prev =>
+                prev.map(sub => {
+                  if (sub.id === subject.id) {
+                    return { ...sub, creditType: e.target.value as 'INF' | 'SZAM' | 'MAT' | 'EGYEB' }
+                  }
+                  return sub
+                })
+              )
+            }
           >
             <option value="select" disabled>
               Select a credit type...
@@ -126,11 +165,37 @@ export const PlannerInputGroup = ({ show }: PlannerInputGroupProps) => {
               tabIndex={-1}
               placeholder="Lecture"
               className="col-span-6 h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
+              value={subject.lecture || ''}
+              inputMode="numeric"
+              pattern="[0-9]*"
+              onChange={e =>
+                setSubjects(prev =>
+                  prev.map(sub => {
+                    if (sub.id === subject.id) {
+                      return { ...sub, lecture: e.target.value === '' ? undefined : Number(e.target.value) }
+                    }
+                    return sub
+                  })
+                )
+              }
             />
             <input
               tabIndex={-1}
               placeholder="Practice"
               className="col-span-6 h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
+              value={subject.practice || ''}
+              inputMode="numeric"
+              pattern="[0-9]*"
+              onChange={e =>
+                setSubjects(prev =>
+                  prev.map(sub => {
+                    if (sub.id === subject.id) {
+                      return { ...sub, practice: e.target.value === '' ? undefined : Number(e.target.value) }
+                    }
+                    return sub
+                  })
+                )
+              }
             />
           </div>
           <div
@@ -161,11 +226,37 @@ export const PlannerInputGroup = ({ show }: PlannerInputGroupProps) => {
               tabIndex={-1}
               placeholder="Labor"
               className="col-span-6 h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
+              value={subject.labor || ''}
+              inputMode="numeric"
+              pattern="[0-9]*"
+              onChange={e =>
+                setSubjects(prev =>
+                  prev.map(sub => {
+                    if (sub.id === subject.id) {
+                      return { ...sub, labor: e.target.value === '' ? undefined : Number(e.target.value) }
+                    }
+                    return sub
+                  })
+                )
+              }
             />
             <input
               tabIndex={-1}
               placeholder="Consultation"
               className="col-span-6 h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
+              value={subject.consultation || ''}
+              inputMode="numeric"
+              pattern="[0-9]*"
+              onChange={e =>
+                setSubjects(prev =>
+                  prev.map(sub => {
+                    if (sub.id === subject.id) {
+                      return { ...sub, consultation: e.target.value === '' ? undefined : Number(e.target.value) }
+                    }
+                    return sub
+                  })
+                )
+              }
             />
           </div>
         </div>
