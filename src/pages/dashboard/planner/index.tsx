@@ -80,7 +80,20 @@ const PlannerPage: NextPage = () => {
   const { mutateAsync: isSubjectAvailableForSemester } = api.subjectProgress.isSubjectAvailableForSemester.useMutation()
 
   const handleSubjectChange = async (code: string, subject: ISubject) => {
-    if (!code) return setSubjects(prev => prev.map(s => (s.id === subject.id ? { ...s, code: undefined } : s)))
+    if (!code)
+      return setSubjects(prev =>
+        prev.map(s =>
+          s.id === subject.id
+            ? {
+                ...s,
+                code: undefined,
+                isFetched: false,
+                subject: undefined,
+                missingPreReqsType: undefined,
+              }
+            : s
+        )
+      )
 
     setSubjects(prev => prev.map(s => (s.id === subject.id ? { ...s, isLoading: true, code } : s)))
 
@@ -316,7 +329,7 @@ const PlannerPage: NextPage = () => {
                   <PlannerInputGroup
                     subject={subject}
                     setSubjects={setSubjects}
-                    show={!!subject.code && !subject.isLoading && !subject.subject && subject.isFetched}
+                    show={!!subject.code && !subject.subject && subject.isFetched}
                   />
                 </div>
               ))}
