@@ -25,8 +25,12 @@ const ProfilePage: NextPage = () => {
   const router = useRouter()
   const { t } = useTranslation()
 
-  const { data: providers, isLoading: isProviderQueryLoading } = api.user.getLinkedProviders.useQuery()
-  const { data: user, isLoading: isUserQueryLoading } = api.user.getUser.useQuery()
+  const { data: providers, isLoading: isProviderQueryLoading } = api.user.getLinkedProviders.useQuery(undefined, {
+    enabled: !!session,
+  })
+  const { data: user, isLoading: isUserQueryLoading } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
 
   useEffect(() => {
     if (!session?.user && status !== 'loading') {

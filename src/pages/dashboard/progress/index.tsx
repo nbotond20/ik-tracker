@@ -49,11 +49,15 @@ const breadcrumbs = [
 ]
 
 const SubjectProgressPage: NextPage = () => {
+  const { data: session } = useSession()
+
   const [selectedSubjectProgress, setSelectedSubjectProgress] = useState<
     SubjectProgressWithExamsAndSubject | undefined
   >()
 
-  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery()
+  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
   const [semester, setSemester] = useState(user?.currentSemester ?? 0)
 
   useEffect(() => {
@@ -119,8 +123,6 @@ const SubjectProgressPage: NextPage = () => {
       setIsConfirmationDialogOpen(true)
     }
   }, [isUserLoading, user?.isCurrentSemesterSet])
-
-  const { data: session } = useSession()
 
   if (isUserLoading) return <LoadingPage />
 

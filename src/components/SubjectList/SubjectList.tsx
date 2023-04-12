@@ -37,7 +37,9 @@ export const SubjectList = ({
   handleAddToPlanner,
 }: SubjectListProps) => {
   const { data: session } = useSession()
-  const { data: user } = api.user.getUser.useQuery()
+  const { data: user } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
   return (
     <div className="col-span-8 grow xl:col-span-9">
       {!isLoading ? (

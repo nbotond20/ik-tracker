@@ -15,6 +15,7 @@ import type { Exam } from '@prisma/client'
 import { ResultType } from '@prisma/client'
 import { api } from '@utils/api'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useSession } from 'next-auth/react'
 import { v4 as uuidv4 } from 'uuid'
 
 interface SubjectResultModalProps {
@@ -43,7 +44,10 @@ export const SubjectResultModal = ({
   handleRefetch,
   semester,
 }: SubjectResultModalProps) => {
-  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery()
+  const { data: session } = useSession()
+  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
 
   const { data: subjects, isLoading: isSubjectsLoading } = api.subject.getAll.useQuery(undefined, {
     enabled: open,

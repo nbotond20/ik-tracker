@@ -45,7 +45,9 @@ export const SubjectGrid = ({
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
   const { t } = useTranslation()
   const { data: session } = useSession()
-  const { data: user } = api.user.getUser.useQuery()
+  const { data: user } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
   return (
     <div className="col-span-8 grow xl:col-span-9">
       <div className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400 rounded-lg mb-6 flex justify-between">

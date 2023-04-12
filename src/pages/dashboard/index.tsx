@@ -10,6 +10,7 @@ import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
 import type { NextPage, GetServerSidePropsContext } from 'next'
 import { getServerSession } from 'next-auth'
+import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -46,7 +47,10 @@ const breadcrumbs = [
 type Statistics = RouterOutputs['subjectProgress']['statisticsBySemester']
 
 const DashBoardPage: NextPage = () => {
-  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery()
+  const { data: session } = useSession()
+  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
   const { data: statistics, isLoading } = api.subjectProgress.statisticsBySemester.useQuery(
     {
       semester: user?.currentSemester ?? 0,
