@@ -306,9 +306,8 @@ const PlannerPage: NextPage = () => {
                   <div className={`${subjects.length > 1 ? 'col-span-11' : 'col-span-12'} relative mb-2 mt-2 flex`}>
                     {subject.subject && (
                       <div
-                        className="absolute cursor-pointer"
+                        className="absolute cursor-pointer top-[3px] sm:top-[9px]"
                         style={{
-                          top: 3,
                           left: 5,
                         }}
                         onClick={() => setSelectedSubject(subject.subject)}
@@ -328,13 +327,12 @@ const PlannerPage: NextPage = () => {
                       placeholder="Code"
                       className={`${subject.subject ? 'pl-8' : ''} ${getInputBGColor(
                         subject
-                      )} h-[30px] pr-8 w-full placeholder:text-gray-400 rounded-lg border px-2 py-1 text-sm font-medium focus:outline-none focus:ring-1 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500`}
+                      )} pr-8 w-full placeholder:text-gray-400 rounded-lg border px-2 py-1 h-[30px] sm:h-auto sm:py-2 text-sm sm:text-base font-medium focus:outline-none focus:ring-1 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500`}
                       value={subject.code || ''}
                     />
                     <div
-                      className="absolute"
+                      className="absolute top-[3px] sm:top-[9px]"
                       style={{
-                        top: 3,
                         right: 5,
                       }}
                     >
