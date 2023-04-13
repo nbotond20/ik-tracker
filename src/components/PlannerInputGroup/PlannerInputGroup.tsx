@@ -24,8 +24,8 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
         }}
         onClick={() => setShowInput(prev => !prev)}
       >
-        <span className="text-gray-500 text-sm">Show details</span>
-        {!showInput ? (
+        <span className="text-gray-500 text-sm">{showInput ? 'Hide' : 'Show'} details</span>
+        {showInput ? (
           <ChevronUpIcon className="h-6 w-6 text-gray-500  z-50" />
         ) : (
           <ChevronDownIcon className="h-6 w-6 text-gray-500 z-50" />
@@ -36,14 +36,12 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
           <div
             style={{
               height: '40px', // 25 + 2 = 27
-              width: '17px',
               position: 'absolute',
               borderBottomLeftRadius: '10px',
               top: '-8px',
-              left: -17,
               zIndex: -1,
             }}
-            className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2"
+            className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2 w-[17px] -left-[17px] sm:w-[38px] sm:-left-[38px]"
           />
           <input
             tabIndex={-1}
@@ -66,14 +64,12 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
           <div
             style={{
               height: '48px',
-              width: '17px',
               borderBottomLeftRadius: '10px',
               position: 'absolute',
               top: 23,
-              left: -17,
               zIndex: -1,
             }}
-            className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2"
+            className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2 w-[17px] -left-[17px] sm:w-[38px] sm:-left-[38px]"
           />
           <select
             tabIndex={-1}
@@ -102,14 +98,12 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
           <div
             style={{
               height: '48px',
-              width: '17px',
               borderBottomLeftRadius: '10px',
               position: 'absolute',
               top: 61,
-              left: -17,
               zIndex: -1,
             }}
-            className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2"
+            className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2 w-[17px] -left-[17px] sm:w-[38px] sm:-left-[38px]"
           />
           <select
             tabIndex={-1}
@@ -138,14 +132,12 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
           <div
             style={{
               height: '48px',
-              width: '17px',
               borderBottomLeftRadius: '10px',
               position: 'absolute',
               top: 99,
-              left: -17,
               zIndex: -1,
             }}
-            className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2"
+            className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2 w-[17px] -left-[17px] sm:w-[38px] sm:-left-[38px]"
           />
           <div className="grid grid-cols-12 gap-2 relative">
             <div
@@ -199,14 +191,12 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
           <div
             style={{
               height: '48px',
-              width: '17px',
               borderBottomLeftRadius: '10px',
               position: 'absolute',
               top: 137,
-              left: -17,
               zIndex: -1,
             }}
-            className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2"
+            className="dark:border-gray-600 border-gray-200 border-l-2 border-b-2 w-[17px] -left-[17px] sm:w-[38px] sm:-left-[38px]"
           />
           <div className="grid grid-cols-12 gap-2 relative">
             <div

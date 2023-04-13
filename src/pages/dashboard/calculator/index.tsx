@@ -100,13 +100,13 @@ const CalculatorPage: NextPage = () => {
         </div>
         <div className="w-full mb-12 mt-6 h-fit grid gap-6 grid-cols-12 pb-12">
           {/* Statistics */}
-          <div className="order-2 col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-4 2xl:col-span-3">
+          <div className="order-2 col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 2xl:col-span-3">
             <div className="top-4 sticky">
               <StatisticsTable statistics={statistics} />
             </div>
           </div>
           {/* Add subjects */}
-          <div className="xl:order-1 col-span-12 xl:col-span-8 2xl:col-span-9 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
+          <div className="2xl:order-1 col-span-12 2xl:col-span-9 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
             <h2 className="text-xl font-bold dark:text-white mb-6">{t('calculator.subjects.title')}</h2>
             <div className="flex justify-center items-center flex-col gap-4">
               {subjects.map((subject, idx) => (

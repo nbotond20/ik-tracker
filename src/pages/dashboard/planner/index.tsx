@@ -10,6 +10,7 @@ import { TrashIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import type { SubjectGroupType, SubjectType } from '@prisma/client'
 import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
+import { calculatePlannerStatistics } from '@utils/calculatePlannerStatistics'
 import { debounce } from '@utils/debounce'
 import { getIconForSubject, getInputBGColor } from '@utils/plannerHelperFunctions'
 import type { NextPage } from 'next'
@@ -90,6 +91,13 @@ const PlannerPage: NextPage = () => {
                 isFetched: false,
                 subject: undefined,
                 missingPreReqsType: undefined,
+                subjectType: undefined,
+                creditType: undefined,
+                lecture: undefined,
+                practice: undefined,
+                labor: undefined,
+                consultation: undefined,
+                credit: undefined,
               }
             : s
         )
@@ -141,6 +149,12 @@ const PlannerPage: NextPage = () => {
 
   const [selectedSubject, setSelectedSubject] = useState<IsAvailableReturnType['subject'] | null>(null)
 
+  const [statistics, setStatistics] = useState(calculatePlannerStatistics(subjects))
+
+  useEffect(() => {
+    setStatistics(calculatePlannerStatistics(subjects))
+  }, [subjects])
+
   if (status === 'loading') return <LoadingPage />
 
   if (!session) {
@@ -168,13 +182,13 @@ const PlannerPage: NextPage = () => {
           <BreadCrumbs breadcrumbs={breadcrumbs} />
         </div>
         <div className="w-full mb-12 mt-6 h-fit grid gap-6 grid-cols-12 pb-12">
-          <div className="order-2 col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-4 2xl:col-span-3">
+          <div className="order-2 col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 2xl:col-span-3">
             <div className="flex flex-col justify-center">
               <table className="mb-4 w-full">
                 <thead>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
                     <th className="py-1 pr-2 text-left text-base">Σ Credit per Subject Types</th>
-                    <th className="py-1 px-2 text-right">30</th>
+                    <th className="py-1 px-2 text-right">{statistics.totalCredit}</th>
                   </tr>
                 </thead>
                 <tbody className="flex-1 sm:flex-none">
@@ -184,7 +198,7 @@ const PlannerPage: NextPage = () => {
                         Base Credit
                       </span>
                     </td>
-                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                    <td className="py-1 px-2 text-right font-semibold">{statistics.baseCredit}</td>
                   </tr>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
@@ -192,7 +206,7 @@ const PlannerPage: NextPage = () => {
                         Compulsory Credit
                       </span>
                     </td>
-                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                    <td className="py-1 px-2 text-right font-semibold">{statistics.compulsoryCredit}</td>
                   </tr>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
@@ -200,7 +214,15 @@ const PlannerPage: NextPage = () => {
                         Compulsory Elective Credit
                       </span>
                     </td>
-                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                    <td className="py-1 px-2 text-right font-semibold">{statistics.compulsoryElectiveCredit}</td>
+                  </tr>
+                  <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
+                    <td className="py-1 pr-2 text-left">
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
+                        Elective Credit
+                      </span>
+                    </td>
+                    <td className="py-1 px-2 text-right font-semibold">{statistics.electiveCredit}</td>
                   </tr>
                 </tbody>
               </table>
@@ -208,7 +230,7 @@ const PlannerPage: NextPage = () => {
                 <thead>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
                     <th className="py-1 pr-2 text-left text-base">Σ Compulsory Elective Credit Types</th>
-                    <th className="py-1 px-2 text-right">30</th>
+                    <th className="py-1 px-2 text-right">{statistics.compulsoryElectiveCredit}</th>
                   </tr>
                 </thead>
                 <tbody className="flex-1 sm:flex-none">
@@ -218,7 +240,7 @@ const PlannerPage: NextPage = () => {
                         Informatics
                       </span>
                     </td>
-                    <td className="py-1 px-2 text-right font-semibold">{15}</td>
+                    <td className="py-1 px-2 text-right font-semibold">{statistics.infCredit}</td>
                   </tr>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
@@ -226,7 +248,7 @@ const PlannerPage: NextPage = () => {
                         Computing
                       </span>
                     </td>
-                    <td className="py-1 px-2 text-right font-semibold">{15}</td>
+                    <td className="py-1 px-2 text-right font-semibold">{statistics.compCredit}</td>
                   </tr>
                 </tbody>
               </table>
@@ -234,7 +256,11 @@ const PlannerPage: NextPage = () => {
                 <thead>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
                     <th className="py-1 pr-2 text-left text-base">Σ Weekly Hours</th>
-                    <th className="py-1 px-2 text-right">30</th>
+                    <th className="py-1 px-2 text-right">
+                      {`${statistics.totalLabor + statistics.totalLecture + statistics.totalPractice} + ${
+                        statistics.totalConsultation
+                      }`}
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="flex-1 sm:flex-none">
@@ -244,7 +270,7 @@ const PlannerPage: NextPage = () => {
                         Lecture
                       </span>
                     </td>
-                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                    <td className="py-1 px-2 text-right font-semibold">{statistics.totalLecture}</td>
                   </tr>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
@@ -252,13 +278,13 @@ const PlannerPage: NextPage = () => {
                         Practice
                       </span>
                     </td>
-                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                    <td className="py-1 px-2 text-right font-semibold">{statistics.totalPractice}</td>
                   </tr>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
                       <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">Labor</span>
                     </td>
-                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                    <td className="py-1 px-2 text-right font-semibold">{statistics.totalLabor}</td>
                   </tr>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
@@ -266,18 +292,18 @@ const PlannerPage: NextPage = () => {
                         Consultation
                       </span>
                     </td>
-                    <td className="py-1 px-2 text-right font-semibold">{10}</td>
+                    <td className="py-1 px-2 text-right font-semibold">{statistics.totalConsultation}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-          <div className="xl:order-1 col-span-12 xl:col-span-8 2xl:col-span-9 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
+          <div className="2xl:order-1 col-span-12 2xl:col-span-9 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
             <h2 className=" text-xl font-bold dark:text-white mb-6">{t('planner.subjects.title')}</h2>
             <div className="grid grid-cols-12">
               {subjects.map((subject, idx) => (
-                <div className="grid grid-cols-12 col-span-12 items-center" key={idx}>
-                  <div className={`${subjects.length > 1 ? 'col-span-11' : 'col-span-12'} relative mb-2 flex`}>
+                <div className="grid grid-cols-12 col-span-12 items-center gap" key={idx}>
+                  <div className={`${subjects.length > 1 ? 'col-span-11' : 'col-span-12'} relative mb-2 mt-2 flex`}>
                     {subject.subject && (
                       <div
                         className="absolute cursor-pointer"
@@ -317,7 +343,7 @@ const PlannerPage: NextPage = () => {
                   </div>
                   {idx !== subjects.length - 1 ? (
                     <div
-                      className="col-span-1 flex justify-center cursor-pointer ml-2 mb-2"
+                      className="col-span-1 flex justify-center cursor-pointer ml-2 sm:ml-0"
                       onClick={() => handleDeleteSubject(subject.id)}
                     >
                       <TrashIcon className="h-6 w-6 text-red-500" />
