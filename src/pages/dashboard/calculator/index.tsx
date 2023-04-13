@@ -44,7 +44,7 @@ const CalculatorPage: NextPage = () => {
   )
 
   useEffect(() => {
-    const subjects = localStorage.getItem('subjects')
+    const subjects = localStorage.getItem('calculator-subjects')
     if (subjects) {
       setSubjects(JSON.parse(subjects) as ISubject[])
     }
@@ -52,10 +52,10 @@ const CalculatorPage: NextPage = () => {
 
   useEffect(() => {
     if (subjects.length === 1 && subjects[0]?.credit === undefined && subjects[0]?.grade === undefined) {
-      localStorage.removeItem('subjects')
+      localStorage.removeItem('calculator-subjects')
       return
     }
-    localStorage.setItem('subjects', JSON.stringify(subjects))
+    localStorage.setItem('calculator-subjects', JSON.stringify(subjects))
   }, [subjects])
 
   useEffect(() => {
@@ -83,7 +83,7 @@ const CalculatorPage: NextPage = () => {
 
   const handleDeleteSubject = (id: string) => {
     setSubjects(subjects.filter(s => s.id !== id))
-    if (subjects.length === 1) localStorage.removeItem('subjects')
+    if (subjects.length === 1) localStorage.removeItem('calculator-subjects')
   }
 
   return (

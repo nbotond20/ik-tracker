@@ -84,13 +84,13 @@ const SearchPage: NextPage = () => {
 
   const { mutateAsync: isSubjectAvailableForSemester } = api.subjectProgress.isSubjectAvailableForSemester.useMutation()
   const handleAddToPlanner = async (subject: Subject) => {
-    const localSubjectsJSON = localStorage.getItem('subjects')
+    const localSubjectsJSON = localStorage.getItem('planner-subjects')
     const data = await isSubjectAvailableForSemester({
       subjectCode: subject.code,
     })
     if (!localSubjectsJSON) {
       localStorage.setItem(
-        'subjects',
+        'planner-subjects',
         JSON.stringify([
           {
             id: uuidv4(),
@@ -114,7 +114,7 @@ const SearchPage: NextPage = () => {
     }
 
     localStorage.setItem(
-      'subjects',
+      'planner-subjects',
       JSON.stringify([
         ...localSubjects.filter(s => !!s.code),
         {

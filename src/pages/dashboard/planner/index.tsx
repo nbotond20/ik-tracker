@@ -128,7 +128,7 @@ const PlannerPage: NextPage = () => {
   const debouncedHandleSubjectChange = useCallback(debounce(handleSubjectChange, 250), [])
 
   useEffect(() => {
-    const subjects = localStorage.getItem('subjects')
+    const subjects = localStorage.getItem('planner-subjects')
     if (subjects) {
       setSubjects(JSON.parse(subjects) as ISubject[])
     }
@@ -136,15 +136,15 @@ const PlannerPage: NextPage = () => {
 
   useEffect(() => {
     if (subjects.length === 1 && subjects[0]?.code === undefined) {
-      localStorage.removeItem('subjects')
+      localStorage.removeItem('planner-subjects')
       return
     }
-    localStorage.setItem('subjects', JSON.stringify(subjects))
+    localStorage.setItem('planner-subjects', JSON.stringify(subjects))
   }, [subjects])
 
   const handleDeleteSubject = (id: string) => {
     setSubjects(subjects.filter(s => s.id !== id))
-    if (subjects.length === 1) localStorage.removeItem('subjects')
+    if (subjects.length === 1) localStorage.removeItem('planner-subjects')
   }
 
   const [selectedSubject, setSelectedSubject] = useState<IsAvailableReturnType['subject'] | null>(null)
