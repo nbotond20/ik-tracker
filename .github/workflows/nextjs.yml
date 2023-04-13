@@ -48,11 +48,16 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
-      - name: Setup Node
+      - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          node-version: 16
+      
+      - name: Install pnpm 
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 7
           
       - name: Create env file
         run: |
