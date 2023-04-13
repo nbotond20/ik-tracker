@@ -142,4 +142,82 @@ export const subjectProgressRouter = createTRPCRouter({
       subjectProgressesWithGrade,
     }
   }),
+
+  isSubjectAvailableForSemester: protectedProcedure
+    .input(z.object({ subjectCode: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const subjects = await ctx.prisma.subject.findMany({
+        where: {
+          code: input.subjectCode,
+        },
+        include: {
+          preRequirements: true,
+        },
+      })
+      const subject = subjects[0]
+
+      if (!subject) {
+        return {
+          subject: undefined,
+          missingPreReqsType: undefined,
+        }
+      }
+
+      if (subject.preRequirements.length === 0) {
+        return {
+          subject,
+          missingPreReqsType: 'met',
+        }
+      }
+
+      const subjectProgresses = await ctx.prisma.subjectProgress.findMany({
+        where: {
+          userId: ctx.session.user.id,
+        },
+        include: {
+          subject: true,
+          exams: true,
+        },
+      })
+
+      const subjectProgressesWithGrade = subjectProgresses
+        .filter(sp => sp.subject !== null)
+        .map(sp => {
+          const grade = calculateGrade(sp.marks as Marks, sp.exams) || 1
+
+          return {
+            id: sp.id,
+            code: sp.subject!.code,
+            grade,
+          }
+        })
+
+      const missingPreReqs = subject.preRequirements.filter(preReq => {
+        const subjectProgresses = subjectProgressesWithGrade.filter(
+          sp => sp.code === preReq.code || preReq.or.includes(sp.code)
+        )
+
+        if (subjectProgresses.length === 0) {
+          return true
+        }
+
+        const preReqsPassed = subjectProgresses.some(sp => sp.grade >= 2)
+
+        return !preReqsPassed
+      })
+
+      if (missingPreReqs.length === 0) {
+        return {
+          subject,
+          missingPreReqsType: 'met',
+        }
+      }
+
+      const missingPreReqsType = missingPreReqs.map(pr => pr.type).reduce((acc, type) => acc + type, 0)
+
+      return {
+        subject,
+        missingPreReqsType: missingPreReqsType > 0 ? 'not_met' : 'weak_not_met',
+      }
+    }),
 })

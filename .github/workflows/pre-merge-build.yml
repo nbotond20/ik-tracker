@@ -35,6 +35,14 @@ jobs:
           echo 'DISCORD_CLIENT_SECRET="${{ secrets.DISCORD_CLIENT_SECRET }}"' >> .env
           echo 'GITHUB_CLIENT_ID="${{ secrets.APP_GITHUB_CLIENT_ID }}"' >> .env
           echo 'GITHUB_CLIENT_SECRET="${{ secrets.APP_GITHUB_CLIENT_SECRET }}"' >> .env
+          echo 'NEXT_PUBLIC_FEATURE_FLAGS_URL="${{ secrets.NEXT_PUBLIC_FEATURE_FLAGS_URL }}"' >> .env
+          echo 'NEXT_PUBLIC_SOCKET_SECRET="${{ secrets.NEXT_PUBLIC_SOCKET_SECRET }}"' >> .env
+          echo 'NEXT_PUBLIC_SOCKET_URL="${{ secrets.NEXT_PUBLIC_SOCKET_URL }}"' >> .env
+          echo 'EMAIL_SERVER_USER="${{ secrets.EMAIL_SERVER_USER }}"' >> .env
+          echo 'EMAIL_SERVER_PASSWORD="${{ secrets.EMAIL_SERVER_PASSWORD }}"' >> .env
+          echo 'EMAIL_SERVER_HOST="${{ secrets.EMAIL_SERVER_HOST }}"' >> .env
+          echo 'EMAIL_SERVER_PORT="${{ secrets.EMAIL_SERVER_PORT }}"' >> .env
+          echo 'EMAIL_FROM="${{ secrets.EMAIL_FROM }}"' >> .env
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm

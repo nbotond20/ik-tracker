@@ -3,7 +3,9 @@ import { Pagination } from '@components/Pagination/Pagination'
 import { SubjectTable } from '@components/SubjectTable/SubjectTable'
 import { tableColumnHeaders } from '@constants/pages'
 import type { RouterOutputs } from '@utils/api'
+import { api } from '@utils/api'
 import type { CompareType } from '@utils/subjectComparator'
+import { useSession } from 'next-auth/react'
 
 interface SubjectListProps {
   subjects: Subject[]
@@ -15,6 +17,8 @@ interface SubjectListProps {
   handleNextPage: () => void
   elementsPerPage: number
   totalElements: number
+  handleCreateSubjectProgress: (subjectId: string) => void
+  handleAddToPlanner: (subject: Subject) => Promise<void>
 }
 
 type Subject = RouterOutputs['subject']['getAll'][number]
@@ -29,7 +33,13 @@ export const SubjectList = ({
   handleNextPage,
   elementsPerPage,
   totalElements,
+  handleCreateSubjectProgress,
+  handleAddToPlanner,
 }: SubjectListProps) => {
+  const { data: session } = useSession()
+  const { data: user } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
   return (
     <div className="col-span-8 grow xl:col-span-9">
       {!isLoading ? (
@@ -39,6 +49,9 @@ export const SubjectList = ({
             sortType={sortType}
             handleSort={handleSetSortedSubjects}
             tableColumnHeaders={tableColumnHeaders}
+            handleCreateSubjectProgress={handleCreateSubjectProgress}
+            handleAddToPlanner={handleAddToPlanner}
+            isLoggedIn={!!session && user?.isCurrentSemesterSet}
           />
         </div>
       ) : (

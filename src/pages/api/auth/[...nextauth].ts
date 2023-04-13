@@ -15,6 +15,7 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.id = user?.id
         token.currentSemester = user?.currentSemester
+        token.isCurrentSemesterSet = user?.isCurrentSemesterSet
       }
       return token
     },
@@ -22,6 +23,7 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         session.user.id = token?.id || user.id
         session.user.currentSemester = token?.currentSemester || user.currentSemester
+        session.user.isCurrentSemesterSet = token?.isCurrentSemesterSet ?? user.isCurrentSemesterSet
       }
       return session
     },

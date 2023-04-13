@@ -25,12 +25,16 @@ const ProfilePage: NextPage = () => {
   const router = useRouter()
   const { t } = useTranslation()
 
-  const { data: providers, isLoading: isProviderQueryLoading } = api.user.getLinkedProviders.useQuery()
-  const { data: user, isLoading: isUserQueryLoading } = api.user.getUser.useQuery()
+  const { data: providers, isLoading: isProviderQueryLoading } = api.user.getLinkedProviders.useQuery(undefined, {
+    enabled: !!session,
+  })
+  const { data: user, isLoading: isUserQueryLoading } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
 
   useEffect(() => {
     if (!session?.user && status !== 'loading') {
-      void router.push('/login')
+      void router.push(`/login?callbackUrl=${router.pathname}`)
     }
   }, [router, session?.user, status])
 
@@ -44,14 +48,19 @@ const ProfilePage: NextPage = () => {
   }, [user?.currentSemester])
 
   const { user: userContext } = api.useContext()
+
   const {
     mutateAsync: updateCurrentSemester,
     isLoading: isUpdateSemesterLoading,
     error: updateCurrentSemesterError,
   } = api.user.updateCurrentSemester.useMutation({
-    onSuccess: () => {
+    onSuccess: async () => {
       setIsSemesterEditing(false)
-      void userContext.invalidate()
+      const { setCurrentSemester } = router.query
+      await userContext.invalidate()
+      if (setCurrentSemester) {
+        void router.push('/dashboard/progress')
+      }
     },
   })
 
@@ -69,6 +78,13 @@ const ProfilePage: NextPage = () => {
       )
     }
   }, [currentSemester, updateCurrentSemester])
+
+  useEffect(() => {
+    const { setCurrentSemester } = router.query
+    if (setCurrentSemester) {
+      setIsSemesterEditing(true)
+    }
+  }, [router.query])
 
   if (!session?.user || isProviderQueryLoading || isUserQueryLoading) return <LoadingPage />
 
@@ -138,6 +154,7 @@ const ProfilePage: NextPage = () => {
                     isSemesterEditing ? 'bg-white dark:bg-gray-700' : 'bg-gray-100 dark:bg-gray-600 text-gray-500'
                   }`}
                   error={!!updateCurrentSemesterError?.data?.zodError?.fieldErrors?.currentSemester?.[0]}
+                  autoFocus={isSemesterEditing}
                 />
                 <button
                   onClick={() => {

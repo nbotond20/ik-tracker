@@ -5,6 +5,7 @@ declare module 'next-auth/jwt' {
   interface JWT {
     id: string
     currentSemester?: number
+    isCurrentSemesterSet?: boolean
   }
 }
 
@@ -16,6 +17,7 @@ declare module 'next-auth' {
     user?: {
       id: string
       currentSemester?: number
+      isCurrentSemesterSet?: boolean
     } & DefaultSession['user']
   }
 
@@ -23,5 +25,6 @@ declare module 'next-auth' {
   interface User {
     id: string
     currentSemester?: number
+    isCurrentSemesterSet?: boolean
   }
 }

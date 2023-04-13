@@ -15,6 +15,7 @@ import type { Exam } from '@prisma/client'
 import { ResultType } from '@prisma/client'
 import { api } from '@utils/api'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useSession } from 'next-auth/react'
 import { v4 as uuidv4 } from 'uuid'
 
 interface SubjectResultModalProps {
@@ -43,7 +44,10 @@ export const SubjectResultModal = ({
   handleRefetch,
   semester,
 }: SubjectResultModalProps) => {
-  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery()
+  const { data: session } = useSession()
+  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
 
   const { data: subjects, isLoading: isSubjectsLoading } = api.subject.getAll.useQuery(undefined, {
     enabled: open,
@@ -245,7 +249,7 @@ export const SubjectResultModal = ({
         >
           {!isUserLoading && !isSubjectsLoading && user ? (
             <div className="sm:cardScrollBar relative max-h-screen w-full h-auto max-w-screen-md">
-              <motion.div
+              <div
                 data-mobile-max-height-16
                 className="overflow-y-auto col-span-12 block rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 xl:col-span-6 max-h-[calc(100vh-16px)]"
               >
@@ -469,7 +473,7 @@ export const SubjectResultModal = ({
                     </Button>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           ) : (
             <LoadingPage />

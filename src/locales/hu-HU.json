@@ -82,6 +82,11 @@
     "title": "Nincs internetkapcsolat"
   },
   "planner": {
+    "subjects": {
+      "subjectCode": "Kód",
+      "subjectName": "Név",
+      "title": "Tantárgyak"
+    },
     "title": "Tervező"
   },
   "profile": {
@@ -104,7 +109,7 @@
     "dashboard": "Irányítópult",
     "home": "Főoldal",
     "login": "Bejelentkezés",
-    "planer": "Tervező",
+    "planner": "Tervező",
     "profile": "Profil",
     "progress": "Előrehaladás",
     "search": "Keresés",

@@ -10,6 +10,7 @@ import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
 import type { NextPage, GetServerSidePropsContext } from 'next'
 import { getServerSession } from 'next-auth'
+import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -46,7 +47,10 @@ const breadcrumbs = [
 type Statistics = RouterOutputs['subjectProgress']['statisticsBySemester']
 
 const DashBoardPage: NextPage = () => {
-  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery()
+  const { data: session } = useSession()
+  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
   const { data: statistics, isLoading } = api.subjectProgress.statisticsBySemester.useQuery(
     {
       semester: user?.currentSemester ?? 0,
@@ -72,7 +76,7 @@ const DashBoardPage: NextPage = () => {
         </div>
         <div className="grid w-full grid-cols-12 gap-4 pb-12">
           <Link
-            href="/dashboard/subject-progresses"
+            href="/dashboard/progress"
             className="col-span-12 lg:col-span-4  cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
           >
             <div className="flex items-center gap-4">
@@ -101,7 +105,7 @@ const DashBoardPage: NextPage = () => {
               <div className=" flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
                 <AcademicCapIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
               </div>
-              <h2 className=" text-xl font-bold dark:text-white">Planner</h2>
+              <h2 className=" text-xl font-bold dark:text-white">Planner 🚧</h2>
             </div>
           </Link>
           {/* STATISTICS */}
@@ -114,31 +118,33 @@ const DashBoardPage: NextPage = () => {
               <div className="w-full flex flex-col lg:flex-row gap-8 justify-evenly">
                 <StatisticsTable statistics={statistics as Omit<Statistics, 'subjectProgressesWithGrade'>} />
                 {statistics?.subjectProgressesWithGrade && statistics?.subjectProgressesWithGrade.length > 0 && (
-                  <table>
-                    <thead>
-                      <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
-                        <th className="py-1 pr-2 text-left text-base">Subject</th>
-                        <th className="py-1 px-2 text-right text-base">Grade</th>
-                      </tr>
-                    </thead>
-                    <tbody className="flex-1 sm:flex-none">
-                      {statistics?.subjectProgressesWithGrade.map(statistic => (
-                        <tr
-                          key={statistic.id}
-                          className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal"
-                        >
-                          <td className="py-1 pr-2 text-left">{statistic.subjectName}</td>
-                          <td className="py-1 px-2 text-right">
-                            <Badge
-                              variant={statistic.grade >= 4 ? 'success' : statistic.grade >= 2 ? 'warning' : 'danger'}
-                            >
-                              {statistic.grade}
-                            </Badge>
-                          </td>
+                  <div className="w-full lg:w-auto">
+                    <table className="w-full lg:w-auto">
+                      <thead>
+                        <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
+                          <th className="py-1 pr-2 text-left text-base">Subject</th>
+                          <th className="py-1 px-2 text-right text-base">Grade</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody className="flex-1 sm:flex-none">
+                        {statistics?.subjectProgressesWithGrade.map(statistic => (
+                          <tr
+                            key={statistic.id}
+                            className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal"
+                          >
+                            <td className="py-1 pr-2 text-left">{statistic.subjectName}</td>
+                            <td className="py-1 px-2 text-right">
+                              <Badge
+                                variant={statistic.grade >= 4 ? 'success' : statistic.grade >= 2 ? 'warning' : 'danger'}
+                              >
+                                {statistic.grade}
+                              </Badge>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 )}
               </div>
             ) : (

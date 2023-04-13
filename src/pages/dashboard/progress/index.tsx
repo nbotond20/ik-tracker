@@ -3,17 +3,21 @@ import { useTranslation } from 'react-i18next'
 
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { Button } from '@components/Button/Button'
+import { ConfirmationDialog } from '@components/ConfirmationDialog/ConfirmationDialog'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
 import { SubjectTableLoadingState } from '@components/LoadingStates/SubjectTableLoadingState'
 import { ProgressCard } from '@components/ProgressCard/ProgressCard'
 import { LoadingPage } from '@components/Spinner/Spinner'
 import { SubjectResultModal } from '@components/SubjectResultModal/SubjectResultModal'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import type { SubjectProgressWithExamsAndSubject } from '@models/SubjectProgressWithExamsAndSubject'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
 import { api } from '@utils/api'
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import { getServerSession } from 'next-auth'
+import { useSession } from 'next-auth/react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getServerSession(context.req, context.res, authOptions)
@@ -21,7 +25,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!session?.user) {
     return {
       redirect: {
-        destination: '/login?callbackUrl=/dashboard/subject-progresses',
+        destination: '/login?callbackUrl=/dashboard/progress',
         permanent: false,
       },
     }
@@ -45,11 +49,15 @@ const breadcrumbs = [
 ]
 
 const SubjectProgressPage: NextPage = () => {
+  const { data: session } = useSession()
+
   const [selectedSubjectProgress, setSelectedSubjectProgress] = useState<
     SubjectProgressWithExamsAndSubject | undefined
   >()
 
-  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery()
+  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
   const [semester, setSemester] = useState(user?.currentSemester ?? 0)
 
   useEffect(() => {
@@ -102,8 +110,37 @@ const SubjectProgressPage: NextPage = () => {
   const [openAll, setOpenAll] = useState(false)
 
   const { t } = useTranslation()
+  const router = useRouter()
+
+  const [isConfirmationDialogOpen, setIsConfirmationDialogOpen] = useState(false)
+  const handleConfirmationDialog = () => {
+    setIsConfirmationDialogOpen(false)
+    void router.push('/profile?setCurrentSemester=true')
+  }
+
+  useEffect(() => {
+    if (!isUserLoading && !user?.isCurrentSemesterSet) {
+      setIsConfirmationDialogOpen(true)
+    }
+  }, [isUserLoading, user?.isCurrentSemesterSet])
 
   if (isUserLoading) return <LoadingPage />
+
+  if (!user?.isCurrentSemesterSet)
+    return (
+      <ConfirmationDialog
+        isOpen={isConfirmationDialogOpen}
+        title="You haven't set your current semester yet! Please set it now to continue."
+        onConfirm={handleConfirmationDialog}
+        Icon={ExclamationTriangleIcon}
+        confirmText="Set current semester"
+      />
+    )
+
+  if (!session) {
+    void router.push(`/login?callbackUrl=${router.pathname}`)
+    return <LoadingPage />
+  }
 
   return (
     <ScrollLayout>

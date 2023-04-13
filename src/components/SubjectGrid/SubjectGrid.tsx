@@ -6,8 +6,10 @@ import { Pagination } from '@components/Pagination/Pagination'
 import { SubjectCard } from '@components/SubjectCard/SubjectCard'
 import { tableColumnHeaders } from '@constants/pages'
 import type { RouterOutputs } from '@utils/api'
+import { api } from '@utils/api'
 import type { CompareType } from '@utils/subjectComparator'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 
 const ChevronUpDownIcon = dynamic(() => import('@heroicons/react/24/solid/ChevronUpDownIcon'))
@@ -23,6 +25,8 @@ interface SubjectGridProps {
   handleNextPage: () => void
   elementsPerPage: number
   totalElements: number
+  handleCreateSubjectProgress: (subjectId: string) => void
+  handleAddToPlanner: (subject: Subject) => Promise<void>
 }
 
 export const SubjectGrid = ({
@@ -35,15 +39,21 @@ export const SubjectGrid = ({
   handleNextPage,
   elementsPerPage,
   totalElements,
+  handleCreateSubjectProgress,
+  handleAddToPlanner,
 }: SubjectGridProps) => {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null)
   const { t } = useTranslation()
+  const { data: session } = useSession()
+  const { data: user } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
   return (
     <div className="col-span-8 grow xl:col-span-9">
       <div className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400 rounded-lg mb-6 flex justify-between">
         {tableColumnHeaders.map((tableColumnHeader, idx) => (
           <div
-            className={`grow cursor-pointer p-2 hover:bg-gray-50 dark:hover:bg-gray-600 sm:p-3 font-semibold ${
+            className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 grow p-2 sm:p-3 ${
               tableColumnHeader.classes ? tableColumnHeader.classes : ''
             } ${idx === 0 ? 'rounded-l-lg' : ''} ${idx === tableColumnHeaders.length - 1 ? 'rounded-r-lg' : ''}`}
             onClick={() => handleSetSortedSubjects(tableColumnHeader.sortType)}
@@ -51,8 +61,8 @@ export const SubjectGrid = ({
           >
             <div className="flex items-center">
               <div
-                className={`flex items-center whitespace-nowrap ${
-                  sortType === tableColumnHeader.sortType ? 'font-extrabold text-black dark:text-white' : ''
+                className={`font-medium flex items-center whitespace-nowrap ${
+                  sortType === tableColumnHeader.sortType ? 'text-black dark:text-white' : 'text-gray-400'
                 }`}
               >
                 {t(tableColumnHeader.display)}
@@ -66,7 +76,15 @@ export const SubjectGrid = ({
         <div className="grid w-full max-w-7xl grid-cols-12 gap-6">
           <AnimatePresence>
             {subjects.map(subject => (
-              <SubjectCard key={subject.id} subject={subject} setSelectedSubject={setSelectedSubject} isSelectable />
+              <SubjectCard
+                key={subject.id}
+                subject={subject}
+                setSelectedSubject={setSelectedSubject}
+                isSelectable
+                handleCreateSubjectProgress={handleCreateSubjectProgress}
+                handleAddToPlanner={handleAddToPlanner}
+                isLoggedIn={!!session && user?.isCurrentSemesterSet}
+              />
             ))}
           </AnimatePresence>
         </div>

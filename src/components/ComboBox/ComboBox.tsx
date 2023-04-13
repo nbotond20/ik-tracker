@@ -38,8 +38,8 @@ export const Combobox = ({
     if (query === '') {
       setItemsState(items)
     } else {
-      setItemsState(prev =>
-        prev.filter(
+      setItemsState(
+        items.filter(
           item =>
             item.name.toLowerCase().includes(query.toLowerCase()) ||
             item.value.toLowerCase().includes(query.toLowerCase())
