@@ -21,10 +21,10 @@ dependencies:
     version: 10.19.1(@trpc/server@10.19.1)
   '@trpc/next':
     specifier: 10.19.1
-    version: 10.19.1(@tanstack/react-query@4.29.1)(@trpc/client@10.19.1)(@trpc/react-query@10.19.1)(@trpc/server@10.19.1)(next@13.3.0)(react-dom@18.2.0)(react@18.2.0)
+    version: 10.19.1(@tanstack/react-query@4.29.1)(@trpc/client@10.19.1)(@trpc/react-query@10.20.0)(@trpc/server@10.19.1)(next@13.3.0)(react-dom@18.2.0)(react@18.2.0)
   '@trpc/react-query':
-    specifier: 10.19.1
-    version: 10.19.1(@tanstack/react-query@4.29.1)(@trpc/client@10.19.1)(@trpc/server@10.19.1)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 10.20.0
+    version: 10.20.0(@tanstack/react-query@4.29.1)(@trpc/client@10.19.1)(@trpc/server@10.19.1)(react-dom@18.2.0)(react@18.2.0)
   '@trpc/server':
     specifier: 10.19.1
     version: 10.19.1
@@ -2528,7 +2528,7 @@ packages:
       '@trpc/server': 10.19.1
     dev: false
 
-  /@trpc/next@10.19.1(@tanstack/react-query@4.29.1)(@trpc/client@10.19.1)(@trpc/react-query@10.19.1)(@trpc/server@10.19.1)(next@13.3.0)(react-dom@18.2.0)(react@18.2.0):
+  /@trpc/next@10.19.1(@tanstack/react-query@4.29.1)(@trpc/client@10.19.1)(@trpc/react-query@10.20.0)(@trpc/server@10.19.1)(next@13.3.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-xe1Ygp4oGtn+zUJu+pCKhbfZ7aveyVAMyYrka81v0BwZTKAAGzp6YuO4t6JtW+3x+ZSJ7sHphJP2bwThJQo9kQ==}
     peerDependencies:
       '@tanstack/react-query': ^4.18.0
@@ -2541,7 +2541,7 @@ packages:
     dependencies:
       '@tanstack/react-query': 4.29.1(react-dom@18.2.0)(react@18.2.0)
       '@trpc/client': 10.19.1(@trpc/server@10.19.1)
-      '@trpc/react-query': 10.19.1(@tanstack/react-query@4.29.1)(@trpc/client@10.19.1)(@trpc/server@10.19.1)(react-dom@18.2.0)(react@18.2.0)
+      '@trpc/react-query': 10.20.0(@tanstack/react-query@4.29.1)(@trpc/client@10.19.1)(@trpc/server@10.19.1)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server': 10.19.1
       next: 13.3.0(@babel/core@7.21.4)(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
@@ -2549,12 +2549,12 @@ packages:
       react-ssr-prepass: 1.5.0(react@18.2.0)
     dev: false
 
-  /@trpc/react-query@10.19.1(@tanstack/react-query@4.29.1)(@trpc/client@10.19.1)(@trpc/server@10.19.1)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-bKtv/hz1ssoH/56i72skRcJ2Q4/gUJhrxvqDD0sJ6PczsPq4xbyO2GDs/cPaVqDpYf2EEAG9nHo48t8fW/XQ/w==}
+  /@trpc/react-query@10.20.0(@tanstack/react-query@4.29.1)(@trpc/client@10.19.1)(@trpc/server@10.19.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-8Qkmhe0fwKJIdONHu6wHd4onNbt10MO422mqCindV8AK2ommRDFERaz6sqdPevHVu7ggLEDMJ+aWRqR2VX+yYw==}
     peerDependencies:
       '@tanstack/react-query': ^4.18.0
-      '@trpc/client': 10.19.1
-      '@trpc/server': 10.19.1
+      '@trpc/client': 10.20.0
+      '@trpc/server': 10.20.0
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
