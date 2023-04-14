@@ -37,7 +37,7 @@
     "@trpc/server": "10.20.0",
     "@vercel/analytics": "0.1.11",
     "flowbite": "1.6.5",
-    "framer-motion": "10.11.6",
+    "framer-motion": "10.12.2",
     "i18next": "^22.4.13",
     "i18next-browser-languagedetector": "^7.0.1",
     "next": "13.3.0",
