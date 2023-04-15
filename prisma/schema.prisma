@@ -76,7 +76,7 @@ model Subject {
     consultation      Int
     courseName        String
     credit            Int
-    examType          ExamType?
+    assessmentType    AssessmentType?
     labor             Int
     lecture           Int
     practice          Int
@@ -100,7 +100,7 @@ model PreRequirement {
     subjectId String?  @db.ObjectId
 }
 
-enum ExamType {
+enum AssessmentType {
     K
     X
 }
@@ -132,21 +132,21 @@ enum SubjectType {
 }
 
 model SubjectProgress {
-    id          String   @id @default(auto()) @map("_id") @db.ObjectId
-    subjectId   String?  @db.ObjectId
-    subject     Subject? @relation(fields: [subjectId], references: [id], onDelete: SetNull)
+    id          String       @id @default(auto()) @map("_id") @db.ObjectId
+    subjectId   String?      @db.ObjectId
+    subject     Subject?     @relation(fields: [subjectId], references: [id], onDelete: SetNull)
     subjectName String?
     credit      Int?
-    userId      String   @db.ObjectId
-    user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-    exams       Exam[]
-    semester    Int      @default(1)
+    userId      String       @db.ObjectId
+    user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+    assessments Assessment[]
+    semester    Int          @default(1)
     marks       Float[]
 
     @@unique([subjectId, userId, semester, subjectName])
 }
 
-model Exam {
+model Assessment {
     id                String          @id @default(auto()) @map("_id") @db.ObjectId
     name              String
     subjectProgressId String          @db.ObjectId

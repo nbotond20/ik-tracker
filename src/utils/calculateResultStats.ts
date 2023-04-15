@@ -1,33 +1,35 @@
 import type { Marks } from '@components/MarkTable/MarkTable'
-import type { Exam } from '@prisma/client'
+import type { Assessment } from '@prisma/client'
 
-const everyExamPassed = (exams: Exam[]) =>
-  exams.every(
-    exam =>
-      (exam.resultType === 'GRADE' && exam.result && exam.result > 1) ||
-      (exam.resultType === 'PASSFAIL' && exam?.result === 1) ||
-      (exam.result && exam.minResult && exam?.result >= exam?.minResult) ||
-      !exam.minResult
+const everyAssessmentPassed = (assessments: Assessment[]) =>
+  assessments.every(
+    assessment =>
+      (assessment.resultType === 'GRADE' && assessment.result && assessment.result > 1) ||
+      (assessment.resultType === 'PASSFAIL' && assessment?.result === 1) ||
+      (assessment.result && assessment.minResult && assessment?.result >= assessment?.minResult) ||
+      !assessment.minResult
   )
 
-export const calculateGrade = (marks: Marks, exams: Exam[]) => {
-  if (exams.length === 0) return 0
-  const passed = everyExamPassed(exams)
+export const calculateGrade = (marks: Marks, assessments: Assessment[]) => {
+  if (assessments.length === 0) return 0
+  const passed = everyAssessmentPassed(assessments)
   if (!passed) return 1
 
-  const gradeTypeExams = exams.filter(exam => exam.resultType === 'GRADE')
-  const everyExamHasResult = gradeTypeExams.every(exam => exam.result)
-  if (gradeTypeExams && !everyExamHasResult) return 1
-  if (gradeTypeExams.length) {
+  const gradeTypeAssessments = assessments.filter(assessment => assessment.resultType === 'GRADE')
+  const everyAssessmentHasResult = gradeTypeAssessments.every(assessment => assessment.result)
+  if (gradeTypeAssessments && !everyAssessmentHasResult) return 1
+  if (gradeTypeAssessments.length) {
     return (
       Math.round(
-        (gradeTypeExams.reduce((acc, exam) => acc + (exam?.result || 0), 0) / gradeTypeExams.length + Number.EPSILON) *
+        (gradeTypeAssessments.reduce((acc, assessment) => acc + (assessment?.result || 0), 0) /
+          gradeTypeAssessments.length +
+          Number.EPSILON) *
           100
       ) / 100
     )
   }
 
-  const scoreSum = exams.reduce((acc, exam) => acc + (exam?.result || 0), 0)
+  const scoreSum = assessments.reduce((acc, assessment) => acc + (assessment?.result || 0), 0)
 
   if (marks[4] !== -1 && scoreSum >= marks[4]) {
     return 5
@@ -42,23 +44,26 @@ export const calculateGrade = (marks: Marks, exams: Exam[]) => {
   return 1
 }
 
-export const calculatePercentage = (exams: Exam[]) => {
-  if (exams.length === 0) return null
-  const filteredExams = exams.filter(exam => exam.resultType !== 'PASSFAIL')
-  if (filteredExams.length === 0) return null
+export const calculatePercentage = (assessments: Assessment[]) => {
+  if (assessments.length === 0) return null
+  const filteredAssessments = assessments.filter(assessment => assessment.resultType !== 'PASSFAIL')
+  if (filteredAssessments.length === 0) return null
 
-  const hasGradeExamTypeWithResult = filteredExams.some(exam => exam.resultType === 'GRADE')
-  if (hasGradeExamTypeWithResult) return null
+  const hasGradeAssessmentTypeWithResult = filteredAssessments.some(assessment => assessment.resultType === 'GRADE')
+  if (hasGradeAssessmentTypeWithResult) return null
 
-  const hasPercentExamTypeWithResult = filteredExams.some(exam => exam.resultType === 'PERCENT')
-  if (hasPercentExamTypeWithResult) {
-    const percentTypeExams = filteredExams.filter(exam => exam.resultType === 'PERCENT')
-    return percentTypeExams.reduce((acc, exam) => acc + (exam?.result || 0), 0) / percentTypeExams.length
+  const hasPercentAssessmentTypeWithResult = filteredAssessments.some(assessment => assessment.resultType === 'PERCENT')
+  if (hasPercentAssessmentTypeWithResult) {
+    const percentTypeAssessments = filteredAssessments.filter(assessment => assessment.resultType === 'PERCENT')
+    return (
+      percentTypeAssessments.reduce((acc, assessment) => acc + (assessment?.result || 0), 0) /
+      percentTypeAssessments.length
+    )
   }
 
-  const everyExamHasMaxResult = filteredExams.every(exam => exam.maxResult)
-  if (!everyExamHasMaxResult) return null
-  const maxResultSum = filteredExams.reduce((acc, exam) => acc + (exam?.maxResult || 0), 0)
-  const scoreSum = filteredExams.reduce((acc, exam) => acc + (exam?.result || 0), 0)
+  const everyAssessmentHasMaxResult = filteredAssessments.every(assessment => assessment.maxResult)
+  if (!everyAssessmentHasMaxResult) return null
+  const maxResultSum = filteredAssessments.reduce((acc, assessment) => acc + (assessment?.maxResult || 0), 0)
+  const scoreSum = filteredAssessments.reduce((acc, assessment) => acc + (assessment?.result || 0), 0)
   return Math.round((scoreSum / maxResultSum) * 100)
 }

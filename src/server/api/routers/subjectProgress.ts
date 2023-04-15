@@ -14,7 +14,7 @@ export const subjectProgressRouter = createTRPCRouter({
         id: input.id,
       },
       include: {
-        exams: true,
+        assessments: true,
         subject: true,
       },
     })
@@ -27,7 +27,7 @@ export const subjectProgressRouter = createTRPCRouter({
         userId: session.user.id,
       },
       include: {
-        exams: true,
+        assessments: true,
       },
     })
   }),
@@ -41,7 +41,7 @@ export const subjectProgressRouter = createTRPCRouter({
         semester: input.semester,
       },
       include: {
-        exams: true,
+        assessments: true,
         subject: true,
       },
     })
@@ -75,8 +75,8 @@ export const subjectProgressRouter = createTRPCRouter({
           subjectName: input.subjectName,
           credit: input.credit,
           marks: input.marks,
-          exams: {
-            create: input.exams,
+          assessments: {
+            create: input.assessments,
           },
         },
       })
@@ -94,7 +94,7 @@ export const subjectProgressRouter = createTRPCRouter({
   }),
 
   update: protectedProcedure.input(updateSubjectProgressInputSchema).mutation(async ({ ctx, input }) => {
-    const exams = await ctx.prisma.exam.findMany({
+    const assessments = await ctx.prisma.assessment.findMany({
       where: {
         subjectProgressId: input.id,
       },
@@ -106,9 +106,9 @@ export const subjectProgressRouter = createTRPCRouter({
       },
       data: {
         ...input.partialSubjectProgress,
-        exams: {
-          deleteMany: exams.map(exam => ({ id: exam.id })),
-          create: input.partialSubjectProgress.exams,
+        assessments: {
+          deleteMany: assessments.map(assessment => ({ id: assessment.id })),
+          create: input.partialSubjectProgress.assessments,
         },
       },
     })
@@ -121,13 +121,13 @@ export const subjectProgressRouter = createTRPCRouter({
         semester: input.semester,
       },
       include: {
-        exams: true,
+        assessments: true,
         subject: true,
       },
     })
 
     const subjectProgressesWithGrade = subjectProgresses.map(subjectProgress => {
-      const grade = calculateGrade(subjectProgress.marks as Marks, subjectProgress.exams) || 1
+      const grade = calculateGrade(subjectProgress.marks as Marks, subjectProgress.assessments) || 1
 
       return {
         id: subjectProgress.id,
@@ -176,14 +176,14 @@ export const subjectProgressRouter = createTRPCRouter({
         },
         include: {
           subject: true,
-          exams: true,
+          assessments: true,
         },
       })
 
       const subjectProgressesWithGrade = subjectProgresses
         .filter(sp => sp.subject !== null)
         .map(sp => {
-          const grade = calculateGrade(sp.marks as Marks, sp.exams) || 1
+          const grade = calculateGrade(sp.marks as Marks, sp.assessments) || 1
 
           return {
             id: sp.id,

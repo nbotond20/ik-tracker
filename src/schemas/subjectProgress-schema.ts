@@ -4,13 +4,13 @@ export const ResultTypeSchema = z.enum(['PERCENT', 'GRADE', 'POINT', 'PASSFAIL']
   required_error: 'Result type is required!',
 })
 
-export const examSchema = z
+export const assessmentSchema = z
   .object({
     resultType: ResultTypeSchema,
     name: z
-      .string({ required_error: 'Exam name is required!' })
-      .min(1, { message: 'Exam name must be at least 1 character long!' })
-      .max(255, { message: 'Exam name must be at most 255 characters long!' }),
+      .string({ required_error: 'Assessment name is required!' })
+      .min(1, { message: 'Assessment name must be at least 1 character long!' })
+      .max(255, { message: 'Assessment name must be at most 255 characters long!' }),
     minResult: z.number({ invalid_type_error: 'Minimum must be a number!' }).nullable().optional(),
     maxResult: z.number({ invalid_type_error: 'Maximum must be a number!' }).nullable().optional(),
     result: z.number({ invalid_type_error: 'Result must be a number!' }).nullable().optional(),
@@ -75,16 +75,16 @@ export const examSchema = z
     }
   )
 
-export const updateExamSchema = z
+export const updateAssessmentSchema = z
   .object({
-    id: z.string({ required_error: 'Exam id is required!' }),
-    partialExam: examSchema,
+    id: z.string({ required_error: 'Assessment id is required!' }),
+    partialAssessment: assessmentSchema,
   })
   .strict()
 
 const baseCreateSubjectProgressInputSchema = z.object({
   semester: z.number(),
-  exams: z.array(examSchema).optional(),
+  assessments: z.array(assessmentSchema).optional(),
   marks: z
     .array(z.number(), {
       required_error: 'Marks array is required!',
@@ -112,14 +112,16 @@ export const createSubjectProgressInputSchema = z
   ])
   .refine(
     data => {
-      if (!data.exams || data.exams.length === 0) return true
-      const firstExamResultType = data.exams[0]!.resultType
+      if (!data.assessments || data.assessments.length === 0) return true
+      const firstAssessmentResultType = data.assessments[0]!.resultType
 
-      return data.exams.every(exam => exam.resultType === firstExamResultType || exam.resultType === 'PASSFAIL')
+      return data.assessments.every(
+        assessment => assessment.resultType === firstAssessmentResultType || assessment.resultType === 'PASSFAIL'
+      )
     },
     {
-      message: `All exams must have the same result type or a result type of PASSFAIL`,
-      path: ['exams'],
+      message: `All assessments must have the same result type or a result type of PASSFAIL`,
+      path: ['assessments'],
     }
   )
 
@@ -127,7 +129,7 @@ export const updateSubjectProgressInputSchema = z.object({
   id: z.string(),
   partialSubjectProgress: z
     .object({
-      exams: z.array(examSchema).optional(),
+      assessments: z.array(assessmentSchema).optional(),
       marks: z
         .array(z.number(), {
           required_error: 'Marks array must contain 5 elements!',
@@ -141,14 +143,16 @@ export const updateSubjectProgressInputSchema = z.object({
     })
     .refine(
       data => {
-        if (!data.exams || data.exams.length === 0) return true
-        const firstExamResultType = data.exams[0]!.resultType
+        if (!data.assessments || data.assessments.length === 0) return true
+        const firstAssessmentResultType = data.assessments[0]!.resultType
 
-        return data.exams.every(exam => exam.resultType === firstExamResultType || exam.resultType === 'PASSFAIL')
+        return data.assessments.every(
+          assessment => assessment.resultType === firstAssessmentResultType || assessment.resultType === 'PASSFAIL'
+        )
       },
       {
-        message: `All exams must have the same result type or result type must be PASSFAIL`,
-        path: ['exams'],
+        message: `All assessments must have the same result type or result type must be PASSFAIL`,
+        path: ['assessments'],
       }
     ),
 })

@@ -10,7 +10,7 @@ import { ProgressCard } from '@components/ProgressCard/ProgressCard'
 import { LoadingPage } from '@components/Spinner/Spinner'
 import { SubjectResultModal } from '@components/SubjectResultModal/SubjectResultModal'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-import type { SubjectProgressWithExamsAndSubject } from '@models/SubjectProgressWithExamsAndSubject'
+import type { SubjectProgressWithAssessmentsAndSubject } from '@models/SubjectProgressWithAssessmentsAndSubject'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
 import { api } from '@utils/api'
 import type { GetServerSidePropsContext, NextPage } from 'next'
@@ -52,7 +52,7 @@ const SubjectProgressPage: NextPage = () => {
   const { data: session } = useSession()
 
   const [selectedSubjectProgress, setSelectedSubjectProgress] = useState<
-    SubjectProgressWithExamsAndSubject | undefined
+    SubjectProgressWithAssessmentsAndSubject | undefined
   >()
 
   const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {

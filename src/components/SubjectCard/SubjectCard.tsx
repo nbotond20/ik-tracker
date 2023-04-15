@@ -136,7 +136,11 @@ export const SubjectCard = ({
                 label="Pre Requirements"
               />
               <InputField disabled value={subject.specialisation} label="Specialisation" />
-              <InputField disabled value={subject.examType ? subject.examType : '-'} label="Exam Type" />
+              <InputField
+                disabled
+                value={subject.assessmentType ? subject.assessmentType : '-'}
+                label="Assessment Type"
+              />
               <InputField
                 disabled
                 value={subject.practiceGradeType ? subject.practiceGradeType : '-'}

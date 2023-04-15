@@ -61,7 +61,7 @@ Table Subject {
   consultation Int [not null]
   courseName String [not null]
   credit Int [not null]
-  examType ExamType
+  assessmentType AssessmentType
   labor Int [not null]
   lecture Int [not null]
   practice Int [not null]
@@ -95,7 +95,7 @@ Table SubjectProgress {
   credit Int
   userId String [not null]
   user User [not null]
-  exams Exam [not null]
+  assessments Assessment [not null]
   semester Int [not null, default: 1]
   marks Float[] [not null]
 
@@ -104,7 +104,7 @@ Table SubjectProgress {
   }
 }
 
-Table Exam {
+Table Assessment {
   id String [pk]
   name String [not null]
   subjectProgressId String [not null]
@@ -115,7 +115,7 @@ Table Exam {
   resultType ResultType [not null]
 }
 
-Enum ExamType {
+Enum AssessmentType {
   K
   X
 }
@@ -163,4 +163,4 @@ Ref: SubjectProgress.subjectId > Subject.id [delete: Set Null]
 
 Ref: SubjectProgress.userId > User.id [delete: Cascade]
 
-Ref: Exam.subjectProgressId > SubjectProgress.id [delete: Cascade]
+Ref: Assessment.subjectProgressId > SubjectProgress.id [delete: Cascade]

@@ -12,7 +12,7 @@ async function main() {
         consultation: subject.consultation,
         courseName: subject.courseName,
         credit: subject.credit,
-        examType: subject.examType,
+        assessmentType: subject.assessmentType,
         labor: subject.labor,
         lecture: subject.lecture,
         practice: subject.practice,

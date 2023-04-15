@@ -10,8 +10,8 @@ import type { Marks } from '@components/MarkTable/MarkTable'
 import { MarkTable } from '@components/MarkTable/MarkTable'
 import { LoadingPage } from '@components/Spinner/Spinner'
 import { TrashIcon } from '@heroicons/react/24/outline'
-import type { SubjectProgressWithExamsAndSubject } from '@models/SubjectProgressWithExamsAndSubject'
-import type { Exam } from '@prisma/client'
+import type { SubjectProgressWithAssessmentsAndSubject } from '@models/SubjectProgressWithAssessmentsAndSubject'
+import type { Assessment } from '@prisma/client'
 import { ResultType } from '@prisma/client'
 import { api } from '@utils/api'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -19,19 +19,19 @@ import { useSession } from 'next-auth/react'
 import { v4 as uuidv4 } from 'uuid'
 
 interface SubjectResultModalProps {
-  subjectProgress: SubjectProgressWithExamsAndSubject | undefined
+  subjectProgress: SubjectProgressWithAssessmentsAndSubject | undefined
   handleRefetch: () => Promise<void>
   open?: boolean
   closeModal?: () => void
   semester: number
 }
 
-const resultTypesToComboBoxItems = (resultTypes: ResultType[], examId: string) =>
+const resultTypesToComboBoxItems = (resultTypes: ResultType[], assessmentId: string) =>
   resultTypes.map(item => ({
     id: item,
     name: item,
     value: item,
-    data: { examId },
+    data: { assessmentId },
   }))
 
 // Get ResultType keys as values
@@ -72,60 +72,62 @@ export const SubjectResultModal = ({
       onSuccess: () => {
         closeModal?.()
         void handleRefetch()
-        setExamsErrors({})
+        setAssessmentsErrors({})
       },
       onError: error => {
-        if (error.data?.zodErrorObject) setExamsErrors(error.data?.zodErrorObject)
+        if (error.data?.zodErrorObject) setAssessmentsErrors(error.data?.zodErrorObject)
       },
     })
   const { mutateAsync: updateSubjectProgress } = api.subjectProgress.update.useMutation({
     onSuccess: () => {
       closeModal?.()
       void handleRefetch()
-      setExamsErrors({})
+      setAssessmentsErrors({})
     },
     onError: error => {
-      if (error.data?.zodErrorObject) setExamsErrors(error.data?.zodErrorObject)
+      if (error.data?.zodErrorObject) setAssessmentsErrors(error.data?.zodErrorObject)
     },
   })
 
-  const [examsErrors, setExamsErrors] = useState<{
+  const [assessmentsErrors, setAssessmentsErrors] = useState<{
     [key: number]: {
       [key: string]: string
     }
   }>({})
 
-  const { mutateAsync: deleteExam } = api.exam.delete.useMutation({
-    onSuccess: deletedExam => {
-      setExams(prev => prev.filter(exam => exam.id !== deletedExam.id))
+  const { mutateAsync: deleteAssessment } = api.assessment.delete.useMutation({
+    onSuccess: deletedAssessment => {
+      setAssessments(prev => prev.filter(assessment => assessment.id !== deletedAssessment.id))
     },
   })
 
-  const [exams, setExams] = useState<(Partial<Exam> & { id: string; saved: boolean })[]>(
-    subjectProgress?.exams.map(exam => ({ ...exam, saved: true })) || []
+  const [assessments, setAssessments] = useState<(Partial<Assessment> & { id: string; saved: boolean })[]>(
+    subjectProgress?.assessments.map(assessment => ({ ...assessment, saved: true })) || []
   )
 
   const [resultTypesToShow, setResultTypesToShow] = useState(allResultTypes)
   useEffect(() => {
-    const examsTypeMap = exams.map(exam => exam.resultType)
-    const firstExamType = Array.from(new Set(examsTypeMap)).filter(type => type !== 'PASSFAIL')[0]
+    const assessmentsTypeMap = assessments.map(assessment => assessment.resultType)
+    const firstAssessmentType = Array.from(new Set(assessmentsTypeMap)).filter(type => type !== 'PASSFAIL')[0]
 
     setResultTypesToShow(
       allResultTypes.filter(resultType => {
         if (resultType === 'PASSFAIL') return true
-        if (!firstExamType) return true
-        if (firstExamType !== resultType) return false
+        if (!firstAssessmentType) return true
+        if (firstAssessmentType !== resultType) return false
 
         return true
       })
     )
-  }, [exams])
+  }, [assessments])
 
   const handleOnResultTypeComboBoxChange = useCallback((item?: Item) => {
     if (!item) return
-    setExams(exams =>
-      exams.map(exam =>
-        exam.id === (item.data as { examId: string }).examId ? { ...exam, resultType: item.value as ResultType } : exam
+    setAssessments(assessments =>
+      assessments.map(assessment =>
+        assessment.id === (item.data as { assessmentId: string }).assessmentId
+          ? { ...assessment, resultType: item.value as ResultType }
+          : assessment
       )
     )
   }, [])
@@ -191,12 +193,12 @@ export const SubjectResultModal = ({
         : { subjectName: subjectNameInput!, credit: subjectCreditInput! }),
       semester,
       marks,
-      exams: [
-        ...exams.map(exam => ({
-          name: exam.name!,
-          resultType: exam.resultType!,
-          minResult: exam.minResult ?? undefined,
-          maxResult: exam.maxResult ?? undefined,
+      assessments: [
+        ...assessments.map(assessment => ({
+          name: assessment.name!,
+          resultType: assessment.resultType!,
+          minResult: assessment.minResult ?? undefined,
+          maxResult: assessment.maxResult ?? undefined,
           result: undefined,
         })),
       ],
@@ -209,13 +211,13 @@ export const SubjectResultModal = ({
           partialSubjectProgress: {
             subjectName: subjectNameInput,
             marks,
-            exams: [
-              ...exams.map(exam => ({
-                name: exam.name!,
-                resultType: exam.resultType!,
-                minResult: exam.minResult ?? undefined,
-                maxResult: exam.resultType === 'POINT' ? exam.maxResult ?? undefined : undefined,
-                result: exam.result ?? undefined,
+            assessments: [
+              ...assessments.map(assessment => ({
+                name: assessment.name!,
+                resultType: assessment.resultType!,
+                minResult: assessment.minResult ?? undefined,
+                maxResult: assessment.resultType === 'POINT' ? assessment.maxResult ?? undefined : undefined,
+                result: assessment.result ?? undefined,
               })),
             ],
           },
@@ -331,39 +333,39 @@ export const SubjectResultModal = ({
 
                   <hr className="dark:border-gray-400 border-gray-300" />
 
-                  {exams.length > 0 ? (
-                    exams.map((exam, index) => (
+                  {assessments.length > 0 ? (
+                    assessments.map((assessment, index) => (
                       <div
-                        key={exam.id}
+                        key={assessment.id}
                         className="gap-2 flex items-center justify-between border border-gray-300 dark:border-gray-700 rounded-md p-2"
                       >
                         <div className="flex w-full flex-col gap-2">
                           <InputField
-                            errorMessage={examsErrors[index]?.name}
-                            label={`${index + 1}. Exam Name ${!exam.saved ? '(Not saved)' : ''}`}
-                            placeholder="Exam Name"
+                            errorMessage={assessmentsErrors[index]?.name}
+                            label={`${index + 1}. Assessment Name ${!assessment.saved ? '(Not saved)' : ''}`}
+                            placeholder="Assessment Name"
                             className="w-full"
-                            value={exam.name || ''}
+                            value={assessment.name || ''}
                             IconMenu={
                               <div className="flex gap-1">
                                 <TrashIcon
                                   className="h-5 w-5 text-red-500 cursor-pointer"
                                   onClick={() => {
-                                    if (exam.saved) {
-                                      void toast.promise(deleteExam({ id: exam.id }), {
-                                        loading: 'Deleting exam...',
-                                        success: <b>Successfully deleted exam!</b>,
-                                        error: <b>Failed to delete exam.</b>,
+                                    if (assessment.saved) {
+                                      void toast.promise(deleteAssessment({ id: assessment.id }), {
+                                        loading: 'Deleting assessment...',
+                                        success: <b>Successfully deleted assessment!</b>,
+                                        error: <b>Failed to delete assessment.</b>,
                                       })
                                     } else {
-                                      setExams(prev => prev.filter((_, i) => i !== index))
+                                      setAssessments(prev => prev.filter((_, i) => i !== index))
                                     }
                                   }}
                                 />
                               </div>
                             }
                             onChange={e =>
-                              setExams(prev =>
+                              setAssessments(prev =>
                                 prev.map((item, i) => (i === index ? { ...item, name: e.target.value } : item))
                               )
                             }
@@ -371,65 +373,43 @@ export const SubjectResultModal = ({
                           <Combobox
                             items={
                               index === 0
-                                ? resultTypesToComboBoxItems(allResultTypes, exam.id)
-                                : resultTypesToComboBoxItems(resultTypesToShow, exam.id)
+                                ? resultTypesToComboBoxItems(allResultTypes, assessment.id)
+                                : resultTypesToComboBoxItems(resultTypesToShow, assessment.id)
                             }
                             label="Result Type"
                             initialSelectedItem={
-                              exam.resultType
+                              assessment.resultType
                                 ? {
-                                    id: exam.resultType,
-                                    name: exam.resultType,
-                                    value: exam.resultType,
-                                    data: { examId: exam.id },
+                                    id: assessment.resultType,
+                                    name: assessment.resultType,
+                                    value: assessment.resultType,
+                                    data: { assessmentId: assessment.id },
                                   }
                                 : undefined
                             }
                             onItemSelected={handleOnResultTypeComboBoxChange}
                             placeholder="Select a result type..."
-                            errorMessage={examsErrors[index]?.resultType}
+                            errorMessage={assessmentsErrors[index]?.resultType}
                           />
-                          {exam.resultType && exam.resultType !== 'PASSFAIL' && exam.resultType !== 'GRADE' && (
-                            <div className="flex gap-2">
-                              <InputField
-                                inputMode="numeric"
-                                pattern="[0-9]*"
-                                label="Min Score (Optional)"
-                                placeholder="Min Score"
-                                className="w-[calc(50%-4px)]"
-                                value={exam.minResult ?? ''}
-                                onChange={e =>
-                                  setExams(prev =>
-                                    e.target.validity.valid
-                                      ? prev.map((item, i) =>
-                                          i === index
-                                            ? {
-                                                ...item,
-                                                minResult: e.target.value === '' ? null : Number(e.target.value),
-                                              }
-                                            : item
-                                        )
-                                      : prev
-                                  )
-                                }
-                              />
-                              {exam.resultType === 'POINT' && (
+                          {assessment.resultType &&
+                            assessment.resultType !== 'PASSFAIL' &&
+                            assessment.resultType !== 'GRADE' && (
+                              <div className="flex gap-2">
                                 <InputField
-                                  errorMessage={examsErrors[index]?.maxResult}
                                   inputMode="numeric"
                                   pattern="[0-9]*"
-                                  label="Max Score"
-                                  placeholder="Max Score"
+                                  label="Min Score (Optional)"
+                                  placeholder="Min Score"
                                   className="w-[calc(50%-4px)]"
-                                  value={exam.maxResult ?? ''}
+                                  value={assessment.minResult ?? ''}
                                   onChange={e =>
-                                    setExams(prev =>
+                                    setAssessments(prev =>
                                       e.target.validity.valid
                                         ? prev.map((item, i) =>
                                             i === index
                                               ? {
                                                   ...item,
-                                                  maxResult: e.target.value === '' ? null : Number(e.target.value),
+                                                  minResult: e.target.value === '' ? null : Number(e.target.value),
                                                 }
                                               : item
                                           )
@@ -437,29 +417,53 @@ export const SubjectResultModal = ({
                                     )
                                   }
                                 />
-                              )}
-                            </div>
-                          )}
+                                {assessment.resultType === 'POINT' && (
+                                  <InputField
+                                    errorMessage={assessmentsErrors[index]?.maxResult}
+                                    inputMode="numeric"
+                                    pattern="[0-9]*"
+                                    label="Max Score"
+                                    placeholder="Max Score"
+                                    className="w-[calc(50%-4px)]"
+                                    value={assessment.maxResult ?? ''}
+                                    onChange={e =>
+                                      setAssessments(prev =>
+                                        e.target.validity.valid
+                                          ? prev.map((item, i) =>
+                                              i === index
+                                                ? {
+                                                    ...item,
+                                                    maxResult: e.target.value === '' ? null : Number(e.target.value),
+                                                  }
+                                                : item
+                                            )
+                                          : prev
+                                      )
+                                    }
+                                  />
+                                )}
+                              </div>
+                            )}
                         </div>
                       </div>
                     ))
                   ) : (
                     <div>
                       <p className="text-gray-500 dark:text-gray-400 text-base w-full text-center">
-                        No exams added yet
+                        No assessments added yet
                       </p>
                     </div>
                   )}
 
                   <Button
                     onClick={() =>
-                      setExams(prev => [
+                      setAssessments(prev => [
                         ...prev,
                         { id: uuidv4(), subjectProgressId: subjectProgress?.id || '', saved: false },
                       ])
                     }
                   >
-                    Add Exam
+                    Add Assessment
                   </Button>
 
                   <Accordion title="Set Grades" titleClassName="text-base font-normal italic dark:text-gray-300">

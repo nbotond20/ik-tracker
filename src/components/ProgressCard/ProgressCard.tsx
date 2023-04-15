@@ -3,14 +3,14 @@ import { useEffect, useState, useMemo } from 'react'
 import { toast } from 'react-hot-toast'
 
 import { Accordion } from '@components/Accordion/Accordion'
+import { AssessmentsTable } from '@components/AssessmentTable/AssessmentTable'
 import { ConfirmationDialog } from '@components/ConfirmationDialog/ConfirmationDialog'
-import { ExamsTable } from '@components/ExamTable/ExamTable'
 import type { Marks } from '@components/MarkTable/MarkTable'
 import { MarkTable } from '@components/MarkTable/MarkTable'
 import { LoadingSpinner } from '@components/Spinner/Spinner'
 import { TrashIcon } from '@heroicons/react/24/outline'
-import type { SubjectProgressWithExamsAndSubject } from '@models/SubjectProgressWithExamsAndSubject'
-import type { Exam } from '@prisma/client'
+import type { SubjectProgressWithAssessmentsAndSubject } from '@models/SubjectProgressWithAssessmentsAndSubject'
+import type { Assessment } from '@prisma/client'
 import { api } from '@utils/api'
 import { calculateGrade, calculatePercentage } from '@utils/calculateResultStats'
 import { getGradeColor } from '@utils/getGradeColor'
@@ -18,8 +18,8 @@ import { motion } from 'framer-motion'
 
 interface ProgressCardProps {
   className?: string
-  setSelectedSubjectProgress: Dispatch<SetStateAction<SubjectProgressWithExamsAndSubject | undefined>>
-  subjectProgress: SubjectProgressWithExamsAndSubject
+  setSelectedSubjectProgress: Dispatch<SetStateAction<SubjectProgressWithAssessmentsAndSubject | undefined>>
+  subjectProgress: SubjectProgressWithAssessmentsAndSubject
   handleRefetch: () => Promise<void>
   gradeStat?: number
   open?: boolean
@@ -34,8 +34,8 @@ export const ProgressCard = ({
   open,
 }: ProgressCardProps) => {
   const maxResultPerSubject = useMemo(
-    () => subjectProgress.exams.reduce((acc, exam) => acc + (exam?.maxResult || 0), 0),
-    [subjectProgress.exams]
+    () => subjectProgress.assessments.reduce((acc, assessment) => acc + (assessment?.maxResult || 0), 0),
+    [subjectProgress.assessments]
   )
 
   const { mutateAsync: deleteSubjectProgress, isLoading: isDeletingSubjectProgress } =
@@ -48,51 +48,52 @@ export const ProgressCard = ({
 
   const [isAccordionOpen, setIsAccordionOpen] = useState(false)
   const grade = useMemo(
-    () => calculateGrade(subjectProgress.marks as Marks, subjectProgress.exams),
-    [subjectProgress.exams, subjectProgress.marks]
+    () => calculateGrade(subjectProgress.marks as Marks, subjectProgress.assessments),
+    [subjectProgress.assessments, subjectProgress.marks]
   )
-  const percentage = useMemo(() => calculatePercentage(subjectProgress.exams), [subjectProgress.exams])
+  const percentage = useMemo(() => calculatePercentage(subjectProgress.assessments), [subjectProgress.assessments])
 
-  const { mutateAsync: updateExam } = api.exam.update.useMutation({
+  const { mutateAsync: updateAssessment } = api.assessment.update.useMutation({
     onSuccess: data => {
       void handleRefetch()
-      setExamsErrorMessages(prev => {
+      setAssessmentsErrorMessages(prev => {
         delete prev[data.id]
         return prev
       })
     },
     onError: (error, data) => {
-      const errorMessage = error?.data?.zodError?.fieldErrors?.partialExam
+      const errorMessage = error?.data?.zodError?.fieldErrors?.partialAssessment
       if (errorMessage && errorMessage[0]) {
-        setExamsErrorMessages(prev => ({ ...prev, [data.id]: errorMessage[0]! }))
+        setAssessmentsErrorMessages(prev => ({ ...prev, [data.id]: errorMessage[0]! }))
       }
     },
   })
-  const [examsErrorMessages, setExamsErrorMessages] = useState<Record<string, string>>({})
+  const [assessmentsErrorMessages, setAssessmentsErrorMessages] = useState<Record<string, string>>({})
 
-  const [examResults, setExamResults] = useState<Exam[]>(subjectProgress.exams)
-  const examResultsChanged = useMemo(
+  const [assessmentResults, setAssessmentResults] = useState<Assessment[]>(subjectProgress.assessments)
+  const assessmentResultsChanged = useMemo(
     () =>
-      examResults.some(
-        (exam, index) => index < subjectProgress.exams.length && exam.result !== subjectProgress.exams[index]!.result
+      assessmentResults.some(
+        (assessment, index) =>
+          index < subjectProgress.assessments.length && assessment.result !== subjectProgress.assessments[index]!.result
       ),
-    [examResults, subjectProgress]
+    [assessmentResults, subjectProgress]
   )
 
   const [isSvaingProgress, setIsSavingProgress] = useState(false)
-  const handleUpdateExams = async () => {
-    if (!examResultsChanged) return
+  const handleUpdateAssessments = async () => {
+    if (!assessmentResultsChanged) return
     setIsSavingProgress(true)
-    const promises = examResults.map(exam => {
-      if (exam.result !== subjectProgress.exams[examResults.indexOf(exam)]!.result) {
-        return updateExam({
-          id: exam.id,
-          partialExam: {
-            name: exam.name,
-            result: exam.result,
-            resultType: exam.resultType,
-            maxResult: exam.maxResult,
-            minResult: exam.minResult,
+    const promises = assessmentResults.map(assessment => {
+      if (assessment.result !== subjectProgress.assessments[assessmentResults.indexOf(assessment)]!.result) {
+        return updateAssessment({
+          id: assessment.id,
+          partialAssessment: {
+            name: assessment.name,
+            result: assessment.result,
+            resultType: assessment.resultType,
+            maxResult: assessment.maxResult,
+            minResult: assessment.minResult,
           },
         })
       }
@@ -104,16 +105,16 @@ export const ProgressCard = ({
         error: <b>Failed to save progress.</b>,
       })
       .then(() => {
-        setExamsErrorMessages({})
+        setAssessmentsErrorMessages({})
       })
       .catch(() => {
-        setExamResults(subjectProgress.exams)
+        setAssessmentResults(subjectProgress.assessments)
       })
     setIsSavingProgress(false)
   }
 
   useEffect(() => {
-    setExamResults(subjectProgress.exams)
+    setAssessmentResults(subjectProgress.assessments)
   }, [subjectProgress])
 
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
@@ -153,10 +154,10 @@ export const ProgressCard = ({
       >
         <div className="flex flex-col justify-between h-full">
           <div className="relative overflow-x-auto mb-6">
-            <ExamsTable
-              examResults={examResults}
-              setExamResults={setExamResults}
-              examsErrorMessages={examsErrorMessages}
+            <AssessmentsTable
+              assessmentResults={assessmentResults}
+              setAssessmentResults={setAssessmentResults}
+              assessmentsErrorMessages={assessmentsErrorMessages}
             />
           </div>
           <div className="flex w-full gap-4 sm:gap-2 flex-col sm:flex-row">
@@ -201,12 +202,12 @@ export const ProgressCard = ({
                 </tr>
               </tbody>
             </table>
-            {!subjectProgress.exams.find(exam => exam.resultType === 'GRADE') && (
+            {!subjectProgress.assessments.find(assessment => assessment.resultType === 'GRADE') && (
               <div className="relative overflow-x-auto min-w-[calc(50%-4px)]">
                 <MarkTable
                   marks={subjectProgress.marks as [number, number, number, number, number]}
                   maxResult={maxResultPerSubject}
-                  resultType={subjectProgress.exams.filter(e => e.resultType !== 'PASSFAIL')?.[0]?.resultType}
+                  resultType={subjectProgress.assessments.filter(e => e.resultType !== 'PASSFAIL')?.[0]?.resultType}
                 />
               </div>
             )}
@@ -228,10 +229,10 @@ export const ProgressCard = ({
             Delete
           </button>
           <button
-            disabled={!examResultsChanged}
+            disabled={!assessmentResultsChanged}
             type="button"
             className="disabled:bg-blue-400 dark:disabled:bg-blue-900 disabled:text-gray-200 dark:disabled:text-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-            onClick={() => void handleUpdateExams()}
+            onClick={() => void handleUpdateAssessments()}
           >
             {!isSvaingProgress ? (
               'Save Changes'
