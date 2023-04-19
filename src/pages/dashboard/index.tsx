@@ -105,7 +105,7 @@ const DashBoardPage: NextPage = () => {
               <div className=" flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
                 <AcademicCapIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
               </div>
-              <h2 className=" text-xl font-bold dark:text-white">Planner</h2>
+              <h2 className=" text-xl font-bold dark:text-white">Planner 🚧</h2>
             </div>
           </Link>
           {/* STATISTICS */}
