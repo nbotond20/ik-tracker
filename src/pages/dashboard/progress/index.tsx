@@ -10,8 +10,8 @@ import { ProgressCard } from '@components/ProgressCard/ProgressCard'
 import { LoadingPage } from '@components/Spinner/Spinner'
 import { SubjectResultModal } from '@components/SubjectResultModal/SubjectResultModal'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-import type { SubjectProgressWithAssessmentsAndSubject } from '@models/SubjectProgressWithAssessmentsAndSubject'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
+import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import { getServerSession } from 'next-auth'
@@ -48,12 +48,11 @@ const breadcrumbs = [
   },
 ]
 
+type SubjectProgress = RouterOutputs['subjectProgress']['getBySemester'][number]
 const SubjectProgressPage: NextPage = () => {
   const { data: session } = useSession()
 
-  const [selectedSubjectProgress, setSelectedSubjectProgress] = useState<
-    SubjectProgressWithAssessmentsAndSubject | undefined
-  >()
+  const [selectedSubjectProgress, setSelectedSubjectProgress] = useState<SubjectProgress | undefined>()
 
   const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
     enabled: !!session,

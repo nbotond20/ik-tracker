@@ -9,8 +9,8 @@ import type { Marks } from '@components/MarkTable/MarkTable'
 import { MarkTable } from '@components/MarkTable/MarkTable'
 import { LoadingSpinner } from '@components/Spinner/Spinner'
 import { TrashIcon } from '@heroicons/react/24/outline'
-import type { SubjectProgressWithAssessmentsAndSubject } from '@models/SubjectProgressWithAssessmentsAndSubject'
 import type { Assessment } from '@prisma/client'
+import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
 import { calculateGrade, calculatePercentage } from '@utils/calculateResultStats'
 import { getGradeColor } from '@utils/getGradeColor'
@@ -18,13 +18,14 @@ import { motion } from 'framer-motion'
 
 interface ProgressCardProps {
   className?: string
-  setSelectedSubjectProgress: Dispatch<SetStateAction<SubjectProgressWithAssessmentsAndSubject | undefined>>
-  subjectProgress: SubjectProgressWithAssessmentsAndSubject
+  setSelectedSubjectProgress: Dispatch<SetStateAction<SubjectProgress | undefined>>
+  subjectProgress: SubjectProgress
   handleRefetch: () => Promise<void>
   gradeStat?: number
   open?: boolean
 }
 
+type SubjectProgress = RouterOutputs['subjectProgress']['getBySemester'][number]
 export const ProgressCard = ({
   className,
   setSelectedSubjectProgress,

@@ -10,16 +10,16 @@ import type { Marks } from '@components/MarkTable/MarkTable'
 import { MarkTable } from '@components/MarkTable/MarkTable'
 import { LoadingPage } from '@components/Spinner/Spinner'
 import { TrashIcon } from '@heroicons/react/24/outline'
-import type { SubjectProgressWithAssessmentsAndSubject } from '@models/SubjectProgressWithAssessmentsAndSubject'
 import type { Assessment } from '@prisma/client'
 import { ResultType } from '@prisma/client'
+import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useSession } from 'next-auth/react'
 import { v4 as uuidv4 } from 'uuid'
 
 interface SubjectResultModalProps {
-  subjectProgress: SubjectProgressWithAssessmentsAndSubject | undefined
+  subjectProgress: SubjectProgress | undefined
   handleRefetch: () => Promise<void>
   open?: boolean
   closeModal?: () => void
@@ -37,6 +37,7 @@ const resultTypesToComboBoxItems = (resultTypes: ResultType[], assessmentId: str
 // Get ResultType keys as values
 const allResultTypes = Object.keys(ResultType).map(key => ResultType[key as keyof typeof ResultType])
 
+type SubjectProgress = RouterOutputs['subjectProgress']['getBySemester'][number]
 export const SubjectResultModal = ({
   subjectProgress,
   open = false,
