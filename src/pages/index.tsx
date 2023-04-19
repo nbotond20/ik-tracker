@@ -1,11 +1,16 @@
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { ConfirmationDialog } from '@components/ConfirmationDialog/ConfirmationDialog'
 import { MacBookSVG } from '@components/SVG/MacBookSVG'
 import { LoadingPage } from '@components/Spinner/Spinner'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import { api } from '@utils/api'
 import { type NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const CalculatorIcon = dynamic(() => import('@heroicons/react/24/solid/CalculatorIcon'))
 const PresentationChartLineIcon = dynamic(() => import('@heroicons/react/24/solid/PresentationChartLineIcon'))
@@ -19,12 +24,37 @@ const ArrowUpIcon = dynamic(() => import('@heroicons/react/24/outline/ArrowUpIco
 const ArrowSmallRightIcon = dynamic(() => import('@heroicons/react/24/outline/ArrowSmallRightIcon'))
 
 const HomePage: NextPage = () => {
+  const router = useRouter()
   const { data: session, status } = useSession()
   const { t } = useTranslation()
 
-  if (status === 'loading') {
+  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, { enabled: !!session?.user })
+  const [isConfirmationDialogOpen, setIsConfirmationDialogOpen] = useState(false)
+  const handleConfirmationDialog = () => {
+    setIsConfirmationDialogOpen(false)
+    void router.push('/profile?setCurrentSemester=true&callbackUrl=/')
+  }
+
+  useEffect(() => {
+    if (!isUserLoading && !user?.isCurrentSemesterSet) {
+      setIsConfirmationDialogOpen(true)
+    }
+  }, [isUserLoading, user?.isCurrentSemesterSet])
+
+  if (status === 'loading' || (session && isUserLoading)) {
     return <LoadingPage />
   }
+
+  if (session && !user?.isCurrentSemesterSet)
+    return (
+      <ConfirmationDialog
+        isOpen={isConfirmationDialogOpen}
+        title="You haven't set your current semester yet! Please set it now to continue."
+        onConfirm={handleConfirmationDialog}
+        Icon={ExclamationTriangleIcon}
+        confirmText="Set current semester"
+      />
+    )
 
   return (
     <div

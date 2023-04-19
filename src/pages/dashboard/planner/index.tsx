@@ -128,7 +128,7 @@ const PlannerPage: NextPage = () => {
   const debouncedHandleSubjectChange = useCallback(debounce(handleSubjectChange, 250), [])
 
   useEffect(() => {
-    const subjects = localStorage.getItem('subjects')
+    const subjects = localStorage.getItem('planner-subjects')
     if (subjects) {
       setSubjects(JSON.parse(subjects) as ISubject[])
     }
@@ -136,15 +136,15 @@ const PlannerPage: NextPage = () => {
 
   useEffect(() => {
     if (subjects.length === 1 && subjects[0]?.code === undefined) {
-      localStorage.removeItem('subjects')
+      localStorage.removeItem('planner-subjects')
       return
     }
-    localStorage.setItem('subjects', JSON.stringify(subjects))
+    localStorage.setItem('planner-subjects', JSON.stringify(subjects))
   }, [subjects])
 
   const handleDeleteSubject = (id: string) => {
     setSubjects(subjects.filter(s => s.id !== id))
-    if (subjects.length === 1) localStorage.removeItem('subjects')
+    if (subjects.length === 1) localStorage.removeItem('planner-subjects')
   }
 
   const [selectedSubject, setSelectedSubject] = useState<IsAvailableReturnType['subject'] | null>(null)
@@ -306,9 +306,8 @@ const PlannerPage: NextPage = () => {
                   <div className={`${subjects.length > 1 ? 'col-span-11' : 'col-span-12'} relative mb-2 mt-2 flex`}>
                     {subject.subject && (
                       <div
-                        className="absolute cursor-pointer"
+                        className="absolute cursor-pointer top-[3px] sm:top-[9px]"
                         style={{
-                          top: 3,
                           left: 5,
                         }}
                         onClick={() => setSelectedSubject(subject.subject)}
@@ -328,13 +327,12 @@ const PlannerPage: NextPage = () => {
                       placeholder="Code"
                       className={`${subject.subject ? 'pl-8' : ''} ${getInputBGColor(
                         subject
-                      )} h-[30px] pr-8 w-full placeholder:text-gray-400 rounded-lg border px-2 py-1 text-sm font-medium focus:outline-none focus:ring-1 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500`}
+                      )} pr-8 w-full placeholder:text-gray-400 rounded-lg border px-2 py-1 h-[30px] sm:h-auto sm:py-2 text-sm sm:text-base font-medium focus:outline-none focus:ring-1 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500`}
                       value={subject.code || ''}
                     />
                     <div
-                      className="absolute"
+                      className="absolute top-[3px] sm:top-[9px]"
                       style={{
-                        top: 3,
                         right: 5,
                       }}
                     >

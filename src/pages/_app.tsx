@@ -41,6 +41,8 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
               toastOptions={{
                 className: 'bg-white text-black dark:bg-gray-700 dark:text-white',
               }}
+              reverseOrder={true}
+              position="bottom-right"
             />
             <Component {...pageProps} />
           </Layout>

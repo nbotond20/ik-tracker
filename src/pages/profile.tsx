@@ -56,10 +56,10 @@ const ProfilePage: NextPage = () => {
   } = api.user.updateCurrentSemester.useMutation({
     onSuccess: async () => {
       setIsSemesterEditing(false)
-      const { setCurrentSemester } = router.query
+      const { setCurrentSemester, callbackUrl } = router.query
       await userContext.invalidate()
       if (setCurrentSemester) {
-        void router.push('/dashboard/progress')
+        void router.push((callbackUrl as string) || '/')
       }
     },
   })

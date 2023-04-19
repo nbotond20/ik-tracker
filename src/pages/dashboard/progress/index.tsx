@@ -10,8 +10,8 @@ import { ProgressCard } from '@components/ProgressCard/ProgressCard'
 import { LoadingPage } from '@components/Spinner/Spinner'
 import { SubjectResultModal } from '@components/SubjectResultModal/SubjectResultModal'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-import type { SubjectProgressWithExamsAndSubject } from '@models/SubjectProgressWithExamsAndSubject'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
+import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import { getServerSession } from 'next-auth'
@@ -48,12 +48,11 @@ const breadcrumbs = [
   },
 ]
 
+type SubjectProgress = RouterOutputs['subjectProgress']['getBySemester'][number]
 const SubjectProgressPage: NextPage = () => {
   const { data: session } = useSession()
 
-  const [selectedSubjectProgress, setSelectedSubjectProgress] = useState<
-    SubjectProgressWithExamsAndSubject | undefined
-  >()
+  const [selectedSubjectProgress, setSelectedSubjectProgress] = useState<SubjectProgress | undefined>()
 
   const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
     enabled: !!session,
@@ -62,6 +61,11 @@ const SubjectProgressPage: NextPage = () => {
 
   useEffect(() => {
     if (!user) return
+    const localSemester = localStorage.getItem('semester')
+    if (localSemester) {
+      setSemester(parseInt(localSemester))
+      return
+    }
     setSemester(user?.currentSemester ?? 0)
   }, [user])
 
@@ -108,6 +112,13 @@ const SubjectProgressPage: NextPage = () => {
   }, [modalOpenError, semester])
 
   const [openAll, setOpenAll] = useState(false)
+  useEffect(() => {
+    const localOpenAll = localStorage.getItem('openAll')
+    if (localOpenAll) {
+      setOpenAll(localOpenAll === 'true')
+      return
+    }
+  }, [])
 
   const { t } = useTranslation()
   const router = useRouter()
@@ -115,7 +126,7 @@ const SubjectProgressPage: NextPage = () => {
   const [isConfirmationDialogOpen, setIsConfirmationDialogOpen] = useState(false)
   const handleConfirmationDialog = () => {
     setIsConfirmationDialogOpen(false)
-    void router.push('/profile?setCurrentSemester=true')
+    void router.push('/profile?setCurrentSemester=true&callbackUrl=/dashboard/progress')
   }
 
   useEffect(() => {
@@ -159,7 +170,13 @@ const SubjectProgressPage: NextPage = () => {
       <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Progress</h1>
-          <button onClick={() => setOpenAll(prev => !prev)} type="button">
+          <button
+            onClick={() => {
+              setOpenAll(!openAll)
+              localStorage.setItem('openAll', (!openAll).toString())
+            }}
+            type="button"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 text-gray-500 dark:text-gray-400"
@@ -171,7 +188,7 @@ const SubjectProgressPage: NextPage = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d={openAll ? 'M19 9l-7 7-7-7' : 'M5 15l7-7 7 7'}
+                d={!openAll ? 'M19 9l-7 7-7-7' : 'M5 15l7-7 7 7'}
               />
             </svg>
           </button>
@@ -185,7 +202,10 @@ const SubjectProgressPage: NextPage = () => {
                   ? 'border-red-500 focus:ring-red-500 border-2'
                   : 'border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:ring-blue-500 focus:border-blue-500'
               } bg-gray-50 border text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white`}
-              onChange={e => setSemester(Number(e.target.value))}
+              onChange={e => {
+                setSemester(parseInt(e.target.value))
+                localStorage.setItem('semester', e.target.value)
+              }}
               value={semester}
             >
               <option value={0}>Select a semester...</option>
