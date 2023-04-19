@@ -127,7 +127,7 @@ const SubjectProgressPage: NextPage = () => {
   const [isConfirmationDialogOpen, setIsConfirmationDialogOpen] = useState(false)
   const handleConfirmationDialog = () => {
     setIsConfirmationDialogOpen(false)
-    void router.push('/profile?setCurrentSemester=true')
+    void router.push('/profile?setCurrentSemester=true&callbackUrl=/dashboard/progress')
   }
 
   useEffect(() => {
