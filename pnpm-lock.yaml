@@ -12,7 +12,7 @@ dependencies:
     version: 1.0.6(@prisma/client@4.13.0)(next-auth@4.22.1)
   '@prisma/client':
     specifier: 4.13.0
-    version: 4.13.0(prisma@4.12.0)
+    version: 4.13.0(prisma@4.13.0)
   '@tanstack/react-query':
     specifier: 4.29.3
     version: 4.29.3(react-dom@18.2.0)(react@18.2.0)
@@ -196,8 +196,8 @@ devDependencies:
     specifier: 0.2.7
     version: 0.2.7(@trivago/prettier-plugin-sort-imports@4.1.1)(prettier@2.8.7)
   prisma:
-    specifier: 4.12.0
-    version: 4.12.0
+    specifier: 4.13.0
+    version: 4.13.0
   prisma-dbml-generator:
     specifier: ^0.10.0
     version: 0.10.0
@@ -1973,7 +1973,7 @@ packages:
       '@prisma/client': '>=2.26.0 || >=3'
       next-auth: ^4
     dependencies:
-      '@prisma/client': 4.13.0(prisma@4.12.0)
+      '@prisma/client': 4.13.0(prisma@4.13.0)
       next-auth: 4.22.1(next@13.3.0)(nodemailer@6.9.1)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
@@ -2151,7 +2151,7 @@ packages:
     resolution: {integrity: sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==}
     dev: false
 
-  /@prisma/client@4.13.0(prisma@4.12.0):
+  /@prisma/client@4.13.0(prisma@4.13.0):
     resolution: {integrity: sha512-YaiiICcRB2hatxsbnfB66uWXjcRw3jsZdlAVxmx0cFcTc/Ad/sKdHCcWSnqyDX47vAewkjRFwiLwrOUjswVvmA==}
     engines: {node: '>=14.17'}
     requiresBuild: true
@@ -2162,7 +2162,7 @@ packages:
         optional: true
     dependencies:
       '@prisma/engines-version': 4.13.0-50.1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
-      prisma: 4.12.0
+      prisma: 4.13.0
     dev: false
 
   /@prisma/debug@4.6.1:
@@ -2200,8 +2200,8 @@ packages:
     resolution: {integrity: sha512-fsQlbkhPJf08JOzKoyoD9atdUijuGBekwoOPZC3YOygXEml1MTtgXVpnUNchQlRSY82OQ6pSGQ9PxUe4arcSLQ==}
     dev: false
 
-  /@prisma/engines@4.12.0:
-    resolution: {integrity: sha512-0alKtnxhNB5hYU+ymESBlGI4b9XrGGSdv7Ud+8TE/fBNOEhIud0XQsAR+TrvUZgS4na5czubiMsODw0TUrgkIA==}
+  /@prisma/engines@4.13.0:
+    resolution: {integrity: sha512-HrniowHRZXHuGT9XRgoXEaP2gJLXM5RMoItaY2PkjvuZ+iHc0Zjbm/302MB8YsPdWozAPHHn+jpFEcEn71OgPw==}
     requiresBuild: true
 
   /@prisma/engines@4.6.1:
@@ -7566,13 +7566,13 @@ packages:
       - supports-color
     dev: true
 
-  /prisma@4.12.0:
-    resolution: {integrity: sha512-xqVper4mbwl32BWzLpdznHAYvYDWQQWK2tBfXjdUD397XaveRyAP7SkBZ6kFlIg8kKayF4hvuaVtYwXd9BodAg==}
+  /prisma@4.13.0:
+    resolution: {integrity: sha512-L9mqjnSmvWIRCYJ9mQkwCtj4+JDYYTdhoyo8hlsHNDXaZLh/b4hR0IoKIBbTKxZuyHQzLopb/+0Rvb69uGV7uA==}
     engines: {node: '>=14.17'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.12.0
+      '@prisma/engines': 4.13.0
 
   /process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
