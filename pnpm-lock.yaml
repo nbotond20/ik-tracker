@@ -18,16 +18,16 @@ dependencies:
     version: 4.29.3(react-dom@18.2.0)(react@18.2.0)
   '@trpc/client':
     specifier: 10.19.1
-    version: 10.19.1(@trpc/server@10.20.0)
+    version: 10.19.1(@trpc/server@10.21.0)
   '@trpc/next':
     specifier: 10.19.1
-    version: 10.19.1(@tanstack/react-query@4.29.3)(@trpc/client@10.19.1)(@trpc/react-query@10.21.0)(@trpc/server@10.20.0)(next@13.3.0)(react-dom@18.2.0)(react@18.2.0)
+    version: 10.19.1(@tanstack/react-query@4.29.3)(@trpc/client@10.19.1)(@trpc/react-query@10.21.0)(@trpc/server@10.21.0)(next@13.3.0)(react-dom@18.2.0)(react@18.2.0)
   '@trpc/react-query':
     specifier: 10.21.0
-    version: 10.21.0(@tanstack/react-query@4.29.3)(@trpc/client@10.19.1)(@trpc/server@10.20.0)(react-dom@18.2.0)(react@18.2.0)
+    version: 10.21.0(@tanstack/react-query@4.29.3)(@trpc/client@10.19.1)(@trpc/server@10.21.0)(react-dom@18.2.0)(react@18.2.0)
   '@trpc/server':
-    specifier: 10.20.0
-    version: 10.20.0
+    specifier: 10.21.0
+    version: 10.21.0
   '@vercel/analytics':
     specifier: 0.1.11
     version: 0.1.11(react@18.2.0)
@@ -2520,15 +2520,15 @@ packages:
       - supports-color
     dev: true
 
-  /@trpc/client@10.19.1(@trpc/server@10.20.0):
+  /@trpc/client@10.19.1(@trpc/server@10.21.0):
     resolution: {integrity: sha512-H61dIgoAjiA7/SfuHlUAsqshhaxOSSRFyEfaoBwYvXzLyno+fvQRUXvxpsC4A8IsDuNX2pxiggAK8AwTNKqIzg==}
     peerDependencies:
       '@trpc/server': 10.19.1
     dependencies:
-      '@trpc/server': 10.20.0
+      '@trpc/server': 10.21.0
     dev: false
 
-  /@trpc/next@10.19.1(@tanstack/react-query@4.29.3)(@trpc/client@10.19.1)(@trpc/react-query@10.21.0)(@trpc/server@10.20.0)(next@13.3.0)(react-dom@18.2.0)(react@18.2.0):
+  /@trpc/next@10.19.1(@tanstack/react-query@4.29.3)(@trpc/client@10.19.1)(@trpc/react-query@10.21.0)(@trpc/server@10.21.0)(next@13.3.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-xe1Ygp4oGtn+zUJu+pCKhbfZ7aveyVAMyYrka81v0BwZTKAAGzp6YuO4t6JtW+3x+ZSJ7sHphJP2bwThJQo9kQ==}
     peerDependencies:
       '@tanstack/react-query': ^4.18.0
@@ -2540,16 +2540,16 @@ packages:
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 4.29.3(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/client': 10.19.1(@trpc/server@10.20.0)
-      '@trpc/react-query': 10.21.0(@tanstack/react-query@4.29.3)(@trpc/client@10.19.1)(@trpc/server@10.20.0)(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/server': 10.20.0
+      '@trpc/client': 10.19.1(@trpc/server@10.21.0)
+      '@trpc/react-query': 10.21.0(@tanstack/react-query@4.29.3)(@trpc/client@10.19.1)(@trpc/server@10.21.0)(react-dom@18.2.0)(react@18.2.0)
+      '@trpc/server': 10.21.0
       next: 13.3.0(@babel/core@7.21.4)(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-ssr-prepass: 1.5.0(react@18.2.0)
     dev: false
 
-  /@trpc/react-query@10.21.0(@tanstack/react-query@4.29.3)(@trpc/client@10.19.1)(@trpc/server@10.20.0)(react-dom@18.2.0)(react@18.2.0):
+  /@trpc/react-query@10.21.0(@tanstack/react-query@4.29.3)(@trpc/client@10.19.1)(@trpc/server@10.21.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-oJ3EQSiREpLelvGey9sMVce1ZyTM7unvxDCyX/z1Q7H+R3PFZVbEFjzYVoDlqaMAt0Bs2J7fQSlG0dpOHJlNxw==}
     peerDependencies:
       '@tanstack/react-query': ^4.18.0
@@ -2559,14 +2559,14 @@ packages:
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 4.29.3(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/client': 10.19.1(@trpc/server@10.20.0)
-      '@trpc/server': 10.20.0
+      '@trpc/client': 10.19.1(@trpc/server@10.21.0)
+      '@trpc/server': 10.21.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@trpc/server@10.20.0:
-    resolution: {integrity: sha512-pbrdgw2mO8lWygyZjGLbOq/EoWFWEJvLaxp8JmGsivMIh/IZR5mksPJdywAGQ4TBrbcqssKhuoJ/8OE9mhaveg==}
+  /@trpc/server@10.21.0:
+    resolution: {integrity: sha512-NKgF5pcD3kPxtWncmhAPWqC/K8/DRv1voXw/KLcc63U/zEiUCZZFFFnPErQkJqtYghacUVPL2HPIRvNRlluyLA==}
     dev: false
 
   /@types/aria-query@5.0.1:
