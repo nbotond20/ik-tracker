@@ -90,7 +90,7 @@
     "jest-junit": "15.0.0",
     "lint-staged": "13.2.1",
     "postcss": "8.4.23",
-    "prettier": "2.8.7",
+    "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "0.2.7",
     "prisma": "4.13.0",
     "prisma-dbml-generator": "^0.10.0",
