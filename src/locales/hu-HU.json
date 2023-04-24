@@ -79,7 +79,9 @@
   },
   "offline": {
     "description": "Nem vagy online. Kérjük, ellenőrizd az internetkapcsolatot, és próbáld újra.",
-    "title": "Nincs internetkapcsolat"
+    "subTitle": "Nincs internetkapcsolat",
+    "title": "Offline",
+    "tryAgainBtn": "Próbáld újra"
   },
   "planner": {
     "subjects": {

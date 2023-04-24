@@ -1,12 +1,16 @@
 import { useTranslation } from 'react-i18next'
 
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import Link from 'next/link'
 
 const NotFoundPage: NextPage = () => {
   const { t } = useTranslation()
   return (
     <div className="w-full h-full flex justify-center items-center">
+      <Head>
+        <title>IK-Tracker - 404</title>
+      </Head>
       <section className="bg-white dark:bg-gray-900">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
           <div className="mx-auto max-w-screen-sm text-center">
