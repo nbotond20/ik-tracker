@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { LoadingPage } from '@components/Spinner/Spinner'
+import { getNextAuthErrorMsg } from '@utils/getNextAuthErrorMsg'
+import { isValidEmail } from '@utils/isValidEmail'
 import type { NextPage } from 'next'
 import { useSession, signIn } from 'next-auth/react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { z } from 'zod'
 
 const SignInPage: NextPage = () => {
   const { data: session, status } = useSession()
@@ -18,10 +21,17 @@ const SignInPage: NextPage = () => {
   }, [router, session?.user, status])
 
   const callbackUrl = router.query.callbackUrl as string
+  const error = router.query.error as string
 
   const [email, setEmail] = useState('')
+  const [emailError, setEmailError] = useState('')
 
   const { t } = useTranslation()
+
+  const handleSignInWithEmail = () => {
+    if (!isValidEmail(email)) return
+    void signIn('email', { email, callbackUrl })
+  }
 
   if (status === 'loading') return <LoadingPage />
 
@@ -31,9 +41,9 @@ const SignInPage: NextPage = () => {
         <title>{`IK-Tracker - ${t('routes.login')}`}</title>
       </Head>
       <div className="relative w-full max-w-sm overflow-auto p-4 bg-white dark:border-gray-700 dark:bg-gray-900 sm:rounded-lg sm:border sm:border-gray-200 sm:shadow-md dark:sm:bg-gray-800 md:min-w-[400px] sm:p-8">
-        <div className="space-y-6">
+        <div>
           <h4 className="mb-10 text-3xl font-medium text-gray-900 dark:text-white">Login to our platform</h4>
-          <div>
+          <div className="mb-2">
             <label form="email" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
               Your email
             </label>
@@ -44,13 +54,29 @@ const SignInPage: NextPage = () => {
               placeholder="Email"
               required
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              type="email"
+              onChange={e => {
+                setEmail(e.target.value)
+                if (isValidEmail(e.target.value)) {
+                  setEmailError('')
+                }
+              }}
+              onBlur={() => {
+                if (!isValidEmail(email)) {
+                  setEmailError('Please enter a valid email address!')
+                } else {
+                  setEmailError('')
+                }
+              }}
             />
+            {z.string().email().safeParse(email) && (
+              <span className="text-red-500 text-sm font-medium">{emailError}</span>
+            )}
           </div>
 
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center mb-4">
             <button
-              onClick={() => void signIn('email', { email, callbackUrl })}
+              onClick={() => handleSignInWithEmail()}
               className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Login with email
@@ -63,7 +89,7 @@ const SignInPage: NextPage = () => {
             </div>
             <div className="flex w-full flex-col items-center justify-center gap-4">
               <button
-                onClick={() => void signIn('google', { callbackUrl })}
+                onClick={() => void signIn('google', { callbackUrl, redirect: false })}
                 type="button"
                 className="inline-flex w-full items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200 dark:focus:ring-gray-800"
               >
@@ -96,7 +122,7 @@ const SignInPage: NextPage = () => {
                 </span>
               </button>
               <button
-                onClick={() => void signIn('github', { callbackUrl })}
+                onClick={() => void signIn('github', { callbackUrl, redirect: false })}
                 type="button"
                 className="inline-flex w-full items-center rounded-lg bg-[#0d1117] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#0d1117]/90 focus:outline-none focus:ring-4 focus:ring-[#0d1117]/50 dark:hover:bg-[#050708]/30 dark:focus:ring-gray-500"
               >
@@ -120,7 +146,7 @@ const SignInPage: NextPage = () => {
                 </span>
               </button>
               <button
-                onClick={() => void signIn('discord', { callbackUrl })}
+                onClick={() => void signIn('discord', { callbackUrl, redirect: false })}
                 type="button"
                 className="dark:focus:ring-[#7389da]/55 inline-flex w-full items-center rounded-lg bg-[#7389da] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#7389da]/90 focus:outline-none focus:ring-4 focus:ring-[#7389da]/50"
               >
@@ -148,12 +174,7 @@ const SignInPage: NextPage = () => {
               </button>
             </div>
           </div>
-          {/* <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Not registered?{' '}
-            <Link href="/register" className="text-blue-700 hover:underline dark:text-blue-500">
-              Create account
-            </Link>
-          </div> */}
+          {error && <span className="text-red-500 text-sm font-medium">{getNextAuthErrorMsg(error)}</span>}
         </div>
       </div>
     </div>
