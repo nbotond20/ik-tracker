@@ -134,8 +134,8 @@
         "title": "Credit Type"
       },
       "preReq": {
-        "placeholder": "Search Pre-requisites",
-        "title": "Pre-requisites"
+        "placeholder": "Search Prerequisites",
+        "title": "Prerequisites"
       },
       "searchInput": {
         "placeholder": "Search Subjects"

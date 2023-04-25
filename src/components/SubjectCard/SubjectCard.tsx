@@ -133,7 +133,7 @@ export const SubjectCard = ({
                     )
                     .join(', ') || 'None'
                 }
-                label="Pre Requirements"
+                label="Prerequisites"
               />
               <InputField disabled value={subject.specialisation} label="Specialisation" />
               <InputField

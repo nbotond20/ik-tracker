@@ -121,8 +121,8 @@ devDependencies:
     specifier: 2.7.2
     version: 2.7.2
   '@types/react':
-    specifier: 18.0.38
-    version: 18.0.38
+    specifier: 18.2.0
+    version: 18.2.0
   '@types/react-dom':
     specifier: 18.2.1
     version: 18.2.1
@@ -2703,7 +2703,7 @@ packages:
   /@types/next-pwa@5.6.2(@babel/core@7.21.4)(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-K5zLZSzrJCOQBay5E7abGp7gQ0q1Pv58dE3RuBo5LQXYQFaCO4JPju0XYdzgLoQ20yhBVZ43AwIcSgCzx9KvqA==}
     dependencies:
-      '@types/react': 18.0.38
+      '@types/react': 18.2.0
       next: 13.3.1(@babel/core@7.21.4)(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
       workbox-build: 6.5.4
     transitivePeerDependencies:
@@ -2741,11 +2741,11 @@ packages:
   /@types/react-dom@18.2.1:
     resolution: {integrity: sha512-8QZEV9+Kwy7tXFmjJrp3XUKQSs9LTnE0KnoUb0YCguWBiNW0Yfb2iBMYZ08WPg35IR6P3Z0s00B15SwZnO26+w==}
     dependencies:
-      '@types/react': 18.0.38
+      '@types/react': 18.2.0
     dev: true
 
-  /@types/react@18.0.38:
-    resolution: {integrity: sha512-ExsidLLSzYj4cvaQjGnQCk4HFfVT9+EZ9XZsQ8Hsrcn8QNgXtpZ3m9vSIC2MWtx7jHictK6wYhQgGh6ic58oOw==}
+  /@types/react@18.2.0:
+    resolution: {integrity: sha512-0FLj93y5USLHdnhIhABk83rm8XEGA7kH3cr+YUlvxoUGp1xNt/DINUMvqPxLyOQMzLmZe8i4RTHbvb8MC7NmrA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
