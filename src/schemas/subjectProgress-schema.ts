@@ -113,7 +113,11 @@ export const createSubjectProgressInputSchema = z
   .refine(
     data => {
       if (!data.assessments || data.assessments.length === 0) return true
-      const firstAssessmentResultType = data.assessments[0]!.resultType
+      const firstAssessmentResultType = data.assessments.filter(
+        assessment => !(assessment.resultType === 'PASSFAIL')
+      )?.[0]?.resultType
+
+      if (!firstAssessmentResultType) return true
 
       return data.assessments.every(
         assessment => assessment.resultType === firstAssessmentResultType || assessment.resultType === 'PASSFAIL'
@@ -144,7 +148,11 @@ export const updateSubjectProgressInputSchema = z.object({
     .refine(
       data => {
         if (!data.assessments || data.assessments.length === 0) return true
-        const firstAssessmentResultType = data.assessments[0]!.resultType
+        const firstAssessmentResultType = data.assessments.filter(
+          assessment => !(assessment.resultType === 'PASSFAIL')
+        )?.[0]?.resultType
+
+        if (!firstAssessmentResultType) return true
 
         return data.assessments.every(
           assessment => assessment.resultType === firstAssessmentResultType || assessment.resultType === 'PASSFAIL'

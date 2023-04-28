@@ -42,7 +42,9 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
                 className: 'bg-white text-black dark:bg-gray-700 dark:text-white',
               }}
               reverseOrder={true}
-              position="bottom-right"
+              containerStyle={{
+                top: 65,
+              }}
             />
             <Component {...pageProps} />
           </Layout>

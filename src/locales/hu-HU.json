@@ -66,7 +66,8 @@
   },
   "internalError": {
     "description": "Hiba történt a kiszolgálón. Kérjük, próbáld újra később.",
-    "title": "Hiba történt"
+    "title": "Hiba történt",
+    "tryAgainBtn": "Próbáld újra"
   },
   "maintenance": {
     "description": "Az oldal karbantartás alatt áll. Kérjük, próbáld újra később.",

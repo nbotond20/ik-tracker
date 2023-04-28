@@ -66,7 +66,8 @@
   },
   "internalError": {
     "description": "We are already working to solve the problem.",
-    "title": "Internal Server Error."
+    "title": "Internal Server Error.",
+    "tryAgainBtn": "Try again"
   },
   "maintenance": {
     "description": " We are currently working on the site. Please check back later.",
@@ -133,8 +134,8 @@
         "title": "Credit Type"
       },
       "preReq": {
-        "placeholder": "Search Pre-requisites",
-        "title": "Pre-requisites"
+        "placeholder": "Search Prerequisites",
+        "title": "Prerequisites"
       },
       "searchInput": {
         "placeholder": "Search Subjects"

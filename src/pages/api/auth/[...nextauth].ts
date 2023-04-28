@@ -68,6 +68,7 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/login',
     verifyRequest: '/verify-email',
+    error: '/login',
   },
   session: {
     strategy: 'jwt',
