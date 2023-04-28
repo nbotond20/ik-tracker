@@ -117,7 +117,7 @@ export const createSubjectProgressInputSchema = z
         assessment => !(assessment.resultType === 'PASSFAIL')
       )?.[0]?.resultType
 
-      if (firstAssessmentResultType == null) return true
+      if (!firstAssessmentResultType) return true
 
       return data.assessments.every(
         assessment => assessment.resultType === firstAssessmentResultType || assessment.resultType === 'PASSFAIL'
@@ -152,7 +152,7 @@ export const updateSubjectProgressInputSchema = z.object({
           assessment => !(assessment.resultType === 'PASSFAIL')
         )?.[0]?.resultType
 
-        if (firstAssessmentResultType == null) return true
+        if (!firstAssessmentResultType) return true
 
         return data.assessments.every(
           assessment => assessment.resultType === firstAssessmentResultType || assessment.resultType === 'PASSFAIL'
