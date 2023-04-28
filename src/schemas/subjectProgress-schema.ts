@@ -119,7 +119,9 @@ export const createSubjectProgressInputSchema = z
 
       if (firstAssessmentResultType == null) return true
 
-      return data.assessments.every(assessment => assessment.resultType === firstAssessmentResultType)
+      return data.assessments.every(
+        assessment => assessment.resultType === firstAssessmentResultType || assessment.resultType === 'PASSFAIL'
+      )
     },
     {
       message: `All assessments must have the same result type or a result type of PASSFAIL`,
@@ -152,7 +154,9 @@ export const updateSubjectProgressInputSchema = z.object({
 
         if (firstAssessmentResultType == null) return true
 
-        return data.assessments.every(assessment => assessment.resultType === firstAssessmentResultType)
+        return data.assessments.every(
+          assessment => assessment.resultType === firstAssessmentResultType || assessment.resultType === 'PASSFAIL'
+        )
       },
       {
         message: `All assessments must have the same result type or result type must be PASSFAIL`,
