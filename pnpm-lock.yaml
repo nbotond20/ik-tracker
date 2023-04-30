@@ -18,16 +18,16 @@ dependencies:
     version: 4.29.5(react-dom@18.2.0)(react@18.2.0)
   '@trpc/client':
     specifier: 10.23.0
-    version: 10.23.0(@trpc/server@10.22.0)
+    version: 10.23.0(@trpc/server@10.23.0)
   '@trpc/next':
     specifier: 10.23.0
-    version: 10.23.0(@tanstack/react-query@4.29.5)(@trpc/client@10.23.0)(@trpc/react-query@10.23.0)(@trpc/server@10.22.0)(next@13.3.2)(react-dom@18.2.0)(react@18.2.0)
+    version: 10.23.0(@tanstack/react-query@4.29.5)(@trpc/client@10.23.0)(@trpc/react-query@10.23.0)(@trpc/server@10.23.0)(next@13.3.2)(react-dom@18.2.0)(react@18.2.0)
   '@trpc/react-query':
     specifier: 10.23.0
-    version: 10.23.0(@tanstack/react-query@4.29.5)(@trpc/client@10.23.0)(@trpc/server@10.22.0)(react-dom@18.2.0)(react@18.2.0)
+    version: 10.23.0(@tanstack/react-query@4.29.5)(@trpc/client@10.23.0)(@trpc/server@10.23.0)(react-dom@18.2.0)(react@18.2.0)
   '@trpc/server':
-    specifier: 10.22.0
-    version: 10.22.0
+    specifier: 10.23.0
+    version: 10.23.0
   '@vercel/analytics':
     specifier: 1.0.0
     version: 1.0.0(react@18.2.0)
@@ -2531,15 +2531,15 @@ packages:
       - supports-color
     dev: true
 
-  /@trpc/client@10.23.0(@trpc/server@10.22.0):
+  /@trpc/client@10.23.0(@trpc/server@10.23.0):
     resolution: {integrity: sha512-7hTh9OjVIx4Co3kUyIu94SjbUIuS2WKl3E5BMseYbNOHfeY5rqwkCsw0N5EHWszhIVttUMDE0oCf10tNhYEq1A==}
     peerDependencies:
       '@trpc/server': 10.23.0
     dependencies:
-      '@trpc/server': 10.22.0
+      '@trpc/server': 10.23.0
     dev: false
 
-  /@trpc/next@10.23.0(@tanstack/react-query@4.29.5)(@trpc/client@10.23.0)(@trpc/react-query@10.23.0)(@trpc/server@10.22.0)(next@13.3.2)(react-dom@18.2.0)(react@18.2.0):
+  /@trpc/next@10.23.0(@tanstack/react-query@4.29.5)(@trpc/client@10.23.0)(@trpc/react-query@10.23.0)(@trpc/server@10.23.0)(next@13.3.2)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-IoyoID4wUIFI1nrx6EJM1fBVdkyLiadCsw+r3XLtKnxCwfK5PLeIwwJAQrf+4IFtQT7KYhw4dSkP4gfltIPC3Q==}
     peerDependencies:
       '@tanstack/react-query': ^4.18.0
@@ -2551,16 +2551,16 @@ packages:
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 4.29.5(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/client': 10.23.0(@trpc/server@10.22.0)
-      '@trpc/react-query': 10.23.0(@tanstack/react-query@4.29.5)(@trpc/client@10.23.0)(@trpc/server@10.22.0)(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/server': 10.22.0
+      '@trpc/client': 10.23.0(@trpc/server@10.23.0)
+      '@trpc/react-query': 10.23.0(@tanstack/react-query@4.29.5)(@trpc/client@10.23.0)(@trpc/server@10.23.0)(react-dom@18.2.0)(react@18.2.0)
+      '@trpc/server': 10.23.0
       next: 13.3.2(@babel/core@7.21.4)(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-ssr-prepass: 1.5.0(react@18.2.0)
     dev: false
 
-  /@trpc/react-query@10.23.0(@tanstack/react-query@4.29.5)(@trpc/client@10.23.0)(@trpc/server@10.22.0)(react-dom@18.2.0)(react@18.2.0):
+  /@trpc/react-query@10.23.0(@tanstack/react-query@4.29.5)(@trpc/client@10.23.0)(@trpc/server@10.23.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-50vfR3HtOEcjCQMuHSGTFOG6W9WunvcI8msTp84UNAqZ9dz4YdjgBVNn2wxqB5LAQ6AGlcKuzJWjEj3yO56tvw==}
     peerDependencies:
       '@tanstack/react-query': ^4.18.0
@@ -2570,14 +2570,14 @@ packages:
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 4.29.5(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/client': 10.23.0(@trpc/server@10.22.0)
-      '@trpc/server': 10.22.0
+      '@trpc/client': 10.23.0(@trpc/server@10.23.0)
+      '@trpc/server': 10.23.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@trpc/server@10.22.0:
-    resolution: {integrity: sha512-je1onD7yyjJjhy9kiqMmf8TN93hhE+aWO6N3sVmQBh0Q8bCvJ4d24GdEOhI2yvj5tHTpARTvYtsZMkX9GuyTpw==}
+  /@trpc/server@10.23.0:
+    resolution: {integrity: sha512-0CPfGZK3v3gfAL8ylV5vDJVBQtPp47EB4Vgx6WItSXmwYQlLC39ZC3gkZ4I5cGpQKl4l3QrNNeUvIcse4hlMxA==}
     dev: false
 
   /@types/aria-query@5.0.1:
