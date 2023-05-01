@@ -91,8 +91,8 @@ dependencies:
 
 devDependencies:
   '@next/bundle-analyzer':
-    specifier: 13.3.3
-    version: 13.3.3
+    specifier: 13.3.4
+    version: 13.3.4
   '@tailwindcss/forms':
     specifier: 0.5.3
     version: 0.5.3(tailwindcss@3.3.2)
@@ -1988,8 +1988,8 @@ packages:
       next-auth: 4.22.1(next@13.3.2)(nodemailer@6.9.1)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
-  /@next/bundle-analyzer@13.3.3:
-    resolution: {integrity: sha512-lOH2x6L21VgWGlgqXBXx1XiwOv1pAMyDWJN3Y7wuL3As6r8YGNlWgqb2k4C+P+P89BIffi1uEGBshAZp7SN07g==}
+  /@next/bundle-analyzer@13.3.4:
+    resolution: {integrity: sha512-MyL4AhmyPCuIuH5JzV4SxcOPb2UxpgClIGEaYXiC79HTiNaQ8xDpzpDi46M93GfKOlWH9ck4OFyn/1yWO2d8aQ==}
     dependencies:
       webpack-bundle-analyzer: 4.7.0
     transitivePeerDependencies:
