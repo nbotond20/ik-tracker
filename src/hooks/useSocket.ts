@@ -12,11 +12,15 @@ export const useSocket = () => {
   const [isConnected, setIsConnected] = useState(false)
 
   useEffect(() => {
+    if (!SOCKET_URL || !SOCKET_SECRET) return
     const socket = io(SOCKET_URL, {
       auth: {
         token: SOCKET_SECRET,
       },
     })
+
+    // Return if socket is not connected
+    if (!socket.connected) return
 
     socket.on('connect', () => {
       setIsConnected(true)

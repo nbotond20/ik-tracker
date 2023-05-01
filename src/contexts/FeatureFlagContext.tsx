@@ -26,8 +26,10 @@ export const FeatureFlagProvider = ({ children }: { children: React.ReactNode })
   const { socket, isConnected: isSocketConnected } = useSocket()
 
   useEffect(() => {
-    if (!socket) return
-    setIsLoading(true)
+    if (!API_URL || !socket) {
+      setIsLoading(false)
+      return
+    }
     fetch(API_URL)
       .then(res => res.json())
       .then((data: IFeatureFlag[]) => {
