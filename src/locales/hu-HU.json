@@ -116,6 +116,18 @@
     "verified": "Megerősítve",
     "verifyEmail": "Email megerősítése"
   },
+  "progress": {
+    "addNewProgressToStart": "Adj hozzá új előrehaladást a kezdéshez",
+    "addProgressBtn": "Előrehaladás hozzáadása",
+    "noSubjectProgress": "Nincs előrehaladás hozzáadva",
+    "selectSemester": {
+      "selectLabel": "Válassz egy félévet...",
+      "semester": "Félév",
+      "warning": "A félév kiválasztása kötelező!"
+    },
+    "selectSemesterToStart": "Válassz egy félévet a kezdéshez",
+    "title": "Tracker"
+  },
   "routes": {
     "calculator": "Kalkulátor",
     "dashboard": "Irányítópult",

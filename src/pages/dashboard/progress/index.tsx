@@ -141,10 +141,10 @@ const SubjectProgressPage: NextPage = () => {
     return (
       <ConfirmationDialog
         isOpen={isConfirmationDialogOpen}
-        title="You haven't set your current semester yet! Please set it now to continue."
+        title={t('progress.setSemesterTitle')} // You haven't set your current semester yet! Please set it now to continue.
         onConfirm={handleConfirmationDialog}
         Icon={ExclamationTriangleIcon}
-        confirmText="Set current semester"
+        confirmText={t('progress.confirmSemesterText') || ''} // Set current semester
       />
     )
 
@@ -169,7 +169,7 @@ const SubjectProgressPage: NextPage = () => {
       )}
       <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Progress</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{t('progress.title')}</h1>
           <button
             onClick={() => {
               setOpenAll(!openAll)
@@ -194,7 +194,7 @@ const SubjectProgressPage: NextPage = () => {
           </button>
           <div className="flex items-start flex-col">
             {semester === 0 && modalOpenError && (
-              <span className="text-red-500 text-sm font-medium">Select a semester!</span>
+              <span className="text-red-500 text-sm font-medium">{t('progress.selectSemester.warning')}</span>
             )}
             <select
               className={`${
@@ -208,10 +208,10 @@ const SubjectProgressPage: NextPage = () => {
               }}
               value={semester}
             >
-              <option value={0}>Select a semester...</option>
+              <option value={0}>{t('progress.selectSemester.selectLabel')}</option>
               {Array.from({ length: user?.currentSemester || 1 }, (_, i) => i + 1).map(idx => (
                 <option key={idx} value={idx}>
-                  Semester {idx}
+                  {t('progress.selectSemester.semester')} {idx}
                 </option>
               ))}
             </select>
@@ -241,9 +241,9 @@ const SubjectProgressPage: NextPage = () => {
           {subjectProgresses?.length === 0 && (
             <div className="col-span-12">
               <div className="flex flex-col items-center justify-center h-full">
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">No subject progress found</h1>
+                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t('progress.noSubjectProgress')}</h1>
                 <p className="text-gray-500 dark:text-gray-400">
-                  {semester ? 'Add a new subject progress to get started' : 'Select a semester to get started'}
+                  {semester ? t('progress.addNewProgressToStart') : t('progress.selectSemesterToStart')}
                 </p>
               </div>
             </div>
@@ -261,7 +261,7 @@ const SubjectProgressPage: NextPage = () => {
             }}
             disabled={isLoading}
           >
-            Add new progress
+            {t('progress.addProgressBtn')}
           </Button>
         </div>
       </div>

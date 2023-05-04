@@ -116,6 +116,18 @@
     "verified": "Verified",
     "verifyEmail": "Verify Email"
   },
+  "progress": {
+    "addNewProgressToStart": "Add new progress to get started",
+    "addProgressBtn": "Add new subject progress",
+    "noSubjectProgress": "No subject progress found",
+    "selectSemester": {
+      "selectLabel": "Select a semester...",
+      "semester": "Semester",
+      "warning": "Select a semester!"
+    },
+    "selectSemesterToStart": "Select a semester to get started!",
+    "title": "Tracker"
+  },
   "routes": {
     "calculator": "Calculator",
     "dashboard": "Dashboard",
@@ -123,7 +135,7 @@
     "login": "Login",
     "planner": "Planner",
     "profile": "Profile",
-    "progress": "Progress",
+    "progress": "Tracker",
     "search": "Search",
     "verify": "Verify Email"
   },
