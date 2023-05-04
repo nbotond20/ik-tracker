@@ -27,6 +27,15 @@
       "weak": "gyenge"
     }
   },
+  "dashboard": {
+    "menuItems": {
+      "calculator": "Kalkulátor",
+      "planner": "Tervező",
+      "tracker": "Előrehaladás követő"
+    },
+    "statisticsTitle": "Statisztikák a jelenlegi félévhez.",
+    "title": "Irányítópult"
+  },
   "header": {
     "getStarted": "Kezdjük el",
     "login": "Bejelentkezés",
@@ -114,7 +123,7 @@
     "login": "Bejelentkezés",
     "planner": "Tervező",
     "profile": "Profil",
-    "progress": "Előrehaladás",
+    "progress": "Előrehaladás követő",
     "search": "Keresés",
     "verify": "Hitelesítés"
   },
@@ -167,14 +176,14 @@
     },
     "title": "Keresés",
     "toastMessages": {
+      "addToPlanner": {
+        "error": "Hiba történt a tervezőhöz adás közben.",
+        "success": "Tantárgy sikeresen hozzáadva a tervezőhöz."
+      },
       "createSubjectProgress": {
         "error": "Hiba történt az előrehaladás létrehozása közben.",
         "loading": "Előrehaladás létrehozása...",
         "success": "Előrehaladás sikeresen létrehozva."
-      },
-      "addToPlanner": {
-        "error": "Hiba történt a tervezőhöz adás közben.",
-        "success": "Tantárgy sikeresen hozzáadva a tervezőhöz."
       }
     }
   }

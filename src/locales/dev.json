@@ -27,6 +27,15 @@
       "weak": "weak"
     }
   },
+  "dashboard": {
+    "menuItems": {
+      "calculator": "Calculator",
+      "planner": "Planner",
+      "tracker": "Tracker"
+    },
+    "statisticsTitle": "Statistics for current semester.",
+    "title": "Dashboard"
+  },
   "header": {
     "getStarted": "Get started",
     "login": "Log in",
