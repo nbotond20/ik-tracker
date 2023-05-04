@@ -141,10 +141,10 @@ const SubjectProgressPage: NextPage = () => {
     return (
       <ConfirmationDialog
         isOpen={isConfirmationDialogOpen}
-        title={t('progress.setSemesterTitle')} // You haven't set your current semester yet! Please set it now to continue.
+        title={t('progress.setSemesterTitle')}
         onConfirm={handleConfirmationDialog}
         Icon={ExclamationTriangleIcon}
-        confirmText={t('progress.confirmSemesterText') || ''} // Set current semester
+        confirmText={t('progress.confirmSemesterText') || ''}
       />
     )
 

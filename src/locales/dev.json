@@ -141,6 +141,7 @@
     "logout": "Log out"
   },
   "home": {
+    "confirmSemesterText": "Set current semester",
     "ctaPrimary": "Get started",
     "ctaSecondary": "Go to dashboard",
     "description": "Use our app to track your progress and get the most out of your college experience. Be in control of your future.",
@@ -170,12 +171,23 @@
         "title": "Tracking"
       }
     },
+    "setSemesterTitle": "You haven't set your current semester yet! Please set it now to continue.",
     "title": "Track your progress with us"
   },
   "internalError": {
     "description": "We are already working to solve the problem.",
     "title": "Internal Server Error.",
     "tryAgainBtn": "Try again"
+  },
+  "login": {
+    "email": "Email",
+    "emailError": "Please enter a valid email address!",
+    "loginWithDiscord": "Sign in with Discord",
+    "loginWithEmail": "Login with email",
+    "loginWithGithub": "Sign in with Github",
+    "loginWithGoogle": "Sign in with Google",
+    "or": "or",
+    "title": "Log in to your account"
   },
   "maintenance": {
     "description": " We are currently working on the site. Please check back later.",
@@ -227,12 +239,18 @@
     "notVerified": "Not Verified",
     "save": "Save",
     "title": "Profile",
+    "updateSemester": {
+      "error": "Failed to update current semester.",
+      "loading": "Updating current semester...",
+      "success": "Successfully updated current semester!"
+    },
     "verified": "Verified",
     "verifyEmail": "Verify Email"
   },
   "progress": {
     "addNewProgressToStart": "Add new progress to get started",
     "addProgressBtn": "Add new subject progress",
+    "confirmSemesterText": "Set current semester",
     "noSubjectProgress": "No subject progress found",
     "selectSemester": {
       "selectLabel": "Select a semester...",
@@ -240,6 +258,7 @@
       "warning": "Select a semester!"
     },
     "selectSemesterToStart": "Select a semester to get started!",
+    "setSemesterTitle": "You haven't set your current semester yet! Please set it now to continue.",
     "title": "Tracker"
   },
   "routes": {
@@ -318,5 +337,10 @@
         "success": "Successfully created subject progress!"
       }
     }
+  },
+  "verifyEmail": {
+    "ctaBtn": "Go to Home",
+    "description": "We have sent you an email with a link to verify your email address. Please check your inbox.",
+    "title": "Verify your email"
   }
 }

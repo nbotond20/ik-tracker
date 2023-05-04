@@ -141,6 +141,7 @@
     "logout": "Kijelentkezés"
   },
   "home": {
+    "confirmSemesterText": "Jelenlegi félév beállítása",
     "ctaPrimary": "Kezdjük el",
     "ctaSecondary": "Ugrás a vezérlőpulthoz",
     "description": "Használd az alkalmazásunkat, hogy követhesd az előrehaladásodat, és a legtöbbet hozd ki az egyetemi élményedből. Legyen a jövőd a kezedben.",
@@ -170,12 +171,23 @@
         "title": "Nyomon követés"
       }
     },
+    "setSemesterTitle": "Még nem állítottad be a jelenlegi félévedet. Kérjük, állítsd be a profil oldalon.",
     "title": "Kövesd nyomon az előrehaladásod"
   },
   "internalError": {
     "description": "Hiba történt a kiszolgálón. Kérjük, próbáld újra később.",
     "title": "Hiba történt",
     "tryAgainBtn": "Próbáld újra"
+  },
+  "login": {
+    "email": "Email",
+    "emailError": "Kérjük, adj meg egy érvényes email címet.",
+    "loginWithDiscord": "Bejelentkezés Discord fiókkal",
+    "loginWithEmail": "Bejelentkezés email címmel",
+    "loginWithGithub": "Bejelentkezés Github fiókkal",
+    "loginWithGoogle": "Bejelentkezés Google fiókkal",
+    "or": "vagy",
+    "title": "Bejelentkezés"
   },
   "maintenance": {
     "description": "Az oldal karbantartás alatt áll. Kérjük, próbáld újra később.",
@@ -227,12 +239,18 @@
     "notVerified": "Nincs megerősítve",
     "save": "Mentés",
     "title": "Profil",
+    "updateSemester": {
+      "error": "Hiba történt a jelenlegi félév frissítése közben. Kérjük, próbáld újra később.",
+      "loading": "Jelenlegi félév frissítése...",
+      "success": "Jelenlegi félév sikeresen frissítve."
+    },
     "verified": "Megerősítve",
     "verifyEmail": "Email megerősítése"
   },
   "progress": {
     "addNewProgressToStart": "Adj hozzá új előrehaladást a kezdéshez",
     "addProgressBtn": "Előrehaladás hozzáadása",
+    "confirmSemesterText": "Jelenlegi félév beállítása",
     "noSubjectProgress": "Nincs előrehaladás hozzáadva",
     "selectSemester": {
       "selectLabel": "Válassz egy félévet...",
@@ -240,6 +258,7 @@
       "warning": "A félév kiválasztása kötelező!"
     },
     "selectSemesterToStart": "Válassz egy félévet a kezdéshez",
+    "setSemesterTitle": "Még nem állítottad be a jelenlegi félévedet. Kérjük, állítsd be a profil oldalon.",
     "title": "Tracker"
   },
   "routes": {
@@ -312,5 +331,10 @@
         "success": "Előrehaladás sikeresen létrehozva."
       }
     }
+  },
+  "verifyEmail": {
+    "ctaBtn": "Vissza a főoldalra",
+    "description": "Ellenőrizd a beérkező leveleket, és kattints a linkre a megerősítéshez.",
+    "title": "Email megerősítése"
   }
 }

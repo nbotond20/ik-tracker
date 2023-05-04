@@ -42,10 +42,10 @@ const SignInPage: NextPage = () => {
       </Head>
       <div className="relative w-full max-w-sm overflow-auto p-4 bg-white dark:border-gray-700 dark:bg-gray-900 sm:rounded-lg sm:border sm:border-gray-200 sm:shadow-md dark:sm:bg-gray-800 md:min-w-[400px] sm:p-8">
         <div>
-          <h4 className="mb-10 text-3xl font-medium text-gray-900 dark:text-white">Login to our platform</h4>
+          <h4 className="mb-10 text-3xl font-medium text-gray-900 dark:text-white">{t('login.title')}</h4>
           <div className="mb-2">
             <label form="email" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-              Your email
+              {t('login.email')}
             </label>
             <input
               name="email"
@@ -63,7 +63,7 @@ const SignInPage: NextPage = () => {
               }}
               onBlur={() => {
                 if (!isValidEmail(email)) {
-                  setEmailError('Please enter a valid email address!')
+                  setEmailError(t('login.emailError') || '')
                 } else {
                   setEmailError('')
                 }
@@ -79,12 +79,12 @@ const SignInPage: NextPage = () => {
               onClick={() => handleSignInWithEmail()}
               className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Login with email
+              {t('login.loginWithEmail')}
             </button>
             <div className="inline-flex w-full items-center justify-center">
               <hr className="my-6 h-px w-64 border-0 bg-gray-200 dark:bg-gray-700" />
               <span className="absolute left-1/2 -translate-x-1/2 bg-white px-3 font-medium text-gray-900 dark:bg-gray-900 dark:text-white dark:sm:bg-gray-800">
-                or
+                {t('login.or')}
               </span>
             </div>
             <div className="flex w-full flex-col items-center justify-center gap-4">
@@ -118,7 +118,7 @@ const SignInPage: NextPage = () => {
                       d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
                     />
                   </svg>
-                  Sign in with Google
+                  {t('login.loginWithGoogle')}
                 </span>
               </button>
               <button
@@ -142,7 +142,7 @@ const SignInPage: NextPage = () => {
                       d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
                     ></path>
                   </svg>
-                  Sign in with Github
+                  {t('login.loginWithGithub')}
                 </span>
               </button>
               <button
@@ -169,7 +169,7 @@ const SignInPage: NextPage = () => {
                       ></path>
                     </g>
                   </svg>
-                  Sign in with Discord
+                  {t('login.loginWithDiscord')}
                 </span>
               </button>
             </div>

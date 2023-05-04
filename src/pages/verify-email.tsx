@@ -40,17 +40,15 @@ const VerifyEmailPage: NextPage = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h1 className="text-3xl text-gray-900 dark:text-gray-50">Verify your email</h1>
-            <p className="text-gray-500 dark:text-gray-400 mt-2">
-              We have sent you an email with a link to verify your email address. Please check your inbox.
-            </p>
+            <h1 className="text-3xl text-gray-900 dark:text-gray-50">{t('verifyEmail.title')}</h1>
+            <p className="text-gray-500 dark:text-gray-400 mt-2 text-center">{t('verifyEmail.description')}</p>
 
             <div className="mt-4 flex justify-center flex-col gap-1">
               <button
                 className="w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
                 onClick={() => void router.push('/')}
               >
-                Go to home
+                {t('verifyEmail.ctaBtn')}
               </button>
             </div>
           </div>
