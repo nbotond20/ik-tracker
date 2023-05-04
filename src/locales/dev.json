@@ -68,6 +68,36 @@
       },
       "subjectType": "Subject Type"
     },
+    "progressCard": {
+      "deleteProgress": {
+        "confirm": "Are you sure you want to delete this item?",
+        "loading": "Deleting subject progress...",
+        "success": "Successfully deleted subject progress!",
+        "title": "Failed to delete subject progress."
+      },
+      "deleteProgressBtn": "Delete",
+      "editProgressBtn": "Edit",
+      "resultTable": {
+        "predictedGrade": "Predicted grade",
+        "predictedPercentage": "Predicted percentage",
+        "subjectCredit": "Subject credit"
+      },
+      "saveProgressBtn": "Save",
+      "updateProgress": {
+        "loading": "Saving progress...",
+        "success": "Successfully saved progress!",
+        "title": "Failed to save progress."
+      }
+    },
+    "statisticsTable": {
+      "average": "Average",
+      "correctedCreditIndex": "Corrected Credit Index",
+      "credit": "Credit",
+      "creditIndex": "Credit Index",
+      "passedCredit": "Passed Credit",
+      "totalCredit": "Total Credit",
+      "weightedAverage": "Weighted Average"
+    },
     "subjectCard": {
       "or": "or",
       "weak": "weak"

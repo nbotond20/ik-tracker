@@ -68,6 +68,36 @@
       },
       "subjectType": "Subject Type"
     },
+    "progressCard": {
+      "deleteProgress": {
+        "confirm": "Biztosan törölni szeretnéd az előrehaladását?",
+        "loading": "Előrehaladás törlése...",
+        "success": "Előrehaladás sikeresen törölve!",
+        "title": "Hiba történt az előrehaladás törlése közben!"
+      },
+      "deleteProgressBtn": "Törlés",
+      "editProgressBtn": "Szerkesztés",
+      "resultTable": {
+        "predictedGrade": "Várható jegy",
+        "predictedPercentage": "Várható százalék",
+        "subjectCredit": "Kredit"
+      },
+      "saveProgressBtn": "Mentés",
+      "updateProgress": {
+        "loading": "Előrehaladás mentése...",
+        "success": "Előrehaladás sikeresen mentve!",
+        "title": "Hiba történt az előrehaladás mentése közben!"
+      }
+    },
+    "statisticsTable": {
+      "average": "Átlag",
+      "correctedCreditIndex": "Korrigált Kreditindex",
+      "credit": "Kredit",
+      "creditIndex": "Kreditindex",
+      "passedCredit": "Teljesített Kredit",
+      "totalCredit": "Összes Kredit",
+      "weightedAverage": "Súlyozott Átlag"
+    },
     "subjectCard": {
       "or": "vagy",
       "weak": "gyenge"
