@@ -71,9 +71,9 @@
     "progressCard": {
       "deleteProgress": {
         "confirm": "Biztosan törölni szeretnéd az előrehaladását?",
+        "error": "Hiba történt az előrehaladás törlése közben!",
         "loading": "Előrehaladás törlése...",
-        "success": "Előrehaladás sikeresen törölve!",
-        "title": "Hiba történt az előrehaladás törlése közben!"
+        "success": "Előrehaladás sikeresen törölve!"
       },
       "deleteProgressBtn": "Törlés",
       "editProgressBtn": "Szerkesztés",
@@ -84,9 +84,9 @@
       },
       "saveProgressBtn": "Mentés",
       "updateProgress": {
+        "error": "Hiba történt az előrehaladás mentése közben!",
         "loading": "Előrehaladás mentése...",
-        "success": "Előrehaladás sikeresen mentve!",
-        "title": "Hiba történt az előrehaladás mentése közben!"
+        "success": "Előrehaladás sikeresen mentve!"
       }
     },
     "statisticsTable": {

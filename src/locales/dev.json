@@ -71,9 +71,9 @@
     "progressCard": {
       "deleteProgress": {
         "confirm": "Are you sure you want to delete this item?",
+        "error": "Failed to delete subject progress.",
         "loading": "Deleting subject progress...",
-        "success": "Successfully deleted subject progress!",
-        "title": "Failed to delete subject progress."
+        "success": "Successfully deleted subject progress!"
       },
       "deleteProgressBtn": "Delete",
       "editProgressBtn": "Edit",
@@ -84,9 +84,9 @@
       },
       "saveProgressBtn": "Save",
       "updateProgress": {
+        "error": "Failed to save progress.",
         "loading": "Saving progress...",
-        "success": "Successfully saved progress!",
-        "title": "Failed to save progress."
+        "success": "Successfully saved progress!"
       }
     },
     "statisticsTable": {
