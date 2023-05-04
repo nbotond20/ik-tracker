@@ -86,7 +86,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                   >
                     {t('header.logout')}
                   </LinkButton>
-                  <div className="relative mr-2 h-10 w-10 cursor-pointer overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
+                  <div className="relative mr-2 h-10 w-10 min-w-[40px] min-h-[40px] cursor-pointer overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
                     <Link href="/profile">
                       {session.user.image ? (
                         <Image width={48} height={48} src={session.user.image} alt="Avatar" />
