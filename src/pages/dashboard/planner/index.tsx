@@ -187,7 +187,9 @@ const PlannerPage: NextPage = () => {
               <table className="mb-4 w-full">
                 <thead>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
-                    <th className="py-1 pr-2 text-left text-base">Σ Credit per Subject Types</th>
+                    <th className="py-1 pr-2 text-left text-base">
+                      Σ {t('planner.statisticsTable.creditPreSubjectTypes')}
+                    </th>
                     <th className="py-1 px-2 text-right">{statistics.totalCredit}</th>
                   </tr>
                 </thead>
@@ -195,7 +197,7 @@ const PlannerPage: NextPage = () => {
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
                       <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                        Base Credit
+                        {t('planner.statisticsTable.baseCredit')}
                       </span>
                     </td>
                     <td className="py-1 px-2 text-right font-semibold">{statistics.baseCredit}</td>
@@ -203,7 +205,7 @@ const PlannerPage: NextPage = () => {
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
                       <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                        Compulsory Credit
+                        {t('planner.statisticsTable.compulsoryCredit')}
                       </span>
                     </td>
                     <td className="py-1 px-2 text-right font-semibold">{statistics.compulsoryCredit}</td>
@@ -211,7 +213,7 @@ const PlannerPage: NextPage = () => {
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
                       <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                        Compulsory Elective Credit
+                        {t('planner.statisticsTable.compulsoryElectiveCredit')}
                       </span>
                     </td>
                     <td className="py-1 px-2 text-right font-semibold">{statistics.compulsoryElectiveCredit}</td>
@@ -219,7 +221,7 @@ const PlannerPage: NextPage = () => {
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
                       <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                        Elective Credit
+                        {t('planner.statisticsTable.electiveCredit')}
                       </span>
                     </td>
                     <td className="py-1 px-2 text-right font-semibold">{statistics.electiveCredit}</td>
@@ -229,7 +231,9 @@ const PlannerPage: NextPage = () => {
               <table className="mb-4 w-full">
                 <thead>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
-                    <th className="py-1 pr-2 text-left text-base">Σ Compulsory Elective Credit Types</th>
+                    <th className="py-1 pr-2 text-left text-base">
+                      Σ {t('planner.statisticsTable.compulsoryElectiveCreditTypes')}
+                    </th>
                     <th className="py-1 px-2 text-right">{statistics.compulsoryElectiveCredit}</th>
                   </tr>
                 </thead>
@@ -237,7 +241,7 @@ const PlannerPage: NextPage = () => {
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
                       <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                        Informatics
+                        {t('planner.statisticsTable.inf')}
                       </span>
                     </td>
                     <td className="py-1 px-2 text-right font-semibold">{statistics.infCredit}</td>
@@ -245,7 +249,7 @@ const PlannerPage: NextPage = () => {
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
                       <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                        Computing
+                        {t('planner.statisticsTable.comp')}
                       </span>
                     </td>
                     <td className="py-1 px-2 text-right font-semibold">{statistics.compCredit}</td>
@@ -255,7 +259,7 @@ const PlannerPage: NextPage = () => {
               <table className="w-full">
                 <thead>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
-                    <th className="py-1 pr-2 text-left text-base">Σ Weekly Hours</th>
+                    <th className="py-1 pr-2 text-left text-base">Σ {t('planner.statisticsTable.weeklyHours')}</th>
                     <th className="py-1 px-2 text-right">
                       {`${statistics.totalLabor + statistics.totalLecture + statistics.totalPractice} + ${
                         statistics.totalConsultation
@@ -267,7 +271,7 @@ const PlannerPage: NextPage = () => {
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
                       <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                        Lecture
+                        {t('planner.statisticsTable.lecture')}
                       </span>
                     </td>
                     <td className="py-1 px-2 text-right font-semibold">{statistics.totalLecture}</td>
@@ -275,21 +279,23 @@ const PlannerPage: NextPage = () => {
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
                       <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                        Practice
+                        {t('planner.statisticsTable.practice')}
                       </span>
                     </td>
                     <td className="py-1 px-2 text-right font-semibold">{statistics.totalPractice}</td>
                   </tr>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">Labor</span>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
+                        {t('planner.statisticsTable.labor')}
+                      </span>
                     </td>
                     <td className="py-1 px-2 text-right font-semibold">{statistics.totalLabor}</td>
                   </tr>
                   <tr className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal">
                     <td className="py-1 pr-2 text-left">
                       <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px] italic">
-                        Consultation
+                        {t('planner.statisticsTable.consultation')}
                       </span>
                     </td>
                     <td className="py-1 px-2 text-right font-semibold">{statistics.totalConsultation}</td>
@@ -324,7 +330,7 @@ const PlannerPage: NextPage = () => {
                         )
                         void debouncedHandleSubjectChange(e.target.value, subject)
                       }}
-                      placeholder="Code"
+                      placeholder={t('planner.subjects.subjectCode') || ''}
                       className={`${subject.subject ? 'pl-8' : ''} ${getInputBGColor(
                         subject
                       )} pr-8 w-full placeholder:text-gray-400 rounded-lg border px-2 py-1 h-[30px] sm:h-auto sm:py-2 text-sm sm:text-base font-medium focus:outline-none focus:ring-1 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500`}

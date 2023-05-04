@@ -49,10 +49,10 @@ const HomePage: NextPage = () => {
     return (
       <ConfirmationDialog
         isOpen={isConfirmationDialogOpen}
-        title="You haven't set your current semester yet! Please set it now to continue."
+        title={t('home.setSemesterTitle')}
         onConfirm={handleConfirmationDialog}
         Icon={ExclamationTriangleIcon}
-        confirmText="Set current semester"
+        confirmText={t('home.confirmSemesterText') || ''}
       />
     )
 

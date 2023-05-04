@@ -16,7 +16,7 @@ export const DarkModeToggle = ({ className }: DarkModeToggleProps) => {
         className ?? ''
       }`}
     >
-      <span className="sr-only">Open main menu</span>
+      <span className="sr-only">Toggle Dark Mode</span>
 
       {mode === 'dark' ? <SunIcon className="h-6 w-6" /> : <MoonIcon className="h-6 w-6" />}
     </button>

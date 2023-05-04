@@ -1,4 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import type { Assessment } from '@prisma/client'
 
@@ -13,6 +14,8 @@ export const AssessmentsTable = ({
   setAssessmentResults,
   assessmentsErrorMessages,
 }: AssessmentsTableProps) => {
+  const { t } = useTranslation()
+
   return assessmentResults.length > 0 ? (
     <>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -20,13 +23,13 @@ export const AssessmentsTable = ({
           <tr>
             <th scope="col" className="px-3 py-1 bg-gray-50 dark:bg-gray-800"></th>
             <th scope="col" className="px-3 py-1 border border-gray-300 dark:border-gray-600 text-center">
-              Score
+              {t('components.assessmentTable.score')}
             </th>
             <th scope="col" className="px-3 py-1 border border-gray-300 dark:border-gray-600 text-center">
-              Max
+              {t('components.assessmentTable.max')}
             </th>
             <th scope="col" className="px-3 py-1 border border-gray-300 dark:border-gray-600 text-center">
-              Min
+              {t('components.assessmentTable.min')}
             </th>
           </tr>
         </thead>
@@ -104,7 +107,9 @@ export const AssessmentsTable = ({
     </>
   ) : (
     <div>
-      <p className="text-gray-500 dark:text-gray-400 text-base w-full text-center">No assessments added yet</p>
+      <p className="text-gray-500 dark:text-gray-400 text-base w-full text-center">
+        {t('components.assessmentTable.noAssessments')}
+      </p>
     </div>
   )
 }

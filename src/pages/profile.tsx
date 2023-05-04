@@ -71,13 +71,13 @@ const ProfilePage: NextPage = () => {
           currentSemester: currentSemester,
         }),
         {
-          loading: 'Updating current semester...',
-          success: <b>Successfully updated current semester!</b>,
-          error: <b>Failed to update current semester.</b>,
+          loading: t('profile.updateSemester.loading'),
+          success: <b>{t('profile.updateSemester.success')}</b>,
+          error: <b>{t('profile.updateSemester.error')}</b>,
         }
       )
     }
-  }, [currentSemester, updateCurrentSemester])
+  }, [currentSemester, t, updateCurrentSemester])
 
   useEffect(() => {
     const { setCurrentSemester } = router.query

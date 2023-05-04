@@ -1,5 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import type { ISubject } from '@pages/dashboard/planner'
@@ -11,6 +12,7 @@ interface PlannerInputGroupProps {
 }
 
 export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGroupProps) => {
+  const { t } = useTranslation()
   const [showInput, setShowInput] = useState(true)
   return show ? (
     <div className="col-span-10 isolate relative">
@@ -24,7 +26,9 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
         }}
         onClick={() => setShowInput(prev => !prev)}
       >
-        <span className="text-gray-500 text-sm">{showInput ? 'Hide' : 'Show'} details</span>
+        <span className="text-gray-500 text-sm whitespace-nowrap">
+          {showInput ? t('components.plannerInputGroup.details.hide') : t('components.plannerInputGroup.details.show')}
+        </span>
         {showInput ? (
           <ChevronUpIcon className="h-6 w-6 text-gray-500  z-50" />
         ) : (
@@ -35,7 +39,7 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
         <div className="w-full">
           <div
             style={{
-              height: '40px', // 25 + 2 = 27
+              height: '40px',
               position: 'absolute',
               borderBottomLeftRadius: '10px',
               top: '-8px',
@@ -45,7 +49,7 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
           />
           <input
             tabIndex={-1}
-            placeholder="Credit"
+            placeholder={t('components.plannerInputGroup.credit') || ''}
             className="h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
             value={subject.credit || ''}
             inputMode="numeric"
@@ -73,7 +77,7 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
           />
           <select
             tabIndex={-1}
-            placeholder="Subject Type"
+            placeholder={t('components.plannerInputGroup.subjectType') || ''}
             className="h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
             value={subject.subjectType || 'select'}
             onChange={e =>
@@ -88,12 +92,12 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
             }
           >
             <option value="select" disabled>
-              Select a subject type...
+              {t('components.plannerInputGroup.selectSubjectType.select')}
             </option>
-            <option value="TOR">Törzsanyag</option>
-            <option value="KOT">Kötelező</option>
-            <option value="KV">Kötelezően választható</option>
-            <option value="SZAB">Szabadon választható</option>
+            <option value="TOR">{t('components.plannerInputGroup.selectSubjectType.options.TOR')}</option>
+            <option value="KOT">{t('components.plannerInputGroup.selectSubjectType.options.KOT')}</option>
+            <option value="KV">{t('components.plannerInputGroup.selectSubjectType.options.KV')}</option>
+            <option value="SZAB">{t('components.plannerInputGroup.selectSubjectType.options.SZAB')}</option>
           </select>
           <div
             style={{
@@ -122,12 +126,12 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
             }
           >
             <option value="select" disabled>
-              Select a credit type...
+              {t('components.plannerInputGroup.selectCreditType.select')}
             </option>
-            <option value="INF">Inf</option>
-            <option value="SZAM">Szám</option>
-            <option value="MAT">Mat</option>
-            <option value="EGYEB">Egyéb</option>
+            <option value="INF">{t('components.plannerInputGroup.selectCreditType.options.INF')}</option>
+            <option value="SZAM">{t('components.plannerInputGroup.selectCreditType.options.SZAM')}</option>
+            <option value="MAT">{t('components.plannerInputGroup.selectCreditType.options.MAT')}</option>
+            <option value="EGYEB">{t('components.plannerInputGroup.selectCreditType.options.EGYEB')}</option>
           </select>
           <div
             style={{
@@ -153,7 +157,7 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
             />
             <input
               tabIndex={-1}
-              placeholder="Lecture"
+              placeholder={t('components.plannerInputGroup.lecture') || ''}
               className="col-span-6 h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
               value={subject.lecture || ''}
               inputMode="numeric"
@@ -171,7 +175,7 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
             />
             <input
               tabIndex={-1}
-              placeholder="Practice"
+              placeholder={t('components.plannerInputGroup.practice') || ''}
               className="col-span-6 h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
               value={subject.practice || ''}
               inputMode="numeric"
@@ -212,7 +216,7 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
             />
             <input
               tabIndex={-1}
-              placeholder="Labor"
+              placeholder={t('components.plannerInputGroup.labor') || ''}
               className="col-span-6 h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
               value={subject.labor || ''}
               inputMode="numeric"
@@ -230,7 +234,7 @@ export const PlannerInputGroup = ({ show, subject, setSubjects }: PlannerInputGr
             />
             <input
               tabIndex={-1}
-              placeholder="Consultation"
+              placeholder={t('components.plannerInputGroup.consultation') || ''}
               className="col-span-6 h-[30px] mb-2 w-full placeholder:text-gray-400 rounded-lg border bg-white px-2 py-1 text-sm font-medium text-gray-500 focus:outline-none focus:ring-1 dark:bg-gray-600 dark:text-gray-200 border-gray-200 dark:border-gray-600 dark:focus:ring-blue-500"
               value={subject.consultation || ''}
               inputMode="numeric"

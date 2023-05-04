@@ -75,9 +75,9 @@ const SearchPage: NextPage = () => {
     void toast.promise(
       createSubjectProgress({ subjectId, semester: user?.currentSemester, marks: [-1, -1, -1, -1, -1] }),
       {
-        loading: 'Creating subject progress...',
-        success: <b>Successfully created subject progress!</b>,
-        error: <b>Failed to create subject progress.</b>,
+        loading: t('search.toastMessages.createSubjectProgress.loading'),
+        success: <b>{t('search.toastMessages.createSubjectProgress.success')}</b>,
+        error: <b>{t('search.toastMessages.createSubjectProgress.error')}</b>,
       }
     )
   }
@@ -102,14 +102,14 @@ const SearchPage: NextPage = () => {
           },
         ])
       )
-      toast.success(<b>Successfully added to the planner!</b>)
+      toast.success(<b>{t('search.toastMessages.addToPlanner.success')}</b>)
       return
     }
     const localSubjects = JSON.parse(localSubjectsJSON) as ISubject[]
     const subjectExists = localSubjects.find(s => s.code === subject.code)
 
     if (subjectExists) {
-      toast.error(<b>Subject already exists in planner!</b>)
+      toast.error(<b>{t('search.toastMessages.addToPlanner.error')}</b>)
       return
     }
 
@@ -128,7 +128,7 @@ const SearchPage: NextPage = () => {
         ...localSubjects.filter(s => !s.code),
       ])
     )
-    toast.success(<b>Successfully added to the planner!</b>)
+    toast.success(<b>{t('search.toastMessages.addToPlanner.success')}</b>)
   }
 
   if (status === 'loading' || (isUserLoading && session) || isLoading) return <LoadingPage />

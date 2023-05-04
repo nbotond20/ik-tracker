@@ -13,19 +13,127 @@
     "title": "Kalkulátor"
   },
   "components": {
+    "addMenu": {
+      "choose": "Kérem válasszon"
+    },
+    "assessmentTable": {
+      "max": "Max",
+      "min": "Min",
+      "noAssessments": "Nincs hozzáadott számonkérés",
+      "score": "Eredmény"
+    },
+    "combobox": {
+      "noResults": "Nincs találat"
+    },
     "confirmDialog": {
       "cancelBtn": "Mégse",
       "confirmBtn": "Igen, biztos"
+    },
+    "markTable": {
+      "grade": "Jegy",
+      "score": "Ponthatár"
     },
     "pagination": {
       "label": "<textFormat>{{from}}</textFormat>-tól <textFormat>{{to}}</textFormat>-ig mutatva a(z) <textFormat>{{outOf}}</textFormat> bejegyzésből.",
       "nextBtn": "Követkő",
       "prevBtn": "Előző"
     },
+    "plannerInputGroup": {
+      "consultation": "Konzultáció",
+      "credit": "Kredit",
+      "details": {
+        "hide": "Részletek elrejtése",
+        "show": "Részletek megjelenítése"
+      },
+      "labor": "Labor",
+      "lecture": "Előadás",
+      "practice": "Gyakorlat",
+      "selectCreditType": {
+        "options": {
+          "EGYEB": "Egyéb",
+          "INF": "Informatikai",
+          "MAT": "Matematikai",
+          "SZAM": "Számítástudományi"
+        },
+        "select": "Válassz kredit típust..."
+      },
+      "selectSubjectType": {
+        "options": {
+          "KOT": "Kötelező",
+          "KV": "Kötelezően választható",
+          "SZAB": "Szabadon választható",
+          "TOR": "Törzsanyag"
+        },
+        "select": "Válassz tantárgy típust..."
+      },
+      "subjectType": "Subject Type"
+    },
+    "progressCard": {
+      "deleteProgress": {
+        "confirm": "Biztosan törölni szeretnéd az előrehaladását?",
+        "loading": "Előrehaladás törlése...",
+        "success": "Előrehaladás sikeresen törölve!",
+        "title": "Hiba történt az előrehaladás törlése közben!"
+      },
+      "deleteProgressBtn": "Törlés",
+      "editProgressBtn": "Szerkesztés",
+      "resultTable": {
+        "predictedGrade": "Várható jegy",
+        "predictedPercentage": "Várható százalék",
+        "subjectCredit": "Kredit"
+      },
+      "saveProgressBtn": "Mentés",
+      "updateProgress": {
+        "loading": "Előrehaladás mentése...",
+        "success": "Előrehaladás sikeresen mentve!",
+        "title": "Hiba történt az előrehaladás mentése közben!"
+      }
+    },
+    "statisticsTable": {
+      "average": "Átlag",
+      "correctedCreditIndex": "Korrigált Kreditindex",
+      "credit": "Kredit",
+      "creditIndex": "Kreditindex",
+      "passedCredit": "Teljesített Kredit",
+      "totalCredit": "Összes Kredit",
+      "weightedAverage": "Súlyozott Átlag"
+    },
     "subjectCard": {
+      "addMenu": {
+        "addToPlanner": "Hozzáadás a tervezőhöz",
+        "addToProgress": "Előrehaladás létrehozása"
+      },
+      "assessmentType": "Számonkérés típusa",
+      "consultation": "Konzultáció",
+      "copy": {
+        "error": "Hiba történt a másolás közben!",
+        "loading": "Másolás...",
+        "success": "Vágólapra másolva!"
+      },
+      "courseName": "Kurzus neve",
+      "credit": "Kredit",
+      "creditType": "Kredit típusa",
+      "labor": "Labor",
+      "lecture": "Előadás",
       "or": "vagy",
+      "practice": "Gyakorlat",
+      "practiceGradeType": "Gyakorlati jegy típusa",
+      "prerequisites": "Előfeltételek",
+      "semester": "Félév",
+      "specialisation": "Specializáció",
+      "subjectCode": "Tárgy kódja",
+      "subjectType": "Tárgy típusa",
       "weak": "gyenge"
     }
+  },
+  "dashboard": {
+    "menuItems": {
+      "calculator": "Kalkulátor",
+      "planner": "Tervező",
+      "tracker": "Előrehaladás követő"
+    },
+    "statisticsTitle": "Statisztikák a jelenlegi félévhez.",
+    "title": "Irányítópult"
   },
   "header": {
     "getStarted": "Kezdjük el",
@@ -33,6 +141,7 @@
     "logout": "Kijelentkezés"
   },
   "home": {
+    "confirmSemesterText": "Jelenlegi félév beállítása",
     "ctaPrimary": "Kezdjük el",
     "ctaSecondary": "Ugrás a vezérlőpulthoz",
     "description": "Használd az alkalmazásunkat, hogy követhesd az előrehaladásodat, és a legtöbbet hozd ki az egyetemi élményedből. Legyen a jövőd a kezedben.",
@@ -62,12 +171,23 @@
         "title": "Nyomon követés"
       }
     },
+    "setSemesterTitle": "Még nem állítottad be a jelenlegi félévedet. Kérjük, állítsd be a profil oldalon.",
     "title": "Kövesd nyomon az előrehaladásod"
   },
   "internalError": {
     "description": "Hiba történt a kiszolgálón. Kérjük, próbáld újra később.",
     "title": "Hiba történt",
     "tryAgainBtn": "Próbáld újra"
+  },
+  "login": {
+    "email": "Email",
+    "emailError": "Kérjük, adj meg egy érvényes email címet.",
+    "loginWithDiscord": "Bejelentkezés Discord fiókkal",
+    "loginWithEmail": "Bejelentkezés email címmel",
+    "loginWithGithub": "Bejelentkezés Github fiókkal",
+    "loginWithGoogle": "Bejelentkezés Google fiókkal",
+    "or": "vagy",
+    "title": "Bejelentkezés"
   },
   "maintenance": {
     "description": "Az oldal karbantartás alatt áll. Kérjük, próbáld újra később.",
@@ -85,6 +205,21 @@
     "tryAgainBtn": "Próbáld újra"
   },
   "planner": {
+    "statisticsTable": {
+      "baseCredit": "Törzsanyag kredit",
+      "comp": "Számítástudományi",
+      "compulsoryCredit": "Kötelező kredit",
+      "compulsoryElectiveCredit": "Kötelezően választható kredit",
+      "compulsoryElectiveCreditTypes": "K. V. tárgyak kreditjei",
+      "consultation": "Konzultáció",
+      "creditPreSubjectTypes": "Kreditek tantárgy típusonként",
+      "electiveCredit": "Szabadon választható kredit",
+      "inf": "Informatikai",
+      "labor": "Labor",
+      "lecture": "Előadás",
+      "practice": "Gyakorlat",
+      "weeklyHours": "Heti óraszám"
+    },
     "subjects": {
       "subjectCode": "Kód",
       "subjectName": "Név",
@@ -104,8 +239,27 @@
     "notVerified": "Nincs megerősítve",
     "save": "Mentés",
     "title": "Profil",
+    "updateSemester": {
+      "error": "Hiba történt a jelenlegi félév frissítése közben. Kérjük, próbáld újra később.",
+      "loading": "Jelenlegi félév frissítése...",
+      "success": "Jelenlegi félév sikeresen frissítve."
+    },
     "verified": "Megerősítve",
     "verifyEmail": "Email megerősítése"
+  },
+  "progress": {
+    "addNewProgressToStart": "Adj hozzá új előrehaladást a kezdéshez",
+    "addProgressBtn": "Előrehaladás hozzáadása",
+    "confirmSemesterText": "Jelenlegi félév beállítása",
+    "noSubjectProgress": "Nincs előrehaladás hozzáadva",
+    "selectSemester": {
+      "selectLabel": "Válassz egy félévet...",
+      "semester": "Félév",
+      "warning": "A félév kiválasztása kötelező!"
+    },
+    "selectSemesterToStart": "Válassz egy félévet a kezdéshez",
+    "setSemesterTitle": "Még nem állítottad be a jelenlegi félévedet. Kérjük, állítsd be a profil oldalon.",
+    "title": "Tracker"
   },
   "routes": {
     "calculator": "Kalkulátor",
@@ -114,7 +268,7 @@
     "login": "Bejelentkezés",
     "planner": "Tervező",
     "profile": "Profil",
-    "progress": "Előrehaladás",
+    "progress": "Előrehaladás követő",
     "search": "Keresés",
     "verify": "Hitelesítés"
   },
@@ -165,6 +319,22 @@
       "semester": "Félév",
       "subjectType": "Tantárgy típusa"
     },
-    "title": "Keresés"
+    "title": "Keresés",
+    "toastMessages": {
+      "addToPlanner": {
+        "error": "Hiba történt a tervezőhöz adás közben.",
+        "success": "Tantárgy sikeresen hozzáadva a tervezőhöz."
+      },
+      "createSubjectProgress": {
+        "error": "Hiba történt az előrehaladás létrehozása közben.",
+        "loading": "Előrehaladás létrehozása...",
+        "success": "Előrehaladás sikeresen létrehozva."
+      }
+    }
+  },
+  "verifyEmail": {
+    "ctaBtn": "Vissza a főoldalra",
+    "description": "Ellenőrizd a beérkező leveleket, és kattints a linkre a megerősítéshez.",
+    "title": "Email megerősítése"
   }
 }

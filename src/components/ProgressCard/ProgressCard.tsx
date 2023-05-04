@@ -1,6 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react'
 import { useEffect, useState, useMemo } from 'react'
 import { toast } from 'react-hot-toast'
+import { useTranslation } from 'react-i18next'
 
 import { Accordion } from '@components/Accordion/Accordion'
 import { AssessmentsTable } from '@components/AssessmentTable/AssessmentTable'
@@ -34,6 +35,7 @@ export const ProgressCard = ({
   gradeStat,
   open,
 }: ProgressCardProps) => {
+  const { t } = useTranslation()
   const maxResultPerSubject = useMemo(
     () => subjectProgress.assessments.reduce((acc, assessment) => acc + (assessment?.maxResult || 0), 0),
     [subjectProgress.assessments]
@@ -101,9 +103,9 @@ export const ProgressCard = ({
     })
     await toast
       .promise(Promise.all(promises), {
-        loading: 'Saving progress...',
-        success: <b>Successfully saved progress!</b>,
-        error: <b>Failed to save progress.</b>,
+        loading: t('components.progressCard.updateProgress.loading'),
+        success: <b>{t('components.progressCard.updateProgress.success')}</b>,
+        error: <b>{t('components.progressCard.updateProgress.error')}</b>,
       })
       .then(() => {
         setAssessmentsErrorMessages({})
@@ -122,9 +124,9 @@ export const ProgressCard = ({
 
   const handleDelete = () => {
     void toast.promise(deleteSubjectProgress({ id: subjectProgress.id }), {
-      loading: 'Deleting subject progress...',
-      success: <b>Successfully deleted subject progress!</b>,
-      error: <b>Failed to delete subject progress.</b>,
+      loading: t('components.progressCard.deleteProgress.loading'),
+      success: <b>{t('components.progressCard.deleteProgress.success')}</b>,
+      error: <b>{t('components.progressCard.deleteProgress.error')}</b>,
     })
   }
 
@@ -139,7 +141,7 @@ export const ProgressCard = ({
       } ${isAccordionOpen ? 'h-auto lg:min-h-[600px]' : 'h-max'}`}
     >
       <ConfirmationDialog
-        title="Are you sure you want to delete this item?"
+        title={t('components.progressCard.deleteProgress.confirm')}
         isOpen={isConfirmModalOpen}
         onConfirm={handleDelete}
         onClose={handleClose}
@@ -169,7 +171,7 @@ export const ProgressCard = ({
                     scope="row"
                     className="px-3 py-2 font-medium text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600"
                   >
-                    Predicted grade
+                    {t('components.progressCard.resultTable.predictedGrade')}
                   </th>
                   <td
                     className={`${getGradeColor(
@@ -184,7 +186,7 @@ export const ProgressCard = ({
                     scope="row"
                     className="px-3 py-2 font-medium text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600"
                   >
-                    Predicted percentage
+                    {t('components.progressCard.resultTable.predictedPercentage')}
                   </th>
                   <td className="px-3 py-2 border border-gray-300 dark:border-gray-600 text-center bg-gray-200 dark:bg-gray-700 dark:text-gray-50 text-gray-800 font-medium">
                     {percentage ? `${percentage}%` : '-'}
@@ -195,7 +197,7 @@ export const ProgressCard = ({
                     scope="row"
                     className="px-3 py-2 font-medium text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600"
                   >
-                    Subject Credit
+                    {t('components.progressCard.resultTable.subjectCredit')}
                   </th>
                   <td className="px-3 py-2 border border-gray-300 dark:border-gray-600 text-center bg-gray-200 dark:bg-gray-700 dark:text-gray-50 text-gray-800 font-medium">
                     {subjectProgress.subject?.credit ?? subjectProgress.credit ?? '-'}
@@ -220,14 +222,14 @@ export const ProgressCard = ({
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
-            Edit
+            {t('components.progressCard.editProgressBtn')}
           </button>
           <button
             onClick={() => setIsConfirmModalOpen(true)}
             type="button"
             className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
           >
-            Delete
+            {t('components.progressCard.deleteProgressBtn')}
           </button>
           <button
             disabled={!assessmentResultsChanged}
@@ -236,7 +238,7 @@ export const ProgressCard = ({
             onClick={() => void handleUpdateAssessments()}
           >
             {!isSvaingProgress ? (
-              'Save Changes'
+              t('components.progressCard.saveProgressBtn')
             ) : (
               <div className="flex justify-center w-12">
                 <LoadingSpinner size={22} />

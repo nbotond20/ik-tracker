@@ -1,5 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { InputField } from '@components/InputField/InputField'
 import type { ResultType } from '@prisma/client'
@@ -15,15 +16,17 @@ interface MarkTableProps {
 }
 
 export const MarkTable = ({ marks, maxResult, editing, setMarks, resultType }: MarkTableProps) => {
+  const { t } = useTranslation()
+
   return (
     <table className="w-full text-sm text-gray-500 dark:text-gray-400 ">
       <thead>
         <tr>
           <th scope="col" className="px-1 py-1 border border-gray-300 dark:border-gray-600 text-center">
-            Score
+            {t('components.markTable.score')}
           </th>
           <th scope="col" className="px-1 py-1 border border-gray-300 dark:border-gray-600 text-center">
-            Grade
+            {t('components.markTable.grade')}
           </th>
         </tr>
       </thead>

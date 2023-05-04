@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next'
 
-import { Badge } from '@components/Badge/Badge'
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
 import { ScrollLayout } from '@components/Layout/ScrollLayout'
 import { LoadingPage, LoadingSpinner } from '@components/Spinner/Spinner'
 import { StatisticsTable } from '@components/StatisticsTable/StatisticsTable'
+import { SubjectGradeTable } from '@components/SubjectGradeTable/SubjectGradeTable'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
 import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
@@ -44,7 +44,7 @@ const breadcrumbs = [
   },
 ]
 
-type Statistics = RouterOutputs['subjectProgress']['statisticsBySemester']
+export type Statistics = RouterOutputs['subjectProgress']['statisticsBySemester']
 
 const DashBoardPage: NextPage = () => {
   const { data: session } = useSession()
@@ -69,7 +69,7 @@ const DashBoardPage: NextPage = () => {
       </Head>
       <div className="w-full max-w-screen-sm 2xl:max-w-screen-2xl lg:max-w-screen-lg px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between border-b border-gray-200 pt-12 pb-6">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Dashboard</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{t('dashboard.title')}</h1>
         </div>
         <div className="my-6">
           <BreadCrumbs breadcrumbs={breadcrumbs} />
@@ -83,7 +83,7 @@ const DashBoardPage: NextPage = () => {
               <div className=" flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
                 <PresentationChartLineIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
               </div>
-              <h2 className=" text-xl font-bold dark:text-white">Tracker</h2>
+              <h2 className=" text-xl font-bold dark:text-white">{t('dashboard.menuItems.tracker')}</h2>
             </div>
           </Link>
           <Link
@@ -94,7 +94,7 @@ const DashBoardPage: NextPage = () => {
               <div className=" flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
                 <CalculatorIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
               </div>
-              <h2 className=" text-xl font-bold dark:text-white">Calculator</h2>
+              <h2 className=" text-xl font-bold dark:text-white">{t('dashboard.menuItems.calculator')}</h2>
             </div>
           </Link>
           <Link
@@ -105,47 +105,19 @@ const DashBoardPage: NextPage = () => {
               <div className=" flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 lg:h-12 lg:w-12">
                 <AcademicCapIcon className="h-5 w-5 text-primary-600 dark:text-primary-300 lg:h-6 lg:w-6" />
               </div>
-              <h2 className=" text-xl font-bold dark:text-white">Planner 🚧</h2>
+              <h2 className=" text-xl font-bold dark:text-white">{t('dashboard.menuItems.planner')}</h2>
             </div>
           </Link>
           {/* STATISTICS */}
           <div className="col-span-12 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
             <h2 className="text-xl font-bold dark:text-white mb-6 flex gap-2">
-              Statistics for current semester{' '}
-              {!isLoading && !isUserLoading ? `(${user?.currentSemester || 1}).` : <LoadingSpinner />}
+              {t('dashboard.statisticsTitle')}{' '}
+              {!isLoading && !isUserLoading ? `(${user?.currentSemester || 1}.)` : <LoadingSpinner />}
             </h2>
             {!isLoading && !isUserLoading ? (
               <div className="w-full flex flex-col lg:flex-row gap-8 justify-evenly">
                 <StatisticsTable statistics={statistics as Omit<Statistics, 'subjectProgressesWithGrade'>} />
-                {statistics?.subjectProgressesWithGrade && statistics?.subjectProgressesWithGrade.length > 0 && (
-                  <div className="w-full lg:w-auto">
-                    <table className="w-full lg:w-auto">
-                      <thead>
-                        <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
-                          <th className="py-1 pr-2 text-left text-base">Subject</th>
-                          <th className="py-1 px-2 text-right text-base">Grade</th>
-                        </tr>
-                      </thead>
-                      <tbody className="flex-1 sm:flex-none">
-                        {statistics?.subjectProgressesWithGrade.map(statistic => (
-                          <tr
-                            key={statistic.id}
-                            className="rounded-lg text-gray-600 dark:text-gray-400 text-sm leading-normal"
-                          >
-                            <td className="py-1 pr-2 text-left">{statistic.subjectName}</td>
-                            <td className="py-1 px-2 text-right">
-                              <Badge
-                                variant={statistic.grade >= 4 ? 'success' : statistic.grade >= 2 ? 'warning' : 'danger'}
-                              >
-                                {statistic.grade}
-                              </Badge>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
+                <SubjectGradeTable statistics={statistics} />
               </div>
             ) : (
               <div className="w-full flex justify-center items-center h-40">

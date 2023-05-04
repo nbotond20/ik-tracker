@@ -58,14 +58,14 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                   <LinkButton
                     variant="outlined"
                     href={`/login?callbackUrl=${router.pathname}`}
-                    className="mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
+                    className="whitespace-nowrap mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
                     onClick={() => setIsOpen(false)}
                   >
                     {t('header.login')}
                   </LinkButton>
                   <LinkButton
                     variant="filled"
-                    className="mr-2 lg:px-5 lg:py-2.5"
+                    className="whitespace-nowrap mr-2 lg:px-5 lg:py-2.5"
                     onClick={() => setIsOpen(false)}
                     href={`/login?callbackUrl=${router.pathname}`}
                   >
@@ -77,7 +77,7 @@ export const Header = ({ Logo, CustomHeader }: HeaderProps) => {
                   <LinkButton
                     variant="outlined"
                     href={`/`}
-                    className="mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
+                    className="whitespace-nowrap mr-2 hidden sm:flex lg:px-5 lg:py-2.5"
                     onClick={() =>
                       void signOut({
                         callbackUrl: '/',
