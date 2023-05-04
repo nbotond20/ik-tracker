@@ -1,12 +1,17 @@
 import type { ReactNode } from 'react'
 import React, { useRef, useEffect } from 'react'
 
+import { motion } from 'framer-motion'
+
 interface Props {
   children: ReactNode
   onClickAway: ((e: MouseEvent) => void) | (() => void)
+  className?: string
+  isMotion?: boolean
+  motionProps?: Record<string, unknown>
 }
 
-export const ClickAwayListener = ({ children, onClickAway }: Props) => {
+export const ClickAwayListener = ({ children, onClickAway, className, isMotion, motionProps }: Props) => {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -23,5 +28,13 @@ export const ClickAwayListener = ({ children, onClickAway }: Props) => {
     }
   }, [ref, onClickAway])
 
-  return <div ref={ref}>{children}</div>
+  return isMotion ? (
+    <motion.div ref={ref} className={className} {...motionProps}>
+      {children}
+    </motion.div>
+  ) : (
+    <div ref={ref} className={className}>
+      {children}
+    </div>
+  )
 }

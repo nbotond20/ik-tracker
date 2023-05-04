@@ -99,7 +99,30 @@
       "weightedAverage": "Weighted Average"
     },
     "subjectCard": {
+      "addMenu": {
+        "addToPlanner": "Add to planner",
+        "addToProgress": "Add to progress"
+      },
+      "assessmentType": "Assessment Type",
+      "consultation": "Consultation",
+      "copy": {
+        "error": "Failed to copy!",
+        "loading": "Copying...",
+        "success": "Copied!"
+      },
+      "courseName": "Course Name",
+      "credit": "Credit",
+      "creditType": "Credit Type",
+      "labor": "Labor",
+      "lecture": "Lecture",
       "or": "or",
+      "practice": "Practice",
+      "practiceGradeType": "Practice Grade Type",
+      "prerequisites": "Prerequisites",
+      "semester": "Semester",
+      "specialisation": "Specialisation",
+      "subjectCode": "Subject Code",
+      "subjectType": "Subject Type",
       "weak": "weak"
     }
   },

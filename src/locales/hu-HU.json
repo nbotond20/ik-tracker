@@ -99,7 +99,30 @@
       "weightedAverage": "Súlyozott Átlag"
     },
     "subjectCard": {
+      "addMenu": {
+        "addToPlanner": "Hozzáadás a tervezőhöz",
+        "addToProgress": "Előrehaladás létrehozása"
+      },
+      "assessmentType": "Számonkérés típusa",
+      "consultation": "Konzultáció",
+      "copy": {
+        "error": "Hiba történt a másolás közben!",
+        "loading": "Másolás...",
+        "success": "Vágólapra másolva!"
+      },
+      "courseName": "Kurzus neve",
+      "credit": "Kredit",
+      "creditType": "Kredit típusa",
+      "labor": "Labor",
+      "lecture": "Előadás",
       "or": "vagy",
+      "practice": "Gyakorlat",
+      "practiceGradeType": "Gyakorlati jegy típusa",
+      "prerequisites": "Előfeltételek",
+      "semester": "Félév",
+      "specialisation": "Specializáció",
+      "subjectCode": "Tárgy kódja",
+      "subjectType": "Tárgy típusa",
       "weak": "gyenge"
     }
   },
