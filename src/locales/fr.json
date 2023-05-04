@@ -1,0 +1,346 @@
+{
+  "calculator": {
+    "subjects": {
+      "addSubjectBtn": "Ajouter un objet",
+      "credit": "Crédit",
+      "empty": "Aucun sujet ajouté",
+      "grade": "Grade",
+      "optional": "Optionnel",
+      "subjectCode": "Code du sujet",
+      "subjectName": "Nom du sujet",
+      "title": "Sujets"
+    },
+    "title": "Calculatrice"
+  },
+  "components": {
+    "addMenu": {
+      "choose": "Veuillez en choisir un!"
+    },
+    "assessmentTable": {
+      "max": "Max",
+      "min": "Min",
+      "noAssessments": "Aucune évaluation n’a encore été ajoutée",
+      "score": "Score"
+    },
+    "combobox": {
+      "noResults": "Aucun résultat trouvé"
+    },
+    "confirmDialog": {
+      "cancelBtn": "Non, annuler",
+      "confirmBtn": "Oui, je suis sûr"
+    },
+    "markTable": {
+      "grade": "Grade",
+      "score": "Score"
+    },
+    "pagination": {
+      "label": "Affichage <textFormat>{{from}}</textFormat> à <textFormat>{{to}}</textFormat> de <textFormat>{{outOf}}</textFormat> entrées.",
+      "nextBtn": "Prochain",
+      "prevBtn": "Prev"
+    },
+    "plannerInputGroup": {
+      "consultation": "Consultation",
+      "credit": "Crédit",
+      "details": {
+        "hide": "Masquer les détails",
+        "show": "Afficher les détails"
+      },
+      "labor": "Travail",
+      "lecture": "Conférence",
+      "practice": "Pratique",
+      "selectCreditType": {
+        "options": {
+          "EGYEB": "Autre",
+          "INF": "Informatique",
+          "MAT": "Mathématiques",
+          "SZAM": "Informatique"
+        },
+        "select": "Sélectionnez un type de crédit..."
+      },
+      "selectSubjectType": {
+        "options": {
+          "KOT": "Obligatoire",
+          "KV": "Cours facultatif obligatoire",
+          "SZAB": "Électif",
+          "TOR": "Base"
+        },
+        "select": "Sélectionnez un type de sujet..."
+      },
+      "subjectType": "Type de sujet"
+    },
+    "progressCard": {
+      "deleteProgress": {
+        "confirm": "Voulez-vous vraiment supprimer cet élément ?",
+        "loading": "Suppression de la progression du sujet...",
+        "success": "Progression du sujet supprimé avec succès!",
+        "title": "Impossible de supprimer la progression du sujet."
+      },
+      "deleteProgressBtn": "Supprimer",
+      "editProgressBtn": "Éditer",
+      "resultTable": {
+        "predictedGrade": "Grade prévu",
+        "predictedPercentage": "Pourcentage prédit",
+        "subjectCredit": "Crédit sujet"
+      },
+      "saveProgressBtn": "Sauvegarder",
+      "updateProgress": {
+        "loading": "Sauver les progrès...",
+        "success": "Progrès sauvegardés avec succès!",
+        "title": "Impossible d’enregistrer la progression."
+      }
+    },
+    "statisticsTable": {
+      "average": "Moyenne",
+      "correctedCreditIndex": "Indice de crédit corrigé",
+      "credit": "Crédit",
+      "creditIndex": "Indice de crédit",
+      "passedCredit": "Crédit passé",
+      "totalCredit": "Total du crédit",
+      "weightedAverage": "Moyenne pondérée"
+    },
+    "subjectCard": {
+      "addMenu": {
+        "addToPlanner": "Ajouter au planificateur",
+        "addToProgress": "Ajouter à la progression"
+      },
+      "assessmentType": "Type d’évaluation",
+      "consultation": "Consultation",
+      "copy": {
+        "error": "Impossible de copier!",
+        "loading": "Copie...",
+        "success": "Copié!"
+      },
+      "courseName": "Nom du cours",
+      "credit": "Crédit",
+      "creditType": "Type de crédit",
+      "labor": "Travail",
+      "lecture": "Conférence",
+      "or": "ou",
+      "practice": "Pratique",
+      "practiceGradeType": "Type de grade de pratique",
+      "prerequisites": "Conditions préalables",
+      "semester": "Semestre",
+      "specialisation": "Spécialisation",
+      "subjectCode": "Code du sujet",
+      "subjectType": "Type de sujet",
+      "weak": "faible"
+    }
+  },
+  "dashboard": {
+    "menuItems": {
+      "calculator": "Calculatrice",
+      "planner": "Planificateur",
+      "tracker": "Pisteur"
+    },
+    "statisticsTitle": "Statistiques pour le semestre en cours.",
+    "title": "Tableau de bord"
+  },
+  "header": {
+    "getStarted": "Démarrer",
+    "login": "S'identifier",
+    "logout": "Se déconnecter"
+  },
+  "home": {
+    "confirmSemesterText": "Définir le semestre en cours",
+    "ctaPrimary": "Démarrer",
+    "ctaSecondary": "Aller au tableau de bord",
+    "description": "Utilisez notre application pour suivre vos progrès et tirer le meilleur parti de votre expérience universitaire. Prenez le contrôle de votre avenir.",
+    "features": {
+      "calculator": {
+        "description": "Utilisez notre calculatrice pour calculer votre GPA et plus encore. Nous vous aiderons à atteindre vos objectifs.",
+        "title": "Calculatrice"
+      },
+      "download": {
+        "description": "Téléchargez notre application pour accéder à vos données depuis votre téléphone. Vous pouvez également utiliser notre application pour suivre vos progrès en déplacement.",
+        "title": "Téléchargez notre application"
+      },
+      "planning": {
+        "description": "Planifiez votre prochain semestre en toute simplicité. Utilisez notre vérificateur d’exigences pour vous assurer que vous êtes sur la bonne voie pour obtenir votre diplôme.",
+        "title": "Planification"
+      },
+      "save": {
+        "description": "Connectez-vous en toute sécurité avec Google, Discord ou Github pour enregistrer vos données. Nous conserverons vos données en toute sécurité. Vous pouvez accéder à votre progression de n’importe où.",
+        "title": "Enregistrez vos données"
+      },
+      "search": {
+        "description": "Vous ne savez pas quoi prendre? Utilisez notre fonction de recherche pour trouver le cours parfait pour vous. Filtrez en fonction de vos besoins et exigences.",
+        "title": "Rechercher"
+      },
+      "tracking": {
+        "description": "Suivez vos progrès avec nous. Nous vous aiderons à garder une trace de vos notes, de vos devoirs et plus encore. Soyez au top de votre jeu.",
+        "title": "Pistage"
+      }
+    },
+    "setSemesterTitle": "Vous n’avez pas encore défini votre semestre en cours! Veuillez le configurer maintenant pour continuer.",
+    "title": "Suivez vos progrès avec nous"
+  },
+  "internalError": {
+    "description": "Nous travaillons déjà à résoudre le problème.",
+    "title": "Erreur interne du serveur.",
+    "tryAgainBtn": "Réessayez"
+  },
+  "login": {
+    "email": "Messagerie électronique",
+    "emailError": "Veuillez saisir une adresse e-mail valide!",
+    "loginWithDiscord": "Se connecter avec Discord",
+    "loginWithEmail": "Connectez-vous par e-mail",
+    "loginWithGithub": "Se connecter avec Github",
+    "loginWithGoogle": "Se connecter avec Google",
+    "or": "ou",
+    "title": "Connectez-vous à votre compte"
+  },
+  "maintenance": {
+    "description": "Nous travaillons actuellement sur le site. Veuillez vérifier plus tard.",
+    "title": "En cours d’entretien"
+  },
+  "notFound": {
+    "backBtn": "Retour à la page d’accueil",
+    "description": "Désolé, nous ne trouvons pas cette page. Vérifiez l’URL et réessayez.",
+    "title": "Il manque quelque chose."
+  },
+  "offline": {
+    "description": "Vous êtes actuellement hors ligne. Veuillez vérifier votre connexion Internet.",
+    "subTitle": "Vous êtes hors ligne.",
+    "title": "Hors-ligne",
+    "tryAgainBtn": "Réessayez"
+  },
+  "planner": {
+    "statisticsTable": {
+      "baseCredit": "Crédit de base",
+      "comp": "Informatique",
+      "compulsoryCredit": "Crédit obligatoire",
+      "compulsoryElectiveCredit": "Crédit facultatif obligatoire",
+      "compulsoryElectiveCreditTypes": "Types de crédits facultatifs obligatoires",
+      "consultation": "Consultation",
+      "creditPreSubjectTypes": "Crédit par type de sujet",
+      "electiveCredit": "Crédit facultatif",
+      "inf": "Informatique",
+      "labor": "Travail",
+      "lecture": "Conférence",
+      "practice": "Pratique",
+      "weeklyHours": "Heures hebdomadaires"
+    },
+    "subjects": {
+      "subjectCode": "Code",
+      "subjectName": "Nom",
+      "title": "Sujets"
+    },
+    "title": "Planificateur"
+  },
+  "profile": {
+    "alreadyLinked": "Déjà lié",
+    "currentSemester": "--",
+    "edit": "--",
+    "email": "--",
+    "linkDiscord": "Lier un compte Discord",
+    "linkGithub": "Lier un compte Github",
+    "linkGoogle": "--",
+    "name": "--",
+    "notVerified": "Non vérifié",
+    "save": "--",
+    "title": "--",
+    "updateSemester": {
+      "error": "--",
+      "loading": "--",
+      "success": "--"
+    },
+    "verified": "--",
+    "verifyEmail": "--"
+  },
+  "progress": {
+    "addNewProgressToStart": "--",
+    "addProgressBtn": "--",
+    "confirmSemesterText": "Définir le semestre en cours",
+    "noSubjectProgress": "--",
+    "selectSemester": {
+      "selectLabel": "Sélectionnez un semestre...",
+      "semester": "--",
+      "warning": "Sélectionnez un semestre!"
+    },
+    "selectSemesterToStart": "Sélectionnez un semestre pour commencer!",
+    "setSemesterTitle": "Vous n’avez pas encore défini votre semestre en cours! Veuillez le configurer maintenant pour continuer.",
+    "title": "Pisteur"
+  },
+  "routes": {
+    "calculator": "Calculatrice",
+    "dashboard": "Tableau de bord",
+    "home": "Domicile",
+    "login": "Connectez-vous",
+    "planner": "Planificateur",
+    "profile": "Profil",
+    "progress": "Pisteur",
+    "search": "Rechercher",
+    "verify": "Vérifier l’adresse e-mail"
+  },
+  "search": {
+    "filters": {
+      "credit": {
+        "title": "Crédit"
+      },
+      "creditType": {
+        "options": {
+          "computing": "Informatique",
+          "informatics": "Informatique",
+          "mathematics": "Mathématiques",
+          "other": "Autre",
+          "thesis": "Thèse"
+        },
+        "title": "Type de crédit"
+      },
+      "preReq": {
+        "placeholder": "Conditions préalables à la recherche",
+        "title": "Conditions préalables"
+      },
+      "searchInput": {
+        "placeholder": "Sujets de recherche"
+      },
+      "semester": {
+        "title": "Semestre"
+      },
+      "specialisation": {
+        "options": {
+          "A": "Un",
+          "ABC": "ABC",
+          "B": "B",
+          "C": "C"
+        },
+        "title": "Spécialisation"
+      },
+      "subjectType": {
+        "options": {
+          "base": "Base",
+          "compulsory": "Obligatoire",
+          "compulsoryElective": "Cours optionnel obligatoire"
+        },
+        "title": "Type de sujet"
+      },
+      "title": "Filtres"
+    },
+    "sortBtn": "Trier",
+    "tableHeaderColums": {
+      "code": "Code",
+      "courseName": "Nom du cours",
+      "credit": "Crédit",
+      "creditType": "Type de crédit",
+      "semester": "Semestre",
+      "subjectType": "Type de sujet"
+    },
+    "title": "Rechercher",
+    "toastMessages": {
+      "addToPlanner": {
+        "error": "Impossible d’ajouter l’objet au planificateur.",
+        "success": "Ajouté avec succès sous réserve de planificateur!"
+      },
+      "createSubjectProgress": {
+        "error": "Impossible de créer la progression du sujet.",
+        "loading": "Créer une progression du sujet...",
+        "success": "Progression du sujet créé avec succès!"
+      }
+    }
+  },
+  "verifyEmail": {
+    "ctaBtn": "Aller à la page d’accueil",
+    "description": "Nous vous avons envoyé un e-mail avec un lien pour vérifier votre adresse e-mail. Veuillez vérifier votre boîte de réception.",
+    "title": "Vérifier votre adresse e-mail"
+  }
+}

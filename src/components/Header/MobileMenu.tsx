@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import type { Page } from '@constants/pages'
@@ -7,6 +7,8 @@ import { signOut, useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import type { FeatureFlagContextType } from 'src/contexts/FeatureFlagContext'
+import { FeatureFlagContext } from 'src/contexts/FeatureFlagContext'
 
 import { DarkModeToggle } from './DarkModeToggle'
 import { LanguageToggle } from './LanguageToggleButton'
@@ -29,6 +31,9 @@ export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
   const { t } = useTranslation()
   const { data: session } = useSession()
   const router = useRouter()
+
+  const { isFeatureFlagEnabled, isLoading } = useContext(FeatureFlagContext) as FeatureFlagContextType
+  const useLanguageSelector = isFeatureFlagEnabled('languageSelector') && !isLoading
 
   useEffect(() => {
     setMobileMenuHeight()
@@ -86,10 +91,19 @@ export const MobileMenu = ({ links, isOpen, toggleMenu }: MobileMenuProps) => {
               {t('header.login')}
             </Link>
           )}
-
-          <LanguageToggle className="mr-2" />
+          {!useLanguageSelector && <LanguageToggle className="mr-2" />}
           <DarkModeToggle />
         </div>
+        {useLanguageSelector && (
+          <div
+            className={
+              menuItemStyle + `flex w-full mt-2 ${isOpen ? 'opacity-100 duration-500 ' : 'opacity-0 duration-300 '}`
+            }
+            style={{ transitionDelay: isOpen ? `${250}ms` : `${50}ms` }}
+          >
+            <LanguageToggle />
+          </div>
+        )}
       </div>
     </div>
   )
