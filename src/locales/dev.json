@@ -171,6 +171,17 @@
       "semester": "Semester",
       "subjectType": "Subject Type"
     },
-    "title": "Search"
+    "title": "Search",
+    "toastMessages": {
+      "addToPlanner": {
+        "error": "Failed to add subject to planner.",
+        "success": "Successfully added subject to planner!"
+      },
+      "createSubjectProgress": {
+        "error": "Failed to create subject progress.",
+        "loading": "Creating subject progress...",
+        "success": "Successfully created subject progress!"
+      }
+    }
   }
 }

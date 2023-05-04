@@ -165,6 +165,17 @@
       "semester": "Félév",
       "subjectType": "Tantárgy típusa"
     },
-    "title": "Keresés"
+    "title": "Keresés",
+    "toastMessages": {
+      "createSubjectProgress": {
+        "error": "Hiba történt az előrehaladás létrehozása közben.",
+        "loading": "Előrehaladás létrehozása...",
+        "success": "Előrehaladás sikeresen létrehozva."
+      },
+      "addToPlanner": {
+        "error": "Hiba történt a tervezőhöz adás közben.",
+        "success": "Tantárgy sikeresen hozzáadva a tervezőhöz."
+      }
+    }
   }
 }
