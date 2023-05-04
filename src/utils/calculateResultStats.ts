@@ -2,13 +2,15 @@ import type { Marks } from '@components/MarkTable/MarkTable'
 import type { Assessment } from '@prisma/client'
 
 const everyAssessmentPassed = (assessments: Assessment[]) =>
-  assessments.every(
-    assessment =>
+  assessments.every(assessment => {
+    if (assessment.resultType === 'PASSFAIL' && (assessment?.result === 0 || !assessment?.result)) return false
+    return (
       (assessment.resultType === 'GRADE' && assessment.result && assessment.result > 1) ||
       (assessment.resultType === 'PASSFAIL' && assessment?.result === 1) ||
       (assessment.result && assessment.minResult && assessment?.result >= assessment?.minResult) ||
       !assessment.minResult
-  )
+    )
+  })
 
 export const calculateGrade = (marks: Marks, assessments: Assessment[]) => {
   if (assessments.length === 0) return 0
