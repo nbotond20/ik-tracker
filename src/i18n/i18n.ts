@@ -18,7 +18,7 @@ if (!i18next.isInitialized) {
     .use(initReactI18next)
     .use(LanguageDetector)
     .init({
-      lng: 'de',
+      lng: 'en',
       fallbackLng: 'en',
       debug: process.env.NODE_ENV === 'development',
       resources: {
