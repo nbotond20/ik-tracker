@@ -304,7 +304,7 @@
         "options": {
           "base": "Törzsanyag",
           "compulsory": "Kötelező",
-          "compulsoryElective": "Kötelező választható"
+          "compulsoryElective": "Kötelezően választható"
         },
         "title": "Tantárgy típusa"
       },
