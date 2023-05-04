@@ -29,10 +29,44 @@
       "cancelBtn": "Mégse",
       "confirmBtn": "Igen, biztos"
     },
+    "markTable": {
+      "grade": "Jegy",
+      "score": "Ponthatár"
+    },
     "pagination": {
       "label": "<textFormat>{{from}}</textFormat>-tól <textFormat>{{to}}</textFormat>-ig mutatva a(z) <textFormat>{{outOf}}</textFormat> bejegyzésből.",
       "nextBtn": "Követkő",
       "prevBtn": "Előző"
+    },
+    "plannerInputGroup": {
+      "consultation": "Konzultáció",
+      "credit": "Kredit",
+      "details": {
+        "hide": "Részletek elrejtése",
+        "show": "Részletek megjelenítése"
+      },
+      "labor": "Labor",
+      "lecture": "Előadás",
+      "practice": "Gyakorlat",
+      "selectCreditType": {
+        "options": {
+          "EGYEB": "Egyéb",
+          "INF": "Inf",
+          "MAT": "Mat",
+          "SZAM": "Szám"
+        },
+        "select": "Válassz kredit típust..."
+      },
+      "selectSubjectType": {
+        "options": {
+          "KOT": "Kötelező",
+          "KV": "Kötelezően választható",
+          "SZAB": "Szabadon választható",
+          "TOR": "Törzsanyag"
+        },
+        "select": "Válassz tantárgy típust..."
+      },
+      "subjectType": "Subject Type"
     },
     "subjectCard": {
       "or": "vagy",

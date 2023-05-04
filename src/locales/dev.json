@@ -29,10 +29,44 @@
       "cancelBtn": "No, cancel",
       "confirmBtn": "Yes, I'm sure"
     },
+    "markTable": {
+      "grade": "Grade",
+      "score": "Score"
+    },
     "pagination": {
       "label": "Showing <textFormat>{{from}}</textFormat> to <textFormat>{{to}}</textFormat> of <textFormat>{{outOf}}</textFormat> entries.",
       "nextBtn": "Next",
       "prevBtn": "Prev"
+    },
+    "plannerInputGroup": {
+      "consultation": "Consultation",
+      "credit": "Credit",
+      "details": {
+        "hide": "Hide details",
+        "show": "Show details"
+      },
+      "labor": "Labor",
+      "lecture": "Lecture",
+      "practice": "Practice",
+      "selectCreditType": {
+        "options": {
+          "EGYEB": "Other",
+          "INF": "Inf",
+          "MAT": "Mat",
+          "SZAM": "Num"
+        },
+        "select": "Select a credit type..."
+      },
+      "selectSubjectType": {
+        "options": {
+          "KOT": "Compulsory",
+          "KV": "Compulsory elective",
+          "SZAB": "Elective",
+          "TOR": "Base"
+        },
+        "select": "Select a subject type..."
+      },
+      "subjectType": "Subject Type"
     },
     "subjectCard": {
       "or": "or",
