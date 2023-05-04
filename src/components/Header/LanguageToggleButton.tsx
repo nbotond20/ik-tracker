@@ -32,7 +32,7 @@ export const LanguageToggle = ({ className }: LanguageToggleProps) => {
         className ?? ''
       }`}
     >
-      <span className="sr-only">Open main menu</span>
+      <span className="sr-only">Toggle languages</span>
 
       <LanguageIcon className="h-6 w-6 text-gray-500" />
     </button>

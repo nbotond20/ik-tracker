@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { Combobox as HeadlessCombobox } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/outline'
@@ -29,6 +30,8 @@ export const Combobox = ({
   placeholder,
   errorMessage,
 }: ComboboxProps) => {
+  const { t } = useTranslation()
+
   const [filteredItems, setItemsState] = useState<Item[]>(items)
   const [selectedItem, setSelectedItem] = useState<Item | undefined>(initialSelectedItem)
 
@@ -96,7 +99,9 @@ export const Combobox = ({
             ))}
             {filteredItems.length === 0 && (
               <HeadlessCombobox.Option value={undefined} as={Fragment}>
-                <li className={`px-2 py-1 flex w-full items-center relative text-gray-400`}>No results found</li>
+                <li className={`px-2 py-1 flex w-full items-center relative text-gray-400`}>
+                  {t('components.combobox.noResults')}
+                </li>
               </HeadlessCombobox.Option>
             )}
           </HeadlessCombobox.Options>

@@ -13,6 +13,18 @@
     "title": "Kalkulátor"
   },
   "components": {
+    "addMenu": {
+      "choose": "Kérem válasszon"
+    },
+    "assessmentTable": {
+      "max": "Max",
+      "min": "Min",
+      "noAssessments": "Nincs hozzáadott számonkérés",
+      "score": "Eredmény"
+    },
+    "combobox": {
+      "noResults": "Nincs találat"
+    },
     "confirmDialog": {
       "cancelBtn": "Mégse",
       "confirmBtn": "Igen, biztos"

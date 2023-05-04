@@ -13,6 +13,18 @@
     "title": "Calculator"
   },
   "components": {
+    "addMenu": {
+      "choose": "Please choose one!"
+    },
+    "assessmentTable": {
+      "max": "Max",
+      "min": "Min",
+      "noAssessments": "No assessments added yet",
+      "score": "Score"
+    },
+    "combobox": {
+      "noResults": "No results found"
+    },
     "confirmDialog": {
       "cancelBtn": "No, cancel",
       "confirmBtn": "Yes, I'm sure"

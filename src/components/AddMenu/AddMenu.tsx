@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { ClickAwayListener } from '@components/ClickAwayListener/ClickAwayListener'
 import { PlusIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
@@ -14,6 +15,8 @@ interface AddMenuProps<T> {
 
 export const AddMenu = <T,>({ menuItems }: AddMenuProps<T>) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const { t } = useTranslation()
 
   return (
     <ClickAwayListener
@@ -57,12 +60,11 @@ export const AddMenu = <T,>({ menuItems }: AddMenuProps<T>) => {
                 <span className="sr-only">Close modal</span>
               </button>
               <InformationCircleIcon className="text-gray-400 dark:text-gray-500 w-11 h-11 mb-3.5 mx-auto" />
-              <p className="mb-4 text-gray-500 dark:text-gray-300 text-base">Please choose one!</p>
+              <p className="mb-4 text-gray-500 dark:text-gray-300 text-base">{t('components.addMenu.choose')}</p>
               <div className="flex justify-center items-center space-x-4">
                 {menuItems.map((menuItem, idx) => (
                   <button
                     key={idx}
-                    data-modal-toggle="deleteModal"
                     type="button"
                     className="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
                     onClick={() => {
