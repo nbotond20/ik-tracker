@@ -51,9 +51,9 @@
       "selectCreditType": {
         "options": {
           "EGYEB": "Egyéb",
-          "INF": "Inf",
-          "MAT": "Mat",
-          "SZAM": "Szám"
+          "INF": "Informatikai",
+          "MAT": "Matematikai",
+          "SZAM": "Számítástudományi"
         },
         "select": "Válassz kredit típust..."
       },
@@ -193,6 +193,21 @@
     "tryAgainBtn": "Próbáld újra"
   },
   "planner": {
+    "statisticsTable": {
+      "baseCredit": "Törzsanyag kredit",
+      "comp": "Számítástudományi",
+      "compulsoryCredit": "Kötelező kredit",
+      "compulsoryElectiveCredit": "Kötelezően választható kredit",
+      "compulsoryElectiveCreditTypes": "K. V. tárgyak kreditjei",
+      "consultation": "Konzultáció",
+      "creditPreSubjectTypes": "Kreditek tantárgy típusonként",
+      "electiveCredit": "Szabadon választható kredit",
+      "inf": "Informatikai",
+      "labor": "Labor",
+      "lecture": "Előadás",
+      "practice": "Gyakorlat",
+      "weeklyHours": "Heti óraszám"
+    },
     "subjects": {
       "subjectCode": "Kód",
       "subjectName": "Név",

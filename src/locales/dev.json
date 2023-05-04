@@ -51,9 +51,9 @@
       "selectCreditType": {
         "options": {
           "EGYEB": "Other",
-          "INF": "Inf",
-          "MAT": "Mat",
-          "SZAM": "Num"
+          "INF": "Informatics",
+          "MAT": "Mathematics",
+          "SZAM": "Computing"
         },
         "select": "Select a credit type..."
       },
@@ -193,6 +193,21 @@
     "tryAgainBtn": "Try again"
   },
   "planner": {
+    "statisticsTable": {
+      "baseCredit": "Base Credit",
+      "comp": "Computing",
+      "compulsoryCredit": "Compulsory Credit",
+      "compulsoryElectiveCredit": "Compulsory Elective Credit",
+      "compulsoryElectiveCreditTypes": "Compulsory Elective Credit Types",
+      "consultation": "Consultation",
+      "creditPreSubjectTypes": "Credit per Subject Types",
+      "electiveCredit": "Elective Credit",
+      "inf": "Informatics",
+      "labor": "Labor",
+      "lecture": "Lecture",
+      "practice": "Practice",
+      "weeklyHours": "Weekly Hours"
+    },
     "subjects": {
       "subjectCode": "Code",
       "subjectName": "Name",
