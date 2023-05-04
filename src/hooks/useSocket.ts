@@ -19,9 +19,6 @@ export const useSocket = () => {
       },
     })
 
-    // Return if socket is not connected
-    if (!socket.connected) return
-
     socket.on('connect', () => {
       setIsConnected(true)
     })
