@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { Badge } from '@components/Badge/Badge'
 import type { Statistics } from '@pages/dashboard'
 
@@ -6,13 +8,15 @@ interface SubjectGradeTableProps {
 }
 
 export const SubjectGradeTable = ({ statistics }: SubjectGradeTableProps) => {
+  const { t } = useTranslation()
+
   return statistics?.subjectProgressesWithGrade && statistics?.subjectProgressesWithGrade.length > 0 ? (
     <div className="w-full lg:w-auto">
       <table className="w-full lg:w-auto">
         <thead>
           <tr className="rounded-lg text-gray-600 dark:text-gray-200 text-sm leading-normal">
-            <th className="py-1 pr-2 text-left text-base">Subject</th>
-            <th className="py-1 px-2 text-right text-base">Grade</th>
+            <th className="py-1 pr-2 text-left text-base">{t('components.subjectGradeTable.subject')}</th>
+            <th className="py-1 px-2 text-right text-base">{t('components.subjectGradeTable.grade')}</th>
           </tr>
         </thead>
         <tbody className="flex-1 sm:flex-none">

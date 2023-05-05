@@ -124,6 +124,10 @@
       "subjectCode": "Tárgy kódja",
       "subjectType": "Tárgy típusa",
       "weak": "gyenge"
+    },
+    "subjectGradeTable": {
+      "grade": "Jegy",
+      "subject": "Tantárgy"
     }
   },
   "dashboard": {

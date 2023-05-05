@@ -124,6 +124,10 @@
       "subjectCode": "Subject Code",
       "subjectType": "Subject Type",
       "weak": "weak"
+    },
+    "subjectGradeTable": {
+      "grade": "Grade",
+      "subject": "Subject"
     }
   },
   "dashboard": {
