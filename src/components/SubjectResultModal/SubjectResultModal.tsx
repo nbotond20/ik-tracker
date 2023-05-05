@@ -1,4 +1,5 @@
 import { toast } from 'react-hot-toast'
+import { useTranslation } from 'react-i18next'
 
 import { Accordion } from '@components/Accordion/Accordion'
 import { Button } from '@components/Button/Button'
@@ -71,6 +72,8 @@ export const SubjectResultModal = ({
     semester,
   })
 
+  const { t } = useTranslation()
+
   if (isUserLoading || isSubjectsLoading || !user) return <LoadingPage />
 
   return (
@@ -91,7 +94,9 @@ export const SubjectResultModal = ({
               >
                 <div className="mb-4 flex items-start justify-between">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    {subjectProgress ? 'Edit progress' : 'Add progress'}
+                    {subjectProgress
+                      ? t('components.subjectResultModal.editProgress')
+                      : t('components.subjectResultModal.addProgress')}
                   </h3>
                   <button
                     onClick={() => {
@@ -124,8 +129,8 @@ export const SubjectResultModal = ({
                           }
                         : undefined
                     }
-                    label="Subject"
-                    placeholder="Select a subject..."
+                    label={t('components.subjectResultModal.subject') || ''}
+                    placeholder={t('components.subjectResultModal.selectSubject') || ''}
                     errorMessage={
                       subjectError.subjectId
                         ? subjectError.subjectId
@@ -137,8 +142,8 @@ export const SubjectResultModal = ({
                   {showSubjectInputs && (
                     <>
                       <InputField
-                        label="Subject Name"
-                        placeholder="Subject Name"
+                        label={t('components.subjectResultModal.subjectName') || ''}
+                        placeholder={t('components.subjectResultModal.subjectName') || ''}
                         value={subjectNameInput || ''}
                         onChange={e => setSubjectNameInput(e.target.value)}
                         errorMessage={
@@ -152,8 +157,8 @@ export const SubjectResultModal = ({
                       <InputField
                         inputMode="numeric"
                         pattern="[0-9]*"
-                        label="Credit"
-                        placeholder="Credit"
+                        label={t('components.subjectResultModal.credit') || ''}
+                        placeholder={t('components.subjectResultModal.credit') || ''}
                         value={subjectCreditInput || ''}
                         min={0}
                         max={100}
@@ -176,8 +181,10 @@ export const SubjectResultModal = ({
                         <div className="flex w-full flex-col gap-2">
                           <InputField
                             errorMessage={assessmentsErrors[index]?.name}
-                            label={`${index + 1}. Assessment Name ${!assessment.saved ? '(Not saved)' : ''}`}
-                            placeholder="Assessment Name"
+                            label={`${index + 1}. ${t('components.subjectResultModal.assessmentName')} ${
+                              !assessment.saved ? t('components.subjectResultModal.notSaved') : ''
+                            }`}
+                            placeholder={t('components.subjectResultModal.assessmentName') || ''}
                             className="w-full"
                             value={assessment.name || ''}
                             IconMenu={
@@ -187,9 +194,9 @@ export const SubjectResultModal = ({
                                   onClick={() => {
                                     if (assessment.saved) {
                                       void toast.promise(deleteAssessment({ id: assessment.id }), {
-                                        loading: 'Deleting assessment...',
-                                        success: <b>Successfully deleted assessment!</b>,
-                                        error: <b>Failed to delete assessment.</b>,
+                                        loading: t('components.subjectResultModal.deleteAssessment.loading'),
+                                        success: <b>{t('components.subjectResultModal.deleteAssessment.success')} </b>,
+                                        error: <b>{t('components.subjectResultModal.deleteAssessment.error')} </b>,
                                       })
                                     } else {
                                       setAssessments(prev => prev.filter((_, i) => i !== index))
@@ -210,7 +217,7 @@ export const SubjectResultModal = ({
                                 ? resultTypesToComboBoxItems(allResultTypes, assessment.id)
                                 : resultTypesToComboBoxItems(resultTypesToShow, assessment.id)
                             }
-                            label="Result Type"
+                            label={t('components.subjectResultModal.resultType') || ''}
                             initialSelectedItem={
                               assessment.resultType
                                 ? {
@@ -222,7 +229,7 @@ export const SubjectResultModal = ({
                                 : undefined
                             }
                             onItemSelected={handleOnResultTypeComboBoxChange}
-                            placeholder="Select a result type..."
+                            placeholder={t('components.subjectResultModal.selectResultType') || ''}
                             errorMessage={assessmentsErrors[index]?.resultType}
                           />
                           {assessment.resultType &&
@@ -232,8 +239,8 @@ export const SubjectResultModal = ({
                                 <InputField
                                   inputMode="numeric"
                                   pattern="[0-9]*"
-                                  label="Min Score (Optional)"
-                                  placeholder="Min Score"
+                                  label={t('components.subjectResultModal.minScoreOptional') || ''}
+                                  placeholder={t('components.subjectResultModal.minScore') || ''}
                                   className="w-[calc(50%-4px)]"
                                   value={assessment.minResult ?? ''}
                                   onChange={e =>
@@ -256,8 +263,8 @@ export const SubjectResultModal = ({
                                     errorMessage={assessmentsErrors[index]?.maxResult}
                                     inputMode="numeric"
                                     pattern="[0-9]*"
-                                    label="Max Score"
-                                    placeholder="Max Score"
+                                    label={t('components.subjectResultModal.maxScore') || ''}
+                                    placeholder={t('components.subjectResultModal.maxScore') || ''}
                                     className="w-[calc(50%-4px)]"
                                     value={assessment.maxResult ?? ''}
                                     onChange={e =>
@@ -284,7 +291,7 @@ export const SubjectResultModal = ({
                   ) : (
                     <div>
                       <p className="text-gray-500 dark:text-gray-400 text-base w-full text-center">
-                        No assessments added yet
+                        {t('components.subjectResultModal.noAssessments')}
                       </p>
                     </div>
                   )}
@@ -297,17 +304,20 @@ export const SubjectResultModal = ({
                       ])
                     }
                   >
-                    Add Assessment
+                    {t('components.subjectResultModal.addAssessment')}
                   </Button>
 
-                  <Accordion title="Set Grades" titleClassName="text-base font-normal italic dark:text-gray-300">
+                  <Accordion
+                    title={t('components.subjectResultModal.accordionTitle')}
+                    titleClassName="text-base font-normal italic dark:text-gray-300"
+                  >
                     <MarkTable maxResult={100} marks={marks} setMarks={setMarks} editing />
                   </Accordion>
 
                   <div className="flex gap-2 justify-evenly">
-                    <Button onClick={() => closeModal?.()}>Cancel</Button>
+                    <Button onClick={() => closeModal?.()}>{t('components.subjectResultModal.cancel')}</Button>
                     <Button variant="filled" onClick={() => void handleSaveSubjectProgress()}>
-                      Save
+                      {t('components.subjectResultModal.save')}
                     </Button>
                   </div>
                 </div>

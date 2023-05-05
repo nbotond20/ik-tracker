@@ -128,6 +128,46 @@
     "subjectGradeTable": {
       "grade": "Jegy",
       "subject": "Tantárgy"
+    },
+    "subjectResultModal": {
+      "accordionTitle": "Ponthatárok beállítása",
+      "addAssessment": "Számonkérés hozzáadása",
+      "addProgress": "Előrehaladás hozzáadása",
+      "assessmentName": "Számonkérés neve",
+      "cancel": "Mégse",
+      "createSubjectProgress": {
+        "error": "Hiba történt az előrehaladás létrehozása közben.",
+        "loading": "Előrehaladás létrehozása...",
+        "success": "Előrehaladás sikeresen létrehozva."
+      },
+      "credit": "Kredit",
+      "deleteAssessment": {
+        "error": "Hiba történt a számonkérés törlése közben!",
+        "loading": "Számonkérés törlése...",
+        "success": "Számonkérés sikeresen törölve!"
+      },
+      "editProgress": "Előrehaladás szerkesztése",
+      "maxScore": "Max pontszám",
+      "minScore": "Min pontszám",
+      "minScoreOptional": "Min pontszám (nem kötelező)",
+      "noAssessments": "Nincs hozzáadott számonkérés",
+      "notSaved": "(Nincs elmentve)",
+      "resultType": "Eredmény típusa",
+      "save": "Mentés",
+      "selectResultType": "Válassz eredmény típust...",
+      "selectSubject": "Válassz tantárgyat...",
+      "subject": "Tantárgy",
+      "subjectName": "Tantárgy neve",
+      "updateProgress": {
+        "error": "Hiba történt az előrehaladás mentése közben!",
+        "loading": "Előrehaladás mentése...",
+        "success": "Előrehaladás sikeresen mentve!"
+      }
+    },
+    "subjectTable": {
+      "addToPlanner": "Hozzáadás a tervezőhöz",
+      "addToProgress": "Előrehaladás létrehozása",
+      "noSubjects": "Nincs megjeleníthető tantárgy"
     }
   },
   "dashboard": {

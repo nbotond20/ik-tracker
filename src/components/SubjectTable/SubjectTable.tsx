@@ -121,11 +121,11 @@ export const SubjectTable = ({
                     <AddMenu
                       menuItems={[
                         {
-                          name: 'Add to planner',
+                          name: t('components.subjectTable.addToPlanner'),
                           onClick: () => void handleAddToPlanner(subject),
                         },
                         {
-                          name: 'Add to progress',
+                          name: t('components.subjectTable.addToProgress'),
                           onClick: () => handleCreateSubjectProgress(subject.id),
                         },
                       ]}
@@ -141,7 +141,7 @@ export const SubjectTable = ({
           {subjects.length === 0 && (
             <tr>
               <td className="px-2 py-2 text-center" colSpan={tableColumnHeaders.length + 1}>
-                No subjects found
+                {t('components.subjectTable.noSubjects')}
               </td>
             </tr>
           )}

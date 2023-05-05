@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
+import { useTranslation } from 'react-i18next'
 
 import type { Item } from '@components/ComboBox/ComboBox'
 import type { Marks } from '@components/MarkTable/MarkTable'
@@ -28,6 +29,7 @@ export const useSubjectResultModal = ({
   closeModal,
   semester,
 }: SubjectResultModalProps) => {
+  const { t } = useTranslation()
   const { data: session } = useSession()
   const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
     enabled: !!session,
@@ -207,16 +209,16 @@ export const useSubjectResultModal = ({
           },
         }),
         {
-          loading: 'Updating subject progress...',
-          success: <b>Successfully updated subject progress!</b>,
-          error: <b>Failed to update subject progress.</b>,
+          loading: t('components.subjectResultModal.updateProgress.loading'),
+          success: <b>{t('components.subjectResultModal.updateProgress.success')}</b>,
+          error: <b>{t('components.subjectResultModal.updateProgress.error')}</b>,
         }
       )
     } else {
       void toast.promise(createSubjectProgress(data), {
-        loading: 'Creating subject progress...',
-        success: <b>Successfully created subject progress!</b>,
-        error: <b>Failed to create subject progress.</b>,
+        loading: t('components.subjectResultModal.createSubjectProgress.loading'),
+        success: <b>{t('components.subjectResultModal.createSubjectProgress.success')}</b>,
+        error: <b>{t('components.subjectResultModal.createSubjectProgress.error')}</b>,
       })
     }
   }

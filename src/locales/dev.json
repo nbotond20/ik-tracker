@@ -128,6 +128,46 @@
     "subjectGradeTable": {
       "grade": "Grade",
       "subject": "Subject"
+    },
+    "subjectResultModal": {
+      "accordionTitle": "Set Grades",
+      "addAssessment": "Add Assessment",
+      "addProgress": "Add Progress",
+      "assessmentName": "Assessment Name",
+      "cancel": "Cancel",
+      "createSubjectProgress": {
+        "error": "Failed to create subject progress.",
+        "loading": "Creating subject progress...",
+        "success": "Successfully created subject progress!"
+      },
+      "credit": "Credit",
+      "deleteAssessment": {
+        "error": "Failed to delete assessment.",
+        "loading": "Deleting assessment...",
+        "success": "Successfully deleted assessment!"
+      },
+      "editProgress": "Edit Progress",
+      "maxScore": "Max Score",
+      "minScore": "Min Score",
+      "minScoreOptional": "Min Score (Optional)",
+      "noAssessments": "No assessments added yet",
+      "notSaved": "(Not saved)",
+      "resultType": "Result Type",
+      "save": "Save",
+      "selectResultType": "Select a result type...",
+      "selectSubject": "Select a subject...",
+      "subject": "Subject",
+      "subjectName": "Subject Name",
+      "updateProgress": {
+        "error": "Failed to update subject progress.",
+        "loading": "Updating subject progress...",
+        "success": "Successfully updated subject progress!"
+      }
+    },
+    "subjectTable": {
+      "addToPlanner": "Add to planner",
+      "addToProgress": "Add to progress",
+      "noSubjects": "No subjects found"
     }
   },
   "dashboard": {
