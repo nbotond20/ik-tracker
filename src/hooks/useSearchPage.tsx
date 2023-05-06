@@ -1,9 +1,15 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { toast } from 'react-hot-toast'
+import { useTranslation } from 'react-i18next'
 
 import type { SpecialisationType, SubjectGroupType, SubjectType } from '@prisma/client'
 import type { RouterOutputs } from '@utils/api'
 import { api } from '@utils/api'
 import { type CompareType, subjectComparator } from '@utils/subjectComparator'
+import { useSession } from 'next-auth/react'
+import { v4 as uuidv4 } from 'uuid'
+
+import type { ISubject } from './usePlannerPage'
 
 export interface CheckboxFilterTypes {
   subjectType: {
@@ -24,6 +30,7 @@ export type Range = {
 
 type Subject = RouterOutputs['subject']['getAll'][number]
 export const useSearchPage = () => {
+  const { t } = useTranslation()
   const { data: subjects, isLoading } = api.subject.getAll.useQuery()
 
   const [gridView, setGridView] = useState(false)
@@ -159,29 +166,103 @@ export const useSearchPage = () => {
     )
   }, [elementsPerPage, page, sortedSubjects])
 
+  const { mutateAsync: createSubjectProgress } = api.subjectProgress.create.useMutation()
+
+  const { data: session, status } = useSession()
+  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
+    enabled: !!session,
+  })
+
+  const handleCreateSubjectProgress = (subjectId: string) => {
+    if (!user?.currentSemester || !user?.isCurrentSemesterSet) return
+
+    void toast.promise(
+      createSubjectProgress({ subjectId, semester: user?.currentSemester, marks: [-1, -1, -1, -1, -1] }),
+      {
+        loading: t('search.toastMessages.createSubjectProgress.loading'),
+        success: <b>{t('search.toastMessages.createSubjectProgress.success')}</b>,
+        error: <b>{t('search.toastMessages.createSubjectProgress.error')}</b>,
+      }
+    )
+  }
+
+  const { mutateAsync: isSubjectAvailableForSemester } = api.subjectProgress.isSubjectAvailableForSemester.useMutation()
+  const handleAddToPlanner = async (subject: Subject) => {
+    const localSubjectsJSON = localStorage.getItem('planner-subjects')
+    const data = await isSubjectAvailableForSemester({
+      subjectCode: subject.code,
+    })
+    if (!localSubjectsJSON) {
+      localStorage.setItem(
+        'planner-subjects',
+        JSON.stringify([
+          {
+            id: uuidv4(),
+            code: subject.code,
+            isLoading: false,
+            subject: data.subject,
+            missingPreReqsType: data.missingPreReqsType,
+            isFetched: true,
+          },
+        ])
+      )
+      toast.success(<b>{t('search.toastMessages.addToPlanner.success')}</b>)
+      return
+    }
+    const localSubjects = JSON.parse(localSubjectsJSON) as ISubject[]
+    const subjectExists = localSubjects.find(s => s.code === subject.code)
+
+    if (subjectExists) {
+      toast.error(<b>{t('search.toastMessages.addToPlanner.error')}</b>)
+      return
+    }
+
+    localStorage.setItem(
+      'planner-subjects',
+      JSON.stringify([
+        ...localSubjects.filter(s => !!s.code),
+        {
+          id: uuidv4(),
+          code: subject.code,
+          isLoading: false,
+          subject: data.subject,
+          missingPreReqsType: data.missingPreReqsType,
+          isFetched: true,
+        },
+        ...localSubjects.filter(s => !s.code),
+      ])
+    )
+    toast.success(<b>{t('search.toastMessages.addToPlanner.success')}</b>)
+  }
+
   return {
-    mobileFiltersOpen,
-    searchTerm,
-    setSearchTerm,
-    preReqSearchTerm,
-    setPreReqSearchTerm,
-    setMobileFiltersOpen,
-    checkboxFilters,
-    setCheckboxFilters,
-    creditRange,
-    setCreditRange,
-    semesterRange,
-    setSemesterRange,
+    page,
+    status,
+    session,
     sortType,
-    handleSetSortedSubjects,
-    setGridView,
     gridView,
     isLoading,
-    displayedSubjects,
-    page,
-    handleNextPage,
-    handlePrevPage,
+    searchTerm,
+    creditRange,
     totalResults,
+    semesterRange,
+    isUserLoading,
     elementsPerPage,
+    checkboxFilters,
+    preReqSearchTerm,
+    mobileFiltersOpen,
+    displayedSubjects,
+    setGridView,
+    setSearchTerm,
+    handleNextPage,
+    setCreditRange,
+    handlePrevPage,
+    setSemesterRange,
+    handleAddToPlanner,
+    setCheckboxFilters,
+    setPreReqSearchTerm,
+    setMobileFiltersOpen,
+    handleSetSortedSubjects,
+    handleCreateSubjectProgress,
   }
 }

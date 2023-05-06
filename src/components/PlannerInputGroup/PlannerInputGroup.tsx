@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
-import type { ISubject } from '@pages/dashboard/planner'
+import type { ISubject } from '@hooks/usePlannerPage'
 
 interface PlannerInputGroupProps {
   show: boolean | undefined
