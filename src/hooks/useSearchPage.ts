@@ -71,9 +71,9 @@ export const useSearchPage = () => {
         const subjectCode = subject.code.toLowerCase()
         const search = searchTerm.toLowerCase()
 
-        const subjectPreReq1 = /* subject.preRequirements1?.toLowerCase() ||  */ ''
-        const subjectPreReq2 = /* subject.preRequirements2?.toLowerCase() ||  */ ''
-        const subjectPreReq = `${subjectPreReq1} ${subjectPreReq2}`.trim()
+        const subjectPreReq1 = subject.preRequirements.map(preReq => preReq.code).join(' ')
+        const subjectPreOr = subject.preRequirements.map(preReq => preReq.or.join(' ')).join(' ')
+        const subjectPreReq = `${subjectPreReq1} ${subjectPreOr}`.trim().toLowerCase()
 
         const preReqSearch = preReqSearchTerm.toLowerCase()
 
