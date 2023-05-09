@@ -2,11 +2,13 @@ import { env } from '@env/server.mjs'
 // Prisma adapter for NextAuth, optional and can be removed
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { prisma } from '@server/db'
+import { html, text } from '@utils/siginemail'
 import NextAuth, { type NextAuthOptions } from 'next-auth'
 import DiscordProvider from 'next-auth/providers/discord'
 import EmailProvider from 'next-auth/providers/email'
 import GitHubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
+import { createTransport } from 'nodemailer'
 
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
@@ -46,11 +48,22 @@ export const authOptions: NextAuthOptions = {
     EmailProvider({
       server: {
         host: env.EMAIL_SERVER_HOST,
-        port: env.EMAIL_SERVER_PORT,
+        port: Number(env.EMAIL_SERVER_PORT),
         auth: {
           user: env.EMAIL_SERVER_USER,
           pass: env.EMAIL_SERVER_PASSWORD,
         },
+      },
+      async sendVerificationRequest({ identifier: email, url, provider: { server, from } }) {
+        const { host } = new URL(url)
+        const transport = createTransport(server)
+        await transport.sendMail({
+          to: email,
+          from,
+          subject: `Sign in to ${host}`,
+          text: text({ url, host }),
+          html: html({ url, host, email }),
+        })
       },
       from: env.EMAIL_FROM,
       maxAge: 1 * 60 * 60, // 1 hour
