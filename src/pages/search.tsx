@@ -1,4 +1,3 @@
-import { toast } from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
@@ -9,15 +8,9 @@ import { Filters } from '@components/SubjectFilters/Filters'
 import { filters } from '@constants/filters'
 import { tableColumnHeaders } from '@constants/pages'
 import { useSearchPage } from '@hooks/useSearchPage'
-import type { RouterOutputs } from '@utils/api'
-import { api } from '@utils/api'
 import type { NextPage } from 'next'
-import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import { v4 as uuidv4 } from 'uuid'
-
-import type { ISubject } from './dashboard/planner'
 
 const FunnelIcon = dynamic(() => import('@heroicons/react/20/solid/FunnelIcon'))
 const Squares2X2Icon = dynamic(() => import('@heroicons/react/20/solid/Squares2X2Icon'))
@@ -32,10 +25,11 @@ const breadcrumbs = [
   },
 ]
 
-type Subject = RouterOutputs['subject']['getAll'][number]
 const SearchPage: NextPage = () => {
   const {
     page,
+    status,
+    session,
     sortType,
     gridView,
     isLoading,
@@ -43,6 +37,7 @@ const SearchPage: NextPage = () => {
     creditRange,
     totalResults,
     semesterRange,
+    isUserLoading,
     elementsPerPage,
     checkboxFilters,
     preReqSearchTerm,
@@ -54,82 +49,15 @@ const SearchPage: NextPage = () => {
     setCreditRange,
     handlePrevPage,
     setSemesterRange,
+    handleAddToPlanner,
     setCheckboxFilters,
     setPreReqSearchTerm,
     setMobileFiltersOpen,
     handleSetSortedSubjects,
+    handleCreateSubjectProgress,
   } = useSearchPage()
 
   const { t } = useTranslation()
-
-  const { mutateAsync: createSubjectProgress } = api.subjectProgress.create.useMutation()
-
-  const { data: session, status } = useSession()
-  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
-    enabled: !!session,
-  })
-
-  const handleCreateSubjectProgress = (subjectId: string) => {
-    if (!user?.currentSemester || !user?.isCurrentSemesterSet) return
-
-    void toast.promise(
-      createSubjectProgress({ subjectId, semester: user?.currentSemester, marks: [-1, -1, -1, -1, -1] }),
-      {
-        loading: t('search.toastMessages.createSubjectProgress.loading'),
-        success: <b>{t('search.toastMessages.createSubjectProgress.success')}</b>,
-        error: <b>{t('search.toastMessages.createSubjectProgress.error')}</b>,
-      }
-    )
-  }
-
-  const { mutateAsync: isSubjectAvailableForSemester } = api.subjectProgress.isSubjectAvailableForSemester.useMutation()
-  const handleAddToPlanner = async (subject: Subject) => {
-    const localSubjectsJSON = localStorage.getItem('planner-subjects')
-    const data = await isSubjectAvailableForSemester({
-      subjectCode: subject.code,
-    })
-    if (!localSubjectsJSON) {
-      localStorage.setItem(
-        'planner-subjects',
-        JSON.stringify([
-          {
-            id: uuidv4(),
-            code: subject.code,
-            isLoading: false,
-            subject: data.subject,
-            missingPreReqsType: data.missingPreReqsType,
-            isFetched: true,
-          },
-        ])
-      )
-      toast.success(<b>{t('search.toastMessages.addToPlanner.success')}</b>)
-      return
-    }
-    const localSubjects = JSON.parse(localSubjectsJSON) as ISubject[]
-    const subjectExists = localSubjects.find(s => s.code === subject.code)
-
-    if (subjectExists) {
-      toast.error(<b>{t('search.toastMessages.addToPlanner.error')}</b>)
-      return
-    }
-
-    localStorage.setItem(
-      'planner-subjects',
-      JSON.stringify([
-        ...localSubjects.filter(s => !!s.code),
-        {
-          id: uuidv4(),
-          code: subject.code,
-          isLoading: false,
-          subject: data.subject,
-          missingPreReqsType: data.missingPreReqsType,
-          isFetched: true,
-        },
-        ...localSubjects.filter(s => !s.code),
-      ])
-    )
-    toast.success(<b>{t('search.toastMessages.addToPlanner.success')}</b>)
-  }
 
   if (status === 'loading' || (isUserLoading && session) || isLoading) return <LoadingPage />
 

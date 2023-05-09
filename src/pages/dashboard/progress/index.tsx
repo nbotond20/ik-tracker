@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { BreadCrumbs } from '@components/Breadcrumbs/Breadcrumps'
@@ -11,13 +10,10 @@ import { LoadingPage } from '@components/Spinner/Spinner'
 import { SubjectResultModal } from '@components/SubjectResultModal/SubjectResultModal'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
-import type { RouterOutputs } from '@utils/api'
-import { api } from '@utils/api'
+import { useProgressPage } from '@utils/useProgressPage'
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import { getServerSession } from 'next-auth'
-import { useSession } from 'next-auth/react'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getServerSession(context.req, context.res, authOptions)
@@ -48,92 +44,32 @@ const breadcrumbs = [
   },
 ]
 
-type SubjectProgress = RouterOutputs['subjectProgress']['getBySemester'][number]
 const SubjectProgressPage: NextPage = () => {
-  const { data: session } = useSession()
-
-  const [selectedSubjectProgress, setSelectedSubjectProgress] = useState<SubjectProgress | undefined>()
-
-  const { data: user, isLoading: isUserLoading } = api.user.getUser.useQuery(undefined, {
-    enabled: !!session,
-  })
-  const [semester, setSemester] = useState(user?.currentSemester ?? 0)
-
-  useEffect(() => {
-    if (!user) return
-    const localSemester = localStorage.getItem('semester')
-    if (localSemester) {
-      setSemester(parseInt(localSemester))
-      return
-    }
-    setSemester(user?.currentSemester ?? 0)
-  }, [user])
-
-  const {
-    data: subjectProgresses,
-    refetch: refetchSubjectProgresses,
-    isLoading,
-  } = api.subjectProgress.getBySemester.useQuery(
-    {
-      semester: semester,
-    },
-    { enabled: !!user }
-  )
-
-  const { data: statistics, isLoading: isStatisticsLoading } = api.subjectProgress.statisticsBySemester.useQuery(
-    {
-      semester: semester,
-    },
-    { enabled: !!user }
-  )
-
-  const { subjectProgress } = api.useContext()
-  const handleRefetch = async () => {
-    await refetchSubjectProgresses()
-    await subjectProgress.statisticsBySemester.invalidate()
-  }
-
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-    setSelectedSubjectProgress(undefined)
-  }
-
-  useEffect(() => {
-    if (!selectedSubjectProgress) return
-    setIsModalOpen(true)
-  }, [selectedSubjectProgress])
-
-  const [modalOpenError, setModalOpenError] = useState(false)
-
-  useEffect(() => {
-    if (!modalOpenError || semester === 0) return
-    setModalOpenError(false)
-  }, [modalOpenError, semester])
-
-  const [openAll, setOpenAll] = useState(false)
-  useEffect(() => {
-    const localOpenAll = localStorage.getItem('openAll')
-    if (localOpenAll) {
-      setOpenAll(localOpenAll === 'true')
-      return
-    }
-  }, [])
-
   const { t } = useTranslation()
-  const router = useRouter()
-
-  const [isConfirmationDialogOpen, setIsConfirmationDialogOpen] = useState(false)
-  const handleConfirmationDialog = () => {
-    setIsConfirmationDialogOpen(false)
-    void router.push('/profile?setCurrentSemester=true&callbackUrl=/dashboard/progress')
-  }
-
-  useEffect(() => {
-    if (!isUserLoading && !user?.isCurrentSemesterSet) {
-      setIsConfirmationDialogOpen(true)
-    }
-  }, [isUserLoading, user?.isCurrentSemesterSet])
+  const {
+    user,
+    router,
+    openAll,
+    session,
+    semester,
+    isLoading,
+    statistics,
+    isModalOpen,
+    isUserLoading,
+    modalOpenError,
+    subjectProgresses,
+    isStatisticsLoading,
+    selectedSubjectProgress,
+    isConfirmationDialogOpen,
+    setOpenAll,
+    setSemester,
+    handleRefetch,
+    setIsModalOpen,
+    handleCloseModal,
+    setModalOpenError,
+    setSelectedSubjectProgress,
+    handleConfirmationDialog,
+  } = useProgressPage()
 
   if (isUserLoading) return <LoadingPage />
 

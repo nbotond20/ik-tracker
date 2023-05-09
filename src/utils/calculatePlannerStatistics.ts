@@ -1,4 +1,4 @@
-import type { ISubject } from '@pages/dashboard/planner'
+import type { ISubject } from '@hooks/usePlannerPage'
 
 export const calculatePlannerStatistics = (subjects: ISubject[]) => {
   return {

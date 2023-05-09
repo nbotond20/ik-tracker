@@ -1,6 +1,6 @@
 import { LoadingSpinner } from '@components/Spinner/Spinner'
 import { CheckIcon, XMarkIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-import type { ISubject } from '@pages/dashboard/planner'
+import type { ISubject } from '@hooks/usePlannerPage'
 
 export const getIcon = (status?: 'success' | 'error' | 'warning' | 'loading') => {
   if (!status) return null

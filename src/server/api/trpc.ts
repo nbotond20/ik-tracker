@@ -76,11 +76,17 @@ const transformError = (error: TRPCError) => {
       }
     } = {}
 
-    const defaultErrorArray = error.cause.errors.map(err => ({
-      index: err.path[2] as number,
-      path: err.path[3] as string,
-      message: err.message,
-    }))
+    const defaultErrorArray = error.cause.errors.map(err => {
+      const sortedPath = err.path
+        .filter(path => typeof path === 'number' || path === 'name' || path === 'resultType')
+        .sort()
+
+      return {
+        index: sortedPath[0] as number,
+        path: sortedPath[1] as string,
+        message: err.message,
+      }
+    })
 
     defaultErrorArray.forEach(err => {
       errorObject[err.index] = {

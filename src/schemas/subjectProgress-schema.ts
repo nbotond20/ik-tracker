@@ -82,34 +82,21 @@ export const updateAssessmentSchema = z
   })
   .strict()
 
-const baseCreateSubjectProgressInputSchema = z.object({
-  semester: z.number(),
-  assessments: z.array(assessmentSchema).optional(),
-  marks: z
-    .array(z.number(), {
-      required_error: 'Marks array is required!',
-      invalid_type_error: 'Marks must be an array of numbers!',
-    })
-    .min(5, { message: 'Marks array must contain exactly 5 elements!' })
-    .max(5, { message: 'Marks array must contain exactly 5 elements!' }),
-})
-
-const subjectIdNotSubjectName = z.object({
-  subjectId: z.string({ required_error: 'Subject id is required!' }),
-  subjectName: z.string().optional(),
-  credit: z.number().optional(),
-})
-const subjectNameNotSubjectId = z.object({
-  subjectId: z.string().optional(),
-  subjectName: z.string({ required_error: 'Subject name is required!' }),
-  credit: z.number({ required_error: 'Credit is required!' }),
-})
-
 export const createSubjectProgressInputSchema = z
-  .union([
-    baseCreateSubjectProgressInputSchema.merge(subjectIdNotSubjectName),
-    baseCreateSubjectProgressInputSchema.merge(subjectNameNotSubjectId),
-  ])
+  .object({
+    semester: z.number(),
+    assessments: z.array(assessmentSchema).optional(),
+    marks: z
+      .array(z.number(), {
+        required_error: 'Marks array is required!',
+        invalid_type_error: 'Marks must be an array of numbers!',
+      })
+      .min(5, { message: 'Marks array must contain exactly 5 elements!' })
+      .max(5, { message: 'Marks array must contain exactly 5 elements!' }),
+    subjectId: z.string().optional(),
+    subjectName: z.string().optional(),
+    credit: z.number().optional(),
+  })
   .refine(
     data => {
       if (!data.assessments || data.assessments.length === 0) return true
@@ -126,6 +113,16 @@ export const createSubjectProgressInputSchema = z
     {
       message: `All assessments must have the same result type or a result type of PASSFAIL`,
       path: ['assessments'],
+    }
+  )
+  .refine(
+    data => {
+      if (!data.subjectId && (!data.subjectName || !data.credit)) return false
+      return true
+    },
+    {
+      message: `Either a student id or a student name and credit must be provided!`,
+      path: ['studentId', 'studentName', 'credit'],
     }
   )
 
