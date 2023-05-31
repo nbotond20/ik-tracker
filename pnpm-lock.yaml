@@ -19,7 +19,7 @@ specifiers:
   '@types/jest': 29.5.2
   '@types/next-pwa': 5.6.4
   '@types/node': 20.2.5
-  '@types/prettier': 2.7.2
+  '@types/prettier': 2.7.3
   '@types/react': 18.2.7
   '@types/react-dom': 18.2.4
   '@types/testing-library__jest-dom': 5.14.6
@@ -115,7 +115,7 @@ devDependencies:
   '@types/jest': 29.5.2
   '@types/next-pwa': 5.6.4_c37uepwxx2b7wagtsua37ea26a
   '@types/node': 20.2.5
-  '@types/prettier': 2.7.2
+  '@types/prettier': 2.7.3
   '@types/react': 18.2.7
   '@types/react-dom': 18.2.4
   '@types/testing-library__jest-dom': 5.14.6
@@ -2666,8 +2666,8 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
 
-  /@types/prettier/2.7.2:
-    resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
+  /@types/prettier/2.7.3:
+    resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
     dev: true
 
   /@types/prop-types/15.7.5:
@@ -6383,7 +6383,7 @@ packages:
       '@jest/transform': 29.5.0
       '@jest/types': 29.5.0
       '@types/babel__traverse': 7.18.3
-      '@types/prettier': 2.7.2
+      '@types/prettier': 2.7.3
       babel-preset-current-node-syntax: 1.0.1_@babel+core@7.21.4
       chalk: 4.1.2
       expect: 29.5.0
