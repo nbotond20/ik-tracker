@@ -30,7 +30,7 @@ specifiers:
   autoprefixer: 10.4.14
   babel-loader: ^9.1.2
   cross-env: ^7.0.3
-  cypress: 12.14.0
+  cypress: 12.15.0
   eslint: 8.43.0
   eslint-config-next: 13.4.6
   eslint-config-prettier: 8.8.0
@@ -108,7 +108,7 @@ dependencies:
 devDependencies:
   '@next/bundle-analyzer': 13.4.1
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.3.2
-  '@testing-library/cypress': 9.0.0_cypress@12.14.0
+  '@testing-library/cypress': 9.0.0_cypress@12.15.0
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
   '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.8
@@ -124,7 +124,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.60.0_7yfldhli4vs6yywnkyiujhawka
   autoprefixer: 10.4.14_postcss@8.4.24
   cross-env: 7.0.3
-  cypress: 12.14.0
+  cypress: 12.15.0
   eslint: 8.43.0
   eslint-config-next: 13.4.6_7yfldhli4vs6yywnkyiujhawka
   eslint-config-prettier: 8.8.0_eslint@8.43.0
@@ -2371,7 +2371,7 @@ packages:
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
-  /@testing-library/cypress/9.0.0_cypress@12.14.0:
+  /@testing-library/cypress/9.0.0_cypress@12.15.0:
     resolution: {integrity: sha512-c1XiCGeHGGTWn0LAU12sFUfoX3qfId5gcSE2yHode+vsyHDWraxDPALjVnHd4/Fa3j4KBcc5k++Ccy6A9qnkMA==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -2379,7 +2379,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.21.0
       '@testing-library/dom': 8.20.0
-      cypress: 12.14.0
+      cypress: 12.15.0
     dev: true
 
   /@testing-library/dom/8.20.0:
@@ -4017,8 +4017,8 @@ packages:
   /csstype/3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
 
-  /cypress/12.14.0:
-    resolution: {integrity: sha512-HiLIXKXZaIT1RT7sw1sVPt+qKtis3uYNm6KwC4qoYjabwLKaqZlyS/P+uVvvlBNcHIwL/BC6nQZajpbUd7hOgQ==}
+  /cypress/12.15.0:
+    resolution: {integrity: sha512-FqGbxsH+QgjStuTO9onXMIeF44eOrgVwPvlcvuzLIaePQMkl72YgBvpuHlBGRcrw3Q4SvqKfajN8iV5XWShAiQ==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     requiresBuild: true
