@@ -49,7 +49,7 @@ specifiers:
   jest: 29.5.0
   jest-environment-jsdom: 29.5.0
   jest-junit: 16.0.0
-  lint-staged: 13.2.2
+  lint-staged: 13.2.3
   next: 13.4.7
   next-auth: 4.22.1
   next-pwa: 5.6.0
@@ -139,7 +139,7 @@ devDependencies:
   jest: 29.5.0_@types+node@20.3.2
   jest-environment-jsdom: 29.5.0
   jest-junit: 16.0.0
-  lint-staged: 13.2.2
+  lint-staged: 13.2.3
   postcss: 8.4.24
   prettier: 2.8.8
   prettier-plugin-tailwindcss: 0.3.0_vx2i665krt45esupzuhn5o4zsy
@@ -6682,8 +6682,8 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
-  /lint-staged/13.2.2:
-    resolution: {integrity: sha512-71gSwXKy649VrSU09s10uAT0rWCcY3aewhMaHyl2N84oBk4Xs9HgxvUp3AYu+bNsK4NrOYYxvSgg7FyGJ+jGcA==}
+  /lint-staged/13.2.3:
+    resolution: {integrity: sha512-zVVEXLuQIhr1Y7R7YAWx4TZLdvuzk7DnmrsTNL0fax6Z3jrpFcas+vKbzxhhvp6TA55m1SQuWkpzI1qbfDZbAg==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
