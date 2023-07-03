@@ -32,7 +32,7 @@ specifiers:
   cross-env: ^7.0.3
   cypress: 12.16.0
   eslint: 8.44.0
-  eslint-config-next: 13.4.7
+  eslint-config-next: 13.4.8
   eslint-config-prettier: 8.8.0
   eslint-plugin-cypress: 2.13.3
   eslint-plugin-import: 2.27.5
@@ -126,7 +126,7 @@ devDependencies:
   cross-env: 7.0.3
   cypress: 12.16.0
   eslint: 8.44.0
-  eslint-config-next: 13.4.7_iqf7tbmerllfqanu4l3d6aqdn4
+  eslint-config-next: 13.4.8_iqf7tbmerllfqanu4l3d6aqdn4
   eslint-config-prettier: 8.8.0_eslint@8.44.0
   eslint-plugin-cypress: 2.13.3_eslint@8.44.0
   eslint-plugin-import: 2.27.5_im5qx4gvcxagrctv4ronepymre
@@ -1938,8 +1938,8 @@ packages:
   /@next/env/13.4.7:
     resolution: {integrity: sha512-ZlbiFulnwiFsW9UV1ku1OvX/oyIPLtMk9p/nnvDSwI0s7vSoZdRtxXNsaO+ZXrLv/pMbXVGq4lL8TbY9iuGmVw==}
 
-  /@next/eslint-plugin-next/13.4.7:
-    resolution: {integrity: sha512-ANEPltxzXbyyG7CvqxdY4PmeM5+RyWdAJGufTHnU+LA/i3J6IDV2r8Z4onKwskwKEhwqzz5lMaSYGGXLyHX+mg==}
+  /@next/eslint-plugin-next/13.4.8:
+    resolution: {integrity: sha512-cmfVHpxWjjcETFt2WHnoFU6EmY69QcPJRlRNAooQlNe53Ke90vg1Ci/dkPffryJZaxxiRziP9bQrV8lDVCn3Fw==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -3078,12 +3078,12 @@ packages:
       acorn-walk: 8.2.0
     dev: true
 
-  /acorn-import-assertions/1.8.0_acorn@8.8.2:
+  /acorn-import-assertions/1.8.0_acorn@8.9.0:
     resolution: {integrity: sha512-m7VZ3jwz4eK6A4Vtt8Ew1/mNbP24u0FhdyfA7fSvnJR6LMdfOYnmuIrrJAgrYfYJ10F/otaHTtrtrtmHdMNzEw==}
     peerDependencies:
       acorn: ^8
     dependencies:
-      acorn: 8.8.2
+      acorn: 8.9.0
     dev: false
 
   /acorn-jsx/5.3.2_acorn@8.9.0:
@@ -3108,7 +3108,6 @@ packages:
     resolution: {integrity: sha512-jaVNAFBHNLXspO543WnNNPZFRtavh3skAkITqD0/2aeMkKZTN+254PyhwxFYrk3vQ1xfY+2wbesJMs/JC8/PwQ==}
     engines: {node: '>=0.4.0'}
     hasBin: true
-    dev: true
 
   /agent-base/6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -4545,8 +4544,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-next/13.4.7_iqf7tbmerllfqanu4l3d6aqdn4:
-    resolution: {integrity: sha512-+IRAyD0+J1MZaTi9RQMPUfr6Q+GCZ1wOkK6XM52Vokh7VI4R6YFGOFzdkEFHl4ZyIX4FKa5vcwUP2WscSFNjNQ==}
+  /eslint-config-next/13.4.8_iqf7tbmerllfqanu4l3d6aqdn4:
+    resolution: {integrity: sha512-2hE0b6lHuhtHBX8VgEXi8v4G8PVrPUBMOSLCTq8qtcQ2qQOX7+uBOLK2kU4FD2qDZzyXNlhmuH+WLT5ptY4XLA==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -4554,7 +4553,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 13.4.7
+      '@next/eslint-plugin-next': 13.4.8
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/parser': 5.60.1_iqf7tbmerllfqanu4l3d6aqdn4
       eslint: 8.44.0
@@ -9279,8 +9278,8 @@ packages:
       '@webassemblyjs/ast': 1.11.1
       '@webassemblyjs/wasm-edit': 1.11.1
       '@webassemblyjs/wasm-parser': 1.11.1
-      acorn: 8.8.2
-      acorn-import-assertions: 1.8.0_acorn@8.8.2
+      acorn: 8.9.0
+      acorn-import-assertions: 1.8.0_acorn@8.9.0
       browserslist: 4.21.5
       chrome-trace-event: 1.0.3
       enhanced-resolve: 5.12.0
