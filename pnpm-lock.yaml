@@ -41,7 +41,7 @@ specifiers:
   eslint-plugin-prettier: 4.2.1
   eslint-plugin-react: 7.32.2
   eslint-plugin-react-hooks: 4.6.0
-  flowbite: 1.6.6
+  flowbite: 1.7.0
   framer-motion: 10.12.18
   husky: 8.0.3
   i18next: ^22.4.15
@@ -86,7 +86,7 @@ dependencies:
   '@trpc/server': 10.33.0
   '@vercel/analytics': 1.0.1
   babel-loader: 9.1.2_2bpkfvz2mezbew2j5yjox7n6pu
-  flowbite: 1.6.6
+  flowbite: 1.7.0
   framer-motion: 10.12.18_biqbaboplfbrettd7655fr4n2y
   i18next: 22.4.15
   i18next-browser-languagedetector: 7.0.1
@@ -5169,8 +5169,8 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
-  /flowbite/1.6.6:
-    resolution: {integrity: sha512-T+IaFikHELo1PBKfT/axDqhAmKQLfm/dxVch2r07TZ+IcKwkorZjzwkVuw3OslTETniRIUf2qQvEhxk3bQCaew==}
+  /flowbite/1.7.0:
+    resolution: {integrity: sha512-OTTmnhRgv85Rs+mcMaVU7zB6EvRQs7BaQziyMUsZLRjW9aUpeQyqKjLmxsVMMCdr8isYPCLd6UL7X1IaSVI0WQ==}
     dependencies:
       '@popperjs/core': 2.11.7
       mini-svg-data-uri: 1.4.4
