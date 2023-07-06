@@ -32,7 +32,7 @@ specifiers:
   cross-env: ^7.0.3
   cypress: 12.16.0
   eslint: 8.44.0
-  eslint-config-next: 13.4.8
+  eslint-config-next: 13.4.9
   eslint-config-prettier: 8.8.0
   eslint-plugin-cypress: 2.13.3
   eslint-plugin-import: 2.27.5
@@ -126,7 +126,7 @@ devDependencies:
   cross-env: 7.0.3
   cypress: 12.16.0
   eslint: 8.44.0
-  eslint-config-next: 13.4.8_iqf7tbmerllfqanu4l3d6aqdn4
+  eslint-config-next: 13.4.9_iqf7tbmerllfqanu4l3d6aqdn4
   eslint-config-prettier: 8.8.0_eslint@8.44.0
   eslint-plugin-cypress: 2.13.3_eslint@8.44.0
   eslint-plugin-import: 2.27.5_ejqdggoi4ttnavuewvp24znboa
@@ -1986,8 +1986,8 @@ packages:
   /@next/env/13.4.8:
     resolution: {integrity: sha512-twuSf1klb3k9wXI7IZhbZGtFCWvGD4wXTY2rmvzIgVhXhs7ISThrbNyutBx3jWIL8Y/Hk9+woytFz5QsgtcRKQ==}
 
-  /@next/eslint-plugin-next/13.4.8:
-    resolution: {integrity: sha512-cmfVHpxWjjcETFt2WHnoFU6EmY69QcPJRlRNAooQlNe53Ke90vg1Ci/dkPffryJZaxxiRziP9bQrV8lDVCn3Fw==}
+  /@next/eslint-plugin-next/13.4.9:
+    resolution: {integrity: sha512-nDtGpa992tNyAkT/KmSMy7QkHfNZmGCBYhHtafU97DubqxzNdvLsqRtliQ4FU04CysRCtvP2hg8rRC1sAKUTUA==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -4597,8 +4597,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-next/13.4.8_iqf7tbmerllfqanu4l3d6aqdn4:
-    resolution: {integrity: sha512-2hE0b6lHuhtHBX8VgEXi8v4G8PVrPUBMOSLCTq8qtcQ2qQOX7+uBOLK2kU4FD2qDZzyXNlhmuH+WLT5ptY4XLA==}
+  /eslint-config-next/13.4.9_iqf7tbmerllfqanu4l3d6aqdn4:
+    resolution: {integrity: sha512-0fLtKRR268NArpqeXXwnLgMXPvF64YESQvptVg+RMLCaijKm3FICN9Y7Jc1p2o+yrWwE4DufJXDM/Vo53D1L7g==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -4606,7 +4606,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 13.4.8
+      '@next/eslint-plugin-next': 13.4.9
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/parser': 5.61.0_iqf7tbmerllfqanu4l3d6aqdn4
       eslint: 8.44.0
@@ -4615,7 +4615,7 @@ packages:
       eslint-plugin-import: 2.27.5_wy7nsyjnxc6ldysirxc3g7elee
       eslint-plugin-jsx-a11y: 6.7.1_eslint@8.44.0
       eslint-plugin-react: 7.32.2_eslint@8.44.0
-      eslint-plugin-react-hooks: 4.6.0_eslint@8.44.0
+      eslint-plugin-react-hooks: 5.0.0-canary-7118f5dd7-20230705_eslint@8.44.0
       typescript: 5.1.6
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
@@ -4870,6 +4870,15 @@ packages:
 
   /eslint-plugin-react-hooks/4.6.0_eslint@8.44.0:
     resolution: {integrity: sha512-oFc7Itz9Qxh2x4gNHStv3BqJq54ExXmfC+a1NjAta66IAN87Wu0R/QArgIS9qKzX3dXKPI9H5crl9QchNMY9+g==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
+    dependencies:
+      eslint: 8.44.0
+    dev: true
+
+  /eslint-plugin-react-hooks/5.0.0-canary-7118f5dd7-20230705_eslint@8.44.0:
+    resolution: {integrity: sha512-AZYbMo/NW9chdL7vk6HQzQhT+PvTAEVqWk9ziruUoW2kAOcN5qNyelv70e0F1VNQAbvutOC9oc+xfWycI9FxDw==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
