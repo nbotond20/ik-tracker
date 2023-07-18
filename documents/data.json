@@ -1,0 +1,3930 @@
+[
+  {
+    "assessmentType": null,
+    "code": "IP-18TMKG",
+    "consultation": "0",
+    "courseName": "Egyetemi alapozó és tanulásmódszertani kurzus",
+    "credit": "1",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "1",
+    "practiceGradeType": "G",
+    "preRequirements": [],
+    "semester": "1",
+    "specialisation": "ABC",
+    "subjectGroupType": "EGYEB",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18FUNPEG",
+    "consultation": "1",
+    "courseName": "Funkcionális programozás",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [],
+    "semester": "1",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18IMPROGEG",
+    "consultation": "0",
+    "courseName": "Imperatív programozás",
+    "credit": "5",
+    "labor": "3",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [],
+    "semester": "1",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18MATAG",
+    "consultation": "0",
+    "courseName": "Matematikai alapok",
+    "credit": "4",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "4",
+    "practiceGradeType": "FG",
+    "preRequirements": [],
+    "semester": "1",
+    "specialisation": "ABC",
+    "subjectGroupType": "MAT",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18PROGEG",
+    "consultation": "1",
+    "courseName": "Programozás",
+    "credit": "6",
+    "labor": "3",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [],
+    "semester": "1",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18SZGREG",
+    "consultation": "1",
+    "courseName": "Számítógépes rendszerek",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [],
+    "semester": "1",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18AA1E",
+    "consultation": "0",
+    "courseName": "Algoritmusok és adatszerkezetek I",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18AA1G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "2",
+    "specialisation": "ABC",
+    "subjectGroupType": "SZAM",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18AA1G",
+    "consultation": "1",
+    "courseName": "Algoritmusok és adatszerkezetek I",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18PROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "2",
+    "specialisation": "ABC",
+    "subjectGroupType": "SZAM",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18AN1E",
+    "consultation": "0",
+    "courseName": "Analízis I",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18AN1G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "2",
+    "specialisation": "ABC",
+    "subjectGroupType": "MAT",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18AN1G",
+    "consultation": "1",
+    "courseName": "Analízis I",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "2",
+    "specialisation": "ABC",
+    "subjectGroupType": "MAT",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18DM1E",
+    "consultation": "0",
+    "courseName": "Diszkrét matematika I",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18DM1G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "2",
+    "specialisation": "ABC",
+    "subjectGroupType": "MAT",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18DM1G",
+    "consultation": "1",
+    "courseName": "Diszkrét matematika I",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "2",
+    "specialisation": "ABC",
+    "subjectGroupType": "MAT",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18OEPROGEG",
+    "consultation": "1",
+    "courseName": "Objektumelvű programozás",
+    "credit": "6",
+    "labor": "3",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18PROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "2",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18PNYEG",
+    "consultation": "2",
+    "courseName": "Programozási nyelvek",
+    "credit": "6",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18IMPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "2",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18WF1EG",
+    "consultation": "0",
+    "courseName": "Web-fejlesztés",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18SZGREG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "2",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18AA2E",
+    "consultation": "0",
+    "courseName": "Algoritmusok és adatszerkezetek II",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18AA2G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3",
+    "specialisation": "ABC",
+    "subjectGroupType": "SZAM",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18AA2G",
+    "consultation": "1",
+    "courseName": "Algoritmusok és adatszerkezetek II",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18AA1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "ABC",
+    "subjectGroupType": "SZAM",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18AB1E",
+    "consultation": "0",
+    "courseName": "Adatbázisok I",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18AB1G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18AB1G",
+    "consultation": "0",
+    "courseName": "Adatbázisok I",
+    "credit": "2",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18AA2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18OPREG",
+    "consultation": "1",
+    "courseName": "Operációs rendszerek",
+    "credit": "3",
+    "labor": "1",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18SZGREG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18PNY1EG",
+        "or": ["IP-18PNYEG"],
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KPROGEG",
+    "consultation": "1",
+    "courseName": "Konkurrens programozás",
+    "credit": "3",
+    "labor": "1",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18PNY2EG",
+        "or": ["IP-18PNYEG"],
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18MIAE",
+    "consultation": "1",
+    "courseName": "Mesterséges intelligencia",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18AA2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "ABC",
+    "subjectGroupType": "SZAM",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18TKHE",
+    "consultation": "0",
+    "courseName": "Telekommunikációs hálózatok",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18TKHG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18TKHG",
+    "consultation": "1",
+    "courseName": "Telekommunikációs hálózatok",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18PNY1EG",
+        "or": ["IP-18OEPROGEG"],
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "ABC",
+    "subjectGroupType": "INF",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-08SZDPIBN18",
+    "consultation": "0",
+    "courseName": "Szakdolgozati konzultáció*",
+    "credit": "20",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [],
+    "semester": "6",
+    "specialisation": "ABC",
+    "subjectGroupType": "SZAKDOLGOZAT",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18IVMEG",
+    "consultation": "0",
+    "courseName": "Innovatív vállalkozás menedzsment",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "1",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [],
+    "semester": "1,6",
+    "specialisation": "ABC",
+    "subjectGroupType": "EGYEB",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18JIE",
+    "consultation": "1",
+    "courseName": "Jogi ismeretek",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [],
+    "semester": "1,6",
+    "specialisation": "ABC",
+    "subjectGroupType": "EGYEB",
+    "subjectType": "TOR"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18aAN2E",
+    "consultation": "0",
+    "courseName": "Analízis II",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18aAN2G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18aAN2G",
+    "consultation": "1",
+    "courseName": "Analízis II",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18AN1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18bAN2E",
+    "consultation": "0",
+    "courseName": "Analízis II",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18bAN2G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3",
+    "specialisation": "B",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18bAN2G",
+    "consultation": "1",
+    "courseName": "Analízis II",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18AN1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "B",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18cAN2E",
+    "consultation": "0",
+    "courseName": "Analízis II (F)",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18cAN2G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3",
+    "specialisation": "C",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18cAN2G",
+    "consultation": "1",
+    "courseName": "Analízis II (F)",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18AN1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "C",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18aDM2E",
+    "consultation": "0",
+    "courseName": "Diszkrét matematika II",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18aDM2G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18aDM2G",
+    "consultation": "1",
+    "courseName": "Diszkrét matematika II",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18DM1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18bDM2E",
+    "consultation": "0",
+    "courseName": "Diszkrét matematika II",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18bDM2G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3",
+    "specialisation": "B",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18bDM2G",
+    "consultation": "1",
+    "courseName": "Diszkrét matematika II",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18DM1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "B",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18cDMAG",
+    "consultation": "1",
+    "courseName": "Diszkrét modellek alkalmazásai",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18DM1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "C",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18aEVALKEG",
+    "consultation": "1",
+    "courseName": "Eseményvezérelt alkalmazások",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18OEPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18bEVALKEG",
+    "consultation": "1",
+    "courseName": "Eseményvezérelt alkalmazások",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18OEPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18aNM1E",
+    "consultation": "0",
+    "courseName": "Numerikus módszerek I",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18aNM1G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18aNM1G",
+    "consultation": "1",
+    "courseName": "Numerikus módszerek I",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18aAN1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18bPREE",
+    "consultation": "0",
+    "courseName": "Programozáselmélet",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18bPREG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18bPREG",
+    "consultation": "1",
+    "courseName": "Programozáselmélet",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18cPROGTEG",
+    "consultation": "1",
+    "courseName": "Programozási technológia",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18OEPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18cWEBPROGEG",
+    "consultation": "1",
+    "courseName": "Webprogramozás",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18WF1EG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18cSZÁMEA1E",
+    "consultation": "0",
+    "courseName": "A számításelmélet alapjai I.",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18cSZÁMEA1G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18cSZÁMEA1G",
+    "consultation": "1",
+    "courseName": "A számításelmélet alapjai I.",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18DM1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18aAN3E",
+    "consultation": "0",
+    "courseName": "Analízis III",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18aAN3G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18aAN3G",
+    "consultation": "1",
+    "courseName": "Analízis III",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18aAN2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18aBSZEE",
+    "consultation": "0",
+    "courseName": "Bevezetés a számításelméletbe",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18aBSZEG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18aBSZEG",
+    "consultation": "1",
+    "courseName": "Bevezetés a számításelméletbe",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18DM1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18bFNYFPRE",
+    "consultation": "0",
+    "courseName": "Formális nyelvek és a fordítóprogramok alapjai",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18bFNYFPRG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18bFNYFPRG",
+    "consultation": "1",
+    "courseName": "Formális nyelvek és a fordítóprogramok alapjai",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18DM1E",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18PNY1EG",
+        "or": ["IP-18OEPROGEG"],
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18cNM1E",
+    "consultation": "0",
+    "courseName": "Numerikus módszerek",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18cNM1G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4",
+    "specialisation": "C",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18cNM1G",
+    "consultation": "1",
+    "courseName": "Numerikus módszerek",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18cAN2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "C",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18bNM1E",
+    "consultation": "0",
+    "courseName": "Numerikus módszerek I",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18bNM1G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4",
+    "specialisation": "B",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18bNM1G",
+    "consultation": "1",
+    "courseName": "Numerikus módszerek I",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18bAN2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "B",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18aNM2E",
+    "consultation": "0",
+    "courseName": "Numerikus módszerek II",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18aNM2G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18aNM2G",
+    "consultation": "1",
+    "courseName": "Numerikus módszerek II",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18aNM1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18cSZTEG",
+    "consultation": "1",
+    "courseName": "Szoftvertechnológia (F)",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18cPROGTEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18aSZTEG",
+    "consultation": "1",
+    "courseName": "Szoftvertechnológia TM",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18aEVALKEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18bSZTEG",
+    "consultation": "1",
+    "courseName": "Szoftvertechnológia TM",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18bEVALKEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18bTVFTEG",
+    "consultation": "1",
+    "courseName": "Többváltozós függvénytan",
+    "credit": "4",
+    "labor": "0",
+    "lecture": "1",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18bAN2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "B",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18aVSZEG",
+    "consultation": "1",
+    "courseName": "Valószínűségszámítás",
+    "credit": "4",
+    "labor": "0",
+    "lecture": "1",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18aAN2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18bVSZEG",
+    "consultation": "1",
+    "courseName": "Valószínűségszámítás és statisztika (T)",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18bAN2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "B",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18cSZÁMEA2E",
+    "consultation": "0",
+    "courseName": "A számításelmélet alapjai II.",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18cSZÁMEA2G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18cSZÁMEA2G",
+    "consultation": "1",
+    "courseName": "A számításelmélet alapjai II.",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18cSZÁMEA1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18bAB2E",
+    "consultation": "0",
+    "courseName": "Adatbázisok II",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18bAB2G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18bAB2G",
+    "consultation": "1",
+    "courseName": "Adatbázisok II",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18AB1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18cAB2E",
+    "consultation": "0",
+    "courseName": "Adatbázisok II",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18cAB2G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18cAB2G",
+    "consultation": "1",
+    "courseName": "Adatbázisok II",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18AB1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18aANA1E",
+    "consultation": "0",
+    "courseName": "Analízis alkalmazásai",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18aANA1G ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18aANA1G",
+    "consultation": "1",
+    "courseName": "Analízis alkalmazásai",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18aAN3E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18aDMME",
+    "consultation": "1",
+    "courseName": "Diszkrét matematikai modellek és alkalmazásaik",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18DM1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18aMSAEG",
+    "consultation": "1",
+    "courseName": "Matematikai statisztika",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18aVSZEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "A",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18bNM2EG",
+    "consultation": "0",
+    "courseName": "Numerikus módszerek II",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "1",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18bNM1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18bSZEE",
+    "consultation": "0",
+    "courseName": "Számításelmélet",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18bSZEG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18bSZEG",
+    "consultation": "1",
+    "courseName": "Számításelmélet",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18bFNYFPRE",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18cVSZG",
+    "consultation": "1",
+    "courseName": "Valószínűségszámítás és statisztika (F)",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18cAN2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "C",
+    "subjectGroupType": "MAT",
+    "subjectType": "KOT"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVIGUIQTEG",
+    "consultation": "0",
+    "courseName": "GUI programozás Qt-vel",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18OEPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KWEBPROGEG",
+    "consultation": "1",
+    "courseName": "Webprogramozás",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18WF1EG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KWEBPROGEG",
+    "consultation": "1",
+    "courseName": "Webprogramozás",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18WF1EG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVPRJG",
+    "consultation": "1",
+    "courseName": "Projekteszközök",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18PNYEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVPRJG",
+    "consultation": "1",
+    "courseName": "Projekteszközök",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18PNYEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVPRJG",
+    "consultation": "1",
+    "courseName": "Projekteszközök",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18PNYEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVIBDAE",
+    "consultation": "0",
+    "courseName": "Big Data architektúrák és elemző módszerek",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVIBDAG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVIBDAE",
+    "consultation": "0",
+    "courseName": "Big Data architektúrák és elemző módszerek",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVIBDAG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIBDAG",
+    "consultation": "1",
+    "courseName": "Big Data architektúrák és elemző módszerek",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18PNY1EG",
+        "or": ["IP-18OEPROGEG"],
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIBDAG",
+    "consultation": "1",
+    "courseName": "Big Data architektúrák és elemző módszerek",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18PNY1EG",
+        "or": ["IP-18OEPROGEG"],
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVIBDAE",
+    "consultation": "0",
+    "courseName": "Big Data architektúrák és elemző módszerek",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVIBDAG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIBDAG",
+    "consultation": "1",
+    "courseName": "Big Data architektúrák és elemző módszerek",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18PNY1EG",
+        "or": ["IP-18OEPROGEG"],
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVIMNFEG",
+    "consultation": "1",
+    "courseName": "Mély neuronhálok algoritmusai és fajtái",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18KVISZMNAEG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18aAN2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVIMNFEG",
+    "consultation": "1",
+    "courseName": "Mély neuronhálok algoritmusai és fajtái",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18KVISZMNAEG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18aAN2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVIMNFEG",
+    "consultation": "1",
+    "courseName": "Mély neuronhálok algoritmusai és fajtái",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18KVISZMNAEG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18aAN2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVIVISZE",
+    "consultation": "0",
+    "courseName": "Vállalati információs rendszerek és architektúrák",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVIVISZG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "6",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIVISZG",
+    "consultation": "1",
+    "courseName": "Vállalati információs rendszerek és architektúrák",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18AB1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "6",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIVISZG",
+    "consultation": "1",
+    "courseName": "Vállalati információs rendszerek és architektúrák",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18AB1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "6",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVIVISZE",
+    "consultation": "0",
+    "courseName": "Vállalati információs rendszerek és architektúrák",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVIVISZG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "6",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIVISZG",
+    "consultation": "1",
+    "courseName": "Vállalati információs rendszerek és architektúrák",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18AB1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "6",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVIVISZE",
+    "consultation": "0",
+    "courseName": "Vállalati információs rendszerek és architektúrák",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVIVISZG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "6",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVISZMNAGE",
+    "consultation": "2",
+    "courseName": "Szoftver mély neuronhálók alkalmazásához",
+    "credit": "4",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "2,4",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVISZMNAGE",
+    "consultation": "2",
+    "courseName": "Szoftver mély neuronhálók alkalmazásához",
+    "credit": "4",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "2,4",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVISZMNAGE",
+    "consultation": "2",
+    "courseName": "Szoftver mély neuronhálók alkalmazásához",
+    "credit": "4",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "2,4",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVPNY1EG",
+    "consultation": "1",
+    "courseName": "Programozási nyelvek (C++)",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18IMPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3,4,5",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVPNY1EG",
+    "consultation": "1",
+    "courseName": "Programozási nyelvek (C++)",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18IMPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3,4,5",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVPNY1EG",
+    "consultation": "1",
+    "courseName": "Programozási nyelvek (C++)",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18IMPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3,4,5",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIKFINNL",
+    "consultation": "2",
+    "courseName": "Kutatásfejlesztési és innovációs labor",
+    "credit": "5",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "3",
+    "practiceGradeType": "G",
+    "preRequirements": [],
+    "semester": "3,4,5,6",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIKFINNL",
+    "consultation": "2",
+    "courseName": "Kutatásfejlesztési és innovációs labor",
+    "credit": "5",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "3",
+    "practiceGradeType": "G",
+    "preRequirements": [],
+    "semester": "3,4,5,6",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIKFINNL",
+    "consultation": "2",
+    "courseName": "Kutatásfejlesztési és innovációs labor",
+    "credit": "5",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "3",
+    "practiceGradeType": "G",
+    "preRequirements": [],
+    "semester": "3,4,5,6",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVIGPUEG",
+    "consultation": "0",
+    "courseName": "GPU programozás",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18PNY1EG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVIGPUEG",
+    "consultation": "0",
+    "courseName": "GPU programozás",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18PNY1EG",
+        "or": ["IP-18OEPROGEG"],
+        "type": 1
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVIGPUEG",
+    "consultation": "0",
+    "courseName": "GPU programozás",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18PNY1EG",
+        "or": ["IP-18OEPROGEG "],
+        "type": 1
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVISZGE",
+    "consultation": "0",
+    "courseName": "Számítógépes grafika",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVISZGG",
+    "consultation": "1",
+    "courseName": "Számítógépes grafika",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18PNY1EG",
+        "or": ["IP-18OEPROGEG", "IP-18KVPNY1EG"],
+        "type": 1
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVISZGE",
+    "consultation": "0",
+    "courseName": "Számítógépes grafika",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVISZGG",
+    "consultation": "1",
+    "courseName": "Számítógépes grafika",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18PNY1EG",
+        "or": ["IP-18OEPROGEG", "IP-18KVPNY1EG"],
+        "type": 1
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVISZGE",
+    "consultation": "0",
+    "courseName": "Számítógépes grafika",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVISZGG",
+    "consultation": "1",
+    "courseName": "Számítógépes grafika",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18PNY1EG",
+        "or": ["IP-18OEPROGEG", "IP-18KVPNY1EG"],
+        "type": 1
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIFSWPROGG",
+    "consultation": "1",
+    "courseName": "Full stack webprogramozás",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18KVIKWPROGEG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18KVISZWPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4,5,6",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIFSWPROGG",
+    "consultation": "1",
+    "courseName": "Full stack webprogramozás",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18KVIKWPROGEG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18KVISZWPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4,5,6",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIFSWPROGG",
+    "consultation": "1",
+    "courseName": "Full stack webprogramozás",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18KVIKWPROGEG",
+        "or": null,
+        "type": 1
+      },
+      {
+        "code": "IP-18KVISZWPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4,5,6",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVFPNYEG",
+    "consultation": "1",
+    "courseName": "Funkcionális nyelvek",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [],
+    "semester": "4,6",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVFPNYEG",
+    "consultation": "1",
+    "courseName": "Funkcionális nyelvek",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [],
+    "semester": "4,6",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVFPNYEG",
+    "consultation": "1",
+    "courseName": "Funkcionális nyelvek",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [],
+    "semester": "4,6",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIHJEG",
+    "consultation": "1",
+    "courseName": "Haladó Java",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18PNYEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4,6",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIHJEG",
+    "consultation": "1",
+    "courseName": "Haladó Java",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18PNYEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4,6",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVIHJEG",
+    "consultation": "1",
+    "courseName": "Haladó Java",
+    "credit": "5",
+    "labor": "2",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18PNYEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4,6",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVIWAFEG",
+    "consultation": "1",
+    "courseName": "Webes alkalmazások fejlesztése",
+    "credit": "3",
+    "labor": "1",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18aEVALKEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4,6",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVIWAFEG",
+    "consultation": "1",
+    "courseName": "Webes alkalmazások fejlesztése",
+    "credit": "3",
+    "labor": "1",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18aEVALKEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4,6",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVIKWPROGEG",
+    "consultation": "1",
+    "courseName": "Kliensoldali webprogramozás",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18cWEBPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5,6",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVIKWPROGEG",
+    "consultation": "1",
+    "courseName": "Kliensoldali webprogramozás",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18cWEBPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5,6",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVIKWPROGEG",
+    "consultation": "1",
+    "courseName": "Kliensoldali webprogramozás",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18cWEBPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5,6",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVISZWPROGEG",
+    "consultation": "1",
+    "courseName": "Szerveroldali webprogramozás",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18cWEBPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5,6",
+    "specialisation": "A",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVISZWPROGEG",
+    "consultation": "1",
+    "courseName": "Szerveroldali webprogramozás",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18cWEBPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5,6",
+    "specialisation": "B",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVISZWPROGEG",
+    "consultation": "1",
+    "courseName": "Szerveroldali webprogramozás",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18cWEBPROGEG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5,6",
+    "specialisation": "C",
+    "subjectGroupType": "INF",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZBGTE",
+    "consultation": "1",
+    "courseName": "Bevezetés a gépi tanulásba",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZBGTE",
+    "consultation": "1",
+    "courseName": "Bevezetés a gépi tanulásba",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZBGTE",
+    "consultation": "1",
+    "courseName": "Bevezetés a gépi tanulásba",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZTME",
+    "consultation": "0",
+    "courseName": "Típuselmélet",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZTMG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZTMG",
+    "consultation": "1",
+    "courseName": "Típuselmélet",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [],
+    "semester": "3",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZTME",
+    "consultation": "0",
+    "courseName": "Típuselmélet",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZTMG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZTMG",
+    "consultation": "1",
+    "courseName": "Típuselmélet",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [],
+    "semester": "3",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZTME",
+    "consultation": "0",
+    "courseName": "Típuselmélet",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZTMG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZTMG",
+    "consultation": "1",
+    "courseName": "Típuselmélet",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [],
+    "semester": "3",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVELE",
+    "consultation": "0",
+    "courseName": "Logika",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVELG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVELG",
+    "consultation": "1",
+    "courseName": "Logika",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [],
+    "semester": "4",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVELE",
+    "consultation": "0",
+    "courseName": "Logika",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVELG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVELG",
+    "consultation": "1",
+    "courseName": "Logika",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [],
+    "semester": "4",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVELE",
+    "consultation": "0",
+    "courseName": "Logika",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVELG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVELG",
+    "consultation": "1",
+    "courseName": "Logika",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [],
+    "semester": "4",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZKRBE",
+    "consultation": "0",
+    "courseName": "Kriptográfia és biztonság",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZKRBG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZKRBG",
+    "consultation": "1",
+    "courseName": "Kriptográfia és biztonság",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18DM1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZKRBE",
+    "consultation": "0",
+    "courseName": "Kriptográfia és biztonság",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZKRBG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZKRBG",
+    "consultation": "1",
+    "courseName": "Kriptográfia és biztonság",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18DM1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZKRBE",
+    "consultation": "0",
+    "courseName": "Kriptográfia és biztonság",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZKRBG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZKRBG",
+    "consultation": "1",
+    "courseName": "Kriptográfia és biztonság",
+    "credit": "3",
+    "labor": "2",
+    "lecture": "0",
+    "practice": "0",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18DM1E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVMNMALEG",
+    "consultation": "1",
+    "courseName": "Numerikus algoritmusok",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18aNM2E",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "X",
+    "code": "IP-18KVMNMALEG",
+    "consultation": "1",
+    "courseName": "Numerikus algoritmusok",
+    "credit": "4",
+    "labor": "2",
+    "lecture": "1",
+    "practice": "0",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18bNM2EG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZSZME",
+    "consultation": "0",
+    "courseName": "Számítási modellek",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZSZMG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZSZMG",
+    "consultation": "1",
+    "courseName": "Számítási modellek",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18bSZEE ",
+        "or": null,
+        "type": 0
+      },
+      {
+        "code": "IP-18cSZÁMEA1E",
+        "or": ["IP-18aBSZEE"],
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZSZME",
+    "consultation": "0",
+    "courseName": "Számítási modellek",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZSZMG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZSZMG",
+    "consultation": "1",
+    "courseName": "Számítási modellek",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18bSZEE ",
+        "or": null,
+        "type": 0
+      },
+      {
+        "code": "IP-18cSZÁMEA1E",
+        "or": ["IP-18aBSZEE"],
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZSZME",
+    "consultation": "0",
+    "courseName": "Számítási modellek",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZSZMG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "5",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZSZMG",
+    "consultation": "1",
+    "courseName": "Számítási modellek",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18bSZEE ",
+        "or": null,
+        "type": 0
+      },
+      {
+        "code": "IP-18cSZÁMEA1E",
+        "or": ["IP-18aBSZEE"],
+        "type": 1
+      }
+    ],
+    "semester": "5",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZORSIE",
+    "consultation": "0",
+    "courseName": "Osztott rendszerek specifikációja és implementációja",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [],
+    "semester": "6",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZORSIG",
+    "consultation": "1",
+    "courseName": "Osztott rendszerek specifikációja és implementációja",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZPREE",
+        "or": ["IP-18KVSZPME"],
+        "type": 1
+      }
+    ],
+    "semester": "6",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZORSIE",
+    "consultation": "0",
+    "courseName": "Osztott rendszerek specifikációja és implementációja",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [],
+    "semester": "6",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZORSIG",
+    "consultation": "1",
+    "courseName": "Osztott rendszerek specifikációja és implementációja",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZPME",
+        "or": ["IP-18bPREE"],
+        "type": 1
+      }
+    ],
+    "semester": "6",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZORSIE",
+    "consultation": "0",
+    "courseName": "Osztott rendszerek specifikációja és implementációja",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [],
+    "semester": "6",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZORSIG",
+    "consultation": "1",
+    "courseName": "Osztott rendszerek specifikációja és implementációja",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZPREE",
+        "or": ["IP-18KVSZPME"],
+        "type": 1
+      }
+    ],
+    "semester": "6",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZPREE",
+    "consultation": "0",
+    "courseName": "Programozáselmélet",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZPREG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZPREG",
+    "consultation": "1",
+    "courseName": "Programozáselmélet",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZPREE",
+    "consultation": "0",
+    "courseName": "Programozáselmélet",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZPREG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZPREG",
+    "consultation": "1",
+    "courseName": "Programozáselmélet",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "G",
+    "preRequirements": [
+      {
+        "code": "IP-18MATAG",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "3,5",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZPME",
+    "consultation": "0",
+    "courseName": "Programozási módszertan",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZPMG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4,6",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZPMG",
+    "consultation": "1",
+    "courseName": "Programozási módszertan",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZPREE",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4,6",
+    "specialisation": "A",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZPME",
+    "consultation": "0",
+    "courseName": "Programozási módszertan",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZPMG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4,6",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZPMG",
+    "consultation": "1",
+    "courseName": "Programozási módszertan",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZPREE",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4,6",
+    "specialisation": "B",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": "K",
+    "code": "IP-18KVSZPME",
+    "consultation": "0",
+    "courseName": "Programozási módszertan",
+    "credit": "2",
+    "labor": "0",
+    "lecture": "2",
+    "practice": "0",
+    "practiceGradeType": null,
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZPMG ",
+        "or": null,
+        "type": 0
+      }
+    ],
+    "semester": "4,6",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  },
+  {
+    "assessmentType": null,
+    "code": "IP-18KVSZPMG",
+    "consultation": "1",
+    "courseName": "Programozási módszertan",
+    "credit": "3",
+    "labor": "0",
+    "lecture": "0",
+    "practice": "2",
+    "practiceGradeType": "FG",
+    "preRequirements": [
+      {
+        "code": "IP-18KVSZPREE",
+        "or": null,
+        "type": 1
+      }
+    ],
+    "semester": "4,6",
+    "specialisation": "C",
+    "subjectGroupType": "SZAM",
+    "subjectType": "KV"
+  }
+]
