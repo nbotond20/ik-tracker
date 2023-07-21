@@ -32,7 +32,7 @@ specifiers:
   cross-env: ^7.0.3
   cypress: 12.17.2
   eslint: 8.45.0
-  eslint-config-next: 13.4.10
+  eslint-config-next: 13.4.11
   eslint-config-prettier: 8.8.0
   eslint-plugin-cypress: 2.13.3
   eslint-plugin-import: 2.27.5
@@ -126,7 +126,7 @@ devDependencies:
   cross-env: 7.0.3
   cypress: 12.17.2
   eslint: 8.45.0
-  eslint-config-next: 13.4.10_ko3fmmbeyij36muomfgt2u76xu
+  eslint-config-next: 13.4.11_ko3fmmbeyij36muomfgt2u76xu
   eslint-config-prettier: 8.8.0_eslint@8.45.0
   eslint-plugin-cypress: 2.13.3_eslint@8.45.0
   eslint-plugin-import: 2.27.5_vdlnholh74uk2lamdhhi4g2qza
@@ -212,7 +212,7 @@ packages:
       debug: 4.3.4
       gensync: 1.0.0-beta.2
       json5: 2.2.3
-      semver: 6.3.0
+      semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
 
@@ -258,7 +258,7 @@ packages:
       '@babel/helper-validator-option': 7.21.0
       browserslist: 4.21.5
       lru-cache: 5.1.1
-      semver: 6.3.0
+      semver: 6.3.1
 
   /@babel/helper-create-class-features-plugin/7.21.4_@babel+core@7.21.4:
     resolution: {integrity: sha512-46QrX2CQlaFRF4TkwfTt6nJD7IHq8539cCL7SDpqWSDeJKY1xylKKY5F/33mJhLZ3mFvKv2gGrVS6NkyF6qs+Q==}
@@ -299,7 +299,7 @@ packages:
       debug: 4.3.4
       lodash.debounce: 4.0.8
       resolve: 1.22.2
-      semver: 6.3.0
+      semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
 
@@ -1217,7 +1217,7 @@ packages:
       babel-plugin-polyfill-corejs3: 0.6.0_@babel+core@7.21.4
       babel-plugin-polyfill-regenerator: 0.4.1_@babel+core@7.21.4
       core-js-compat: 3.30.0
-      semver: 6.3.0
+      semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
 
@@ -1938,8 +1938,8 @@ packages:
   /@next/env/13.4.10:
     resolution: {integrity: sha512-3G1yD/XKTSLdihyDSa8JEsaWOELY+OWe08o0LUYzfuHp1zHDA8SObQlzKt+v+wrkkPcnPweoLH1ImZeUa0A1NQ==}
 
-  /@next/eslint-plugin-next/13.4.10:
-    resolution: {integrity: sha512-YJqyq6vk39JQfvaNtN83t/p5Jy45+bazRL+V4QI8FPd3FBqFYMEsULiwRLgSJMgFqkk4t4JbeZurz+gILEAFpA==}
+  /@next/eslint-plugin-next/13.4.11:
+    resolution: {integrity: sha512-BsxI1DLtTZLX/MEoSg5Rilk2c6tlcjGseByxwasBPeoNH+fda/DZe8RkOmmmncNmTV/OzTBj/Pq6Pc3BqgLuBA==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -3428,7 +3428,7 @@ packages:
       '@babel/compat-data': 7.21.4
       '@babel/core': 7.21.4
       '@babel/helper-define-polyfill-provider': 0.3.3_@babel+core@7.21.4
-      semver: 6.3.0
+      semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
 
@@ -4483,8 +4483,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-next/13.4.10_ko3fmmbeyij36muomfgt2u76xu:
-    resolution: {integrity: sha512-+JjcM6lQmFR5Mw0ORm9o1CR29+z/uajgSfYAPEGIBxOhTHBgCMs7ysuwi72o7LkMmA8E3N7/h09pSGZxs0s85g==}
+  /eslint-config-next/13.4.11_ko3fmmbeyij36muomfgt2u76xu:
+    resolution: {integrity: sha512-nirAnOj0pFi4QYuVCEy9mTL2iRKCHtSzfls9vDtXyg4gSybiAHARyfXAGARtWwB+FPgo3bVhUQsflFpOjQi+Gw==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -4492,7 +4492,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 13.4.10
+      '@next/eslint-plugin-next': 13.4.11
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/parser': 5.62.0_ko3fmmbeyij36muomfgt2u76xu
       eslint: 8.45.0
@@ -4729,7 +4729,7 @@ packages:
       minimatch: 3.1.2
       object.entries: 1.1.6
       object.fromentries: 2.0.6
-      semver: 6.3.0
+      semver: 6.3.1
     dev: true
 
   /eslint-plugin-no-only-tests/3.1.0:
@@ -5931,7 +5931,7 @@ packages:
       '@babel/parser': 7.21.4
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.2.0
-      semver: 6.3.0
+      semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8157,7 +8157,6 @@ packages:
   /semver/6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
-    dev: true
 
   /semver/7.5.0:
     resolution: {integrity: sha512-+XC0AD/R7Q2mPSRuy2Id0+CGTZ98+8f+KvwirxOKIEyid+XSx6HbC63p+O4IndTHuX5Z+JxQ0TghCkO5Cg/2HA==}
