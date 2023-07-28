@@ -33,7 +33,7 @@ specifiers:
   cypress: 12.17.2
   eslint: 8.45.0
   eslint-config-next: 13.4.12
-  eslint-config-prettier: 8.8.0
+  eslint-config-prettier: 8.9.0
   eslint-plugin-cypress: 2.13.3
   eslint-plugin-import: 2.27.5
   eslint-plugin-jest: 27.2.3
@@ -127,12 +127,12 @@ devDependencies:
   cypress: 12.17.2
   eslint: 8.45.0
   eslint-config-next: 13.4.12_ko3fmmbeyij36muomfgt2u76xu
-  eslint-config-prettier: 8.8.0_eslint@8.45.0
+  eslint-config-prettier: 8.9.0_eslint@8.45.0
   eslint-plugin-cypress: 2.13.3_eslint@8.45.0
   eslint-plugin-import: 2.27.5_vdlnholh74uk2lamdhhi4g2qza
   eslint-plugin-jest: 27.2.3_y7kzvommuq7akzstyzmygni5hy
   eslint-plugin-no-only-tests: 3.1.0
-  eslint-plugin-prettier: 4.2.1_6nuyjbnyo6rwr4pwddenxlklsi
+  eslint-plugin-prettier: 4.2.1_qsqgmntvmsloybvm6gd354rqfy
   eslint-plugin-react: 7.33.0_eslint@8.45.0
   eslint-plugin-react-hooks: 4.6.0_eslint@8.45.0
   husky: 8.0.3
@@ -4522,8 +4522,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-config-prettier/8.8.0_eslint@8.45.0:
-    resolution: {integrity: sha512-wLbQiFre3tdGgpDv67NQKnJuTlcUVYHas3k+DZCc2U2BadthoEY4B7hLPvAxaqdyOGCzuLfii2fqGph10va7oA==}
+  /eslint-config-prettier/8.9.0_eslint@8.45.0:
+    resolution: {integrity: sha512-+sbni7NfVXnOpnRadUA8S28AUlsZt9GjgFvABIRL9Hkn8KqNzOp+7Lw4QWtrwn20KzU3wqu1QoOj2m+7rKRqkA==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
@@ -4751,7 +4751,7 @@ packages:
     engines: {node: '>=5.0.0'}
     dev: true
 
-  /eslint-plugin-prettier/4.2.1_6nuyjbnyo6rwr4pwddenxlklsi:
+  /eslint-plugin-prettier/4.2.1_qsqgmntvmsloybvm6gd354rqfy:
     resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -4763,7 +4763,7 @@ packages:
         optional: true
     dependencies:
       eslint: 8.45.0
-      eslint-config-prettier: 8.8.0_eslint@8.45.0
+      eslint-config-prettier: 8.9.0_eslint@8.45.0
       prettier: 2.8.8
       prettier-linter-helpers: 1.0.0
     dev: true
