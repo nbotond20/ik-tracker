@@ -26,7 +26,7 @@ specifiers:
   '@types/uuid': ^9.0.1
   '@typescript-eslint/eslint-plugin': 5.62.0
   '@typescript-eslint/parser': 5.62.0
-  '@vercel/analytics': 1.0.1
+  '@vercel/analytics': 1.0.2
   autoprefixer: 10.4.14
   babel-loader: ^9.1.2
   cross-env: ^7.0.3
@@ -84,7 +84,7 @@ dependencies:
   '@trpc/next': 10.25.0_vi73oi4ttiqzjauqefwggxczpy
   '@trpc/react-query': 10.25.0_qh4eagu4umnbbpllcmuaulgtpa
   '@trpc/server': 10.37.1
-  '@vercel/analytics': 1.0.1
+  '@vercel/analytics': 1.0.2
   babel-loader: 9.1.2_2bpkfvz2mezbew2j5yjox7n6pu
   flowbite: 1.8.1
   framer-motion: 10.15.1_biqbaboplfbrettd7655fr4n2y
@@ -2900,8 +2900,8 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: true
 
-  /@vercel/analytics/1.0.1:
-    resolution: {integrity: sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==}
+  /@vercel/analytics/1.0.2:
+    resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
     dev: false
 
   /@webassemblyjs/ast/1.11.1:
