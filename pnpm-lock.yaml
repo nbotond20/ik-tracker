@@ -42,7 +42,7 @@ specifiers:
   eslint-plugin-react: 7.33.2
   eslint-plugin-react-hooks: 4.6.0
   flowbite: 1.8.1
-  framer-motion: 10.16.1
+  framer-motion: 10.16.2
   husky: 8.0.3
   i18next: ^22.4.15
   i18next-browser-languagedetector: ^7.0.1
@@ -87,7 +87,7 @@ dependencies:
   '@vercel/analytics': 1.0.2
   babel-loader: 9.1.2_2bpkfvz2mezbew2j5yjox7n6pu
   flowbite: 1.8.1
-  framer-motion: 10.16.1_biqbaboplfbrettd7655fr4n2y
+  framer-motion: 10.16.2_biqbaboplfbrettd7655fr4n2y
   i18next: 22.4.15
   i18next-browser-languagedetector: 7.0.1
   next: 13.4.19_c37uepwxx2b7wagtsua37ea26a
@@ -5262,8 +5262,8 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
 
-  /framer-motion/10.16.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-K6TXr5mZtitC/dxQCBdg7xzdN0d5IAIrlaqCPKtIQVdzVPGC0qBuJKXggHX1vjnP5gPOFwB1KbCCTWcnFc3kWg==}
+  /framer-motion/10.16.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-aY6L9YMvqMWtfOQptaUvvr8dp97jskXY5UYLQM0vOPxKeERrG/Z034EIQZ/52u7MeCT0HlCQy3/l0HdUZCB9Tw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
