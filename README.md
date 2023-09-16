@@ -1,6 +1,6 @@
 # IK-Tracker
 
-This is a progress tracker for students, studying compouter science at Eötvös Loránd University.
+This is a progress tracker for students, studying computer science at Eötvös Loránd University.
 
 ## Demo
 
@@ -20,7 +20,7 @@ To use this project, you need to have the following software installed:
 1. Clone the repository:
 
    ```bash
-   https://github.com/nbotond20/szakdolgozat-t3.git
+   https://github.com/nbotond20/ik-tracker.git
    ```
 
 2. Create a `.env` file in the root directory of the project and add the following environment variables:
