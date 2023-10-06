@@ -26,7 +26,7 @@ specifiers:
   '@types/uuid': ^9.0.1
   '@typescript-eslint/eslint-plugin': 5.62.0
   '@typescript-eslint/parser': 5.62.0
-  '@vercel/analytics': 1.0.2
+  '@vercel/analytics': 1.1.0
   autoprefixer: 10.4.16
   babel-loader: ^9.1.2
   cross-env: ^7.0.3
@@ -84,7 +84,7 @@ dependencies:
   '@trpc/next': 10.25.0_vvmrcsmn62t2soq3z4us56lnxi
   '@trpc/react-query': 10.25.0_fn2aqluudeyggqj4fevaqii6ve
   '@trpc/server': 10.38.5
-  '@vercel/analytics': 1.0.2
+  '@vercel/analytics': 1.1.0
   babel-loader: 9.1.2_2bpkfvz2mezbew2j5yjox7n6pu
   flowbite: 1.8.1
   framer-motion: 10.16.4_biqbaboplfbrettd7655fr4n2y
@@ -2887,8 +2887,10 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
-  /@vercel/analytics/1.0.2:
-    resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
+  /@vercel/analytics/1.1.0:
+    resolution: {integrity: sha512-k5ePYZPxitxxD1eJenPUUuH3qK+EtaA9OVD3oO0BRbyT/LarmZF0qdkptRSidip1arQxsTEIWvHbTuj1oksl+Q==}
+    dependencies:
+      server-only: 0.0.1
     dev: false
 
   /@webassemblyjs/ast/1.11.1:
@@ -8364,6 +8366,10 @@ packages:
     resolution: {integrity: sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==}
     dependencies:
       randombytes: 2.1.0
+    dev: false
+
+  /server-only/0.0.1:
+    resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
     dev: false
 
   /sharp/0.32.1:

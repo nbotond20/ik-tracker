@@ -35,7 +35,7 @@
     "@trpc/next": "10.25.0",
     "@trpc/react-query": "10.25.0",
     "@trpc/server": "10.38.5",
-    "@vercel/analytics": "1.0.2",
+    "@vercel/analytics": "1.1.0",
     "babel-loader": "^9.1.2",
     "flowbite": "1.8.1",
     "framer-motion": "10.16.4",
