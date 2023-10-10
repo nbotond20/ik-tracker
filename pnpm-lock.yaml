@@ -17,7 +17,7 @@ specifiers:
   '@trpc/react-query': 10.25.0
   '@trpc/server': 10.40.0
   '@types/jest': 29.5.5
-  '@types/next-pwa': 5.6.6
+  '@types/next-pwa': 5.6.7
   '@types/node': 20.8.4
   '@types/prettier': 2.7.3
   '@types/react': 18.2.27
@@ -113,7 +113,7 @@ devDependencies:
   '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
   '@trivago/prettier-plugin-sort-imports': 4.2.0_prettier@2.8.8
   '@types/jest': 29.5.5
-  '@types/next-pwa': 5.6.6_c37uepwxx2b7wagtsua37ea26a
+  '@types/next-pwa': 5.6.7_c37uepwxx2b7wagtsua37ea26a
   '@types/node': 20.8.4
   '@types/prettier': 2.7.3
   '@types/react': 18.2.27
@@ -2643,8 +2643,8 @@ packages:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
-  /@types/next-pwa/5.6.6_c37uepwxx2b7wagtsua37ea26a:
-    resolution: {integrity: sha512-gbIHrLsiyCvrhHcDgicGoZcva2xf9xUiEGfbDOaObp34HPn8Wsj8FLrQvkLEYIYYUJNKP9BoHj45MGk63K6xnw==}
+  /@types/next-pwa/5.6.7_c37uepwxx2b7wagtsua37ea26a:
+    resolution: {integrity: sha512-sV0FAOcHnNUxrdrcVh760s7IoNjDTuVCghWJuaxqBng7mnDj3WjnBfJM+sQokOhCmTNnYGoMWSNnD7ttvCIoKA==}
     dependencies:
       '@types/react': 18.2.27
       next: 13.5.4_c37uepwxx2b7wagtsua37ea26a
