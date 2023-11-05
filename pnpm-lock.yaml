@@ -20,7 +20,7 @@ specifiers:
   '@types/next-pwa': 5.6.8
   '@types/node': 20.8.10
   '@types/prettier': 2.7.3
-  '@types/react': 18.2.34
+  '@types/react': 18.2.35
   '@types/react-dom': 18.2.14
   '@types/testing-library__jest-dom': 5.14.9
   '@types/uuid': ^9.0.1
@@ -116,7 +116,7 @@ devDependencies:
   '@types/next-pwa': 5.6.8_c37uepwxx2b7wagtsua37ea26a
   '@types/node': 20.8.10
   '@types/prettier': 2.7.3
-  '@types/react': 18.2.34
+  '@types/react': 18.2.35
   '@types/react-dom': 18.2.14
   '@types/testing-library__jest-dom': 5.14.9
   '@types/uuid': 9.0.1
@@ -2737,7 +2737,7 @@ packages:
     resolution: {integrity: sha512-66/e4ZZ2TFdRLWmWh8pu3632CAbgb8QX/CdXX7m92RSa5928s2hiTFJJP0fUUlHOk//dN3PbllEo3ZoZSrg76Q==}
     dependencies:
       '@types/node': 20.8.10
-      '@types/react': 18.2.34
+      '@types/react': 18.2.35
       '@types/react-dom': 18.2.14
       next: 13.5.6_c37uepwxx2b7wagtsua37ea26a
       workbox-build: 6.5.4
@@ -2776,11 +2776,11 @@ packages:
   /@types/react-dom/18.2.14:
     resolution: {integrity: sha512-V835xgdSVmyQmI1KLV2BEIUgqEuinxp9O4G6g3FqO/SqLac049E53aysv0oEFD2kHfejeKU+ZqL2bcFWj9gLAQ==}
     dependencies:
-      '@types/react': 18.2.34
+      '@types/react': 18.2.35
     dev: true
 
-  /@types/react/18.2.34:
-    resolution: {integrity: sha512-U6eW/alrRk37FU/MS2RYMjx0Va2JGIVXELTODaTIYgvWGCV4Y4TfTUzG8DdmpDNIT0Xpj/R7GfyHOJJrDttcvg==}
+  /@types/react/18.2.35:
+    resolution: {integrity: sha512-LG3xpFZ++rTndV+/XFyX5vUP7NI9yxyk+MQvBDq+CVs8I9DLSc3Ymwb1Vmw5YDoeNeHN4PDZa3HylMKJYT9PNQ==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
