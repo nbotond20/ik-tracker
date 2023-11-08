@@ -57,7 +57,7 @@ specifiers:
   nodemailer: ^6.9.1
   postcss: 8.4.31
   prettier: 2.8.8
-  prettier-plugin-tailwindcss: 0.5.6
+  prettier-plugin-tailwindcss: 0.5.7
   prisma: 4.16.2
   prisma-dbml-generator: ^0.10.0
   react: 18.2.0
@@ -142,7 +142,7 @@ devDependencies:
   lint-staged: 13.3.0
   postcss: 8.4.31
   prettier: 2.8.8
-  prettier-plugin-tailwindcss: 0.5.6_klgthb54ngjxhf5fd3vtzoc4b4
+  prettier-plugin-tailwindcss: 0.5.7_klgthb54ngjxhf5fd3vtzoc4b4
   prisma: 4.16.2
   prisma-dbml-generator: 0.10.0
   tailwindcss: 3.3.5
@@ -7854,8 +7854,8 @@ packages:
       fast-diff: 1.2.0
     dev: true
 
-  /prettier-plugin-tailwindcss/0.5.6_klgthb54ngjxhf5fd3vtzoc4b4:
-    resolution: {integrity: sha512-2Xgb+GQlkPAUCFi3sV+NOYcSI5XgduvDBL2Zt/hwJudeKXkyvRS65c38SB0yb9UB40+1rL83I6m0RtlOQ8eHdg==}
+  /prettier-plugin-tailwindcss/0.5.7_klgthb54ngjxhf5fd3vtzoc4b4:
+    resolution: {integrity: sha512-4v6uESAgwCni6YF6DwJlRaDjg9Z+al5zM4JfngcazMy4WEf/XkPS5TEQjbD+DZ5iNuG6RrKQLa/HuX2SYzC3kQ==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
