@@ -11,7 +11,7 @@ specifiers:
   '@testing-library/cypress': 9.0.0
   '@testing-library/jest-dom': 5.17.0
   '@testing-library/react': 14.1.0
-  '@trivago/prettier-plugin-sort-imports': 4.2.1
+  '@trivago/prettier-plugin-sort-imports': 4.3.0
   '@trpc/client': 10.25.0
   '@trpc/next': 10.25.0
   '@trpc/react-query': 10.25.0
@@ -111,7 +111,7 @@ devDependencies:
   '@testing-library/cypress': 9.0.0_cypress@12.17.4
   '@testing-library/jest-dom': 5.17.0
   '@testing-library/react': 14.1.0_biqbaboplfbrettd7655fr4n2y
-  '@trivago/prettier-plugin-sort-imports': 4.2.1_prettier@2.8.8
+  '@trivago/prettier-plugin-sort-imports': 4.3.0_prettier@2.8.8
   '@types/jest': 29.5.8
   '@types/next-pwa': 5.6.9_c37uepwxx2b7wagtsua37ea26a
   '@types/node': 20.9.0
@@ -142,7 +142,7 @@ devDependencies:
   lint-staged: 13.3.0
   postcss: 8.4.31
   prettier: 2.8.8
-  prettier-plugin-tailwindcss: 0.5.7_klgthb54ngjxhf5fd3vtzoc4b4
+  prettier-plugin-tailwindcss: 0.5.7_g2lqxc74ytveo2lzzuc7l3miuy
   prisma: 4.16.2
   prisma-dbml-generator: 0.10.0
   tailwindcss: 3.3.5
@@ -228,7 +228,7 @@ packages:
     resolution: {integrity: sha512-oLcVCTeIFadUoArDTwpluncplrYBmTCCZZgXCbgNGvOBBiSDDK3eWO4b/+eOTli5tKv1lg+a5/NAXg+nTcei1w==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.4
+      '@babel/types': 7.23.0
       jsesc: 2.5.2
       source-map: 0.5.7
     dev: true
@@ -416,19 +416,9 @@ packages:
     dependencies:
       '@babel/types': 7.23.0
 
-  /@babel/helper-string-parser/7.19.4:
-    resolution: {integrity: sha512-nHtDoQcuqFmwYNYPz3Rah5ph2p8PFeFCsZk9A/48dPc/rGocJ5J3hAAZ7pb76VWX3fZKu+uEr/FhH5jLx7umrw==}
-    engines: {node: '>=6.9.0'}
-    dev: true
-
   /@babel/helper-string-parser/7.22.5:
     resolution: {integrity: sha512-mM4COjgZox8U+JcXQwPijIZLElkgEpO5rsERVDJTc2qfCDfERyob6k5WegS14SX18IIjv+XD+GrqNumY5JRCDw==}
     engines: {node: '>=6.9.0'}
-
-  /@babel/helper-validator-identifier/7.19.1:
-    resolution: {integrity: sha512-awrNfaMtnHUr653GgGEs++LlAvW6w+DcPrOliSMXWCKo597CwL5Acf/wWdNkf/tfEQE3mjkeD1YOVZOUV/od1w==}
-    engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-validator-identifier/7.22.20:
     resolution: {integrity: sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==}
@@ -475,14 +465,6 @@ packages:
       '@babel/helper-validator-identifier': 7.22.20
       chalk: 2.4.2
       js-tokens: 4.0.0
-
-  /@babel/parser/7.21.4:
-    resolution: {integrity: sha512-alVJj7k7zIxqBZ7BTRhz0IqJFxW1VJbm6N8JbcYhQ186df9ZBPbZBmWSqAMXwHGsCJdYks7z/voa3ibiS5bCIw==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-    dependencies:
-      '@babel/types': 7.21.4
-    dev: true
 
   /@babel/parser/7.23.0:
     resolution: {integrity: sha512-vvPKKdMemU85V9WE/l5wZEmImpCtLqbnTvqDS2U1fJ96KrxoW7KrXhNsNCblQlg8Ck4b85yxdTyelsMUgFUXiw==}
@@ -1321,16 +1303,7 @@ packages:
     resolution: {integrity: sha512-TmKSNO4D5rzhL5bjWFcVHHLETzfQ/AmbKpKPOSjlP0WoHZ6L911fgoOKY4Alp/emzG4cHJdyN49zpgkbXFEHHw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/helper-validator-identifier': 7.19.1
-      to-fast-properties: 2.0.0
-    dev: true
-
-  /@babel/types/7.21.4:
-    resolution: {integrity: sha512-rU2oY501qDxE8Pyo7i/Orqma4ziCOrby0/9mvbDUGEfvZjb279Nk9k19e2fiCxHbRRpY2ZyrgW1eq22mvmOIzA==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-string-parser': 7.19.4
-      '@babel/helper-validator-identifier': 7.19.1
+      '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
     dev: true
 
@@ -2476,8 +2449,8 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
-  /@trivago/prettier-plugin-sort-imports/4.2.1_prettier@2.8.8:
-    resolution: {integrity: sha512-iuy2MPVURGdxILTchHr15VAioItuYBejKfcTmQFlxIuqA7jeaT6ngr5aUIG6S6U096d6a6lJCgaOwlRrPLlOPg==}
+  /@trivago/prettier-plugin-sort-imports/4.3.0_prettier@2.8.8:
+    resolution: {integrity: sha512-r3n0onD3BTOVUNPhR4lhVK4/pABGpbA7bW3eumZnYdKaHkf1qEC+Mag6DPbGNuuh0eG8AaYj+YqmVHSiGslaTQ==}
     peerDependencies:
       '@vue/compiler-sfc': 3.x
       prettier: 2.x - 3.x
@@ -2486,7 +2459,7 @@ packages:
         optional: true
     dependencies:
       '@babel/generator': 7.17.7
-      '@babel/parser': 7.21.4
+      '@babel/parser': 7.23.0
       '@babel/traverse': 7.23.2
       '@babel/types': 7.17.0
       javascript-natural-sort: 0.7.1
@@ -7854,7 +7827,7 @@ packages:
       fast-diff: 1.2.0
     dev: true
 
-  /prettier-plugin-tailwindcss/0.5.7_klgthb54ngjxhf5fd3vtzoc4b4:
+  /prettier-plugin-tailwindcss/0.5.7_g2lqxc74ytveo2lzzuc7l3miuy:
     resolution: {integrity: sha512-4v6uESAgwCni6YF6DwJlRaDjg9Z+al5zM4JfngcazMy4WEf/XkPS5TEQjbD+DZ5iNuG6RrKQLa/HuX2SYzC3kQ==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
@@ -7906,7 +7879,7 @@ packages:
       prettier-plugin-twig-melody:
         optional: true
     dependencies:
-      '@trivago/prettier-plugin-sort-imports': 4.2.1_prettier@2.8.8
+      '@trivago/prettier-plugin-sort-imports': 4.3.0_prettier@2.8.8
       prettier: 2.8.8
     dev: true
 
