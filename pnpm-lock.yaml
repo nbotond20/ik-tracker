@@ -10,7 +10,7 @@ specifiers:
   '@tanstack/react-query': 4.36.1
   '@testing-library/cypress': 9.0.0
   '@testing-library/jest-dom': 5.17.0
-  '@testing-library/react': 14.1.0
+  '@testing-library/react': 14.1.2
   '@trivago/prettier-plugin-sort-imports': 4.3.0
   '@trpc/client': 10.25.0
   '@trpc/next': 10.25.0
@@ -110,7 +110,7 @@ devDependencies:
   '@tailwindcss/forms': 0.5.7_tailwindcss@3.3.5
   '@testing-library/cypress': 9.0.0_cypress@12.17.4
   '@testing-library/jest-dom': 5.17.0
-  '@testing-library/react': 14.1.0_biqbaboplfbrettd7655fr4n2y
+  '@testing-library/react': 14.1.2_biqbaboplfbrettd7655fr4n2y
   '@trivago/prettier-plugin-sort-imports': 4.3.0_prettier@2.8.8
   '@types/jest': 29.5.8
   '@types/next-pwa': 5.6.9_c37uepwxx2b7wagtsua37ea26a
@@ -2430,8 +2430,8 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/react/14.1.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-hcvfZEEyO0xQoZeHmUbuMs7APJCGELpilL7bY+BaJaMP57aWc6q1etFwScnoZDheYjk4ESdlzPdQ33IbsKAK/A==}
+  /@testing-library/react/14.1.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-z4p7DVBTPjKM5qDZ0t5ZjzkpSNb+fZy1u6bzO7kk8oeGagpPCAtgh4cx1syrfp7a+QWkM021jGqjJaxJJnXAZg==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^18.0.0
