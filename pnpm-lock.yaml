@@ -16,7 +16,7 @@ specifiers:
   '@trpc/next': 10.25.0
   '@trpc/react-query': 10.25.0
   '@trpc/server': 10.44.0
-  '@types/jest': 29.5.9
+  '@types/jest': 29.5.10
   '@types/next-pwa': 5.6.9
   '@types/node': 20.9.3
   '@types/prettier': 2.7.3
@@ -112,7 +112,7 @@ devDependencies:
   '@testing-library/jest-dom': 5.17.0
   '@testing-library/react': 14.1.2_biqbaboplfbrettd7655fr4n2y
   '@trivago/prettier-plugin-sort-imports': 4.3.0_prettier@2.8.8
-  '@types/jest': 29.5.9
+  '@types/jest': 29.5.10
   '@types/next-pwa': 5.6.9_c37uepwxx2b7wagtsua37ea26a
   '@types/node': 20.9.3
   '@types/prettier': 2.7.3
@@ -2613,8 +2613,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.5.9:
-    resolution: {integrity: sha512-zJeWhqBwVoPm83sP8h1/SVntwWTu5lZbKQGCvBjxQOyEWnKnsaomt2y7SlV4KfwlrHAHHAn00Sh4IAWaIsGOgQ==}
+  /@types/jest/29.5.10:
+    resolution: {integrity: sha512-tE4yxKEphEyxj9s4inideLHktW/x6DwesIwWZ9NN1FKf9zbJYsnhBoA9vrHA/IuIOKwPa5PcFBNV4lpMIOEzyQ==}
     dependencies:
       expect: 29.7.0
       pretty-format: 29.7.0
@@ -2729,7 +2729,7 @@ packages:
   /@types/testing-library__jest-dom/5.14.9:
     resolution: {integrity: sha512-FSYhIjFlfOpGSRyVoMBMuS3ws5ehFQODymf3vlI7U1K8c7PHwWwFY7VREfmsuzHSOnoKs/9/Y983ayOs7eRzqw==}
     dependencies:
-      '@types/jest': 29.5.9
+      '@types/jest': 29.5.10
     dev: true
 
   /@types/tough-cookie/4.0.2:
