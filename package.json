@@ -50,7 +50,7 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-i18next": "^12.2.2",
-    "sharp": "^0.32.1",
+    "sharp": "^0.33.0",
     "socket.io-client": "^4.6.1",
     "superjson": "1.13.3",
     "uuid": "^9.0.0",
