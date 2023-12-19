@@ -67,7 +67,7 @@ specifiers:
   sharp: ^0.33.0
   socket.io-client: ^4.6.1
   superjson: 1.13.3
-  tailwindcss: 3.3.7
+  tailwindcss: 3.4.0
   trpc-panel: ^1.3.4
   tsx: 3.14.0
   typescript: 5.3.3
@@ -107,7 +107,7 @@ dependencies:
 
 devDependencies:
   '@next/bundle-analyzer': 13.4.1
-  '@tailwindcss/forms': 0.5.7_tailwindcss@3.3.7
+  '@tailwindcss/forms': 0.5.7_tailwindcss@3.4.0
   '@testing-library/cypress': 9.0.0_cypress@12.17.4
   '@testing-library/jest-dom': 5.17.0
   '@testing-library/react': 14.1.2_biqbaboplfbrettd7655fr4n2y
@@ -145,7 +145,7 @@ devDependencies:
   prettier-plugin-tailwindcss: 0.5.9_g2lqxc74ytveo2lzzuc7l3miuy
   prisma: 4.16.2
   prisma-dbml-generator: 0.10.0
-  tailwindcss: 3.3.7
+  tailwindcss: 3.4.0
   trpc-panel: 1.3.4_ysomkl2gmsfez6d24sdznbwvou
   tsx: 3.14.0
   typescript: 5.3.3
@@ -2541,13 +2541,13 @@ packages:
     dependencies:
       tslib: 2.5.0
 
-  /@tailwindcss/forms/0.5.7_tailwindcss@3.3.7:
+  /@tailwindcss/forms/0.5.7_tailwindcss@3.4.0:
     resolution: {integrity: sha512-QE7X69iQI+ZXwldE+rzasvbJiyV/ju1FGHH0Qn2W3FKbuYtqp8LKcy6iSw79fVUT5/Vvf+0XgLCeYVG+UV6hOw==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.3.7
+      tailwindcss: 3.4.0
     dev: true
 
   /@tanstack/query-core/4.36.1:
@@ -9035,8 +9035,8 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /tailwindcss/3.3.7:
-    resolution: {integrity: sha512-pjgQxDZPvyS/nG3ZYkyCvsbONJl7GdOejfm24iMt2ElYQQw8Jc4p0m8RdMp7mznPD0kUhfzwV3zAwa80qI0zmQ==}
+  /tailwindcss/3.4.0:
+    resolution: {integrity: sha512-VigzymniH77knD1dryXbyxR+ePHihHociZbXnLZHUyzf2MMs2ZVqlUrZ3FvpXP8pno9JzmILt1sZPD19M3IxtA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
