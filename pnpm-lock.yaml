@@ -67,7 +67,7 @@ specifiers:
   sharp: ^0.33.0
   socket.io-client: ^4.6.1
   superjson: 1.13.3
-  tailwindcss: 3.4.0
+  tailwindcss: 3.4.1
   trpc-panel: ^1.3.4
   tsx: 3.14.0
   typescript: 5.3.3
@@ -107,7 +107,7 @@ dependencies:
 
 devDependencies:
   '@next/bundle-analyzer': 13.4.1
-  '@tailwindcss/forms': 0.5.7_tailwindcss@3.4.0
+  '@tailwindcss/forms': 0.5.7_tailwindcss@3.4.1
   '@testing-library/cypress': 9.0.0_cypress@12.17.4
   '@testing-library/jest-dom': 5.17.0
   '@testing-library/react': 14.1.2_biqbaboplfbrettd7655fr4n2y
@@ -145,7 +145,7 @@ devDependencies:
   prettier-plugin-tailwindcss: 0.5.11_g2lqxc74ytveo2lzzuc7l3miuy
   prisma: 4.16.2
   prisma-dbml-generator: 0.10.0
-  tailwindcss: 3.4.0
+  tailwindcss: 3.4.1
   trpc-panel: 1.3.4_ma4k5tiedavjxgiswssbfrb3fi
   tsx: 3.14.0
   typescript: 5.3.3
@@ -2541,13 +2541,13 @@ packages:
     dependencies:
       tslib: 2.5.0
 
-  /@tailwindcss/forms/0.5.7_tailwindcss@3.4.0:
+  /@tailwindcss/forms/0.5.7_tailwindcss@3.4.1:
     resolution: {integrity: sha512-QE7X69iQI+ZXwldE+rzasvbJiyV/ju1FGHH0Qn2W3FKbuYtqp8LKcy6iSw79fVUT5/Vvf+0XgLCeYVG+UV6hOw==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.4.0
+      tailwindcss: 3.4.1
     dev: true
 
   /@tanstack/query-core/4.36.1:
@@ -5348,16 +5348,6 @@ packages:
     resolution: {integrity: sha512-xJuoT5+L99XlZ8twedaRf6Ax2TgQVxvgZOYoPKqZufmJib0tL2tegPBOZb1pVNgIhlqDlA0eO0c3wBvQcmzx4w==}
     dev: true
 
-  /fast-glob/3.2.12:
-    resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
-    engines: {node: '>=8.6.0'}
-    dependencies:
-      '@nodelib/fs.stat': 2.0.5
-      '@nodelib/fs.walk': 1.2.8
-      glob-parent: 5.1.2
-      merge2: 1.4.1
-      micromatch: 4.0.5
-
   /fast-glob/3.3.1:
     resolution: {integrity: sha512-kNFPyjhh5cKjrUltxs+wFx+ZkbRaxxmZ+X0ZU31SOsxCEtP9VPgtq2teZw1DebupL5GmDaNQ6yKMMVcM41iqDg==}
     engines: {node: '>=8.6.0'}
@@ -5367,7 +5357,6 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.5
-    dev: true
 
   /fast-json-stable-stringify/2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
@@ -5725,7 +5714,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.12
+      fast-glob: 3.3.1
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
@@ -9028,8 +9017,8 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /tailwindcss/3.4.0:
-    resolution: {integrity: sha512-VigzymniH77knD1dryXbyxR+ePHihHociZbXnLZHUyzf2MMs2ZVqlUrZ3FvpXP8pno9JzmILt1sZPD19M3IxtA==}
+  /tailwindcss/3.4.1:
+    resolution: {integrity: sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
