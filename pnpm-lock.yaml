@@ -26,7 +26,7 @@ specifiers:
   '@types/uuid': ^9.0.1
   '@typescript-eslint/eslint-plugin': 5.62.0
   '@typescript-eslint/parser': 5.62.0
-  '@vercel/analytics': 1.1.3
+  '@vercel/analytics': 1.1.4
   autoprefixer: 10.4.17
   babel-loader: ^9.1.2
   cross-env: ^7.0.3
@@ -84,7 +84,7 @@ dependencies:
   '@trpc/next': 10.25.0_a4er2k5mxkdd2smwmfndhu7ygy
   '@trpc/react-query': 10.25.0_lgrok2mgtgwlynyc2w2wfdgpwa
   '@trpc/server': 10.45.1
-  '@vercel/analytics': 1.1.3
+  '@vercel/analytics': 1.1.4
   babel-loader: 9.1.2_2bpkfvz2mezbew2j5yjox7n6pu
   flowbite: 1.8.1
   framer-motion: 10.18.0_biqbaboplfbrettd7655fr4n2y
@@ -3090,8 +3090,8 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@vercel/analytics/1.1.3:
-    resolution: {integrity: sha512-Z0l0y8TnUnnxr+on7oIMB9qQOoSJIniYMzUng6+NU8VVDkZ+kt2QGD5hzODwsuiRJAsjW528iUEtbWCEGkSCCg==}
+  /@vercel/analytics/1.1.4:
+    resolution: {integrity: sha512-CVzw3SLcPSc31tRDLLqDGqWQCv6/ylpEZnW7AYMvtvRsO2Q8hmjBVOqvo2Ok6MZnYf262O8c86LB2K9vK1/ZbQ==}
     dependencies:
       server-only: 0.0.1
     dev: false
