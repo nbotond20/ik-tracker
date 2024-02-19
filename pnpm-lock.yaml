@@ -26,7 +26,7 @@ specifiers:
   '@types/uuid': ^9.0.1
   '@typescript-eslint/eslint-plugin': 5.62.0
   '@typescript-eslint/parser': 5.62.0
-  '@vercel/analytics': 1.2.0
+  '@vercel/analytics': 1.2.1
   autoprefixer: 10.4.17
   babel-loader: ^9.1.2
   cross-env: ^7.0.3
@@ -84,7 +84,7 @@ dependencies:
   '@trpc/next': 10.25.0_a4er2k5mxkdd2smwmfndhu7ygy
   '@trpc/react-query': 10.25.0_lgrok2mgtgwlynyc2w2wfdgpwa
   '@trpc/server': 10.45.1
-  '@vercel/analytics': 1.2.0_next@13.5.6+react@18.2.0
+  '@vercel/analytics': 1.2.1_next@13.5.6+react@18.2.0
   babel-loader: 9.1.2_2bpkfvz2mezbew2j5yjox7n6pu
   flowbite: 1.8.1
   framer-motion: 10.18.0_biqbaboplfbrettd7655fr4n2y
@@ -3045,8 +3045,8 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@vercel/analytics/1.2.0_next@13.5.6+react@18.2.0:
-    resolution: {integrity: sha512-Q9hduY6+i73Is1m57Y3OlawleeYVi4cvuh/0j6IwmSndMOE4+BKkMwjnwz+7xnqfZCanipIG6+q+zHalH9X0Zg==}
+  /@vercel/analytics/1.2.1_next@13.5.6+react@18.2.0:
+    resolution: {integrity: sha512-ZB5gDPCQvHu0DcBbywIwMm5aY9mTV8mBl7Mmk8QD84JqBnuYbsNCDnnDuzblNjd82tDtRjAqruZ0mzNm6MAWpA==}
     peerDependencies:
       next: '>= 13'
       react: ^18 || ^19
