@@ -51,7 +51,7 @@ specifiers:
   jest-junit: 16.0.0
   lint-staged: 13.3.0
   next: 13.5.6
-  next-auth: 4.24.6
+  next-auth: 4.24.7
   next-pwa: 5.6.0
   nextjs-cors: ^2.1.2
   nodemailer: ^6.9.1
@@ -77,7 +77,7 @@ specifiers:
 dependencies:
   '@headlessui/react': 1.7.18_biqbaboplfbrettd7655fr4n2y
   '@heroicons/react': 2.1.1_react@18.2.0
-  '@next-auth/prisma-adapter': 1.0.7_ezaj5mr7i4nvhr74ze7vfnamaq
+  '@next-auth/prisma-adapter': 1.0.7_yplnezpk6itll7kmmhlvuiuire
   '@prisma/client': 4.16.2_prisma@4.16.2
   '@tanstack/react-query': 4.36.1_biqbaboplfbrettd7655fr4n2y
   '@trpc/client': 10.25.0_@trpc+server@10.45.1
@@ -91,7 +91,7 @@ dependencies:
   i18next: 22.5.1
   i18next-browser-languagedetector: 7.2.0
   next: 13.5.6_46evupjibpvig6m23h7yqzgnu4
-  next-auth: 4.24.6_ddemfuxl5askyq42v74g4xzjeu
+  next-auth: 4.24.7_ddemfuxl5askyq42v74g4xzjeu
   next-pwa: 5.6.0_5sxdk25ihzf3o2bxhopniw4fci
   nextjs-cors: 2.1.2_next@13.5.6
   nodemailer: 6.9.11
@@ -2280,14 +2280,14 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@next-auth/prisma-adapter/1.0.7_ezaj5mr7i4nvhr74ze7vfnamaq:
+  /@next-auth/prisma-adapter/1.0.7_yplnezpk6itll7kmmhlvuiuire:
     resolution: {integrity: sha512-Cdko4KfcmKjsyHFrWwZ//lfLUbcLqlyFqjd/nYE2m3aZ7tjMNUjpks47iw7NTCnXf+5UWz5Ypyt1dSs1EP5QJw==}
     peerDependencies:
       '@prisma/client': '>=2.26.0 || >=3'
       next-auth: ^4
     dependencies:
       '@prisma/client': 4.16.2_prisma@4.16.2
-      next-auth: 4.24.6_ddemfuxl5askyq42v74g4xzjeu
+      next-auth: 4.24.7_ddemfuxl5askyq42v74g4xzjeu
     dev: false
 
   /@next/bundle-analyzer/13.4.1:
@@ -7222,8 +7222,8 @@ packages:
     hasBin: true
     dev: true
 
-  /jose/4.13.1:
-    resolution: {integrity: sha512-MSJQC5vXco5Br38mzaQKiq9mwt7lwj2eXpgpRyQYNHYt2lq1PjkWa7DLXX0WVcQLE9HhMh3jPiufS7fhJf+CLQ==}
+  /jose/4.15.5:
+    resolution: {integrity: sha512-jc7BFxgKPKi94uOvEmzlSWFFe2+vASyXaKUpdQKatWAESU2MWjDfFf0fdfc83CDKcA5QecabZeNLyfhe3yKNkg==}
     dev: false
 
   /js-tokens/4.0.0:
@@ -7715,8 +7715,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /next-auth/4.24.6_ddemfuxl5askyq42v74g4xzjeu:
-    resolution: {integrity: sha512-djQt3ZEaWEIxcsuh3HTW2uuzLfXMRjHH+ugAsichlQSbH4iA5MRcgMA2HvTNvsDTDLh44tyU72+/gWsxgTbAKg==}
+  /next-auth/4.24.7_ddemfuxl5askyq42v74g4xzjeu:
+    resolution: {integrity: sha512-iChjE8ov/1K/z98gdKbn2Jw+2vLgJtVV39X+rCP5SGnVQuco7QOr19FRNGMIrD8d3LYhHWV9j9sKLzq1aDWWQQ==}
     peerDependencies:
       next: ^12.2.5 || ^13 || ^14
       nodemailer: ^6.6.5
@@ -7726,10 +7726,10 @@ packages:
       nodemailer:
         optional: true
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.23.9
       '@panva/hkdf': 1.0.4
       cookie: 0.5.0
-      jose: 4.13.1
+      jose: 4.15.5
       next: 13.5.6_46evupjibpvig6m23h7yqzgnu4
       nodemailer: 6.9.11
       oauth: 0.9.15
@@ -8063,7 +8063,7 @@ packages:
   /openid-client/5.4.0:
     resolution: {integrity: sha512-hgJa2aQKcM2hn3eyVtN12tEA45ECjTJPXCgUh5YzTzy9qwapCvmDTVPWOcWVL0d34zeQoQ/hbG9lJhl3AYxJlQ==}
     dependencies:
-      jose: 4.13.1
+      jose: 4.15.5
       lru-cache: 6.0.0
       object-hash: 2.2.0
       oidc-token-hash: 5.0.1
