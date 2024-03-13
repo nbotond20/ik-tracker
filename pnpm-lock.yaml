@@ -21,7 +21,7 @@ specifiers:
   '@types/node': 20.11.27
   '@types/prettier': 2.7.3
   '@types/react': 18.2.42
-  '@types/react-dom': 18.2.21
+  '@types/react-dom': 18.2.22
   '@types/testing-library__jest-dom': 5.14.9
   '@types/uuid': ^9.0.1
   '@typescript-eslint/eslint-plugin': 5.62.0
@@ -117,7 +117,7 @@ devDependencies:
   '@types/node': 20.11.27
   '@types/prettier': 2.7.3
   '@types/react': 18.2.42
-  '@types/react-dom': 18.2.21
+  '@types/react-dom': 18.2.22
   '@types/testing-library__jest-dom': 5.14.9
   '@types/uuid': 9.0.8
   '@typescript-eslint/eslint-plugin': 5.62.0_u3omgjjbgdeqsfi2fpfcpwhi7q
@@ -2775,7 +2775,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.21.0
       '@testing-library/dom': 9.2.0
-      '@types/react-dom': 18.2.21
+      '@types/react-dom': 18.2.22
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: true
@@ -2987,7 +2987,7 @@ packages:
     dependencies:
       '@types/node': 20.11.27
       '@types/react': 18.2.42
-      '@types/react-dom': 18.2.21
+      '@types/react-dom': 18.2.22
       next: 13.5.6_46evupjibpvig6m23h7yqzgnu4
       workbox-build: 6.5.4
     transitivePeerDependencies:
@@ -3022,8 +3022,8 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react-dom/18.2.21:
-    resolution: {integrity: sha512-gnvBA/21SA4xxqNXEwNiVcP0xSGHh/gi1VhWv9Bl46a0ItbTT5nFY+G9VSQpaG/8N/qdJpJ+vftQ4zflTtnjLw==}
+  /@types/react-dom/18.2.22:
+    resolution: {integrity: sha512-fHkBXPeNtfvri6gdsMYyW+dW7RXFo6Ad09nLFK0VQWR7yGLai/Cyvyj696gbwYvBnhGtevUG9cET0pmUbMtoPQ==}
     dependencies:
       '@types/react': 18.2.42
     dev: true
