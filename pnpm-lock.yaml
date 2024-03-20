@@ -10,7 +10,7 @@ specifiers:
   '@tanstack/react-query': 4.36.1
   '@testing-library/cypress': 9.0.0
   '@testing-library/jest-dom': 5.17.0
-  '@testing-library/react': 14.2.1
+  '@testing-library/react': 14.2.2
   '@trivago/prettier-plugin-sort-imports': 4.3.0
   '@trpc/client': 10.25.0
   '@trpc/next': 10.25.0
@@ -110,7 +110,7 @@ devDependencies:
   '@tailwindcss/forms': 0.5.7_tailwindcss@3.4.1
   '@testing-library/cypress': 9.0.0_cypress@12.17.4
   '@testing-library/jest-dom': 5.17.0
-  '@testing-library/react': 14.2.1_biqbaboplfbrettd7655fr4n2y
+  '@testing-library/react': 14.2.2_biqbaboplfbrettd7655fr4n2y
   '@trivago/prettier-plugin-sort-imports': 4.3.0_prettier@2.8.8
   '@types/jest': 29.5.12
   '@types/next-pwa': 5.6.9_46evupjibpvig6m23h7yqzgnu4
@@ -223,7 +223,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@ampproject/remapping': 2.2.1
-      '@babel/code-frame': 7.22.13
+      '@babel/code-frame': 7.23.5
       '@babel/generator': 7.23.0
       '@babel/helper-compilation-targets': 7.21.4_@babel+core@7.21.4
       '@babel/helper-module-transforms': 7.21.2
@@ -2728,7 +2728,7 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@babel/code-frame': 7.22.13
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.23.9
       '@types/aria-query': 5.0.1
       aria-query: 5.1.3
       chalk: 4.1.2
@@ -2741,8 +2741,8 @@ packages:
     resolution: {integrity: sha512-xTEnpUKiV/bMyEsE5bT4oYA0x0Z/colMtxzUY8bKyPXBNLn/e0V4ZjBZkEhms0xE4pv9QsPfSRu9AWS4y5wGvA==}
     engines: {node: '>=14'}
     dependencies:
-      '@babel/code-frame': 7.22.13
-      '@babel/runtime': 7.21.0
+      '@babel/code-frame': 7.23.5
+      '@babel/runtime': 7.23.9
       '@types/aria-query': 5.0.1
       aria-query: 5.1.3
       chalk: 4.1.2
@@ -2766,14 +2766,14 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/react/14.2.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-sGdjws32ai5TLerhvzThYFbpnF9XtL65Cjf+gB0Dhr29BGqK+mAeN7SURSdu+eqgET4ANcWoC7FQpkaiGvBr+A==}
+  /@testing-library/react/14.2.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-SOUuM2ysCvjUWBXTNfQ/ztmnKDmqaiPV3SvoIuyxMUca45rbSWWAT/qB8CUs/JQ/ux/8JFs9DNdFQ3f6jH3crA==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.23.9
       '@testing-library/dom': 9.2.0
       '@types/react-dom': 18.2.22
       react: 18.2.0
@@ -7968,7 +7968,7 @@ packages:
     resolution: {integrity: sha512-ayCKvm/phCGxOkYRSCM82iDwct8/EonSEgCSxWxD7ve6jHggsFl4fZVQBPRNgQoKiuV/odhFrGzQXZwbifC8Rg==}
     engines: {node: '>=8'}
     dependencies:
-      '@babel/code-frame': 7.22.13
+      '@babel/code-frame': 7.23.5
       error-ex: 1.3.2
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
@@ -8690,7 +8690,7 @@ packages:
     peerDependencies:
       rollup: ^2.0.0
     dependencies:
-      '@babel/code-frame': 7.22.13
+      '@babel/code-frame': 7.23.5
       jest-worker: 26.6.2
       rollup: 2.79.1
       serialize-javascript: 4.0.0
